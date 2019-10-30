@@ -1,0 +1,285 @@
+Motif Role Stability Code Log
+
+Code is in the github repository motif_role_stability, owner cirtwill
+
+Authors:
+	Kate Wootton
+	Alyssa Cirtwill
+
+
+--- 2018-07-10 --- Kate ---
+
+Brainstorming session in Edinburgh! 
+
+General question we're interested in:
+How do species' roles affect their likelihood of going extinct following a perturbation? 
+A) Do species with particular roles cause secondary extinctions when perturbed (vs. going extinct themselves)?
+B) Are species with similar roles to the perturbed species more likely to go extinct?
+C) Building on Wootton2016, are species that share a motif with the perturbed species more likely to go extinct? If so, are some motifs particularly bad to share?
+D) Does this depend on the frequencies of different motifs at the network level? 
+
+We have set up a code log, manuscript folder and code folder. 
+
+Code to generate niche networks is    >> code/set_up_networks/generate-foodweb.R <<
+We decided to use niche networks as they have the same frequency of motifs as empirical networks (Stouffer et al. 2007 Proc B)
+To generate a network, use:   generated_network <- generate.niche(S,L)
+
+To do (Kate):
+>> Decide on dynamic model
+>> Choose which language to use
+>> Work out how to set parameters
+>> Suss out super computer access
+>> Decide on size and connectance
+
+
+Committed as "Set up: "
+
+
+
+
+--- 2018-07-11 --- Kate ---
+
+Wrote  >> code/set_up_networks/make-save-networks.R <<   to generate niche networks and save them as edge lists in   >> data/networks/ << 
+
+Generated 20 networks to start playing with (in  >> data/networks << )
+
+Made a .txt file for me to write down notes and pseudocode -  >> code/set_up_networks/pseudocode_setup.txt <<
+
+
+Committed as "Network generation: "
+
+
+
+---- 2018-07-12 --- Kate ---
+
+
+Written set up code to read in network, determine S, C, L and adjacency matrix ( >> msf_setup_rolestab.m << )
+
+
+Committed as "Matlab setup code: "
+
+
+
+--- 2018-07-19 --- Kate ---
+
+
+Found the best package ever! BioEnergeticFoodWebs  (Delmas et al. 2017 MEE).  A few teething pains, but rapid assistance from the developers.
+
+Written up code which creates a niche network, simulates dynamics, selectively removes each species one-by-one and resimulates dynamics. 
+Saved as  >> code/simulations.jl << 
+
+To install Julia, go here: https://julialang.org/downloads/
+
+Then to get the package, open the Julia terminal and enter >  Pkg.add("BioEnergeticFoodWebs")
+Then just for safety, because this is where I ran into troubles, check that it’s actually the most up to date version by using > Pkg.update()
+
+
+
+Makes all the Matlab code irrelevant, so I will need to delete everything in >> matlab_code/ <<  and  >> set_up_networks/ <<   
+once we're confident this is working.
+
+
+I can't get the save function working right now, but have asked for assistance so should solve that soon. 
+
+Currently working with default values and random initial biomasses, we should discuss if we want to change anything.
+
+
+Pushed as "Simulations code: "
+
+
+
+--- 2018-10-01 --- Kate ---
+
+
+Found a workaround for saving (see custom function save_json() in   >>  simulations.jl <<  ), output is as .json
+
+Generated and saved a 5-species network, plus simulated extinction of each species individually (see files in    >> data/Julia/fw_dstrbnc/fw_1/ << )
+
+Worked out how to read .json into R (see   >> code/open_json_in_R.R <<   )
+
+Pushed as "Saving output: "
+
+
+
+--- 2019.03.10 --- Kate ---
+
+I've updated Julia and the BioEnergeticFoodWebs package and updated the code to deal with a few issues which that provided. 
+There is the lingering issue of getting the following warning:
+
++ Warning: Could not restrict values to domain. Iteration was canceled since
+¦   time step dt =  = "time step dt = "
+¦   integrator.dt = 2.220446049250313e-16
+¦    could not be reduced. = " could not be reduced."
++ @ DiffEqCallbacks C:\Users\kewo0002\.julia\packages\DiffEqCallbacks\rV4BA\src\domain.jl:98
+
+I need to figure out what's up here, but it at least seems to still be running so we can continue working on things.
+
+Choices to be decided:
+> What network structure do we want? (I've defaulted to niche network, which is the default for the package)
+> What size and connectance do we want?
+> Do we want to allow rewiring after extinctions (the package allows 4 different options for that, so if we do we need to decide which option as well)
+> How do we want to set initial biomasses?
+> Are there any other default params we want to change? E.g. growth rates
+
+Things to look into:
+> Looks like biomasses max out at 1, why?
+> What's up with the warning above?
+> Sort out saving webs
+
+
+Pushed as: "Package updates:  "
+
+
+
+--- 2019.03.12 --- Kate ---
+Meeting in Stockholm
+
+To do:
+> Add checks to code
+	>> Zombies
+	>> Isolated species
+> Different perturbations (for both species individually and all species together)
+	>> Decrease initial biomass (e.g. loss of habitat)
+		>>> Decrease all species by certain percentage (stepwise by 10%)
+		>>> Look at resilience as well as robustness
+	>> Decrease growth rates (e.g. harvesting)
+		>>> When doing all species together, scale based on troph level (e.g. top species decreased more)
+		>>> Stepwise by 10%
+		>>> Is it actually growth rate or is it mortality or something?
+	>> Species introductions
+		>>> Set up FW, but set one species' biomass to zero for first simulation
+		>>> Then add species for perturbations
+		>>> Maybe increase initial biomass step wise?
+		>>> Remember to add extra check for isolated species if we're removing a species at the start
+
+Decisions:
+> We'll start without rewiring. We might want to add this later, but it would be a whole different project
+> We'll scale body sizes relative to trophic level
+> We'll run the initial simulation, then use that final biomass to set the initial biomasses of the next runs
+> Check how long we have to run to get something relative to stability
+	>> Maybe for final biomasses we can take mean of a certain number of time steps at the end of the simulation. Then we can 
+	   get variation (e.g. stdev) too.
+> Network structure = niche
+> S & C, we'll cover a range and look at the results in bins to see whether they have an effect. 
+> We'll look at final population sizes as mean over final 100 timesteps, after 1000 step burn in
+> For resilience, we'll consider time required for population size to return to within 1SD of pre-disturbance population size, calculated as mean of 100 time steps
+
+
+
+--- 2019.03.12 --- Kate ---
+
+Added a function to check for species that don't have any predators OR prey. If this occurs, the function will try to build a new network
+10 times before throwing an error.
+
+Pushed as: "Isolated species check: "
+
+
+---- 2019.03.12 ---- Kate ---
+
+Added ability to create non-existent directories in >> simulations.jl <<
+
+Ran 20 networks with 20 species and connectance of 0.4, and single species extinctions.
+
+Can use  >> open_json_in_R.R << to make plots of biomasses.
+
+Pushed as: "Created 20 networks: "
+
+
+
+--- 2019.03.14 --- Kate ---
+
+Population sizes to start perturbations is now set to final population sizes of full web simulation. For those perturbations where that species has already gone extinct, 
+the whole output is simply set to zero.
+
+I re-ran the 20 networks with 20 species and connectance of 0.4.
+
+Pushed as : "Re-ran 20 networks: "
+
+
+--- 2019.03.30 --- Kate ---
+
+
+"Tidied" code to put a bunch of things in functions. Maybe this will make it easier to run....? (Let me know if you'd prefer them another way).
+
+Added a function to do disturbances. We need to specify which species will be disturbed (a column vector), the magnitude of the disturbance (e.g. 
+0.1 if we decrease by 10%. This can either be a scalar for a single disturbance, or a vector or magnitude sizes if we want to increment) 
+and the type of disturbance ("bm" for biomass reduction and "gr" for growth rate reduction). The function will then change the
+biomass / growth rate accordingly for those species, rerun the simulation, and save the file (if we want, otherwise specify "print = false"). So for
+complete species removals magn = 1 and trmnt = "bm". For all species to be disturbed at the same time, whichsp = fill(1,S). 
+
+So far I haven't got it working to change growth rate. That might be more complicated than I thought and I need to do some reading to figure it out. 
+Looks like growth rate is simply a function of metabolic rate (i.e. body size), and carrying capacity so it's not trivial to tinker with it, especially
+for one species at a time.
+
+I also added a parameter "percent" which allows us to specify what percentage of species can go extinct in the first run of the web before we throw it out.
+So if we don't want any extinctions, then we set percent = 0.
+
+I have also emailed Tim to ask about the scary warning, but haven't heard back yet.
+
+Pushed as : "Added general function for disturbances"
+
+--- 2019.05.22 --- Alyssa ---
+
+Changed network saving file structure to group by size and connectance. Networks now saved in data/networks/pre_disturbance/S/C. Post-disturbance networks will likely 
+need a new folder, but possibly a smaller portion of the data/a summary file can be saved in order to save Github space.
+
+Created a file to read saved initial networks in to R, pull out the adjacency matrix, and save this as an edgelist for passing to pymfinder. Code is 
+code/calculate_motifs_roles_triads/extract_initial_networks, edgelists are saved in data/edgelists/pre_disturbance/S/C.
+
+Updated code/calculate_motifs_roles_triads/calculate_motifs_and_roles.py to use the new data structure, calculated initial roles (and motif participation since that's 
+automatic with Bernat's new setup). Initial role tables now in data/roles/pre_disturbance/S/C.
+
+Started trying to simulate removals, in a separate file so as not to impact code/simulations.jl. Managed to open saved .json files, but for some reason 
+JSON.write puts all key names in quotes. This causes failure in the simulate function when key names are not as expected.
+
+
+--- 2019.05.23 --- Alyssa ---
+
+Solved the quotes issue by manually rebuilding the dictionary. simulate_removals.jl now enters the simulation but returns a large error beginning:
+ERROR: LoadError: MethodError: no method matching zero(::Type{Array{Float64,1}})
+Closest candidates are:
+  zero(::Type{LibGit2.GitHash}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.1/LibGit2/src/oid.jl:220
+  zero(::Type{Pkg.Resolve.VersionWeights.VersionWeight}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.1/Pkg/src/resolve/VersionWeights.jl:19
+  zero(::Type{Pkg.Resolve.MaxSum.FieldValues.FieldValue}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.1/Pkg/src/resolve/FieldValues.jl:44
+
+--- 2019.05.27 --- Alyssa ---
+
+Tried to use JLD and JLD2 to save the simulation data frames, neither worked. Didn't manage to save anything at all with JLD2 and the sim[:B] array gets mis-formatted 
+somehow after saving and reopening with JLD. It seems like the best way is just to simulate the initial network and the species removals in one shot and only save the 
+network and biomasses. We may be able to read in the networks and re-use them.
+
+test_parameters.jl may not be necessary any more. Changes to simulate_removals.jl include the initial network simulation.
+
+--- 2019.07.12 --- Alyssa ---
+
+Updated BioEnergeticFoodWebs. There are still species whose biomasses persist well below the extinction threshold, but ext_threshold doesn't actually seem to be 
+called anywhere. I am trying to add a check to make sure that all of the species survive. This slows things down quite a bit, but we do get some! Re-running, saving the 
+good webs and jld/json objects that maaaayyybeee we can get biomasses out of.
+
+--- 2019.07.17 --- Alyssa ---
+
+Reloading initial webs and equilibrium biomasses now works. Simulating removals in very small chunks so we can check that extinct species remain extinct. Doing 50 
+rounds of 10 steps, for 500 steps in total. Saving the biomasses after each round of 10.
+
+--- 2019.07.19 --- Alyssa ---
+
+Have discovered that many of the niche-model webs (especially where C<0.1) have more than one component. So some of the species will never impact others. Added a pre-simulation 
+check for single-component webs before we proceed to simulations. Also instituted a post-simulation check in R. Consult code/multicomponent_networks_to_rerun.tsv for a list of 
+broken networks. If none, will only include the line S C i.
+
+--- 2019.07.29 --- Alyssa ---
+
+
+Making a PERMANOVA to test mean extinction order vs. initial role. Running 9999 repeats of 1 permutation because otherwise the 100-species webs hang my laptop. Can pull them together post hoc and calculate p-values then, so no problem. Code is code/stat_analyses/roles_vs_extorder_removal.R, data go into data/summaries/S/C/mean_extorder_vs_roles_S_C_j.tsv, where j is permutation number.
+
+--- 2019.08.02 --- Alyssa ---
+
+Going to see how big the repo gets if I do start uploading the initial webs, so I've made a short script to extract the initial interaction matrices from the .jld to avoid uploading 2 files per initial web.
+
+--- 2019.08.05 --- Alyssa ---
+
+Collecting results of disjointed permanovas, making preliminary figures for talk.
+
+--- 2019.08.28 --- Alyssa ---
+
+Fitting lmers, making talk, updating paper. Focusing on overall vulnerability rather than pairwise relationships between focal and removed species for now.
