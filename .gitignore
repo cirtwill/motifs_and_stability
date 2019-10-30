@@ -1,0 +1,35 @@
+
+
+# Any data files in code will be re-made by running said code
+code/stat_analyses/.Rapp.history
+code/stat_analyses/*.Rdata
+code/stat_analyses/tables/*.tsv
+code/figure_creation/*.tsv
+code/*.tsv
+
+
+# Only paper versions of figures need apply
+manuscript/figures/*/*_talk_* 
+
+# Ignore auxiliary latex files
+manuscript/*.aux
+manuscript/*.dvi
+manuscript/*.b*
+manuscript/*.log
+manuscript/*.ps
+manuscript/*.pdf
+
+# Ignore files used to build pretty tables
+manuscript/lmer_summary_table.txt
+manuscript/permanova_summary_table.txt
+
+
+# Stupid apple files
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store
+
+
+
