@@ -28,12 +28,12 @@ using LightGraphs
 
 # initialize params
 maxreps = 10000; # Giving up after this many
-reps = 100 # How many of each combination do we want?
+reps = 14 # How many of each combination do we want?
 S = 10; # how many species do we want?
-Smin=50
+Smin=100
 Smax=100
-Cmin=0.02
-Cmax=0.2
+Cmin=0.06
+Cmax=0.06
 		 ## NOTE: C gets converted into links for the function "nichemodel()". If in the conversion the value is < 0, it will throw an error
 		 ## Sometimes it can work a bunch of times before we get an error.
 start = 0; # where should we start our simulations?
@@ -128,7 +128,7 @@ for S in Smin:10:Smax
 		catch
 		end
 		end
-		j = 0 # Number of good reps
+		j = 13 # Number of good reps
 		let i = 0;
 			# Run through up to maxreps iteractions, trying to get 100 good ones
 			while (i<maxreps) & (j<reps)
@@ -170,10 +170,9 @@ for S in Smin:10:Smax
 				sim[:B]=collect(sim[:B])
 				#BioEnergeticFoodWebs.save(filename = "init_fw_"*string(i), as = json)
 				JLDname = "../data/networks/pre_disturbance/$S/$C/initial_$j.jld";
-				# f=open(JLDname,"w");
 				# Note! If the file already exists, this will fail.
 				if check_extinction(sim)
-					JLD.save(JLDname,"sim",sim)
+					save(JLDname,"sim",sim)
 					net=params[:A]
 					save_json(net,S,C,j)
 					j += 1

@@ -18,7 +18,7 @@ from PyGrace.axis import LINEAR_SCALE, LOGARITHMIC_SCALE
 from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 
-colors=ColorBrewerScheme('RdBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
+colors=ColorBrewerScheme('RdYlBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
 # colors.add_color(120,120,120,'grey')
 # colors.add_color(255,125,125,'lightish_red')
 # colors.add_color(200,200,200,'lightgrey')

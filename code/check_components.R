@@ -7,12 +7,14 @@ badnets=matrix(nrow=0,ncol=3)
 colnames(badnets)=c("S","C","i")
 for(s in seq(50,100,10)){
 	print(paste0(as.character(s),' species'))
+	dir.create(paste0('../data/matrices/pre_disturbance/',as.character(s)))
 	dir.create(paste0('../data/edgelists/pre_disturbance/',as.character(s)))
 	dir.create(paste0('../data/paths/pre_disturbance/',as.character(s)))
 	for(c in seq(0.02,0.2,0.02)){
 		print(paste0('connectance=',as.character(c)))
+		dir.create(paste0('../data/matrices/pre_disturbance/',as.character(s),'/',as.character(c)))
 		dir.create(paste0('../data/edgelists/pre_disturbance/',as.character(s),'/',as.character(c)))
-	dir.create(paste0('../data/paths/pre_disturbance/',as.character(s),'/',as.character(c)))
+		dir.create(paste0('../data/paths/pre_disturbance/',as.character(s),'/',as.character(c)))
 		# For some reason R can't make this work with list.files.
 		for(i in seq(0,99)){
 			# Select the json file to work with
@@ -34,6 +36,7 @@ for(s in seq(50,100,10)){
 
 			# Calculate paths between species 
 			g=graph_from_edgelist(edges,directed=TRUE)
+			write.table(A,file=paste0('../data/matrices/pre_disturbance/',as.character(s),'/',as.character(c),'/initial_matrix_',as.character(i),'.csv',sep=''),sep=',')
 			num_components=components(g)$no
 			# If there is only one component, save the paths.
 			if(num_components==1){

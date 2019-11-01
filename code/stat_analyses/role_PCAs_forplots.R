@@ -1,5 +1,4 @@
 library(vegan)
-library(nsprcomp)
 
 # I think we want to do one permanova across all 100 networks for a size/connectance
 # Testing: Do species with similar mean extinction orders have similar roles?

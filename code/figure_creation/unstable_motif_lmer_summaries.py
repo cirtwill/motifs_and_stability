@@ -20,7 +20,7 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 # Do we also want a plot of extinction order vs. betas?
 
-colors=ColorBrewerScheme('RdBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
+colors=ColorBrewerScheme('RdYlBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
 # colors.add_color(120,120,120,'grey')
 # colors.add_color(255,125,125,'lightish_red')
 # colors.add_color(200,200,200,'lightgrey')
@@ -105,18 +105,18 @@ def format_linegraph(graph,focus):
 
   graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
   graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
-  graph.panel_label.configure(char_size=0.75,placement='ilc',dx=0.0,dy=0.01)
+  graph.panel_label.configure(char_size=0.75,placement='ouc',dx=0.0,dy=0.01)
 
-  graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
+  graph.legend.configure(char_size=0.5,box_linestyle=0,loctype='world',loc=(50,275))
 
   return graph
 
 def populate_graph(graph,level,datadict,scaledict,focus):
   if level=='point':
-    Ss=[50,70,100]
+    Ss=[50,100]
     Cs=[0.2]
   else:
-    Ss=[50,70,100]
+    Ss=[50,100]
     Cs=[0.02,0.1,0.2]
 
   coefs=datadict[focus]
@@ -124,7 +124,7 @@ def populate_graph(graph,level,datadict,scaledict,focus):
   for S in Ss:
     scale_s=(S-scaledict['S'][0])/scaledict['S'][1]
     if S==50:
-      typ=2
+      typ=3
     elif S==70:
       typ=3
     else:
@@ -153,7 +153,7 @@ def populate_graph(graph,level,datadict,scaledict,focus):
       dat.line.configure(color=col,linestyle=typ,linewidth=3)
       dat.symbol.shape=0
 
-      if C==0.2 and focus=='S3':
+      if C==0.2 and focus=='D1':
         dat.legend='Species richness: '+str(S)
 
   return graph
@@ -174,12 +174,12 @@ def populate_graph(graph,level,datadict,scaledict,focus):
 
 datafiles=['S3_lmer_table.tsv','D1_lmer_table.tsv','D2_lmer_table.tsv','D3_lmer_table.tsv','D4_lmer_table.tsv','D5_lmer_table.tsv','D6_lmer_table.tsv','D7_lmer_table.tsv']
 datadict={}
-scalefile='../stat_analyses/scales_for_motif_lmer.tsv'
+scalefile='../stat_analyses/tables/scales_for_motif_lmer.tsv'
 
 scaledict=read_scalefile(scalefile)
 for datfile in datafiles:
   motif=datfile.split('_')[0]
-  datadict[motif]=read_lmfile('../stat_analyses/'+datfile)
+  datadict[motif]=read_lmfile('../stat_analyses/tables/'+datfile)
 
 level='full'
 grace=MultiPanelGrace(colors=colors)
@@ -202,14 +202,14 @@ grace.add_drawing_object(DrawText,text='Mean time to extinction',loctype='view',
 #   print graph.get_view()
 colorbar.set_view(0.75,0.15,0.8,1.0)
 
-grace.graphs[1].set_view(0.15, 0.825, 0.4, 1.0)
-grace.graphs[2].set_view(0.45, 0.825, 0.7, 1.0)
-grace.graphs[3].set_view(0.15, 0.6, 0.4, 0.775)
-grace.graphs[4].set_view(0.45, 0.6, 0.7, 0.775)
-grace.graphs[5].set_view(0.15, 0.375, 0.4, 0.55)
-grace.graphs[6].set_view(0.45, 0.375, 0.7, 0.55)
-grace.graphs[7].set_view(0.15, 0.15, 0.4, 0.325)
-grace.graphs[8].set_view(0.45, 0.15, 0.7, 0.325)
+grace.graphs[1].set_view(0.15, 0.825, 0.4, 0.995)
+grace.graphs[2].set_view(0.45, 0.825, 0.7, 0.995)
+grace.graphs[3].set_view(0.15, 0.6, 0.4, 0.77)
+grace.graphs[4].set_view(0.45, 0.6, 0.7, 0.77)
+grace.graphs[5].set_view(0.15, 0.375, 0.4, 0.545)
+grace.graphs[6].set_view(0.45, 0.375, 0.7, 0.545)
+grace.graphs[7].set_view(0.15, 0.15, 0.4, 0.32)
+grace.graphs[8].set_view(0.45, 0.15, 0.7, 0.32)
 
 
 grace.write_file('../../manuscript/figures/extinction_order/unstable_motif_lmer_summary_paper_full.eps')

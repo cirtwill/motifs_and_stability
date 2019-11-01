@@ -20,7 +20,7 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 # Do we also want a plot of extinction order vs. betas?
 
-colors=ColorBrewerScheme('RdBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
+colors=ColorBrewerScheme('RdYlBu',n=253,reverse=True)  # The blue is very beautiful but maybe harder to see.
 # colors.add_color(120,120,120,'grey')
 # colors.add_color(255,125,125,'lightish_red')
 # colors.add_color(200,200,200,'lightgrey')
@@ -92,10 +92,10 @@ def format_linegraph(graph,form,focus):
 
 def populate_graph(graph,level,datadict,scaledict,focus):
   if level=='point':
-    Ss=[50,70,100]
+    Ss=[50,100]
     Cs=[0.2]
   else:
-    Ss=[50,70,100]
+    Ss=[50,100]
     Cs=[0.02,0.1,0.2]
 
   coefs=datadict[focus]
@@ -103,7 +103,7 @@ def populate_graph(graph,level,datadict,scaledict,focus):
   for S in Ss:
     scale_s=(S-scaledict['S'][0])/scaledict['S'][1]
     if S==50:
-      typ=2
+      typ=3
     elif S==70:
       typ=3
     else:
@@ -157,13 +157,14 @@ def populate_graph(graph,level,datadict,scaledict,focus):
 
 datafiles=['S1_lmer_table.tsv','S2_lmer_table.tsv','S4_lmer_table.tsv','S5_lmer_table.tsv']
 datadict={}
-scalefile='../stat_analyses/scales_for_motif_lmer.tsv'
+scalefile='../stat_analyses/tables/scales_for_motif_lmer.tsv'
 
 scaledict=read_scalefile(scalefile)
 for datfile in datafiles:
   motif=datfile.split('_')[0]
-  datadict[motif]=read_lmfile('../stat_analyses/'+datfile)
+  datadict[motif]=read_lmfile('../stat_analyses/tables/'+datfile)
 
+# for form in ['paper']:
 for form in ['talk','paper']:
   if form=='talk':
     levelar=['axis','point','single','full']
@@ -197,3 +198,4 @@ for form in ['talk','paper']:
 
     print level
     grace.write_file('../../manuscript/figures/extinction_order/motif_lmer_summary_'+form+'_'+level+'.eps')
+    grace.write_file('../../manuscript/figures/extinction_order/motif_lmer_summary_'+form+'_'+level+'.jpeg')
