@@ -20,6 +20,10 @@ def main():
       os.mkdir(motifdir+s)
     except:
       pass
+    try:
+      os.mkdir(pardir+s)
+    except:
+      pass
     for c in sorted(os.listdir(webdir+s)):
       print s,c
       try:
@@ -28,6 +32,10 @@ def main():
         pass
       try:
         os.mkdir(motifdir+s+'/'+c)
+      except:
+        pass
+      try:
+        os.mkdir(pardir+s+'/'+c)
       except:
         pass
       for web in sorted(os.listdir(webdir+s+'/'+c)):
