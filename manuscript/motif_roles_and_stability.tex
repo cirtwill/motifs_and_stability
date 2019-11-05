@@ -25,7 +25,7 @@
 
 \title{Species motif roles relate to probabilities of secondary extinction}
 
-- in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
+% - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
 
 
 \author{Alyssa R. Cirtwill$^{1\dagger}$, Kate Wootton $^{2}$} 
@@ -48,13 +48,8 @@ alyssa.cirtwill@gmail.com\\
 \setlength{\parindent}{15pt} 
 
 
-Other things to consider:
-- lmers for all motifs
-- maybe % stable vs. unstable?
-- number of motifs, degree, trophic level: do motifs do better than simpler measures?
-
-
-
+- Into about influences of meso-scale structure on stability too wordy? Too big of a jump between whole-network and species-level foci?
+- in discussion, make sure that it's clear we're giving another measure, not trying to replace degree.
 
 \section*{Abstract}
 
@@ -64,17 +59,20 @@ Other things to consider:
 	The connections between food-web structure and stability have been of great interest to ecologists since at least the 1970's~\citep{May1972}. Initially, the focus was on identifying relationships between community size and stability (e.g.~\citealp{Gardner1970,May1972}). Given~\citet{May1972}'s finding that a large, randomly-connected network is unlikely to be stable, the ecological community quickly began to seek out non-random structural features that might confer stability. These features include nestedness~\citep{}, modularity~\citep{} and distributions of link strengths~\citep{McCann1998,Gross2009,Rooney2012,Wootton2016}. 
 
 
-	As well as these global-scale properties of the entire network, the \emph{meso-scale} structure of a food web might be related to its stability. Indeed, several researchers have found that the frequencies of three-species \emph{motifs}-- unique configurations of interacting species --are related to the stability of empirical food webs~\citep{Stouffer2007,Borrelli2015,Monteiro2016} and other biological networks~\citep{Prill2005}. Empirical food webs have significantly different meso-scale structures from random networks and may be divided into two groups~\citep{Stouffer2007}. Both groups tend to contain more three-species chains. The major distinction between the two groups is that one was characterised by over-representation of the intraguild predation motif and under-representation of apparent and direct competition while the other group showed the reverse trend. A follow-up study showed that these four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. They are both common in the absolute sense and, depending on the network group, often over-represented compared to random networks.
+	As well as these global-scale properties of the entire network, the \emph{meso-scale} structure of a food web might be related to its stability. Indeed, several researchers have found that the frequencies of three-species \emph{motifs}-- unique configurations of interacting species --are related to the stability of empirical food webs~\citep{Stouffer2007,Borrelli2015,Monteiro2016} and other biological networks~\citep{Prill2005}. Empirical food webs have significantly different meso-scale structures from random networks~\citep{Stouffer2007}. Empirical networks tend to contain more three-species chains and either more omivory motifs or more apparent and direct competition motifs than random networks~\citep{Stouffer2007}. A follow-up study showed that these four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
 
-	The high frequencies of three-species chain, omnivory, and apparent and direct competition motifs suggest that they may be beneficial to the network containing them. That is, it is possible that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear~\citep{Borrelli2015,Borrelli2015a}. Considering each motif in isolation, the three-species chain is the most likely motif to retain all three species following a perturbation, followed by omnivory, apparent competition, and direct competition~\citep{Stouffer2010b} [[what type of stability here?]]. If we instead consider quasi-sign stability~\citep{Allesina2008}, three-species chains and apparent and direct competition were very likely to be stable while omnivory is moderately likely to be stable~\citep{Borrelli2015a}. All other motifs are unlikely to be stable. It is possible, then, that three-species chains tend to be over-represented in empirical networks because they are very stable and unlikely to be removed through the loss of participating species or links~\citep{Borrelli2015}. 
+
+	The high frequencies of three-species chain, omnivory, and apparent and direct competition motifs suggest that they may be beneficial to the network containing them. That is, it is possible that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear~\citep{Borrelli2015,Borrelli2015a}. The frequency of three-species chains and omnivory motifs do appear to be correlated with the persistence of whole-food webs, while the frequency of apparent and direct competition motifs does not~\citep{Stouffer2010}. Considering the quasi-sign stability~\citep{Allesina2008} of each motif in isolation, three-species chains and apparent and direct competition were very likely to be stable while omnivory is moderately likely to be stable~\citep{Borrelli2015a}. All other motifs are unlikely to be stable. It is possible, then, that three-species chains tend to be over-represented in empirical networks because they are very stable and unlikely to be removed through the loss of participating species or links~\citep{Borrelli2015}. 
+
+
+	% In dynamical simulations of the four focal motifs in isolation, the three-species chain is the most likely motif to retain all three species following a perturbation, followed by omnivory, apparent competition, and direct competition~\citep{Stouffer2010b}  
 
 	In summary, the frequencies with which different motifs appear in empirical networks appears to be related to the stability of those motifs in isolation~\citep{Stouffer2010b,Borrelli2015a} and the frequency of motifs within simulated networks is related to their probability of retaining all species following a perturbation~\citep{Stouffer2010b}. Thus, it is likely that the stability of these motifs and their contributions to network stability result in their over-representation in empirical networks~\citep{Borrelli2015}. Critically, this is not because the network as a whole is "adapted" for stability but because unstable motifs, and the species and interactions within them, are more likely to be "pruned" from empirical communities over time. We expect that stable structures will endure for longer than unstable ones, and so it is not surprising that stable structures should be over-represented in empirical communities~\citep{Borrelli2015}.
 
-	Despite the decades of interest in the overall stability of networks, we still know relatively little about which \emph{species} are most and least stable. That is, our ability to predict which species will go extinct following a perturbation remains limited. Given the relationships between motif frequencies and whole-network stability, we may also expect that a species' role-- the frequency with which it participated in different positions within motifs --could affect its probability of extinction following a perturbation. As species within three-species chain, omnivory, and competition motifs are more likely to persist when considering these motifs in isolation~\citep{Stouffer2010b}, we might expect that species whose roles contain many such motifs might be less likely to go extinct than species whose roles are dominated by other motifs. 
 
-	Previous work has also shown that the identity of perturbed species affects the extent of secondary extinctions. For example, networks are relatively robust to the removal of specialists~\citep{Srinivasan2007} and sensitive to the removal of basal resources and large-bodied top predators~\citep{Curtsdotter2011,Riede2011a}. Moreoever, the identity of the perturbed species affects \emph{which} species are likely to go extinct after a perturbation. For example, [[example from Kate's thesis after I re-read.]]. ~\citep{Wootton2016a} Based on these findings, we are interested in whether there is a relationship between a species' role and its probability of causing secondary extinctions before going extinct itself and between the roles of the perturbed species and species going secondarily extinct. Finally, we are interested in whether a species' closeness to a perturbed species affects its likelihood of secondary extinction. Specifically, we will examine species directly interacting with the perturbed species and species sharing one or more motifs with the perturbed species (whether or not the two species interact directly). 
+	Given the relationships between motif frequencies and whole-network stability, we may also expect that a species' role-- the frequency with which it participated in different positions within motifs --could affect its probability of extinction following a perturbation. As three-species chains, omnivory, and competition motifs are particularly stable in isolation~\citep{Borrelli2015a}, we might expect that species whose roles contain many such motifs might be less likely to go extinct than species whose roles are dominated by other motifs. Here, we investigate this question by simulating the removal of species from stable simulated networks. We test 1) whether species' roles overall are related to their time to extinction following a removal, 2) whether participation in particular motif (especially the stable motifs described above) is correlated with time to extinction, and 3) whether these correlations are driven by a potential relationship between species' participation in various motifs and their numbers of interaction partners. Our overall aim is to establish whether changes in species' roles can, in future, be used to evaluate whether species are at increasing or decreasing risk of extinction.
 
-	To sum up, here we are investigating whether species' roles, defined based on their participation in three-species motifs, affect A) their probability of going extinct following a perturbation to the food web, B) the probability of a perturbed species going extinct itself versus causing a secondary extinction, and C) the probability of a given species going secondarily extinct following a perturbation. As well as roles \emph{per se}, we will also test whether sharing motifs with a perturbed species (and therefore indirect interactions) affects a species' probability of secondary extinction.
+
 	% Approx. 1000 words of introduction
 
 	% Stability of biological networks has been related to the frequency of different motifs.
@@ -276,6 +274,11 @@ Other things to consider:
 
 \section*{Discussion}
 
+
+\section*{References}
+
+    \bibliographystyle{ecollett} 
+    \bibliography{MyCollection} % Abbreviate journal titles.
 
 
 \section*{Tables}
