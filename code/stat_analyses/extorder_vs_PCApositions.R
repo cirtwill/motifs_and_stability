@@ -35,11 +35,11 @@ alldata$S=as.numeric(as.character(alldata$S))
 alldata$C=as.numeric(as.character(alldata$C))
 alldata$Extorder=as.numeric(as.character(alldata$Extorder))
 
-PC1=lmer(Extorder~scale(PC1)*scale(S)*scale(C)+(1|rando),data=alldata)
-PC2=lmer(Extorder~scale(PC2)*scale(S)*scale(C)+(1|rando),data=alldata)
-PC3_full=lmer(Extorder~scale(PC3)*scale(S)*scale(C)+(1|rando),data=alldata)
-PC3_2=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+scale(PC3)*scale(C)+(1|rando),data=alldata)
-PC3_3=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+(1|rando),data=alldata)
+PC1=lmer(Extorder~scale(PC1)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
+PC2=lmer(Extorder~scale(PC2)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
+PC3_full=lmer(Extorder~scale(PC3)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
+PC3_2=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+scale(PC3)*scale(C)+(1|rando),data=alldata,family='poisson')
+PC3_3=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
 
 
 scaleS=scale(alldata$S)

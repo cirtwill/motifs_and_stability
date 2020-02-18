@@ -28,6 +28,7 @@ def read_particfile(particfile):
     elif line.split() in [['S5', 'S1', 'D3', 'S4', 'S2', 'D1', 'D4', 'D8', 'S3', 'D5', 'D2', 'D7', 'D6'],[]]:
       pass
     else:
+      print particfile
       print line.split()
       print "A wild header has appeared"
       sys.exit()
@@ -148,7 +149,7 @@ def main():
         particdict=read_particfile(particdir+s+'/'+c+'/initial_edges_'+str(j)+'.participation')
         normdict=normalise_participation(particdict)
         degdict=read_degrees(degdir+s+'/'+c+'/degrees_'+str(j)+'.csv')
-        TLdict=read_degrees(TLdir+s+'/'+c+'/STL_'+str(j)+'.csv')
+        TLdict=read_degrees(TLdir+s+'/'+c+'/SWTL_'+str(j)+'.csv')
 
         network=str(j)
 
