@@ -283,3 +283,11 @@ Collecting results of disjointed permanovas, making preliminary figures for talk
 --- 2019.08.28 --- Alyssa ---
 
 Fitting lmers, making talk, updating paper. Focusing on overall vulnerability rather than pairwise relationships between focal and removed species for now.
+
+--- 2020.02.13 --- Alyssa ---
+
+Re-running analyses. Looks like I re-ran in November. Also changing all lmer's to Poisson since time to extinction is zero-limited. This will change results.
+
+--- 2020.03.01 --- Alyssa ---
+
+Finished re-running permanovas, just in case they didn't get updated after the last network filtering. Still need to update figures for new analyses, in consultation with Kate.

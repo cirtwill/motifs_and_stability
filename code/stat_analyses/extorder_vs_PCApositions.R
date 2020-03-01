@@ -1,14 +1,19 @@
 library(lmerTest)
+library(vegan)
+library(MuMIn)
 
-all_positions=matrix(nrow=0,ncol=3)
-all_extorders=matrix(nrow=0,ncol=5)
+# The glmer's are EXTREMELY slow... data may not be distributed right?
+# Or group species based on extinction order, 100>1.
 
+# all_positions=matrix(nrow=0,ncol=3)
+# all_extorders=matrix(nrow=0,ncol=5)
+bins=matrix(nrow=0,ncol=6)
 for(S in seq(50,100,10)){
 	print(S)
 	for(C in seq(0.02,0.2,0.02)){
 		positions=read.table(file=paste0('../../data/summaries/role_PCA/',as.character(S),'/role_PCA_positions_',as.character(S),'_',as.character(C),'.tsv',sep=''),sep='\t',header=TRUE)		
-		all_positions=rbind(all_positions,positions)
-
+		# all_positions=rbind(all_positions,positions)
+		exttime=matrix(nrow=0,ncol=5)
 		print(C)
 		for(i in seq(0,99)){
 			datafile=paste0('../../data/roles/matched_to_extorder/',as.character(S),'/',as.character(C),'/network_',as.character(i),'.tsv',sep='')
@@ -21,42 +26,46 @@ for(S in seq(50,100,10)){
 			for(r in 1:nrow(orders)){
 				rownames(orders)[r]=paste0(as.character(i),orders[,4][r])
 			}
-			all_extorders=rbind(all_extorders,orders)
+			# all_extorders=rbind(all_extorders,orders)
+			exttime=rbind(exttime,orders)
+		}
+		if(length(which(rownames(exttime)==rownames(positions)))==nrow(exttime)){
+			alldata=cbind(exttime,positions)
+		}
+		# alldata$rando=paste0(as.character(alldata$S),as.character(alldata$C),as.character(alldata$Network))
+		alldata=as.data.frame(alldata)
+		alldata$S=as.numeric(as.character(alldata$S))
+		alldata$C=as.numeric(as.character(alldata$C))
+		alldata$Extorder=as.numeric(as.character(alldata$Extorder))
+
+		# Group species based on extorder, take means
+		alldata=alldata[order(alldata$Extorder),]
+		r=1
+		for(i in 1:(nrow(alldata)/100)){
+			rmax=r+99
+			subset=alldata[r:rmax,]
+			binres=c(colMeans(subset[,1:2]),colMeans(subset[,5:8]))
+			bins=rbind(bins,binres)
+			r=r+100
+		}
+		# That is fast :)
+
 		}
 	}
-}
+bins=as.data.frame(bins)
+colnames(bins)=c('S','C','Extorder','PC1','PC2','PC3')
+# Works quickly for all C within 50 S
+# These glms work, so now I need to figure out what I want to do. Dredge isn't working super well (can't calculate Loglik).
 
-if(length(which(rownames(all_extorders)==rownames(all_positions)))==nrow(all_extorders)){
-	alldata=cbind(all_extorders,all_positions)
-}
-alldata$rando=paste0(as.character(alldata$S),as.character(alldata$C),as.character(alldata$Network))
-alldata=as.data.frame(alldata)
-alldata$S=as.numeric(as.character(alldata$S))
-alldata$C=as.numeric(as.character(alldata$C))
-alldata$Extorder=as.numeric(as.character(alldata$Extorder))
+# Extinction orders non-integer, Poisson really doesn't work. Back to LM.
+PCs=lm(Extorder~scale(PC1)+scale(PC2)+scale(PC3)+scale(S)+scale(C),data=bins,na.action='na.fail')
+write.table(summary(PCs)$coef,file=paste0('tables/PC_lmer_table.tsv'),sep='\t')
 
-PC1=lmer(Extorder~scale(PC1)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
-PC2=lmer(Extorder~scale(PC2)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
-PC3_full=lmer(Extorder~scale(PC3)*scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
-PC3_2=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+scale(PC3)*scale(C)+(1|rando),data=alldata,family='poisson')
-PC3_3=lmer(Extorder~scale(PC3)*scale(S)+scale(S)*scale(C)+(1|rando),data=alldata,family='poisson')
-
-
-scaleS=scale(alldata$S)
-scaleC=scale(alldata$C)
-scalePC1=scale(alldata$PC1)
-scalePC2=scale(alldata$PC2)
-scalePC3=scale(alldata$PC3)
-
-Sscale=attributes(scaleS)$'scaled:scale'
-Cscale=attributes(scaleC)$'scaled:scale'
-scale1=attributes(scalePC1)$'scaled:scale'
-scale2=attributes(scalePC2)$'scaled:scale'
-scale3=attributes(scalePC3)$'scaled:scale'
-
-write.table(summary(PC1)$coef,file='tables/PC1_lmer_table.tsv',sep='\t')
-write.table(summary(PC2)$coef,file='tables/PC2_lmer_table.tsv',sep='\t')
-write.table(summary(PC3_3)$coef,file='tables/PC3_lmer_table.tsv',sep='\t')
+scaleS=scale(bins$S)
+scaleC=scale(bins$C)
+scalePC1=scale(bins$PC1)
+scalePC2=scale(bins$PC2)
+scalePC3=scale(bins$PC3)
 
 scaletab=rbind(c("S",attributes(scaleS)$'scaled:center',attributes(scaleS)$'scaled:scale'),
 	c("C",attributes(scaleC)$'scaled:center',attributes(scaleC)$'scaled:scale'),

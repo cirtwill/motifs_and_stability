@@ -74,8 +74,10 @@ def write_perm_table(datadict):
         f.write(str(dat[0])+'&')
       elif len(str(dat[0]))==4:
         f.write(str(dat[0])+'0&')
+      elif len(str(dat[0]))==3:
+        f.write(str(dat[0])+'00&')
       else:
-        print len(str(dat[0]))
+        print len(str(dat[0])), str(dat[0])
       f.write(str(dat[1])+'&')
       if len(str(dat[2]))==5:
         f.write(str(dat[2])+'\\\\ \n')
@@ -105,10 +107,12 @@ def write_lm_table(datadict):
 
 datadir='../../data/summaries/extorder_perms/'
 datadict={}
-for s in os.listdir(datadir):
+for s in sorted(os.listdir(datadir)):
   datadict[int(s)]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
 
 write_perm_table(datadict)
+
+sys.exit()
 
 lmdict={}
 lmdir='../../data/summaries/rolesim_extorder/'

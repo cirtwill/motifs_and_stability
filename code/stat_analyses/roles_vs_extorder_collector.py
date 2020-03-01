@@ -59,10 +59,9 @@ def main():
 
   motifdir='../../data/summaries/extorder_perms/'
 
-  for s in sorted(os.listdir(motifdir)):
+  for s in sorted(os.listdir(motifdir)):  	
     outfile='../../data/summaries/extorder_perms/'+s+'/extorder_roles_permanova_summary_'+s+'.tsv'
     datadict={}
-    # for c in ['0.04','0.06','0.08']:
     for c in [x for x in sorted(os.listdir(motifdir+s)) if 'summary_' not in x]:
       filelist=sorted(os.listdir(motifdir+s+'/'+c))
       permfiles=[x for x in filelist if 'mean_extorder_vs_roles' in x]

@@ -1,12 +1,13 @@
 library(vegan)
 
 # Testing: Do species with similar mean extinction orders have similar roles?
-# 90 and 100-species ones don't run here, need to be on the mac
 
-for(S in seq(50,100,10)){
+for(S in seq(100,100,10)){
+# for(S in seq(50,100,10)){
 	dir.create(paste0('../../data/summaries/extorder_perms/',as.character(S)))
 	print(S)
-	for(C in seq(0.02,0.2,0.02)){
+	for(C in seq(0.2,0.2,0.02)){
+	# for(C in seq(0.02,0.2,0.02)){
 		dir.create(paste0('../../data/summaries/extorder_perms/',as.character(S),'/',as.character(C)))
 		print(C)
 		extorders=matrix(nrow=0,ncol=3)
