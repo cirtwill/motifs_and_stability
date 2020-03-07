@@ -21,6 +21,8 @@ using Pkg
 using BioEnergeticFoodWebs  # tell Julia we want to use the package
 using JSON
 using JLD # Need to use this one to pull up the sim
+using CSV
+using DataFrames
 #Do we want to allow rewiring after extinctions? If so which type?
 
 
@@ -68,13 +70,12 @@ end
 # whichsp is column vector of zeros (not disturbed) and ones (disturbed)
 # magn is a scalar of the magnitude of the disturbance
 # trmnt is a string indicating whether it's biomass ("bm") we're decreasing or growth rate ("gr")
-function perturb(whichsp, magn, trmnt, sim, i, j, S, start, stop, print = true)
-	params=sim[:p]
+function perturb(whichsp, magn, trmnt, params, B, i, j, S, start, stop, print = true)
 	# reset biomass
 	if trmnt == "bm"
 		removal_bms = zeros(51,S)
-		removal_bms[1,1:end] = sim[:B][end,1:end]
-		bm_dist  = copy(sim[:B][size(sim[:B])[1],:]);
+		removal_bms[1,1:end] = B[end,1:end]
+		bm_dist  = copy(B[size(B)[1],:]);
 		# decrease biomass of species specified in whichsp by magn
 		bm_dist  = bm_dist.*(1 .- magn * whichsp);
 		# Breaking the simulation into smaller chunks so that species which go extinct stay extinct
@@ -120,28 +121,31 @@ for S in Smin:10:Smax
 		# Run through all the webs
 		for i in 0:99
 			# Load in the initial web
-			dat=load("../data/networks/pre_disturbance/$S/$C/initial_$i.jld")
-			sim=dat[:"sim"]
+			B=convert(Matrix,CSV.read("../data/networks/pre_disturbance/$S/$C/initial_B_$i.csv"))
+			t=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_t_$i.csv")
+			A=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_net_$i.csv")
 
 			# Extract the initial food web, parameters
-			foodweb = sim[:p][:A]
-			params = sim[:p]
+			foodweb = convert(Matrix,A)
+			params = model_parameters(foodweb,Z=Float64(0.79));
+
 			# Biomasses are the last post-equilibrium biomasses
-			bm = sim[:B][end,1:end]
+			bm = B[end,1:end]
 
 			# Don't need to re-simulate.
 
 			# remove each species in turn
 			# start with removing no species
 			nosp = fill(0,S);
+			println("Network ",i)
 			for j in 1:S
-				println("Species ",j)
+				#println("Species ",j)
 				magn=1
 				whichsp  = copy(nosp);
 				# set which species to remove
 				whichsp[j] = 1;
 				# run the disturbance, save the biomasses
-				removal_bms = perturb(whichsp, magn, trmnt, sim, i, j, S, start, stop);
+				removal_bms = perturb(whichsp, magn, trmnt, params, B, i, j, S, start, stop);
 				save_biomasses(removal_bms,S,C,i,j)
 			end
 

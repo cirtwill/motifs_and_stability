@@ -291,3 +291,8 @@ Re-running analyses. Looks like I re-ran in November. Also changing all lmer's t
 --- 2020.03.01 --- Alyssa ---
 
 Finished re-running permanovas, just in case they didn't get updated after the last network filtering. Still need to update figures for new analyses, in consultation with Kate.
+
+
+--- 2020.03.07 --- Alyssa ---
+
+Julia has updated and the JLD/JSON saving system is now broken. Found a workaround using CSV and DataFrames. Seems to work for building the networks and simulating removals. Downstream code to extract networks will be affected, but it's actually easier with the CSV than JSON so changes should be straightforward.

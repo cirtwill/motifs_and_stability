@@ -17,9 +17,11 @@ using Pkg
 #Pkg.update()  # check that it's the most up to date one
 
 using BioEnergeticFoodWebs  # tell Julia we want to use the package
-using JSON
-using JLD
-using LightGraphs
+#using JSON
+#using JLD
+#using LightGraphs
+using CSV
+using DataFrames
 #Do we want to allow rewiring after extinctions? If so which type?
 
 
@@ -141,8 +143,9 @@ for S in Smin:10:Smax
 						com_iter += 1
 					end
 				end
+
 				# Use the default parameters 
-				params = model_parameters(foodweb);
+				params = model_parameters(foodweb,Z=Float64(0.79));
 				# Set initial biomasses randomly 
 				bm = rand(size(foodweb,1));
 
@@ -163,20 +166,19 @@ for S in Smin:10:Smax
 				end
 
 
-				# Julia is STILL unable to reload data in the same form that it was saved. Alyssa hates this language. Help is not googleable.
-				# Attempting to save final biomasses in sim[:p] because that seems to work while sim[:B] is converted to an impossible data format.
+				# It looks like the best thing for *this* iteration of Julia is to save things as .csv's and read them in individually. Operating under the assumption that all params except web structure are static and don't need to be saved.
+
 				sim[:p][:B]=sim[:B][end,1:end]
-				# Reformatting sim[:B] may also work. Going to do both because fuuuuuuuck Julia.
 				sim[:B]=collect(sim[:B])
-				#BioEnergeticFoodWebs.save(filename = "init_fw_"*string(i), as = json)
-				JLDname = "../data/networks/pre_disturbance/$S/$C/initial_$j.jld";
-				# Note! If the file already exists, this will fail.
+				## Note! If the file already exists, this will fail.
 				if check_extinction(sim)
-					save(JLDname,"sim",sim)
-					net=params[:A]
-					save_json(net,S,C,j)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_B_$j.csv",DataFrame(sim[:B]),writeheader=true)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_t_$j.csv",DataFrame(reshape(sim[:t],length(sim[:t]),1)),writeheader=true)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_net_$j.csv",DataFrame(sim[:p][:A]),writeheader=true)
+
 					j += 1
 				end
+
 			end
 			i += 1
 		end
