@@ -28,7 +28,7 @@
 % - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
 
 % 1st Theo Bio, then PeerJ. 
-% Reviewers: Jon Borrelli, Benno Simmons, Daniel Stouffer
+% Reviewers: Jon Borrelli, Benno Simmons, Daniel Stouffer, Tim Poisot, Eva Delmas
 % To SI: PCA axes, extinction order correlations
 % Main text: permanova shows that roles are important, participation to identify which motifs are most strongly assoc. with stability.
 % Kate to work on coverletter, language edits
@@ -66,10 +66,10 @@ alyssa.cirtwill@gmail.com\\
 
 \section{Introduction}
 
-	The connections between food-web structure and stability have been of great interest to ecologists since at least the 1970's~\citep{May1972}. Initially, the focus was on identifying relationships between community size and stability (e.g.~\citealp{Gardner1970,May1972}). Given~\citet{May1972}'s finding that a large, randomly-connected network is unlikely to be stable, the ecological community quickly began to seek out non-random structural features that might confer stability or instability. These features include nestedness~\citep{Allesina2012,Sauve2014}, modularity~\citep{Sauve2014,Thebault2010} and distributions of link strengths~\citep{McCann1998,Gross2009,Rooney2012,Wootton2016}. Although important, these global-scale properties can mask important meso-scale differences in network structure~\citep{Simmons2018a}. For instance, two networks with the same connectance and similar values of nestness and modularity may still have quite different arrangements of links. These differences, described by different frequencies of \emph{motifs} (unique patterns of $n$ interacting species) may also be related to network stability~\citep{Prill2005,Borrelli2015,Monteiro2016}. Indeed, empirical food webs tend to be composed of non-random sets of three-species motifs~\citep{Stouffer2007}. Empirical networks tend to contain more three-species chains and either more omivory motifs or more apparent and direct competition motifs than random networks~\citep{Stouffer2007}. A follow-up study showed that these four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
+	The connections between food-web structure and stability have been of great interest to ecologists since at least the 1970's~\citep{May1972}. Initially, the focus was on identifying relationships between community size and stability (e.g.~\citealp{Gardner1970,May1972}). Given~\citet{May1972}'s finding that a large, randomly-connected network is unlikely to be stable, the ecological community quickly began to seek out non-random structural features that might confer stability or instability. These features include nestedness~\citep{Allesina2012,Sauve2014}, modularity~\citep{Sauve2014,Thebault2010} and distributions of link strengths~\citep{McCann1998,Gross2009,Rooney2012,Wootton2016}. Although important, these global-scale properties can mask important meso-scale differences in network structure~\citep{Simmons2019}. For instance, two networks with the same connectance and similar values of nestness and modularity may still have quite different arrangements of links. These differences, described by different frequencies of \emph{motifs} (unique patterns of $n$ interacting species) may also be related to network stability~\citep{Prill2005,Borrelli2015,Monteiro2016}. Indeed, empirical food webs tend to be composed of non-random sets of three-species motifs~\citep{Stouffer2007}. Empirical networks tend to contain more three-species chains and either more omivory motifs or more apparent and direct competition motifs than random networks~\citep{Stouffer2007}. A follow-up study showed that these four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
 
 
-	The high frequencies of three-species chain, omnivory, and apparent and direct competition motifs suggest that they may be beneficial to the network containing them. That is, it is possible that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear~\citep{Borrelli2015,Borrelli2015a}. The frequency of three-species chains and omnivory motifs do appear to be correlated with the persistence of whole-food webs, while the frequency of apparent and direct competition motifs does not~\citep{Stouffer2010}. Considering the quasi-sign stability~\citep{Allesina2008} of each motif in isolation, three-species chains and apparent and direct competition were very likely to be stable while omnivory is moderately likely to be stable~\citep{Borrelli2015a}. All other motifs are unlikely to be stable. It is possible, then, that three-species chains tend to be over-represented in empirical networks because they are very stable and unlikely to be removed through the loss of participating species or links~\citep{Borrelli2015}.  
+	The high frequencies of three-species chain, omnivory, and apparent and direct competition motifs suggest that they may be beneficial to the network containing them. That is, it is possible that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear~\citep{Borrelli2015,Borrelli2015a}. The frequency of three-species chains and omnivory motifs do appear to be correlated with the overall persistence of  food webs, while the frequency of apparent and direct competition motifs does not~\citep{Stouffer2010}. Considering the stability of each motif in isolation, three-species chains and apparent and direct competition were very likely to be stable while omnivory is moderately likely to be stable~\citep{Borrelli2015a}. All other motifs are unlikely to be stable. It is possible, then, that three-species chains tend to be over-represented in empirical networks because they are very stable and unlikely to be removed through the loss of participating species or links~\citep{Borrelli2015}.  
 
 
 	In summary, the frequencies with which different motifs appear in empirical networks appears to be related to the stability of those motifs in isolation~\citep{Stouffer2010b,Borrelli2015a} and the frequency of motifs within simulated networks is related to their probability of retaining all species following a perturbation~\citep{Stouffer2010b}. Thus, it is likely that the stability of these motifs and their contributions to network stability result in their over-representation in empirical networks~\citep{Borrelli2015}. Critically, this is not because the network as a whole is "adapted" for stability but because unstable motifs, and the species and interactions within them, are more likely to be "pruned" from empirical communities over time. We expect that stable structures will endure for longer than unstable ones, and so it is not surprising that stable structures should be over-represented in empirical communities~\citep{Borrelli2015}.
@@ -110,10 +110,13 @@ alyssa.cirtwill@gmail.com\\
 
 	\subsection*{Generating networks}
 
-		We generated a suite of simulated networks based on the niche model~\citep{Williams2000}. The meso-scale structure of such networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectances between 0.02 and 0.2 (in steps of 0.02). We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were simulated using the function "nichemodel" within the Julia~\citep{Julia} package \emph{BioEnergeticFoodWebs}~\citep{bioenergfw}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected amongst themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved were rejected and new networks simulated.
+		We generated a suite of simulated networks based on the niche model~\citep{Williams2000}. The meso-scale structure of such networks closely mimics that of empirical food webs~\citep{Stouffer2007}. For greater realism, we specified a predator-prey body-mass ratio of 2.203 (derived from a ratio of log masses of 0.79) based on the global mean in~\citet{Brose2006}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectances between 0.02 and 0.2 (in steps of 0.02). We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were simulated using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected amongst themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved were rejected and new networks simulated.
 
 
-		Initial population biomasses were randomly assigned, with individual body masses assigned by the niche model, after which community dynamics were simulated in order to obtain an equilibrium community. If any species dropped below a threshold biomass of 1$\times10^{-5}$, we considered the species to have gone extinct. Community dynamics are based on Lotka-Volterra predator-prey models including density dependence and with type II functional responses for all species (please see~\citet{Delmas2017} for full details). Consumers were assumed to consume all prey with equal strength. If the network did not reach an equilibrium with all species persisting after 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated. This process continued until an equilibrium state was achieved.
+		Initial population biomasses were randomly assigned, with individual body masses assigned by the niche model. Following~\citet{Brose2006}'s estimates for vertebrates, we assumed a predator-prey bodymass ratio of 3.065 (the average of bodymass ratios for vertebrates across ecosystem and metabolism types). We excluded reported bodymass ratios for invertebrates as these could include parasites and parasitoids, which are generally smaller than their prey. 
+
+
+		After assigning biomasses, we simulated community dynamics  in order to obtain an equilibrium community. If any species dropped below a threshold biomass of 1$\times10^{-5}$, we considered the species to have gone extinct. Community dynamics are based on Lotka-Volterra predator-prey models including density dependence and with type II functional responses for all species (please see~\citet{Delmas2017} for full details; all non-basal species were designated as vertebrates to ensure a good match between metabolic and predator-prey bodymass ratio values). Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of $i$ eating $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not reach an equilibrium with all species persisting after 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated. This process continued until an equilibrium state was achieved.
 
 
 	\subsection*{Calculating motifs and species roles}
@@ -124,7 +127,7 @@ alyssa.cirtwill@gmail.com\\
 		In addition to roles, we also calculated species' motif participation (i.e., the number of times a focal species appeared in any position within each motif). This provides a coarse-grained measure of how each species fits into the network, but is likely easier to relate to previous research than the more detailed motif roles. We normalized motif participation in two ways. Similar to motif roles, we first divided the raw participation counts by the total number of times the species participated in any motif ('degree normalisation'). In addition, we calculated a z-score of participation in each motif for the focal species compared to all species in its network ('network normalisation'). The degree normalisation allows us to test whether trends in stability with motif participation are due to differences in species' degrees, while the second normalisation allows us to test whether trends in stability with motif participation are related to how unusual each species is within its community context.
 
 
-		Apart from motif-based measures of species' positions in their communities, we calculated their degrees and short-weighted trophic levels. Degree is simply the number of interaction partners for each species. A species' short-weighted trophic level is the mean of its shortest trophic level an prey-averaged trophic level. The shortest trophic level is calculated based on the length of the shortest food chain between the focal species and any basal resource. Basal resources are assigned a trophic level of one and other species are assigned a shortest trophic level of one plus the trophic level of their prey. Prey-averaged trophic level is calculated based on the set of all shortest food chains between the focal species and any basal resources. The focal species' prey-averaged trophic level is the mean trophic level of its prey plus one. These alternative topological measures will be used to evaluate how strongly species' motif roles are related to their response to perturbation compared to other measures of position within a network. These measures were used to test how consistent motif roles and motif participation are for species which share the same degree or trophic level. [[Need to add this formally once I do it.]]
+		% Apart from motif-based measures of species' positions in their communities, we calculated their degrees and short-weighted trophic levels. Degree is simply the number of interaction partners for each species. A species' short-weighted trophic level is the mean of its shortest trophic level an prey-averaged trophic level. The shortest trophic level is calculated based on the length of the shortest food chain between the focal species and any basal resource. Basal resources are assigned a trophic level of one and other species are assigned a shortest trophic level of one plus the trophic level of their prey. Prey-averaged trophic level is calculated based on the set of all shortest food chains between the focal species and any basal resources. The focal species' prey-averaged trophic level is the mean trophic level of its prey plus one. These alternative topological measures will be used to evaluate how strongly species' motif roles are related to their response to perturbation compared to other measures of position within a network. These measures were used to test how consistent motif roles and motif participation are for species which share the same degree or trophic level. [[Need to add this formally once I do it.]]
 
 
 	\subsection*{Perturbing networks}
@@ -148,15 +151,15 @@ alyssa.cirtwill@gmail.com\\
 			% [[Not a repeat: this is talking about a PERMANOVA of axis loadings~positions, below is extinction time~roles. ]]
 
 
-			After testing whether the importances of positions were consistent across networks, we then wished to test whether a species' mean time to extinction was related to the initial role of the species which went extinct. To do this, we used a series of additional PERMANOVAs,  one for each combination of species richness and connectance. We calculated Bray-Curtis dissimilarities between species roles as Bray-Curtis dissimilarity is not affected by double zeros (positions in which neither species appears)~\citep{Baker2015,Cirtwill2015}, and then tested whether these dissimilarities were related to species' mean time to extinction. We again used 9999 permutations to obtain the null distribution, but now stratified permutations within networks. That is, species roles could not be swapped between networks in order to preserve the distribution of roles within each network. As we performeed 60 unique PERMANOVAs (due to computational restrictions), we would expect approximately three positive results (with $\alpha$=0.05) simply due to multiple testing. We therefore evaluated the significance of each PERMANOVA using a Bonferroni correction (i.e., a threshold $p$-value of 0.00083 rather than 0.05). We performed all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} using 9999 permutations to obtain the null  distribution.
+			% After testing whether the importances of positions were consistent across networks, we then wished to test whether a species' mean time to extinction was related to the initial role of the removed species. To do this, we used a series of additional PERMANOVAs,  one for each combination of species richness and connectance. We calculated Bray-Curtis dissimilarities between the roles of removed and focal species as Bray-Curtis dissimilarity is not affected by double zeros (positions in which neither species appears)~\citep{Baker2015,Cirtwill2015}, and then tested whether these dissimilarities were related to species' mean time to extinction. We again used 9999 permutations to obtain the null distribution, but now stratified permutations within networks. That is, species roles could not be swapped between networks in order to preserve the distribution of roles within each network. As we performeed 60 unique PERMANOVAs (due to computational restrictions), we would expect approximately three positive results (with $\alpha$=0.05) simply due to multiple testing. We therefore evaluated the significance of each PERMANOVA using a Bonferroni correction (i.e., a threshold $p$-value of 0.00083 rather than 0.05). We performed all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} using 9999 permutations to obtain the null  distribution.
 
 			% [[I don't think it's worthwhile testing whether or not species went secondarily extinct... most seem to have.]]
 
 
-			To support the PERMANOVAs relating time to extinction to motif roles, we fit a linear regression testing whether species' positions on the first three PCA axes were related to their mean time to extinction. For computational tractability, we first ordered species within each combination of network size and connectance by mean time to exinction, then divided species into subsets of 100. For each subset, we took the mean time to extinction and position on each PCA axis. We then fit a linear model relating mean time to extinction (per subset) to positions in each of the first three PCA axes, species richness, and connectance. We scaled and centered all predictors, and fit all models using the R~\citep{R} base function 'lm'.
+			To support the PERMANOVAs relating time to extinction to motif roles, we fit a linear regression testing whether species' positions on the first three PCA axes were related to their mean time to extinction. For computational tractability, we first ordered species within each combination of network size and connectance by mean time to exinction, then divided species into subsets of 100 following~\citet{Simmons2019}. For each subset, we took the mean time to extinction and position on each PCA axis. We then fit a linear model relating mean time to extinction (per subset) to positions in each of the first three PCA axes, species richness, and connectance. We scaled and centered all predictors, and fit all models using the R~\citep{R} base function 'lm'.
 
 
-			For a more detailed perspective on how species' roles are related to theeir time to extinction, we considered species' participation in each motif (i.e., the number of times the species appears in any position in the motif). To account for the fact that some motifs, including the stable motifs in which we are most interested, tend to be more common than others~\citep{Stouffer2007}, we normalised motif participations across species. Rather than the simple count of the number of times a focal species appeared in a focal motif, we considered the Z-score of the focal species' participation compared to all other species in the network. These normalised participation scores indicate whether a species participates in a motif more (or less) frequently than others in the network. We then divided species into subsets of 100 as described above and fit a linear model relating mean time to exinction (per subset)  to mean normalised participation in each motif, species richness, and connectance.  We scaled and centered all predictors, and fit all models using the R~\citep{R} base function 'lm'.
+			For an alternative perspective on how species' roles are related to their time to extinction, we considered species' participation in each motif (i.e., the number of times the species appears in any position in the motif). To account for the fact that some motifs, including the stable motifs in which we are most interested, tend to be more common than others~\citep{Stouffer2007}, we normalised motif participations across species. Rather than the simple count of the number of times a focal species appeared in a focal motif, we considered the Z-score of the focal species' participation compared to all other species in the network. These normalised participation scores indicate whether a species participates in a motif more (or less) frequently than others in the network. We then divided species into subsets of 100 as described above and fit a linear model relating mean time to exinction (per subset)  to mean normalised participation in each motif, species richness, and connectance.  We scaled and centered all predictors, and fit all models using the R~\citep{R} base function 'lm'.
 			As it is likely that not all motifs explain substantial variation in species' roles, we simplified the model by sequentially removing non-significant terms beginning with the non-significant term with the smallest effect size. After each removal, we re-fit the model and checked for further non-significant terms.
 
 
@@ -184,13 +187,13 @@ alyssa.cirtwill@gmail.com\\
 
 	\subsection*{Roles and mean time to extinction}
 
+		[[Introduced before above in methods. Rethink so that order is consistent.]]
 		In general, time to extinction was highly correlated across removals (Fig.~\ref{extorder_corrs}). The mean Pearson correlation for times to extinction across all removals within a network was 0.903 (range: 0.512-0.973). This means that, in general, the species which go extinct fastest when removing species $i$ also go extinct fastest when removing species $j$. The correlation was stronger in larger webs, particularly those with high connectance ($\beta_{S}$=1.33$\times10^-3$, $p$\textless0.001; $\beta_{C}$=-8.07$\times10^-2$, $p$\textless0.001; and $\beta_{S:C}$=2.12$\times10^-3$, $p$\textless0.001, respectively). Mean time to extinction is, therefore, a good measure of a species' overall vulnerability.
 		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
 
 
 		% [[Roles are related to extinction order]]
-		[currently re-running. Likely already updated, but making sure.]
-		Across all combinations of species richness and connectance, species' roles were generally correlated with their mean time to extinction (Table~\ref{permtable}). Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant [[Need to double-check with table, but probably]]. While values of the pseudo-$F$ statistic increased steadily with increasing species richness, $p$-values were similar across values of species richness and connectance (Fig.~\ref{permfig}). There was no consistent interaction between species richness and connectance in either the pseudo-$F$ or $p$-values.
+		Across all combinations of species richness and connectance, species' roles were generally correlated with their mean time to extinction (Table~\ref{permtable}). Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant. While values of the pseudo-$F$ statistic increased steadily with increasing species richness, $p$-values were similar across values of species richness and connectance (Fig.~\ref{permfig}). There was no consistent interaction between species richness and connectance in either the pseudo-$F$ or $p$-values.
 
 
 		% [[Add a figure with species on PCA axes, coloured by mean time to extinction? Going to be heckuva points.]]
@@ -202,8 +205,8 @@ alyssa.cirtwill@gmail.com\\
 
 		\subsubsection*{PCA axis positions and time to extinction}
 
+			[[remind readers which positions correspond to the axes]]
 			Species' positions on each of the three first PCA axes were related to their mean times to extinction. Larger positive values of the first axis and larger negative values of the second and third axes were associated with longer times to extinction ($\beta_{PC1}$=581, $p$\textless0.001; $\beta_{PC2}$=-16.8, $p$=0.001; and $\beta_{PC3}$=-27.9, $p$\textless0.001). In addition, mean times to extinction were lower in larger and more-connected networks ($\beta_{S}$=-9.84, $p$=0.007 and $\beta_{C}$=-0.157, $p$\textless0.001). Note that the first PCA axis had a much stronger relationship with mean time to extinction than the other two PCA axes or network size or connectance (Fig.~\ref{PCA_plots}).
-			[[This is correct, need to update plot. Show all relationships from one model. ]]
 
 
 		\subsubsection*{Motif participation and time to extinction}
@@ -278,36 +281,66 @@ alyssa.cirtwill@gmail.com\\
 		\begin{tabular}{c c | c | c c ||c c | c | c c |}
 			S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 			\hline
-			50	&	0.02	&	0.789	&	86.7	&	0.017	&	80	&	0.02	0.866	&	107	&	0.013\\ 
-			50	&	0.04	&	0.813	&	66.4	&	0.013	&	80	&	0.04	0.899	&	116	&	0.014\\ 
-			50	&	0.06	&	0.846	&	69.6	&	0.014	&	80	&	0.06	0.901	&	125	&	0.015\\ 
-			50	&	0.08	&	0.843	&	77.4	&	0.015	&	80	&	0.08	0.908	&	147	&	0.018\\ 
-			50	&	0.1	&	0.857	&	75.0	&	0.015	&	80	&	0.1	0.914	&	131	&	0.016\\ 
-			50	&	0.12	&	0.868	&	103	&	0.02	&	80	&	0.12	0.915	&	145	&	0.018\\ 
-			50	&	0.14	&	0.867	&	86.1	&	0.017	&	80	&	0.14	0.921	&	153	&	0.019\\ 
-			50	&	0.16	&	0.872	&	89.7	&	0.018	&	80	&	0.16	0.924	&	124	&	0.015\\ 
-			50	&	0.18	&	0.876	&	89.7	&	0.018	&	80	&	0.18	0.926	&	111	&	0.014\\ 
-			50	&	0.2	&	0.881	&	106	&	0.021	&	80	&	0.2	0.928	&	118	&	0.014\\ 
-			60	&	0.02	&	0.82	&	92.7	&	0.015	&	90	&	0.02	0.884	&	118	&	0.013\\ 
-			60	&	0.04	&	0.846	&	85.8	&	0.014	&	90	&	0.04	0.906	&	142	&	0.016\\ 
-			60	&	0.06	&	0.865	&	91.2	&	0.015	&	90	&	0.06	0.915	&	160	&	0.018\\ 
-			60	&	0.08	&	0.873	&	99.8	&	0.016	&	90	&	0.08	0.923	&	151	&	0.017\\ 
-			60	&	0.1	&	0.888	&	94.7	&	0.016	&	90	&	0.1	0.922	&	134	&	0.015\\ 
-			60	&	0.12	&	0.883	&	110	&	0.018	&	90	&	0.12	0.927	&	126	&	0.014\\ 
-			60	&	0.14	&	0.891	&	104	&	0.017	&	90	&	0.14	0.928	&	124	&	0.014\\ 
-			60	&	0.16	&	0.89	&	107	&	0.018	&	90	&	0.16	0.931	&	134	&	0.015\\ 
-			60	&	0.18	&	0.894	&	109	&	0.018	&	90	&	0.18	0.934	&	114	&	0.012\\ 
-			60	&	0.2	&	0.898	&	147	&	0.024	&	90	&	0.2	0.935	&	131	&	0.014\\ 
-			70	&	0.02	&	0.848	&	91.4	&	0.013	&	100	&	0.02	0.899	&	125	&	0.012\\ 
-			70	&	0.04	&	0.876	&	109	&	0.015	&	100	&	0.04	0.917	&	191	&	0.019\\ 
-			70	&	0.06	&	0.877	&	111	&	0.016	&	100	&	0.06	0.923	&	207	&	0.020\\ 
-			70	&	0.08	&	0.898	&	115	&	0.016	&	100	&	0.08	0.932	&	176	&	0.017\\ 
-			70	&	0.1	&	0.904	&	137	&	0.019	&	100	&	0.1	0.934	&	153	&	0.015\\ 
-			70	&	0.12	&	0.905	&	145	&	0.02	&	100	&	0.12	0.935	&	157	&	0.015\\ 
-			70	&	0.14	&	0.906	&	117	&	0.017	&	100	&	0.14	0.941	&	102	&	0.010\\ 
-			70	&	0.16	&	0.909	&	118	&	0.017	&	100	&	0.16	0.938	&	144	&	0.014\\ 
-			70	&	0.18	&	0.914	&	103	&	0.015	&	100	&	0.18	0.939	&	116	&	0.011\\ 
-			70	&	0.2	&	0.918	&	118	&	0.017	&	100	&	0.2	0.942	&	102	&	0.010\\ 
+			50&0.02&0.789&86.7&0.017\\ 
+			50&0.04&0.813&66.4&0.013\\ 
+			50&0.06&0.845&70.2&0.014\\ 
+			50&0.08&0.843&77.4&0.015\\ 
+			50&0.1&0.857&75.0&0.015\\ 
+			50&0.12&0.868&104&0.020\\ 
+			50&0.14&0.867&83.8&0.016\\ 
+			50&0.16&0.872&89.7&0.018\\ 
+			50&0.18&0.876&88.7&0.017\\ 
+			50&0.2&0.880&103&0.020\\ 
+			60&0.02&0.820&92.7&0.015\\ 
+			60&0.04&0.846&86.0&0.014\\ 
+			60&0.06&0.865&91.2&0.015\\ 
+			60&0.08&0.872&99.7&0.016\\ 
+			60&0.1&0.887&92.1&0.015\\ 
+			60&0.12&0.883&96.9&0.016\\ 
+			60&0.14&0.891&102&0.017\\ 
+			60&0.16&0.890&106&0.017\\ 
+			60&0.18&0.893&107&0.018\\ 
+			60&0.2&0.899&137&0.022\\ 
+			70&0.02&0.848&91.4&0.013\\ 
+			70&0.04&0.875&108&0.015\\ 
+			70&0.06&0.877&111&0.016\\ 
+			70&0.08&0.898&112&0.016\\ 
+			70&0.1&0.904&134&0.019\\ 
+			70&0.12&0.907&124&0.017\\ 
+			70&0.14&0.906&118&0.017\\ 
+			70&0.16&0.909&122&0.017\\ 
+			70&0.18&0.913&99.9&0.014\\ 
+			70&0.2&0.917&122&0.017\\ 
+			80&0.02&0.866&107&0.013\\ 
+			80&0.04&0.898&114&0.014\\ 
+			80&0.06&0.900&128&0.016\\ 
+			80&0.08&0.908&147&0.018\\ 
+			80&0.1&0.914&134&0.016\\ 
+			80&0.12&0.915&140&0.017\\ 
+			80&0.14&0.921&146&0.018\\ 
+			80&0.16&0.923&125&0.015\\ 
+			80&0.18&0.925&118&0.015\\ 
+			80&0.2&0.926&123&0.015\\ 
+			90&0.02&0.884&121&0.013\\ 
+			90&0.04&0.906&142&0.016\\ 
+			90&0.06&0.915&160&0.018\\ 
+			90&0.08&0.923&151&0.017\\ 
+			90&0.1&0.923&128&0.014\\ 
+			90&0.12&0.927&128&0.014\\ 
+			90&0.14&0.928&126&0.014\\ 
+			90&0.16&0.931&138&0.015\\ 
+			90&0.18&0.934&107&0.012\\ 
+			90&0.2&0.936&127&0.014\\ 
+			100&0.02&0.899&125&0.012\\ 
+			100&0.04&0.917&191&0.019\\ 
+			100&0.06&0.923&206&0.020\\ 
+			100&0.08&0.932&176&0.017\\ 
+			100&0.1&0.934&148&0.015\\ 
+			100&0.12&0.934&156&0.015\\ 
+			100&0.14&0.939&98.3&0.010\\ 
+			100&0.16&0.938&144&0.014\\ 
+			100&0.18&0.939&118&0.012\\ 
+			100&0.2&0.942&105&0.010\\ 
 			\hline
 		\end{tabular}
 		\end{table}

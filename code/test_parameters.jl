@@ -19,7 +19,7 @@ using Pkg
 using BioEnergeticFoodWebs  # tell Julia we want to use the package
 #using JSON
 #using JLD
-#using LightGraphs
+using LightGraphs
 using CSV
 using DataFrames
 #Do we want to allow rewiring after extinctions? If so which type?
@@ -32,7 +32,7 @@ using DataFrames
 maxreps = 10000; # Giving up after this many
 reps = 100 # How many of each combination do we want?
 S = 10; # how many species do we want?
-Smin=50
+Smin=90
 Smax=100
 Cmin=0.02
 Cmax=0.2
@@ -144,8 +144,12 @@ for S in Smin:10:Smax
 					end
 				end
 
-				# Use the default parameters 
-				params = model_parameters(foodweb,Z=Float64(0.79));
+				# Use the default parameters
+				# EXCEPT! Z=3.065, all non-basal species are vertebrates
+				# Z is vertebrate average from Table 1, Brose et al 2006.
+				Fwsum = sum(foodweb, dims =2)[1:end,1]
+				verts = Bool[ x > 0 for x in Fwsum]
+				params = model_parameters(foodweb, vertebrates = verts, Z=Float64(3.065))
 				# Set initial biomasses randomly 
 				bm = rand(size(foodweb,1));
 

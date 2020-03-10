@@ -127,7 +127,9 @@ for S in Smin:10:Smax
 
 			# Extract the initial food web, parameters
 			foodweb = convert(Matrix,A)
-			params = model_parameters(foodweb,Z=Float64(0.79));
+			Fwsum = sum(foodweb, dims =2)[1:end,1]
+			verts = Bool[ x > 0 for x in Fwsum]
+			params = model_parameters(foodweb, vertebrates = verts, Z=Float64(3.065))
 
 			# Biomasses are the last post-equilibrium biomasses
 			bm = B[end,1:end]
