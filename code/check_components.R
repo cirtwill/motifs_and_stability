@@ -1,6 +1,4 @@
 library(igraph)
-library(rjson)
-# Convert JSON object to more R/python-readible files
 # Want post-equilibrium, pre-removal structure and biomasses.
 
 badnets=matrix(nrow=0,ncol=3)
@@ -18,15 +16,10 @@ for(s in seq(50,100,10)){
 		# For some reason R can't make this work with list.files.
 		for(i in seq(0,99)){
 			# Select the json file to work with
-			infile=paste0('../data/networks/pre_disturbance/',as.character(s),'/',as.character(c),'/initial_net_',as.character(i),'.json',sep='')
+			infile=paste0('../data/networks/pre_disturbance/',as.character(s),'/',as.character(c),'/initial_net_',as.character(i),'.csv',sep='')
 
-			# Open the file
-			# Just the network now
-			json_data=fromJSON(file=infile)
-			# # biomasses and timesteps convert easily to data frames, parameters take a little more work.
-			# biomasses=as.data.frame(json_data$B)
-			# timesteps=as.data.frame(json_data$t)
-			A=as.data.frame(json_data)
+			# Open the network file
+			A=as.data.frame(read.csv(infile))
 			# Preds in rows, prey in columns.
 			colnames(A)=c(paste0('sp',seq(1,ncol(A))))
 			rownames(A)=colnames(A)

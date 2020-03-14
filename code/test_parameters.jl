@@ -32,7 +32,7 @@ using DataFrames
 maxreps = 10000; # Giving up after this many
 reps = 100 # How many of each combination do we want?
 S = 10; # how many species do we want?
-Smin=90
+Smin=50
 Smax=100
 Cmin=0.02
 Cmax=0.2

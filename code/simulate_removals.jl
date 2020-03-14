@@ -36,6 +36,7 @@ Smin=50
 Smax=100
 Cmin=0.02
 Cmax=0.2
+
 C = 0.1; # what connectance do we want?
 		 ## NOTE: C gets converted into links for the function "nichemodel()". If in the conversion the value is < 0, it will throw an error
 		 ## Sometimes it can work a bunch of times before we get an error.
