@@ -11,6 +11,7 @@ colnames(coordinates)=c("S","C","Position","Ax1","Ax2","Ax3")
 stdevs=matrix(nrow=0,ncol=32)
 
 for(S in seq(50,100,10)){
+	print(S)
 	for(C in seq(0.02,0.2,0.02)){
 
 		axisfile=paste0('../../data/summaries/role_PCA/',as.character(S),'/role_PCA_axes_',as.character(S),'_',as.character(C),'.tsv',sep='')
@@ -27,7 +28,7 @@ for(S in seq(50,100,10)){
 		}
 	}
 }
-
+print('Collecting done')
 stdevs=as.data.frame(stdevs)
 colnames(stdevs)[1:2]=c("S","C")
 stdevs$Var1=stdevs[,3]/rowSums(stdevs[,3:32])
@@ -47,15 +48,17 @@ meanload3=tapply(coordinates$Ax3,coordinates$Position,mean)
 
 coords=cbind(meanload1,meanload2,meanload3)
 write.table(coords,file='../figure_creation/mean_loadings_PCAaxes.tsv',sep='\t')
-
+print('Permanova time')
 # Want to see if the axes are consistent across webs.
 coordist=vegdist(coordinates[,4:6],method="euclid")
 # Do positions maintain consistent loadings on the three major axes?
 distperm=adonis(coordist~coordinates$Position,permutations=9999)
 
-
+print(mean(stdevs$Var1))
+print(mean(stdevs$Var2))
+print(mean(stdevs$Var3))
 # How much variance do the first 3 axes explain across networks?
 
-
+print(distperm)
 
 
