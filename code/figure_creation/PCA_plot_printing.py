@@ -236,39 +236,39 @@ def format_graph(graph,graphtype,form):
   graph.frame.linewidth=1
   graph.world.xmin=-.5
   graph.world.xmax=1
-  graph.world.ymin=-.2
-  graph.world.ymax=.2
+  graph.world.ymin=-.5
+  graph.world.ymax=1
 
   if form=='paper':
     if '1' in graphtype:
-      graph.xaxis.label.configure(text='PCA axis 1 (31.5%)',char_size=.75,just=2)
+      graph.xaxis.label.configure(text='PCA axis 1 (51.1%)',char_size=.75,just=2)
       graph.xaxis.ticklabel.configure(char_size=0,format='decimal',prec=1)
     else:
-      graph.xaxis.label.configure(text='PCA axis 2 (14.6%)',char_size=.75,just=2)
+      graph.xaxis.label.configure(text='PCA axis 2 (24.5%)',char_size=.75,just=2)
       graph.xaxis.ticklabel.configure(char_size=.5,format='decimal',prec=1)
 
     if graphtype[1]=='2':
-      graph.yaxis.label.configure(text='PCA axis 2 (14.6%)',char_size=.75,just=2)
+      graph.yaxis.label.configure(text='PCA axis 2 (24.5%)',char_size=.75,just=2)
     else:
-      graph.yaxis.label.configure(text='PCA axis 3 (12.1%)',char_size=.75,just=2)
+      graph.yaxis.label.configure(text='PCA axis 3 (7.41%)',char_size=.75,just=2)
     graph.yaxis.ticklabel.configure(char_size=.5,format='decimal',prec=1)
   else:
     if '1' in graphtype:
-      graph.xaxis.label.configure(text='PCA axis 1 (31.5%)',char_size=.75,just=2)
+      graph.xaxis.label.configure(text='PCA axis 1 (51.1%)',char_size=.75,just=2)
     else:
-      graph.xaxis.label.configure(text='PCA axis 2 (14.6%)',char_size=.75,just=2)
+      graph.xaxis.label.configure(text='PCA axis 2 (24.5%)',char_size=.75,just=2)
 
     if graphtype[1]=='2':
-      graph.yaxis.label.configure(text='PCA axis 2 (14.6%)',char_size=.75,just=2)
+      graph.yaxis.label.configure(text='PCA axis 2 (24.5%)',char_size=.75,just=2)
     else:
-      graph.yaxis.label.configure(text='PCA axis 3 (12.1%)',char_size=.75,just=2)
+      graph.yaxis.label.configure(text='PCA axis 3 (7.41%)',char_size=.75,just=2)
     graph.xaxis.ticklabel.configure(char_size=.5,format='decimal',prec=1)
     if graphtype=='12':
       graph.yaxis.ticklabel.configure(char_size=.5,format='decimal',prec=1)
     else:
       graph.yaxis.ticklabel.char_size=0
   graph.xaxis.tick.configure(major=.5,onoff='on',minor_ticks=1,major_size=.5,place='normal',minor_size=.3,major_linewidth=1,minor_linewidth=1)
-  graph.yaxis.tick.configure(major=.1,onoff='on',minor_ticks=1,major_size=.5,place='both',minor_size=.3,major_linewidth=1,minor_linewidth=1)
+  graph.yaxis.tick.configure(major=.5,onoff='on',minor_ticks=1,major_size=.5,place='both',minor_size=.3,major_linewidth=1,minor_linewidth=1)
 
   graph.panel_label.configure(placement='iul',char_size=.75,dx=.02,dy=.01)
 
@@ -279,7 +279,7 @@ def populate_graph(graph,graphtype):
   points=[]
   redpoints=[]
   for position in datadict:
-    if position in ['Position_1','Position_2','Position_3','Position_5','Position_9','Position_11','Position_12']:
+    if position in ['Position_1','Position_2','Position_3','Position_4','Position_5','Position_9','Position_10','Position_11','Position_12','Position_13','Position_14']: 
       if graphtype=='12':
         redpoints.append((datadict[position][0],datadict[position][1]))
       elif graphtype=='13':
@@ -303,40 +303,58 @@ def populate_graph(graph,graphtype):
   reddots.line.linestyle=0
 
   if graphtype=='12':
-    for position in ['Position_1','Position_2','Position_3','Position_9','Position_11']:
+    for position in ['Position_1','Position_2','Position_11','Position_12','Position_13','Position_14']:
       x=datadict[position][0]
-      y=datadict[position][1]+0.0175
+      y=datadict[position][1]+0.05
       graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
-
-    for position in ['Position_5','Position_12']:
+    for position in ['Position_3']: # below
       x=datadict[position][0]
-      y=datadict[position][1]-0.03
+      y=datadict[position][1]-0.12
       graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
-
+    for position in ['Position_4']: # left
+      x=datadict[position][0]-0.05
+      y=datadict[position][1]
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_9']: # right
+      x=datadict[position][0]+0.05
+      y=datadict[position][1]
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_5','Position_10']:
+      x=datadict[position][0]+0.04
+      y=datadict[position][1]+0.04
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
   elif graphtype=='13':
-    for position in ['Position_1','Position_2','Position_3','Position_5','Position_9','Position_11']:
+    for position in ['Position_1','Position_2','Position_3','Position_5','Position_9','Position_11','Position_12']:
       x=datadict[position][0]
-      y=datadict[position][2]+0.0175
+      y=datadict[position][2]+0.05
       graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
-
-    for position in ['Position_12']:
+    for position in ['Position_4','Position_14']: # lower
       x=datadict[position][0]
-      y=datadict[position][2]-0.03
+      y=datadict[position][2]-0.12
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_13']: # right
+      x=datadict[position][0]+0.07
+      y=datadict[position][2]-0.04
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_10']:
+      x=datadict[position][0]-0.04
+      y=datadict[position][2]+0.04
       graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
   else:
-    for position in ['Position_1','Position_3','Position_12']:
-      x=datadict[position][1]+0.04
-      y=datadict[position][2]-0.01
-      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=0)
-    for position in ['Position_9']:
+    for position in ['Position_2','Position_3','Position_5','Position_9','Position_11','Position_12','Position_13']:
       x=datadict[position][1]
-      y=datadict[position][2]+0.0175        
-      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5)
-    for position in ['Position_2','Position_5','Position_11']:
-      x=datadict[position][1]-0.05
-      y=datadict[position][2]-0.01
-      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=1)
+      y=datadict[position][2]+0.05
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_1','Position_4','Position_14']: # below
+      x=datadict[position][1]
+      y=datadict[position][2]-0.12     
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
+    for position in ['Position_10']: # right
+      x=datadict[position][1]+0.05
+      y=datadict[position][2]
+      graph.add_drawing_object(DrawText,text=position.split('_')[1],x=x,y=y,loctype='world',char_size=.5,just=2)
 
+# 1,2,3,4,5,9,10,11,12,13,14
 
   return graph
 
@@ -346,11 +364,13 @@ def populate_graph(graph,graphtype):
 
 
 
-datafile='mean_loadings_PCAaxes.tsv'
+datafile='../../data/summaries/role_PCA/role_PCA_axes_global.tsv' # From role_PCAs_forplotst.R
+# Loadings in PCA of variation in roles of all species, in all webs
 datadict=read_file(datafile)
 
 
-for form in ['talk','paper']:
+# for form in ['talk','paper']:
+for form in ['paper']:
   if form=='talk':
     levels=['axis','points','Ax1','Ax2','Ax3','allred']
   else:

@@ -47,7 +47,7 @@ meanload2=tapply(coordinates$Ax2,coordinates$Position,mean)
 meanload3=tapply(coordinates$Ax3,coordinates$Position,mean)
 
 coords=cbind(meanload1,meanload2,meanload3)
-write.table(coords,file='../figure_creation/mean_loadings_PCAaxes.tsv',sep='\t')
+# write.table(coords,file='../figure_creation/mean_loadings_PCAaxes.tsv',sep='\t')
 print('Permanova time')
 # Want to see if the axes are consistent across webs.
 coordist=vegdist(coordinates[,4:6],method="euclid")
