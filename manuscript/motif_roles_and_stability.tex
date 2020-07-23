@@ -173,25 +173,45 @@ alyssa.cirtwill@gmail.com\\
 
 \section{Results}
 
-	\subsection*{Major axes of variation in species roles}
+	\subsection*{Major axes of variation in species roles} [[updated]]
+		[[I'm not sure if this is interesting. Maybe move to SI?]]
 
-		The loadings of motif positions across the three major PCA axes were consistent across combinations of S and C ($F_{29,1770}$=30.7, $p$\textless0.001). That is, a motif position which explains a lot of the variation in roles in one network is also likely to explain a lot of variation in roles in another, regardless of the size and connectance of the networks. On average, the first three PCA axes explained 31.5\%, 14.6\%, and 12.1\% of variance, respectively. 
-		
+		The loadings of motif positions across the three major PCA axes were generally consistent across combinations of S and C ($F_{29,1770}$=30.7, $p$\textless0.001). 
+		% stat_analysis/testing_role_consistency.R
+		That is, a motif position which explains a lot of the variation in roles in one network is also likely to explain a lot of variation in roles in another, regardless of the size and connectance of the networks. 
+		Within a combination of network size and connectance the first three PCA axes explained an average of 31.5\%, 14.6\%, and 12.1\% of variance, respectively. 
+		[[Am I working with the average across size/connectance combos, or across all webs?]]
+		The first PCA axis was most strongly and positively associated with positions 1, 11, 3, 9, and 5 and most strongly and negatively associateed with position 2 (all other positions had loadings with magnitude \textless0.1). 
+		The second PCA axis was not strongly associated with any positions (all had loadings witth magnitude \textless0.1).
+		The third PCA axis was most strongly and positively associated with positions 9, 12, and 5, and was not strongly and negatively associated with any other positions (all had loadings with magnitude \textless0.1).
+		[[All of these are average loadings - is there a way to show the variation or is that too crowded?]]
+		Note that positions 1-2 belong to the apparent competition motif, positions 3-5 to the three-species chain, positions 9-10 to the direct competition motif, and positions 11-13 to the omnivory motif. 
 
-		Taking all networks together, the first three PCA axes explained  63.8\%, 11.6\%, and 9.20\% of variance, respectively. As the first PCA axis explains much more variation than the others, we focus our interpretation upon it.
-		The first PCA axis was most strongly and positively associated with positions 1, 11, 3, 9, and 5, and most strongly and negatively associated with position 2 (all other positions had loadings \textless0.1). The second PCA axis was most strongly and positively associated with position 3 and most strongly and negatively associated with positions 2, 5, 13, 1, 9, 10, 4, 11, and 12, although all loadings were \textless0.1. The third PCA axis was most strongly and positively associated with positions 9, 5, and 12, with all other loadings \textless0.1. 
-		Note that positions 1-2 belong to the apparent competition motif, positions 3-5 to the three-species chain, positions 9-10 to the direct competition motif, and positions 11-13 to the omnivory motif. All of the positions most strongly associated with the major axes of variattion in species roles therefore belong to motifs that do not include two- or three-species loops (Fig.~\ref{PCA_plots}). In short, variation in species roles can mostly be explained by differences in positions in stable motifs.
 
-
+		% No binning
+		Across all networks regardless of size and connectance, and adding network size and connectance as preictors, the first three PCA axes explained  51.1\%, 24.5\%, and 7.41\% of variance, respectively. %stat_testing/role_PCAs_forplots.R
+		The first PCA axis was most strongly and positively associated with positions 1, 11, 3, 9, 14, and 5 and most strongly and negatively associated with position 2 (all other positions had loadings with magnitude \textless0.1). 
+		Position 14 belongs to a motif including a loop (a direct competition motif with mutual predation between the two predators).
+		All other positions associated with the first PCA axis are in stable motifs.
+		The second PCA axis was most strongly an positively associated with positions 2, 13, 12, 4, 5, 9, 10, and 11 and was not strongly and negatively associated with any other positions (all other positions had loadings with magnitude \textless0.1). 
+		The third PCA axis was most strongly and positively associated with posittions 9, 5, and 12 and most strongly and negatively associated with positions 4, 1, 13, 2, 14, and 10 (all other positions had loadings with magnitude \textless0.1). 
+		Despite the contribution of position 14 to axes 1 and 3, most variation in species' roles appears to be explained by positions in the stable motifs whether we consider roles within a network class [[better replacement for size:connectance?]] or all roles together.
 		% Did number of secondary extinctions vary with C, S? Seems important to quickly establish that to provide context.
 
-	\subsection*{Roles and mean time to extinction}
+
+	\subsection*{Roles and mean time to extinction} [[partly updated]]
 
 		[[Introduced before above in methods. Rethink so that order is consistent.]]
-		In general, time to extinction was highly correlated across removals (Fig.~\ref{extorder_corrs}). The mean Pearson correlation for times to extinction across all removals within a network was 0.903 (range: 0.512-0.973). This means that, in general, the species which go extinct fastest when removing species $i$ also go extinct fastest when removing species $j$. The correlation was stronger in larger webs, particularly those with high connectance ($\beta_{S}$=1.33$\times10^-3$, $p$\textless0.001; $\beta_{C}$=-8.07$\times10^-2$, $p$\textless0.001; and $\beta_{S:C}$=2.12$\times10^-3$, $p$\textless0.001, respectively). Mean time to extinction is, therefore, a good measure of a species' overall vulnerability.
+		In general, time to extinction was highly correlated across removals (Fig.~\ref{extorder_corrs}). %figure_creation/extinction_order_correlations.py
+		The mean Pearson correlation for times to extinction across all removals within a network was 0.903 (range: 0.512-0.973). % stat_analysis/mean_correlation_extorder_tests.R
+		This means that, in general, the species which go extinct fastest when removing species $i$ also go extinct fastest when removing species $j$.
+		The correlation was stronger in larger webs, particularly those with high connectance ($\beta_{S}$=1.33$\times10^-3$, $p$\textless0.001; $\beta_{C}$=-8.33$\times10^-2$, $p$\textless0.001; and $\beta_{S:C}$=2.16$\times10^-3$, $p$\textless0.001, respectively). 
+		Mean time to extinction is, therefore, a good measure of a species' overall vulnerability.
 		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
 
 
+		[[double-checked up to here]]
+		[[This one is slow, waiting on it.]]
 		% [[Roles are related to extinction order]]
 		Across all combinations of species richness and connectance, species' roles were generally correlated with their mean time to extinction (Table~\ref{permtable}). Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant. While values of the pseudo-$F$ statistic increased steadily with increasing species richness, $p$-values were similar across values of species richness and connectance (Fig.~\ref{permfig}). There was no consistent interaction between species richness and connectance in either the pseudo-$F$ or $p$-values.
 
@@ -203,10 +223,16 @@ alyssa.cirtwill@gmail.com\\
 		% Axis 3 seems to be comparing apparent competition to DC, chain, omnivory.
 		
 
-		\subsubsection*{PCA axis positions and time to extinction}
+		\subsubsection*{PCA axis positions and time to extinction} [[updated]]
 
-			[[remind readers which positions correspond to the axes]]
-			Species' positions on each of the three first PCA axes were related to their mean times to extinction. Larger positive values of the first axis and larger negative values of the second and third axes were associated with longer times to extinction ($\beta_{PC1}$=581, $p$\textless0.001; $\beta_{PC2}$=-16.8, $p$=0.001; and $\beta_{PC3}$=-27.9, $p$\textless0.001). In addition, mean times to extinction were lower in larger and more-connected networks ($\beta_{S}$=-9.84, $p$=0.007 and $\beta_{C}$=-0.157, $p$\textless0.001). Note that the first PCA axis had a much stronger relationship with mean time to extinction than the other two PCA axes or network size or connectance (Fig.~\ref{PCA_plots}).
+			The first PCA axis was dominated by predator positions in the apparent competition and omnivory motifs, while the second PCA axis was dominated by the prey position in the apparent competition motif and the third PCA axis was dominated by the predator position in the direct competition motif and intermediate consumer position in the three-species chain (Fig.~\ref{PCA_plots}).
+			[[Replace above description of PCA axes with this 1 sentence?]]	
+			Species' positions on each of the three first PCA axes were related to their mean times to extinction. 
+			% True if using values binned by extorder or all species. Using un-binned values because the bins don't appear necessary.
+			Larger positive values of all three axes were assocciated with longer times to extinction ($\beta_{PC1}$=228, $p$\textless0.001; $\beta_{PC2}$=207, $p$\textless0.001; and $\beta_{PC3}$=7.29, $p$\textless0.001).
+			Times to extinction were shorter in larger webs, more highly-connectetd webs, and especially in large and highly-connecctted webs ($\beta_{S}$=-25.4, $p$\textless0.001; $\beta{C}$=-0.224, $p$\textless0.001; and $\beta_{S:C}$=-0.608, $p$\textless0.001).
+			The first PCA axis was dominated by predator positions in the apparent competition and omnivory motifs, while the second PCA axis was dominated by the prey position in the apparent competition motif and the third PCA axis was dominated by the predator position in the direct competition motif and intermediate consumer position in the three-species chain (Fig.~\ref{PCA_plots}).
+			% Betas from regression using all roles/mean extinction times, no bins. Betas un-scaled.
 
 
 		\subsubsection*{Motif participation and time to extinction}

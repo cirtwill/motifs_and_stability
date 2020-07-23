@@ -26,6 +26,7 @@ manuscript/*.b*
 manuscript/*.log
 manuscript/*.ps
 manuscript/*.pdf
+manuscript/figures/*.jpeg
 
 # Ignore auxiliary latex files
 Talk/*.aux
@@ -39,6 +40,7 @@ Talk/*.out
 Talk/*.snm
 Talk/*.toc
 Talk/*.pptx
+Talk/intro_figs/*.svg
 
 # Ignore files used to build pretty tables
 manuscript/lmer_summary_table.txt
