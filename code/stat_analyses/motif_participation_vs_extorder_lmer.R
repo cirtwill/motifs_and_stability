@@ -3,16 +3,14 @@ library(MuMIn)
 
 
 # Subset species like with PCA axes. Then fit one big model, simplify.
-
-
-
-
 # Testing: Do species with similar mean extinction orders have similar roles?
 # No convergence??
 bins=matrix(nrow=0,ncol=29)
+fulldata=matrix(nrow=0,ncol=31)
 # extorders=matrix(nrow=0,ncol=5)
 # colnames(extorders)=c("S","C","Network","Extinction_correlation","Mean_order")
 # allroles=matrix(nrow=0,ncol=30)
+allTLs=matrix(nrow=0,ncol=3)
 for(S in seq(50,100,10)){
 	print(S)
 	for(C in seq(0.02,0.2,0.02)){
@@ -32,8 +30,10 @@ for(S in seq(50,100,10)){
 			extdat=cbind(rep(S,S),rep(C,S),rep(i,S),rep(extcorr,S),mean_ext)
 			colnames(extdat)=c("S","C","Network","Extinction_correlation","Mean_order")
 			exttime=rbind(exttime,extdat)
+			allTLs=rbind(allTLs,cbind(rep(S,nrow(data)),rep(C,nrow(data)),data$STL))
 		}
 		alldata=cbind(exttime,allroles)
+		fulldata=rbind(fulldata,alldata)
 		r=1
 		for(i in 1:(nrow(alldata)/100)){
 			rmax=r+99
@@ -45,6 +45,7 @@ for(S in seq(50,100,10)){
 }}
 
 bins=as.data.frame(bins)
+fulldata=as.data.frame(fulldata)
 
 # extorders=as.data.frame(cbind(extorders,allroles))
 # extorders$rando=paste0(as.character(extorders$S),as.character(extorders$C),as.character(extorders$Network))
@@ -92,22 +93,28 @@ bins=as.data.frame(bins)
 # write.table(summary(D7)$coef,file='tables/D7_lmer_table.tsv',sep='\t')
 
 
-biglm=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD4)+scale(zD5)+scale(zD6)+scale(zD7)+scale(S)+scale(C),data=bins,na.action='na.fail')
-lm2=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD5)+scale(zD6)+scale(zD7)+scale(S)+scale(C),data=bins)
-lm3=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD2)+scale(zD3)+scale(zD5)+scale(zD6)+scale(zD7)+scale(S)+scale(C),data=bins)
-lm4=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zD2)+scale(zD3)+scale(zD5)+scale(zD6)+scale(zD7)+scale(S)+scale(C),data=bins)
-lm5=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zD2)+scale(zD3)+scale(zD5)+scale(zD6)+scale(zD7)+scale(S)+scale(C),data=bins)
-lm6=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zD2)+scale(zD3)+scale(zD5)+scale(zD6)+scale(S)+scale(C),data=bins)
-lm7=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zD2)+scale(zD3)+scale(zD6)+scale(S)+scale(C),data=bins)
-lm8=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zD2)+scale(zD3)+scale(S)+scale(C),data=bins)
-lm9=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zD2)+scale(S)+scale(C),data=bins)
-lm10=lm(Mean_order~scale(zS1)+scale(zS3)+scale(zD2)+scale(S)+scale(C),data=bins)
-lm11=lm(Mean_order~scale(zS1)+scale(zS3)+scale(S)+scale(C),data=bins)
-lm12=lm(Mean_order~scale(zS1)+scale(S)+scale(C),data=bins)
-# S3 was significant up to lm10, but now it's not.
-# Weird.
-# Also not significant in the average model though, so I guess it's right.
+biglm=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD4)+scale(zD5)+scale(zD6)+scale(zD7)+scale(zD8)+scale(S)+scale(C),data=fulldata,na.action='na.fail')
+# zD7 not significant
+lm2=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD4)+scale(zD5)+scale(zD6)+scale(zD8)+scale(S)+scale(C),data=fulldata,na.action='na.fail')
 
-avmod=model.avg(dredge(biglm),subset=delta<2)
-# S1 is the only significant one after S and C.
+steps=dredge(biglm)
+#biglm is the best model
+Sscale=attributes(scale(fulldata$S))$'scaled:scale'
+Cscale=attributes(scale(fulldata$C))$'scaled:scale'
+S1scale=attributes(scale(fulldata$zS1))$'scaled:scale'
+S2scale=attributes(scale(fulldata$zS2))$'scaled:scale'
+S3scale=attributes(scale(fulldata$zS3))$'scaled:scale'
+S4scale=attributes(scale(fulldata$zS4))$'scaled:scale'
+S5scale=attributes(scale(fulldata$zS5))$'scaled:scale'
+D1scale=attributes(scale(fulldata$zD1))$'scaled:scale'
+D2scale=attributes(scale(fulldata$zD2))$'scaled:scale'
+D3scale=attributes(scale(fulldata$zD3))$'scaled:scale'
+D4scale=attributes(scale(fulldata$zD4))$'scaled:scale'
+D5scale=attributes(scale(fulldata$zD5))$'scaled:scale'
+D6scale=attributes(scale(fulldata$zD6))$'scaled:scale'
+D7scale=attributes(scale(fulldata$zD7))$'scaled:scale'
+D8scale=attributes(scale(fulldata$zD8))$'scaled:scale'
+
+
+
 
