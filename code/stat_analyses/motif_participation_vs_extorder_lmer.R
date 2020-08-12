@@ -115,6 +115,8 @@ D6scale=attributes(scale(fulldata$zD6))$'scaled:scale'
 D7scale=attributes(scale(fulldata$zD7))$'scaled:scale'
 D8scale=attributes(scale(fulldata$zD8))$'scaled:scale'
 
-
-
+scales=c(Sscale,Cscale,S1scale,S2scale,S3scale,S4scale,S5scale,D1scale,D2scale,D3scale,D4scale,D5scale,D6scale,D7scale,D8scale)
+names(scales)=c("S","C","zS1","zS2","zS3","zS4","zS5","zD1","zD2","zD3","zD4","zD5","zD6","zD7","zD8")
+write.table(summary(lm2)$coefficients,'../figure_creation/motif_lm_summary.tsv',sep='\t')
+write.table(scales,'../figure_creation/motif_lm_scales.tsv',sep='\t')
 

@@ -71,9 +71,9 @@ write.table(summary(allPCs)$coef,file=paste0('tables/PC_lmer_table.tsv'),sep='\t
 
 scaleS=scale(all_extorders$S)
 scaleC=scale(all_extorders$C)
-scalePC1=scale(allPCs$PC1)
-scalePC2=scale(allPCs$PC2)
-scalePC3=scale(allPCs$PC3)
+scalePC1=scale(all_positions$PC1)
+scalePC2=scale(all_positions$PC2)
+scalePC3=scale(all_positions$PC3)
 
 scaletab=rbind(c("S",attributes(scaleS)$'scaled:center',attributes(scaleS)$'scaled:scale'),
 	c("C",attributes(scaleC)$'scaled:center',attributes(scaleC)$'scaled:scale'),
