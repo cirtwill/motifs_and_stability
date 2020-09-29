@@ -103,6 +103,7 @@ def write_matched_file(motifdict,extdict,outfile,s):
 
   f.close()
 
+# It would actually be much more useful to have counts, then Z-scores.
 def write_extorder_participation_file(particdict,degdict,TLdict,extdict,outfile,s):
   motifs=['S5', 'S1', 'D3', 'S4', 'S2', 'D1', 'D4', 'D8', 'S3', 'D5', 'D2', 'D7', 'D6']
   f=open(outfile,'w')
@@ -111,7 +112,9 @@ def write_extorder_participation_file(particdict,degdict,TLdict,extdict,outfile,
     f.write('\tRemoval_'+str(i))
   f.write('\tSTL\tDegree')
   for motif in sorted(motifs):
-    f.write('\tc'+motif+'\tz'+motif)
+    f.write('\tc'+motif)
+  for motif in sorted(motifs):
+    f.write('\tz'+motif)    
   f.write('\n')
   for species in sorted(particdict):
     f.write('sp'+str(species))
@@ -121,7 +124,10 @@ def write_extorder_participation_file(particdict,degdict,TLdict,extdict,outfile,
     f.write('\t'+str(TLdict[species])+'\t'+str(degdict['sp'+species]))
     for motif in sorted(motifs):
       (count,z)=particdict[species][motif]
-      f.write('\t'+str(count)+'\t'+str(z))
+      f.write('\t'+str(count))
+    for motif in sorted(motifs):
+      (count,z)=particdict[species][motif]
+      f.write('\t'+str(z))
     f.write('\n')
   f.close()
 

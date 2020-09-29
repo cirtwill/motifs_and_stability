@@ -46,77 +46,11 @@ for(S in seq(50,100,10)){
 
 bins=as.data.frame(bins)
 fulldata=as.data.frame(fulldata)
+fulldata$rando=paste0(fulldata$S,':',fulldata$C,':',fulldata$Network)
+fulldata$rando=as.factor(fulldata$rando)
 
-# extorders=as.data.frame(cbind(extorders,allroles))
-# extorders$rando=paste0(as.character(extorders$S),as.character(extorders$C),as.character(extorders$Network))
-# # Most interested in motifs S1, S2, S4, S5
-
-# # Still not sure about how the random effects should work
-
-# # Stable motifs
-# S1=lmer(Mean_order~zS1+(1|rando),data=extorders,family='poisson')
-# S2=lmer(Mean_order~zS2+(1|rando),data=extorders,family='poisson')
-# S4=lmer(Mean_order~zS4+(1|rando),data=extorders,family='poisson')
-# S5=lmer(Mean_order~zS5+(1|rando),data=extorders,family='poisson')
-
-# # Unstable motifs
-# S3=lmer(Mean_order~zS3+(1|rando),data=extorders,family='poisson')
-# # Effect of loop should depend on web conditions
-# D1=lmer(Mean_order~zD1+(1|rando),data=extorders,
-# 	control=lmerControl(optimizer="bobyqa"),family='poisson')
-# # Failure to converge.
-
-# D2=lmer(Mean_order~zD2+(1|rando),data=extorders,family='poisson')
-# D3=lmer(Mean_order~zD3+(1|rando),data=extorders,family='poisson')
-# D4=lmer(Mean_order~zD4+(1|rando),data=extorders,family='poisson')
-# D5=lmer(Mean_order~zD5+(1|rando),data=extorders,family='poisson')
-# D6=lmer(Mean_order~zD6+(1|rando),data=extorders,family='poisson')
-# D7=lmer(Mean_order~zD7+(1|rando),data=extorders,family='poisson')
-# # Effects of all two-ways should depend on web conditions
-# # Maybe I should add random effects somehow? Or plot the actual data?
-
-# deg=lmer(Mean_order~Degree+(1|rando),data=extorders,family='poisson')
-# TL=lmer(Mean_order~STL+(1|rando),data=extorders,family='poisson')
-# # TL there's still quite a few infinite trophic levels kicking around.  
-
-# write.table(summary(S1)$coef,file='tables/S1_lmer_table.tsv',sep='\t')
-# write.table(summary(S2)$coef,file='tables/S2_lmer_table.tsv',sep='\t')
-# write.table(summary(S4)$coef,file='tables/S4_lmer_table.tsv',sep='\t')
-# write.table(summary(S5)$coef,file='tables/S5_lmer_table.tsv',sep='\t')
-# write.table(summary(S3)$coef,file='tables/S3_lmer_table.tsv',sep='\t')
-# write.table(summary(D1)$coef,file='tables/D1_lmer_table.tsv',sep='\t')
-# write.table(summary(D2)$coef,file='tables/D2_lmer_table.tsv',sep='\t')
-# write.table(summary(D3)$coef,file='tables/D3_lmer_table.tsv',sep='\t')
-# write.table(summary(D4)$coef,file='tables/D4_lmer_table.tsv',sep='\t')
-# write.table(summary(D5)$coef,file='tables/D5_lmer_table.tsv',sep='\t')
-# write.table(summary(D6)$coef,file='tables/D6_lmer_table.tsv',sep='\t')
-# write.table(summary(D7)$coef,file='tables/D7_lmer_table.tsv',sep='\t')
-
-
-biglm=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD4)+scale(zD5)+scale(zD6)+scale(zD7)+scale(zD8)+scale(S)+scale(C),data=fulldata,na.action='na.fail')
-# zD7 not significant
-lm2=lm(Mean_order~scale(zS1)+scale(zS2)+scale(zS3)+scale(zS4)+scale(zS5)+scale(zD1)+scale(zD2)+scale(zD3)+scale(zD4)+scale(zD5)+scale(zD6)+scale(zD8)+scale(S)+scale(C),data=fulldata,na.action='na.fail')
-
-steps=dredge(biglm)
-#biglm is the best model
-Sscale=attributes(scale(fulldata$S))$'scaled:scale'
-Cscale=attributes(scale(fulldata$C))$'scaled:scale'
-S1scale=attributes(scale(fulldata$zS1))$'scaled:scale'
-S2scale=attributes(scale(fulldata$zS2))$'scaled:scale'
-S3scale=attributes(scale(fulldata$zS3))$'scaled:scale'
-S4scale=attributes(scale(fulldata$zS4))$'scaled:scale'
-S5scale=attributes(scale(fulldata$zS5))$'scaled:scale'
-D1scale=attributes(scale(fulldata$zD1))$'scaled:scale'
-D2scale=attributes(scale(fulldata$zD2))$'scaled:scale'
-D3scale=attributes(scale(fulldata$zD3))$'scaled:scale'
-D4scale=attributes(scale(fulldata$zD4))$'scaled:scale'
-D5scale=attributes(scale(fulldata$zD5))$'scaled:scale'
-D6scale=attributes(scale(fulldata$zD6))$'scaled:scale'
-D7scale=attributes(scale(fulldata$zD7))$'scaled:scale'
-D8scale=attributes(scale(fulldata$zD8))$'scaled:scale'
-
-scales=c(Sscale,Cscale,S1scale,S2scale,S3scale,S4scale,S5scale,D1scale,D2scale,D3scale,D4scale,D5scale,D6scale,D7scale,D8scale)
-names(scales)=c("S","C","zS1","zS2","zS3","zS4","zS5","zD1","zD2","zD3","zD4","zD5","zD6","zD7","zD8")
-write.table(summary(lm2)$coefficients,'../figure_creation/motif_lm_summary.tsv',sep='\t')
-write.table(scales,'../figure_creation/motif_lm_scales.tsv',sep='\t')
-
+fullmod=lmer(Mean_order~cS1+cS2+cS3+cS4+cS5+cD1+cD2+cD3+cD4+cD5+cD6+cD7+cD8+(1|rando),data=fulldata,na.action=na.fail)
+write.table(fullmod$coefficients, file='../../data/summaries/full_lm_coefficients.tsv',sep='\t')
+fulldredge=dredge(fullmod)
+redmod=
+write.table(redmod$coefficients,file='../../data/summaries/reduced_lm_coefficients.tsv',sep='\t')
