@@ -14,15 +14,26 @@ Simulation project testing for links between species roles and their extinction 
 5) extract extinction orders from removals using code/extinction_orders_and_biomasses.R
  *This produces the extinction order and biomass files that are on Git*
 6) compile extinction orders and initial roles into one file per network (all removals) with code/roles_to_extorder.py: gives the roles/matched_to_extorder/ files. Also compiles motif participation (counts and normalised), degrees, and TL's (shortest TL). 
+
+
+- Fit partial least squares regressions of degree-normalized and network-normalized motifs (plus S, C, S:C, degree, STL) against persistence using code/stat_analysis/partial_least_squares_regression.R
+- plot coefficients from above across all optimum axes using code/figure_generation/PLS_coefficients.py (produces manuscript/figures/PLS/total_coefficients.eps)
+
+
 7) test roles! Test mean extinction order vs. role with code/stat_analyses/roles_vs_extorder_removal.R *slow* [[done]]
 8) When all permutations are finished, collect results using code/stat_analyses/roles_vs_extorder_collector.py. *This produces the permanova files that are on Git* [[done]]
 9) Display permanova results using code/figure_creation/roles_vs_extorder_permanova_summary.py and make table with code/figure_creation/create_tables_automatically.py [[done]]
 
 
-10) Get PCA axes of roles using code/stat_analyses/role_PCAs_forplots.R Plot using code/figure_creation/mean_loadings_PCAaxes.tsv [[done R, python doesn't exist]]
-11) Test whether PCA positions are consistent across webs with code/stat_analyses/testing_role_consistency.R [[done]]
+- Test motifs (counts and proportions) vs. degree and STL using code/stat_analysis/motifs_vs_degree.R
+- plot these using code/figure_generation/motif_correlations.py
+
+[[likely unnecessary - 10) Get PCA axes of roles using code/stat_analyses/role_PCAs_forplots.R Plot using code/figure_creation/mean_loadings_PCAaxes.tsv [[done R, python doesn't exist]]
+11) Test whether PCA positions are consistent across webs with code/stat_analyses/testing_role_consistency.R [[done]]]]
+
 12) Check correlations of extinction orders using code/stat_analyses/mean_correlation_extorder_tests.R Plot using code/figure_creation/extinction_order_correlations.py [[done both]]
-13) Fit lmers for mean time to extinction vs. PCA positions and participation in key (one-way, except loop) motifs using code/stat_analyses/extorder_vs_PCApositions.R and code/stat_analyses/motif_participation_vs_extorder.R [[done both]]
+
+13) Fit lmers for mean time to extinction vs. participation in motifs using [[likely unnecessary code/stat_analyses/extorder_vs_PCApositions.R]] and code/stat_analyses/motif_participation_vs_extorder.R [[done both]]
 
 
 # Haven't necessarily updated all figures yet

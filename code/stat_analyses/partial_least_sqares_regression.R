@@ -88,7 +88,7 @@ TallC_norm=TallC/rowSums(TallC)
 degnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE)
 write.table(as.data.frame(RMSEP(degnorm)$val),sep='\t',file='../../data/PLS_regression/degnorm_errors.tsv')
 ncomp_degnorm=selectNcomp(degnorm,method="onesigma",plot=TRUE)
-degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=4)
+degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=11)
 write.table(as.data.frame(degnorm_opt$coefficients),file='../../data/PLS_regression/degnorm_coefficients.tsv',sep='\t')
 
 newdat2=cbind(Tmets,TallC_norm)
