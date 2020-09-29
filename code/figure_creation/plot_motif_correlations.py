@@ -66,11 +66,11 @@ def format_linegraph(graph,form):
     graph.yaxis.label.configure(text='Count of motif',char_size=1,just=2)
     graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
   else:
-    graph.world.ymin=0
+    graph.world.ymin=-.1
     graph.world.ymax=1
     graph.yaxis.tick.major=.2
 
-    graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+    graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
     graph.yaxis.label.configure(text='Proportion of role',char_size=1,just=2)
     graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
