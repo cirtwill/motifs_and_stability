@@ -52,5 +52,6 @@ fulldata$rando=as.factor(fulldata$rando)
 fullmod=lmer(Mean_order~cS1+cS2+cS3+cS4+cS5+cD1+cD2+cD3+cD4+cD5+cD6+cD7+cD8+(1|rando),data=fulldata,na.action=na.fail)
 write.table(fullmod$coefficients, file='../../data/summaries/full_lm_coefficients.tsv',sep='\t')
 fulldredge=dredge(fullmod)
-redmod=
-write.table(redmod$coefficients,file='../../data/summaries/reduced_lm_coefficients.tsv',sep='\t')
+# Best model was the full one.
+# redmod=
+# write.table(redmod$coefficients,file='../../data/summaries/reduced_lm_coefficients.tsv',sep='\t')
