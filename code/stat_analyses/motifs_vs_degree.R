@@ -26,7 +26,7 @@ for(S in seq(50,100,10)){
 
 fulldata=as.data.frame(fulldata)
 
-results=matrix(nrow=13,ncol=5)
+results=matrix(nrow=13,ncol=7)
 for(i in 1:13){
 	motif=colnames(fulldata)[i+7]
 	raw_lm=lm(fulldata[,i+7]~0+fulldata$STL)
@@ -34,13 +34,13 @@ for(i in 1:13){
 	prop=fulldata[,i+7]/rowSums(fulldata[,8:20])
 	prop_lm=lm(prop~0+fulldata$STL)
 	propco=summary(prop_lm)$coefficients
-	results[i,]=c(motif,rawco[1,1],rawco[1,4],propco[1,1],propco[1,4])
+	results[i,]=c(motif,rawco[1,1],rawco[1,2],rawco[1,4],propco[1,1],propco[1,2],propco[1,4])
 }
-colnames(results)=c('Motif','Raw_beta','Raw_p','Prop_beta','Prop_p')
+colnames(results)=c('Motif','Raw_beta','Raw_var','Raw_p','Prop_beta','Prop_var','Prop_p')
 write.table(results,file='../../data/summaries/motifs_vs_STL.tsv',sep='\t')
 
 
-results=matrix(nrow=13,ncol=5)
+results=matrix(nrow=13,ncol=7)
 for(i in 1:13){
 	motif=colnames(fulldata)[i+7]
 	raw_lm=lm(fulldata[,i+7]~0+fulldata$Degree)
@@ -48,8 +48,8 @@ for(i in 1:13){
 	prop=fulldata[,i+7]/rowSums(fulldata[,8:20])
 	prop_lm=lm(prop~0+fulldata$Degree)
 	propco=summary(prop_lm)$coefficients
-	results[i,]=c(motif,rawco[1,1],rawco[1,4],propco[1,1],propco[1,4])
+	results[i,]=c(motif,rawco[1,1],rawco[1,2],rawco[1,4],propco[1,1],propco[1,2],propco[1,4])
 }
-colnames(results)=c('Motif','Raw_beta','Raw_p','Prop_beta','Prop_p')
+colnames(results)=c('Motif','Raw_beta','Raw_var','Raw_p','Prop_beta','Prop_var','Prop_p')
 write.table(results,file='../../data/summaries/motifs_vs_degree.tsv',sep='\t')
 
