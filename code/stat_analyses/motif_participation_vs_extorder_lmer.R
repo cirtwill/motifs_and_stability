@@ -1,5 +1,6 @@
 library(lmerTest)
 library(MuMIn)
+library(GMCM) # colSds is oddly not in standard R
 
 
 # Subset species like with PCA axes. Then fit one big model, simplify.
@@ -57,3 +58,11 @@ write.table(fullmod$coefficients, file='../../data/summaries/full_lm_coefficient
 # write.table(redmod$coefficients,file='../../data/summaries/reduced_lm_coefficients.tsv',sep='\t')
 
 counts=with(fulldata,cbind(cS1,cS2,cS3,cS4,cS5,cD1,cD2,cD3,cD4,cD5,cD6,cD7,cD8))
+
+means=colMeans(counts)
+sds=GMCM:::colSds(counts)
+maxes=apply(counts,2,max)
+mins=apply(counts,2,min)
+
+dists=cbind(means,sds,mins,maxes)
+write.table(dists,file='../../data/summaries/motif_ranges.tsv',sep='\t')
