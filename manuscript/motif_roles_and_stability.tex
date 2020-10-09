@@ -74,7 +74,7 @@ alyssa.cirtwill@gmail.com\\
     
     \begin{figure}[hb!]
         \centering
-        \includegraphics[width=.75\textwidth]{figures/motifs.eps}
+        \includegraphics[height=.5\textheight]{figures/motifs.eps}
         \caption{There are 13 unique three-species motifs. Five (S1-S5) contain only one-way links, while the remainder (D1-D7) contain at least one two-way link. Motifs S1, S2, S4, and S5 are over-represented in empirical food webs and more stable when modelled in isolation.}
         \label{motifs}
     \end{figure}
@@ -216,8 +216,10 @@ alyssa.cirtwill@gmail.com\\
 		\begin{figure}[hb!]
 			\caption{\textbf{A)} In general, time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interation between them, as well as a random effect of network. Symbol and line colours indicate connectance. \textbf{B)} Mean time to extinction across all species within a network was slightly longer in small and less-connected networks. As in \textbf{A)}, line colours indicate connectance. \textbf{C)} Mean time to extinction was more strongly associated with connectance than species richness, with more-connected networks having shorter mean times to extinction. Line colours indicate species richness.}
 			\label{extorder_corrs}
-			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
+			\includegraphics[height=.6\textheight]{figures/extinction_order/extorder_correlations.eps}
 			\end{figure}
+
+	\clearpage
 
     \subsection*{Relating overall motif roles to mean time to extinction}
     
@@ -231,28 +233,6 @@ alyssa.cirtwill@gmail.com\\
 				\label{permfig}
 				\includegraphics[height=.5\textheight]{figures/extinction_order/permanova_summary_paper_full.eps}
 				\end{figure}
-
-
-        As a first step to identifying which motifs might be most important in predicting species' ability to persist after a species removal, we fit a linear model including counts of all motifs and a random intercept for network.
-		In this full model, all motifs were significant (Table~\ref{motif_lm}).
-		The four stable motifs had very small coefficients within the model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
-		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
-		Note, however, that this motif is quite rare. 
-		When the observed numbers of each motif in the role of a species were taken into account, motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
-		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
-		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
-		The other two-way motifs had strong negative associations with mean time to extinction.
-		
-
-		\begin{figure}[hb!]
-			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
-			\label{motif_coefs}
-			\includegraphics[height=.5\textheight]{figures/extinction_order/motif_lmer_summary.eps}
-			\end{figure}
-
-
-		After performing model selection based on AICc scores, the best-fitting model was the full model including all 13 three-species motifs.
-		This suggests that despite the lack of background knowledge about the two-way motifs, all motifs do contribute information about a species' ability to persist after a perturbation. [[Too discussion-y?]]
 
 
 		\begin{table}
@@ -278,6 +258,32 @@ alyssa.cirtwill@gmail.com\\
 			\end{tabular}
 			\end{table}
 
+
+        As a first step to identifying which motifs might be most important in predicting species' ability to persist after a species removal, we fit a linear model including counts of all motifs and a random intercept for network.
+		In this full model, all motifs were significant (Table~\ref{motif_lm}).
+		The four stable motifs had very small coefficients within the model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
+		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
+		Note, however, that this motif is quite rare. 
+		When the observed numbers of each motif in the role of a species were taken into account, motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
+		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
+		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
+		The other two-way motifs had strong negative associations with mean time to extinction.
+		
+
+		\begin{figure}[hb!]
+			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
+			\label{motif_coefs}
+			\includegraphics[height=.7\textheight]{figures/extinction_order/motif_lmer_summary.eps}
+			\end{figure}
+
+
+
+		After performing model selection based on AICc scores, the best-fitting model was the full model including all 13 three-species motifs.
+		This suggests that despite the lack of background knowledge about the two-way motifs, all motifs do contribute information about a species' ability to persist after a perturbation. 
+
+
+
+		\clearpage
         
 
 	\subsection*{Identifying the motifs most strongly related to mean time to extinction}
@@ -299,9 +305,10 @@ alyssa.cirtwill@gmail.com\\
 		\begin{figure}[hb!]
 			\caption{Sum of loadings of normalized motif roles, degree, shortest trophic level (STL), web size (S), connectance (C), and their interaction (S:C) in the optimum number of axes in partial least squares regressions of mean time to extinction against all of the above predictors. We fit separate models for degree normalization (i.e., dividing counts of each motif by the total number of all motifs for the focal species) and network normalization (i.e., calculating $Z$-scores for each motif compared to all species in the network). Stable motifs are shaded in light blue.}
 			\label{coefficient_sum}
-			\includegraphics[height=0.5\textheight]{figures/PLS/total_coefficients.eps}
+			\includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
 			\end{figure}
 
+	\clearpage
 
 	\subsection*{Relating motif roles to degree}
 
@@ -317,6 +324,7 @@ alyssa.cirtwill@gmail.com\\
 			\includegraphics[width=.75\textwidth]{figures/roles/motif_vs_degree.eps}
 			\end{figure}
 
+	\clearpage
 
 \section{Discussion}
 
@@ -390,12 +398,7 @@ alyssa.cirtwill@gmail.com\\
 
 	We thank Eva Delmas and Chris Rackauckas for their kind assistance with troubleshooting the simulation model. 
 
-
-\section{References}
-
-    \bibliographystyle{ecollett} 
-    \bibliography{MyCollection} % Abbreviate journal titles.
-
+\clearpage
 
 \section{Tables}
 
@@ -442,7 +445,7 @@ alyssa.cirtwill@gmail.com\\
 
 	% \begin{landscape}
 
-\section{Figures}
+% \section{Figures}
 
 	% \begin{figure}[h!]
 	% 	\caption{\textbf{A-C)}Here we show the mean loadings of the 30 unique motif positions on the 3 first PCA axes. Positions which have loadings \textgreater0.0999 in at least one axis are labelled and coloured. Positions 1-2 make up the apparent competition motif, positions 3-5 make up the three-species chain, positions 9-10 make up the direct competition motif, and positions 11-13 make up the omnivory motif. 
@@ -467,6 +470,14 @@ alyssa.cirtwill@gmail.com\\
 	% 	\label{lmerfig}
 	% 	\includegraphics[height=.75\textheight]{figures/extinction_order/dissimilarity_fits_summary_paper_full.eps}
 	% 	\end{figure}
+
+\clearpage
+
+
+\section{References}
+
+    \bibliographystyle{ecollett} 
+    \bibliography{MyCollection} % Abbreviate journal titles.
 
 
 
