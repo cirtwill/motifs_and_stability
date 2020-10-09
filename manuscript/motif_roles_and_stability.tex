@@ -72,7 +72,7 @@ alyssa.cirtwill@gmail.com\\
 	Empirical food webs tend to be composed of non-random sets of three-species motifs~\citep{Stouffer2007}, and these non-random motif frequencies have been proposed to be related to the stability and persistence of the food web. Empirical networks tend to contain more three-species chains and either more omivory motifs (Fig.~\ref{motifs}) or more apparent and direct competition motifs than random networks~\citep{Stouffer2007}. A follow-up study showed that these four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
 
     
-    \begin{figure}[h!]
+    \begin{figure}[hb!]
         \centering
         \includegraphics[width=.75\textwidth]{figures/motifs.eps}
         \caption{There are 13 unique three-species motifs. Five (S1-S5) contain only one-way links, while the remainder (D1-D7) contain at least one two-way link. Motifs S1, S2, S4, and S5 are over-represented in empirical food webs and more stable when modelled in isolation.}
@@ -170,7 +170,7 @@ alyssa.cirtwill@gmail.com\\
 			To answer this question, we used a partial least squares (PLS) regression to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
 			Similar to a principal components analysis (PCA), PLS involves projecting the observed variables (in this case, participation in different motifs) into a new space and identifying latent variables made up of linear combinations of the observed variables.
 			In our case, these latent variables represent combinations of motifs which, together, explain substantial variation in persistence.
-			As well as simply identifying key motifs, We were interested in understanding whether species achieve longer mean times to extinction because their roles contain greater proportions of certain motifs or because they participate in certain motifs more than other species within the same network.
+			As well as simply identifying key motifs, we were interested in understanding whether species achieve longer mean times to extinction because their roles contain greater proportions of certain motifs or because they participate in certain motifs more than other species within the same network.
 			
 			
 			To distinguish between these two possibilities, we fit two separate PLS regressions.
@@ -213,10 +213,10 @@ alyssa.cirtwill@gmail.com\\
 		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
 
 
-		\begin{figure}[h!]
-			\caption{In general, time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interation between them, as well as a random effect of network. Symbol and line colours indicate connectance.}
+		\begin{figure}[hb!]
+			\caption{\textbf{A)} In general, time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interation between them, as well as a random effect of network. Symbol and line colours indicate connectance. \textbf{B)} Mean time to extinction across all species within a network was slightly longer in small and less-connected networks. As in \textbf{A)}, line colours indicate connectance. \textbf{C)} Mean time to extinction was more strongly associated with connectance than species richness, with more-connected networks having shorter mean times to extinction. Line colours indicate species richness.}
 			\label{extorder_corrs}
-			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations_paper_full.eps}
+			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
 			\end{figure}
 
     \subsection*{Relating overall motif roles to mean time to extinction}
@@ -226,7 +226,7 @@ alyssa.cirtwill@gmail.com\\
 
 
 
-			\begin{figure}[h!]
+			\begin{figure}[hb!]
 				\caption{Here we show (\textbf{A}) the psuedo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' roles to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values.}
 				\label{permfig}
 				\includegraphics[height=.5\textheight]{figures/extinction_order/permanova_summary_paper_full.eps}
@@ -235,16 +235,16 @@ alyssa.cirtwill@gmail.com\\
 
         As a first step to identifying which motifs might be most important in predicting species' ability to persist after a species removal, we fit a linear model including counts of all motifs and a random intercept for network.
 		In this full model, all motifs were significant (Table~\ref{motif_lm}).
-		The four stable motifs had very coefficients within the model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
+		The four stable motifs had very small coefficients within the model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
 		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
 		Note, however, that this motif is quite rare. 
 		When the observed numbers of each motif in the role of a species were taken into account, motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
 		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
-		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effecs had similar magnitudes to those of the four stable motifs.
+		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
 		The other two-way motifs had strong negative associations with mean time to extinction.
 		
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
 			\label{motif_coefs}
 			\includegraphics[height=.5\textheight]{figures/extinction_order/motif_lmer_summary.eps}
@@ -282,7 +282,8 @@ alyssa.cirtwill@gmail.com\\
 
 	\subsection*{Identifying the motifs most strongly related to mean time to extinction}
 
-        After testing whether species' motif roles overall were related to mean times to extinction, we tried to a) identify the motifs which were most strongly associated with persistence. 
+        After testing whether species' motif roles overall were related to mean times to extinction, we tried to identify the motifs which were most strongly associated with persistence. 
+        To determine whether the key motifs differ when considering the shape of a species' role (i.e., degree normalization) or how a focal species compares to other in the same network (i.e., network normalization), we used partial least squares regressions with two different normalizations of species roles.
 		When normalizing motif roles based on degree, the optimum model included 11 components.
 		The first component explained 22.1\% of variation in mean time to extinction, with the remaining ten components explaining an additional 1\% or less.
 		Taking the 11 components together, the proportion of a species' role made up by motifs D2 and S2 (Fig.~\ref{motifs}), trophic level, and the proportion of a species' role made up by motifs D4 and D1 all had large negative effects on mean time to extinction (i.e. species in these roles or with higher trophic levels went extinct faster) (Fig.~\ref{coefficient_sum}A).
@@ -295,13 +296,11 @@ alyssa.cirtwill@gmail.com\\
 		Connectance and over-representation of motif D4 had smaller negative effects on mean time to extinction, while over-representation of motifs S1, S4, S5, and D1 had smaller positive effects on mean time to extinction.
 
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{Sum of loadings of normalized motif roles, degree, shortest trophic level (STL), web size (S), connectance (C), and their interaction (S:C) in the optimum number of axes in partial least squares regressions of mean time to extinction against all of the above predictors. We fit separate models for degree normalization (i.e., dividing counts of each motif by the total number of all motifs for the focal species) and network normalization (i.e., calculating $Z$-scores for each motif compared to all species in the network). Stable motifs are shaded in light blue.}
 			\label{coefficient_sum}
 			\includegraphics[height=0.5\textheight]{figures/PLS/total_coefficients.eps}
 			\end{figure}
-
-
 
 
 	\subsection*{Relating motif roles to degree}
@@ -312,25 +311,24 @@ alyssa.cirtwill@gmail.com\\
 		The one-way loop motif and two-way motifs showed weak, although still significant, relationships with degree.
 
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{As a species has more interaction partners, it participates in more motifs. \textbf{A)} The counts of the four stable motifs (S1, S2, S4, and S5) in a species' role increased most strongly with increasing degree. \textbf{B)} The proportion of a species' role made up by the four stable motifs also increased strongly with degree. In both panels, motifs are plotted in order of the strength of their relationship with degree and all relationships were significant. 95\% confidence intervals about the regression lines are too small to be visible in the current plot.}
 			\label{motif_vs_degree}
 			\includegraphics[width=.75\textwidth]{figures/roles/motif_vs_degree.eps}
 			\end{figure}
 
 
-
 \section{Discussion}
 
-	[[ordering of results? Does the PLS make more sense before or after the non-normalized regression?]]
 	[[Subheadings just to facilitate ordering, will be removed before publication]]
 
 
 	\subsection*{Overall summary paragraph}
 
-		Time to extinction was quite consistent across removals, suggesting that the properties of species that are not subject to a perturbation are important predictors of stability, as well as the properties of the removed species~\citep{KateThesis}.
-		We found that species' motif roles are related to mean time to extinction, with greater participation in the four stable motifs being associated with longer time to extinction.
-		The set of motifs that was most strongly associated with mean time to extinction varied depending on the normalization used, suggesting that both participating in more/less of a given motif than other species in the focal network and the extent to which a focal species' role is dominated by different motifs affect the species' persistence.
+		Time to extinction was quite consistent across removals. 
+		We found that these mean times to extinction were related to species' motif roles.
+		While participation in stable motifs was generally associated with longer mean times to extinction, the set of motifs that was most strongly associated with mean time to extinction varied depending on the normalization used.
+		This suggests that both participating in more/less of a given motif than other species in the focal network and the extent to which a focal species' role is dominated by different motifs affect the species' persistence.
 		Interpreting the relationships between species roles and persistence is complicated by the relationship between degree and motif participation.
 		The count of stable motifs in a species' role tended to increase rapidly with increasing number of interaction partners, indicating that degree may capture similar information about extinction risk as more complex measures of species roles.
 
@@ -338,51 +336,54 @@ alyssa.cirtwill@gmail.com\\
 
  	\subsection*{High consistency of times to extinction}
 
-		Species' times to extinction were tightly correlated across removals. This suggests that species' positions within a network influence their extinction risk, regardless of the identity of the removed species.  [[Discuss in relation to Kate's thesis, where removed species did matter]] The stronger correlation of extinction orders in larger, more-connected networks may be due to the greater number of pathways by which an extinction somewhere in the web can affect a focal species. As species richness increases, the length of these paths is also likely to increase, \emph{unless} connectance also increases~\citep{}. [[high connectance = low stabillity in May, others? Importance of modularity, weak links, propagation of disturbance]]
-
-
-		If these results hold true for empirical systems, then our findings suggest that it is more important \emph{that} extinctions are occurring than \emph{which} extinctions are occurring. Although this conflicts with the keystone species concept, which holds that some species are particularly important to the structure, stability, and/or functioning of their communities, it is consistent with other work identifying sets of characteristically vulnerable species (e.g., specialists, those with long generation times, top predators, etc.)~\citep{}.
+		Species' times to extinction were tightly correlated across removals. 
+		This suggests that species' positions within a network influence their extinction risk, regardless of the identity of the removed species and complements other work identifying sets of species which are more vulnerable to extinction due to their traits~\citep{Curtsdotter2011,Ryser2019}. 
+		Earlier work suggests that network properties (trophic level and degree) of the species being removed are also important in determining the location and rate of resulting secondary extinctions~\citep{Wootton2016a,Dunne2002}.
+		That is, both the properties of disturbed and non-disturbed species appear to affect the risk of secondary extinctions within a food web.
+		The stronger correlation of extinction orders in larger, more-connected networks may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species. 
+		These short pathways are more likely to have strong effects on the population dynamics of species along them than longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006}.
+		Supporting this possibility, we found that mean times to extinction across a network were somewhat shorter in more-connected (especially large and highly-connected) networks.
+		This supports the result in~\citet{Wootton2016a}, who found more secondary extinctions due to indirect effects in large or highly connected webs. 
 
 
 	\subsection*{Roles do relate to extinction risk, but interpretation is difficult}
 
 	    Species' roles are significantly associated with their times to extinction. This result was true regardless of the size and connectance of a food web, as indicated by the PERMANOVAs.
 		Although the PERMANOVA does not indiciate which positions have the most explanatory power, we can infer these relationships based on the regression of time to extinction against the counts of all motifs.
-		All motifs were significantly associated with time to extinction, suggesting that all dimensions of a species' motif role provide information about extinction risk.
-		Participation in all five one-way motifs, as well as motifs D1, D3, and D6 were associated with longer times to extinction. 
+		All motifs were significantly associated with time to extinction, suggesting that all dimensions of a species' motif role provide some information about extinction risk.
+		Participation in all five one-way motifs (S1-S5), as well as motifs D1, D3, and D6 were associated with longer times to extinction. 
 		This set includes the four motifs identified as stable in~\citet{Stouffer2007,Borrelli2015a}, but also three un-stable motifs. 
-		We note, however, that because the four stable motifs are also the most common in empirical networks~\citep{Stouffer2007} and in the roles of our simulated species, participation in these motifs is likely to have a larger effect on species' extinction risk than participation in the un-stable motifs.
-		Participation in these stable motifs also increases most rapidly with increasing degree, suggesting that the stabilising effect of high degree~\citep{} may be partly associated with the stabilising effect of these motifs~\citep{Borrelli2015a}.
+		We note, however, that because the four stable motifs are also the most common in empirical networks~\citep{Stouffer2007} and in the roles of our simulated species (Fig.~\ref{motif_coefs}C), participation in these motifs is likely to have a larger effect on species' extinction risk than participation in the un-stable motifs, which formed only a small portion of most species' motif roles.
+		Participation in these stable motifs also increases most rapidly with increasing degree, suggesting that the stabilising effect of high degree~\citep{Cirtwill2016a}[[there is surely a better ref for this]] may be partly responsible for the stabilising effect of these motifs~\citep{Stouffer2007,Borrelli2015a}.
 		That is, while a species with high degree is likely to maintain a reasonable number of food sources after a perturbation, it may also benefit from damping of population cycles by participating more frequently in the stable motifs.
 
 
-		Of five motifs associated with shorter mean times to extinction (D2, D4, D5, D7, and D8),
-		three included a two-way link between the bottom species (D2, D4, and D6) while the other two included two two-way links between top and intermediate species (D7 and D8; assuming that the top species is the one with the most prey within the motif even if it is also a prey species).
-		The two-way motifs associated with longer times to extinction included two-way links between top species (D1), top and intermediate species (D3), and all species (D6).
+        The five motifs associated with shorter mean times to extinction all included at least one two-way link. 
+        These two-way links could amplify population cycles, increasing extinction risk.
+        However, we note that several of the motifs associated with longer mean times to extinction also include two-way links (or a three-species loop).
 		It is not obvious why some two-way motifs are associated with longer persistence after a perturbation and others are associated with higher extinction risk.
-		As some of these motifs can have similarly-strong relationships to time to extinction as the four well-studied stable motifs, we suggest that more attention should be paid to these motifs in empirical systems.
+		Motifs including two-way interactions have been under-studied compared to the one-way motifs which have clearer ecological meanings~\citep{Bascompte2005,Cirtwill2015}.
+		As some of these two-way motifs can have similarly-strong relationships to time to extinction as the four well-studied stable motifs, we suggest that more attention should be paid to these motifs in empirical systems.
 
 
 	\subsection*{Adding other predictors adds more complications}
 
 		When combining motif roles with one-dimensional role descriptors (degree and trophic level) and network characteristics (size, connectance, and their interaction), the strength of associations between motif roles and time to extinction depended on the normalization used.
-		When normalizing motifs based on the total number of motifs for the focal species (as in~\citet{Stouffer2012,Cirtwill2015}), species where a greater proportion of the role was made up by apparent competition and three-species chain (S5 and S1) motifs and species with higher degrees tended to persist for longer.
+		When normalizing motifs based on the total number of motifs for the focal species (as in~\citet{Stouffer2012,Cirtwill2015}), species where a greater proportion of the role was made up by apparent competition and three-species chain motifs (S5 and S1) and species with higher degrees tended to persist for longer.
 		On the other hand, species where a greater proportion of the role was made up by the omnivory (S2) and apparent competition plus mutual predation among prey (D2) motifs and those with higher trophic levels tended to have shorter mean times to extinction.
-		These contrasting effects of motifs which are stable in isolation~\citep{Borrelli2015a} suggest that using a species' degree-normalised motif role to predict stability is not as simple as adding up the contributions of motifs which are stable in isolation.
-
-
+		These contrasting effects, within a network, of motifs which are stable in isolation~\citep{Borrelli2015a} suggest that using a species' degree-normalised motif role to predict stability is not as simple as adding up the contributions of motifs which are stable in isolation.
 		When we instead normalize species' motif roles as $Z$-scores relative to frequencies across all species in the network (network normalisation), over-representation of all four stable motifs was associated with longer times to extinction, as were over-representation of several unstable motifs.
 		In this framework, motifs in general had weaker relationships to persistence than when degree normalization is used. 
 		This may be because stable motifs are the most common ones, such that most species participate in many stable motifs.
 		Alternatively, this may be due to different scaling between the two relationships (degree-normalized motif frequencies are bounded between 0 and 1 while network-normalized motif frequencies are not bounded).
-		Because of the more straightforward interpretation of this normalization (i.e., over-representation of all four stable motifs is associated with longer times to extinction), this may be a more useful normalization scheme for use in predicting species' risks.
+		Because of the more straightforward interpretation of the network normalization (i.e., over-representation of all four stable motifs is associated with longer times to extinction), this may be a more useful normalization scheme for use in predicting species' risks.
 		This is especially likely while the two-way motifs continue to be poorly understood.
 
 	
 	\subsection*{Conclusion}	
 
 
-		Our aim with this research is not to suggest that motif roles or participation are a superior predictor of extinction risk to degree or trophic levels. Instead, our goal is to expand the interpretation of motif roles. Previous research has shown that species' motif roles reflect their evolutionary history~\citep{} and traits such as foraging habitat and body size~\citep{Cirtwill2018EcolLett}. Our results demonstrate that species' roles are also relevant for their population dynamics after a perturbation. This gives researchers interested in predicting community responses to extinctions an additional tool to work with and expands the relevance of studies of motif roles.
+		Our aim with this research is not to suggest that motif roles or participation are a superior predictor of extinction risk to degree or trophic levels. Instead, our goal is to expand the interpretation of motif roles. Previous research has shown that species' motif roles reflect their evolutionary history~\citep{Stouffer2012} and traits such as foraging habitat and body size~\citep{Cirtwill2018EcolLett}. Our results demonstrate that species' roles are also relevant for their population dynamics after a perturbation. This gives researchers interested in predicting community responses to extinctions an additional tool to work with and expands the relevance of studies of motif roles.
 
 
 \section{Acknowledgements}
@@ -399,7 +400,7 @@ alyssa.cirtwill@gmail.com\\
 \section{Tables}
 
 
-	\begin{table}[h!]
+	\begin{table}[ht!]
 		\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean correlation among extinction orders across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA.}
 		\label{permtable}
 		\begin{tabular}{c c | c | c c ||c c | c | c c |}
