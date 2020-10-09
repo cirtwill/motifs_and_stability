@@ -1,8 +1,8 @@
 library(lme4)
 library(lmerTest)
 
-extorders=matrix(nrow=0,ncol=5)
-colnames(extorders)=c("S","C","Network","Extinction_correlation","Mean_order")
+extorders=matrix(nrow=0,ncol=8)
+colnames(extorders)=c("S","C","Network","Extinction_correlation","Mean_order","Min","Max","Netmean")
 for(S in seq(50,100,10)){
 	# dir.create(paste0('../../data/summaries/extorder_perms/',as.character(S)))
 	print(S)
@@ -21,12 +21,15 @@ for(S in seq(50,100,10)){
 			# Mean extinction order vs. roles, should also store strength of correlation.
 			extcorr=mean(cor(data[,2:(S+1)]))
 			mean_ext=rowSums(data[,2:(S+1)])/S
-			extdat=cbind(rep(S,S),rep(C,S),rep(i,S),rep(extcorr,S),mean_ext)
-			colnames(extdat)=c("S","C","Network","Extinction_correlation","Mean_order")
+			mins=apply(data[,2:(S+1)],1,min)
+			maxes=apply(data[,2:(S+1)],1,max)
+			netmean=sum(data[,2:(S+1)])/S**2
+			extdat=cbind(rep(S,S),rep(C,S),rep(i,S),rep(extcorr,S),mean_ext,mins,maxes,rep(netmean,S))
+			colnames(extdat)=c("S","C","Network","Extinction_correlation","Mean_order","Min","Max","Netmean")
 			extorders=rbind(extorders,extdat)
 		}
 }}
-		extorders=as.data.frame(extorders)
+
 # 
 extorders=as.data.frame(extorders)
 extorders$rando=paste0(as.character(extorders$S),as.character(extorders$C),as.character(extorders$Network))

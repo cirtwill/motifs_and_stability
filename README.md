@@ -28,8 +28,6 @@ Simulation project testing for links between species roles and their extinction 
 - Test motifs (counts and proportions) vs. degree and STL using code/stat_analysis/motifs_vs_degree.R
 - plot these using code/figure_generation/motif_correlations.py
 
-[[likely unnecessary - 10) Get PCA axes of roles using code/stat_analyses/role_PCAs_forplots.R Plot using code/figure_creation/mean_loadings_PCAaxes.tsv [[done R, python doesn't exist]]
-11) Test whether PCA positions are consistent across webs with code/stat_analyses/testing_role_consistency.R [[done]]]]
 
 12) Check correlations of extinction orders using code/stat_analyses/mean_correlation_extorder_tests.R Plot using code/figure_creation/extinction_order_correlations.py [[done both]]
 
@@ -39,13 +37,10 @@ Simulation project testing for links between species roles and their extinction 
 # Haven't necessarily updated all figures yet
 
 
-
-- lm_fits_summary.py doesn't work
-- proportion_stable_lmer_summary.py doesn't work
-- rolesim_vs_extorder_summary.py doesn't work
-- unstable_motif_lmer_summary.py doesn't work
-
-
+# Figures:
+create_tables_automatically.py : makes large table of PERMANOVA results
+display_motifs.py : displays the motifs and descriptions. Fig. 1
+extinction_order_correlations.py : shows similarity of extinction order across groups of nets. Fig. 2
+full_motif_lm.py : shows coefficients and ranges of effects for lm of persistence ~ motifs. Fig. 5
 
 
- 

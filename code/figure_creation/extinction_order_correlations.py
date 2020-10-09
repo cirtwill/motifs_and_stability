@@ -22,8 +22,28 @@ colors=ColorBrewerScheme('RdYlBu',n=253,reverse=True)  # The blue is very beauti
 # colors.add_color(255,125,125,'lightish_red')
 # colors.add_color(200,200,200,'lightgrey')
 
-
+# For correlations
 modeldict={'S':0.001349,'C':-0.05893,'S:C':0.001963,'intercept':0.7858}
+
+# For means
+def read_coeffile(coeffile):
+  dicto={}
+  f=open(coeffile)
+  for line in f:
+    if line.split()[0]!='"Estimate"':
+      pred=line.split()[0]
+      if '$' in pred and len(pred.split('$'))==2:
+        pred=pred.split('$')[1][:-1]
+      elif '$' in pred and len(pred.split('$'))>2:
+        pred='S:C'
+      else:
+        pred='Intercept'
+      coef=float(line.split()[1])
+
+      dicto[pred]=coef
+  f.close()
+
+  return dicto
 
 def read_permfile(infile):
   subdict={}
@@ -52,11 +72,18 @@ def format_graph(graph,yaxis):
     graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
     graph.yaxis.label.configure(text=\
       LatexString(r'R\S2\N time to extinction'),char_size=1,just=2)
+  elif yaxis=='means': 
+    graph.world.ymin=0
+    graph.world.ymax=50
+    graph.yaxis.tick.major=10
+    graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+    graph.yaxis.label.configure(text='Mean time to extinction (steps x10)',char_size=1,just=2)   
+
   else:
     graph.world.ymax=0.06
     graph.yaxis.tick.major=0.01
     graph.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-    graph.yaxis.label.configure(text='p-value',char_size=1,just=2)    
+    graph.yaxis.label.configure(text='p-value',char_size=1,just=2)   
 
   graph.world.xmin=45
   graph.world.xmax=105
@@ -112,48 +139,37 @@ datadir='../../data/summaries/extorder_perms/'
 datadict={}
 for s in ['50','60','70','80','90','100']:
   datadict[s]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
+form='paper'
+level='full'
+grace=MultiPanelGrace(colors=colors)
+grace.add_label_scheme('dummy',['','A','B','C'])
+grace.set_label_scheme('dummy')
+colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
+                           scale=LINEAR_SCALE,autoscale=False)
+colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
+colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
+colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
 
-for form in ['talk','paper']:
-  if form=='talk':
-    levels=['axis','point','full']
-  else:
-    levels=['full']
-  for level in levels:
-    grace=MultiPanelGrace(colors=colors)
-    if form=='paper':
-      grace.add_label_scheme('dummy',['','',''])
-    else:
-      grace.add_label_scheme('dummy',['','A: means over 100 networks','B: linear model predictions'])
-    grace.set_label_scheme('dummy')
-    colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
-                               scale=LINEAR_SCALE,autoscale=False)
-    colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
-    colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
-    colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-    graph=grace.add_graph(Panel)
-    graph=format_graph(graph,'dots')
+# Correlation graph
+graph=grace.add_graph(Panel)
+graph=format_graph(graph,'dots')
 
-    if level in ['point','full']:
-      if form=='paper':
-        graph=fill_predictions(graph,level)
-      graph=populate_graph(graph,level,datadict)
+graph=fill_predictions(graph,level)
+graph=populate_graph(graph,level,datadict)
 
-    if form=='talk':
-      predgraph=grace.add_graph(Panel)
-      predgraph=format_graph(predgraph,'dots')
-      if level in ['point','full']:
-        predgraph=fill_predictions(predgraph,level)
-      # grace.multi(rows=1,cols=2)
-      graph.set_view(0.14,0.6,0.45,0.95)
-      predgraph.set_view(0.47,0.6,0.78,0.95)
-      predgraph.yaxis.label.char_size=0
-      predgraph.yaxis.ticklabel.char_size=0
-      colorbar.set_view(0.8,0.6,0.85,0.95)
-    else:
-      graph.set_view(0.15,0.15,0.75,0.65)
-      colorbar.set_view(0.775,0.15,0.85,0.65)
-    # for graph in grace.graphs:
-    #   print graph.get_view()
+graph.set_view(0.15,0.15,0.75,0.65)
+colorbar.set_view(0.775,0.15,0.85,0.65)
+# for graph in grace.graphs:
+#   print graph.get_view()
+
+lmcoefs=read_coeffile('../stat_analyses/mean_exttime_lm.tsv')
+
+# Mean time to extinction vs. S
+Sgraph=grace.add_graph(Panel)
+Sgraph=format_graph(Sgraph,'means')
 
 
-    grace.write_file('../../manuscript/figures/extinction_order/extorder_correlations_'+form+'_'+level+'.eps')
+# Mean time to extinction vs. C
+
+
+grace.write_file('../../manuscript/figures/extinction_order/extorder_correlations.eps')
