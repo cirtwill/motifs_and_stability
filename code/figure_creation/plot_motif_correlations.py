@@ -20,7 +20,7 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 # Do we also want a plot of extinction order vs. betas?
 
-colors=ColorBrewerScheme('Reds',n=15,reverse=True)  # The blue is very beautiful but maybe harder to see.
+colors=ColorBrewerScheme('RdYlBu',n=15,reverse=True)  # The blue is very beautiful but maybe harder to see.
 colors.add_color(0,12,54,'blue2') 
 colors.add_color(0,50,117,'blue4') 
 colors.add_color(0,245,181,'blue13') 
@@ -82,10 +82,14 @@ def format_linegraph(graph,form):
   return graph
 
 def populate_graph(graph,datadict,form):
+  if form=='raw':
+    order=['S5','S2','S1','S4','D1','D3','D2','D7','D4','D6','D8','S3']
+  else:
+    order=['S5','S1','S2','S4','D3','D1','D2','D7','D4','D6','D8','S3']
 
-  col=2
   sty=1
-  for motif in ['S5','S2','S1','S4','D1','D3','D2','D7','D4','D6','D8','S3']:
+  j=40
+  for motif in order:
     points=[]
     upper=[]
     lower=[]
@@ -93,38 +97,25 @@ def populate_graph(graph,datadict,form):
       points.append((x,x*datadict[motif][form][0]))
       upper.append((x,x*(datadict[motif][form][0]+1.75*datadict[motif][form][1])))
       lower.append((x,x*(datadict[motif][form][0]-1.75*datadict[motif][form][1])))
-
-    uppy=graph.add_dataset(upper)
-    uppy.symbol.shape=0
-    if motif[0]=='S':
-      nucol='blue'+str(col)
+    if form=='raw':
+      graph.add_drawing_object(DrawText,text=motif,x=j,y=(j*datadict[motif][form][0])+25,loctype='world',just=2,char_size=.5)
     else:
-      nucol=col
-    uppy.line.configure(linestyle=sty,linewidth=1,color=nucol)
-    uppy.fill.configure(color=5,type=2)
+      if motif!='S2':
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(j*datadict[motif][form][0])+.02,loctype='world',just=2,char_size=.5)
+      else:
+        graph.add_drawing_object(DrawText,text=motif,x=60,y=(j*datadict[motif][form][0])+.02,loctype='world',just=2,char_size=.5)
 
-    downy=graph.add_dataset(lower)
-    downy.symbol.shape=0
-    if motif[0]=='S':
-      nucol='blue'+str(col)
-    else:
-      nucol=col
-    downy.line.configure(linestyle=sty,linewidth=1,color=nucol)
-    downy.fill.configure(color=0,type=2)
+    j+=5
 
     pointy=graph.add_dataset(points)
     pointy.symbol.shape=0
-    if motif[0]=='S':
-      nucol='blue'+str(col)
+    if motif in ['S1','S2','S4','S5']:
+      nucol=3
     else:
-      nucol=col
-    print motif, nucol
+      nucol=12
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
-    col+=1
-    sty+=1
-    if sty>8:
-      sty=1
-    pointy.legend=motif
+
+    # pointy.legend=motif
 
   # null=graph.add_dataset([(12,0)])
   # null.symbol.configure(shape=9,size=1,fill_color=4)
