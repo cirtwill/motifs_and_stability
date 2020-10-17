@@ -38,9 +38,12 @@ Simulation project testing for links between species roles and their extinction 
 
 
 # Figures:
-create_tables_automatically.py : makes large table of PERMANOVA results
+create_tables_automatically.py : makes large table of PERMANOVA results. 
 display_motifs.py : displays the motifs and descriptions. Fig. 1
 extinction_order_correlations.py : shows similarity of extinction order across groups of nets. Fig. 2
 full_motif_lm.py : shows coefficients and ranges of effects for lm of persistence ~ motifs. Fig. 5
+plot_motif_correlations.py : shows correlations between all motifs and degree. Fig. 6
+PLS_coefficients.py : shows aggregate coefficients of each motif. Fig. 3. Needs uncertainties.
+roles_vs_extorder_permanova_summary : shows all of the PERMANOVA results, F and p-values. Fig. 4
 
 
