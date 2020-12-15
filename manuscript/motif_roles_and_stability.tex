@@ -92,20 +92,12 @@ alyssa.cirtwill@gmail.com\\
     Any test for a relationship between motif roles and time to extinction should therefore take degree and trophic level into account.
 
    \begin{figure}[hb!]
-    [[Lots of comments on how this could be a very large box.]]
         \centering
-        \includegraphics[width=.75\textwidth]{figures/motifs.eps}
-        \caption{\textbf{A}) Food web structure can be described at several different scales. Global scale measures like species richness (S), link richness (L), and connectance (C = L/S$^2$) describe the network as a whole but do not give information on how the extinction risk differs for species within a food web (i.e., species A and B; labelled). Differences between these species are described by meso-scale and finer-scale descriptions. Three-species motifs provide a meso-scale description of species roles based on their direct and close indirect interactions. The role of species A is dominated by three-species chains (left-most motif) while the role of species B includes both many three-species chains and several apparent competition (second from right) and direct competition motifs. Fine-scale descriptions of species roles such as trophic level (height in the food web) and degree (number of interaction partners) [[not sure how much detail is necessary]]
-        
-        Finer-scale descriptors like trophic level (height within the food web) and degree (number of interaction partners) provide species-level information, but describe only a single dimension of network structure. Motif roles are a \emph{meso-scale} description of network structure and include species' direct and close indirect interactions in a detailed multi-dimensional framework. \\
-        \textbf{B}) The small network in \textbf{A} as well as the small network inset in 
-        The small network shown includes only four motifs: the three-species chain, omnivory, apparent competition, and direct competition motifs. These motifs all have clear ecological meanings. The three-species chain  has been important in the study of trophic cascades (e.g., sea otter, sea urchin, kelp). The omnivory motif describes a top predator and intermediate consumer who share a common prey and has been important in many models of food-web stability. The direct  
-        
-        Species A participates mainly in three-species chain motifs, while species B participates in many chain and direct competition motifs. 
-        
-        There are 13 unique three-species motifs. Five (S1-S5) contain only one-way links, while the remainder (D1-D7) contain at least one two-way link. Motifs S1, S2, S4, and S5 are over-represented in empirical food webs and more stable when modelled in isolation. [[Add conceptual fig. highlighting stable motifs, examples of a couple with real taxa]]}
-        [[possibly expand into a box explaining differences between macro-scale, meso-scale, and micro-scale network measures, including degree (since we mention it at the end). Add mini network showing the different stable motifs I use in my talk, perhaps also a demo role vector or two). Explain the arrows go prey->predator, different coloured dots are unique positions... or possibly change all to white since we don't address positions. Possibly also explain that each trio of species is only one motif since there was some confusion about nested motifs. ]]
-        [[Add interpretation of four stable motifs, explain degree as well.]
+        % \includegraphics[width=\textwidth]{figures/motifs_box.eps}
+        \caption{\small \textbf{A}) Food web structure can be described at several different scales. Global scale measures like species richness (S), link richness (L), and connectance (C = L/S$^2$) describe the network as a whole but do not give information on how the extinction risk differs for species within a food web (i.e., species A and B; labelled). Differences between these species can be described by their participation in three-species motifs: \emph{meso-scale} structures that capture direct and close indirect interactions between species. Here, a species' \emph{motif role} is a vector describing the number of times it appears in each motif. Only four motifs are included in the toy network shown, indicated by small diagrams to the right. Finer-scale descriptions of a species' role such as trophic level (TL; height in the food web) and degree (number of interaction partners) also capture differences between species but do not provide as much detail as motif roles.\\
+        \textbf{B}) There are 13 unique three-species motifs. Four of these (highlighted with coloured backgrounds and shown in colour in the inset network) are of particular interest. These four motifs have been identified as more stable than other configurations of interacting species and as likely to stabilize the food web as a whole. Moreover, these motifs have clear ecological meanings and have been studied in isolation as well as in food-web contexts.\\
+        The direct competition motif (orange, top left) includes two predators which share a common prey. The predators are expected to affect each other by modulating the prey's population even if they do not physically encounter each other. Similarly, the apparent competition motif (blue, top middle) includes two prey which share a common predator and are expected to affect each other by modulating the predator's population. 
+        The three-species chain (green, top right) includes a top, intermediate, and bottom species and the top and bottom species are expected to affect each other through effects on the intermediate species' population. The omnivory motif (\emph{sensu} Thompson \emph{et al.}, 2007) motif (red, middle) includes a top, intermediate, and bottom species where both the top and intermediate species consume the bottom species. Note that the bottom species does not necessarily need to be a basal resource. This motif includes both direct and indirect effects between all pairs of species.}
         \label{motifs}
     \end{figure}
 
@@ -164,9 +156,8 @@ alyssa.cirtwill@gmail.com\\
 	\subsection*{Perturbing networks}
 
 		After identifying species' roles in the equilibrium networks, we perturbed the networks by removing a single species. After this removal, community dynamics were simulated for 50 rounds of 10 time-steps (500 time-steps total). After each round, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0. We recorded the biomass of each species after each round, as well as the round in which any additional extinctions occurred. After 500 time-steps, we reset the network to its original state (including all species). We then removed a new species and again simulated community dynamics. We repeated this process until all species had served as the initial removal.
-
-
-		For analyses of species' overall vulnerability, we used mean time to extinction across all removals as a response. To ensure that this is a robust measure, we calculated the Pearson correlation of times to extinction for each species across all extinctions in each network. We then tested whether the strength of these correlations varied with species richness and/or connectance by fitting a general linear model including fixed effects of species richness, connectance, and their interaction, as well as a random effect for network ID. We fit the model using the R~\citep{R} function 'lmer' from the package \emph{lmerTest}~\citep{lmerTest}.
+		We then calculated the mean time to extinction across all removals as an overall measure of each species' vulnerability (\emph{Appendix SQ}, Supplemental Information). 
+		Time to extinction was highly correlated across removals in all combinations of S and C, indicating that this is a robust measure.
 
 
 	\subsection*{Testing effects of species' roles on time to extinction}
@@ -211,10 +202,8 @@ alyssa.cirtwill@gmail.com\\
 			We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
 
 
-		\subsubsection*{Relating motif roles to other role definitions
+		\subsubsection*{Relating motif roles to other role definitions}
 		
-		Relating motif roles to species degree}
-
 			Finally, we wanted to test the possibility that the relationships we observe between motif roles and time to extinction might be due to underlying relationships between species' numbers of interaction partners (degree) and their roles.
 			Species with more interaction partners will participate in more motifs (as each combination of three interacting species represents a unique motif).
 			These species might also participate in a more diverse set of motifs, or might have roles in which certain motifs are over-represented.
@@ -227,22 +216,6 @@ alyssa.cirtwill@gmail.com\\
 
 \section{Results}
 	
-	\subsection*{Consistency of time to extinction across removals}
-
-		In general, time to extinction was highly correlated across removals (Fig.~\ref{extorder_corrs}). %figure_creation/extinction_order_correlations.py
-		The mean Pearson correlation for times to extinction across all removals within a network was 0.903 (range: 0.512-0.973). % stat_analysis/mean_correlation_extorder_tests.R
-		This means that, in general, the species which go extinct fastest after species $i$ is removed also go extinct fastest after species $j$ is removed.
-		The correlation was stronger in larger webs, particularly those with high connectance ($\beta_{S}$=1.33$\times10^-3$, $p$\textless0.001; $\beta_{C}$=-8.08$\times10^-2$, $p$\textless0.001; and $\beta_{S:C}$=2.12$\times10^-3$, $p$\textless0.001, respectively). 
-		Mean time to extinction is, therefore, a good measure of a species' overall vulnerability.
-		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
-
-
-		\begin{figure}[hb!]
-			\caption{\textbf{A)} Time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interaction between them, as well as a random effect of network. Symbol and line colours indicate connectance. \textbf{B)} Mean time to extinction across all species within a network was slightly longer in small and less-connected networks. As in \textbf{A)}, line colours indicate connectance. \textbf{C)} Mean time to extinction was more strongly associated with connectance than species richness, with more-connected networks having shorter mean times to extinction. Line colours indicate species richness.}
-			\label{extorder_corrs}
-			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
-			\end{figure}
-
     \subsection*{Relating overall motif roles to mean time to extinction}
     
 		Species' roles were correlated with their mean time to extinction across all combinations of species richness and connectance (Table~\ref{permtable}). Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant. While values of the pseudo-$F$ statistic increased steadily with increasing species richness, $p$-values were similar across values of species richness and connectance (Fig.~\ref{permfig}). Neither the pseudo-$F$ nor the $p$-values demonstrate an obvious interaction between species richness and connectance.
@@ -260,7 +233,10 @@ alyssa.cirtwill@gmail.com\\
 
 	\subsection*{Identifying the motifs most strongly related to mean time to extinction}
 
-        After testing whether species' motif roles overall were related to mean times to extinction, we tried to identify the motifs which were most strongly associated with persistence. 
+        After testing whether species' motif roles overall were related to mean times to extinction, we used PLS regressions to identify the motifs which were most strongly associated with persistence. 
+        When using the raw (un-normalized) frequencies of motifs, the optimum model 
+        
+        
         To determine whether the key motifs differ when considering the shape of a species' role (i.e., degree normalization) or how a focal species compares to other in the same network (i.e., network normalization), we used partial least squares regressions with two different normalizations of species roles.
 		When normalizing motif roles based on degree, the optimum model included 11 components.
 		The first component explained 22.1\% of variation in mean time to extinction, with the remaining ten components explaining an additional 1\% or less.
