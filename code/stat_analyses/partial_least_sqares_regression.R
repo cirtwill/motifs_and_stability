@@ -36,12 +36,33 @@ for(S in seq(50,100,10)){
 
 metapreds=as.data.frame(scale(metadata)) # Scaling all predictors except motif roles, which are already normalized
 # Scaling persistence to reduce the influence of the intercept
-netnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE)
-write.table(as.data.frame(RMSEP(netnorm)$val),sep='\t',file='../../data/PLS_regression/netnorm_errors.tsv')
-ncomp_netnorm=selectNcomp(netnorm,method="onesigma",plot=TRUE)
-netnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE,ncomp=4)
-write.table(as.data.frame(netnorm_opt$coefficients),file='../../data/PLS_regression/netnorm_coefficients.tsv',sep='\t')
 
+# Raw roles
+	raw=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC),validation="CV",center=FALSE)
+	write.table(as.data.frame(RMSEP(raw)$val),sep='\t',file='../../data/PLS_regression/raw_errors.tsv')
+	ncomp_raw=selectNcomp(raw,method="onesigma",plot=TRUE)
+	raw_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC),validation="CV",center=FALSE,ncomp=12)
+	write.table(as.data.frame(raw_opt$coefficients),file='../../data/PLS_regression/raw_coefficients.tsv',sep='\t')
+
+
+# Network-normalized roles
+	netnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE)
+	write.table(as.data.frame(RMSEP(netnorm)$val),sep='\t',file='../../data/PLS_regression/netnorm_errors.tsv')
+	ncomp_netnorm=selectNcomp(netnorm,method="onesigma",plot=TRUE)
+	netnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE,ncomp=4)
+	write.table(as.data.frame(netnorm_opt$coefficients),file='../../data/PLS_regression/netnorm_coefficients.tsv',sep='\t')
+
+
+# Degree-normalized roles
+	allC_norm=allC/rowSums(allC)
+	degnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE)
+	write.table(as.data.frame(RMSEP(degnorm)$val),sep='\t',file='../../data/PLS_regression/degnorm_errors.tsv')
+	ncomp_degnorm=selectNcomp(degnorm,method="onesigma",plot=TRUE)
+	degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=11)
+	write.table(as.data.frame(degnorm_opt$coefficients),file='../../data/PLS_regression/degnorm_coefficients.tsv',sep='\t')
+
+
+# Test datasets
 TallC=matrix(nrow=0,ncol=13)
 TallZ=matrix(nrow=0,ncol=13)
 Tmetadata=matrix(nrow=0,ncol=5)
@@ -73,27 +94,30 @@ for(S in seq(50,100,10)){
 	}
 }
 
-Tmets=scale(Tmetadata)
-newdat=cbind(Tmets,TallZ)
-netnorm_predictions=predict(netnorm_opt,newdata=newdat)
-predout=cbind(Tmets[,1],netnorm_predictions)
-colnames(predout)=c("Obs","Pred")
-write.table(predout,file='../../data/PLS_regression/netnorm_predictions.tsv',sep='\t')
+# Raw motif predictions
+	Tmets=scale(Tmetadata)
+	newdat=cbind(Tmets,TallC)
+	raw_predictions=predict(raw_opt,newdata=newdat)
+	predout=cbind(Tmets[,1],raw_predictions)
+	colnames(predout)=c("Obs","Pred")
+	write.table(predout,file='../../data/PLS_regression/raw_predictions.tsv',sep='\t')
 
-# Normalizing based on participation in all motifs (degree norm)
 
-allC_norm=allC/rowSums(allC)
-TallC_norm=TallC/rowSums(TallC)
+# Network normalized predictions
+	Tmets=scale(Tmetadata)
+	newdat=cbind(Tmets,TallZ)
+	netnorm_predictions=predict(netnorm_opt,newdata=newdat)
+	predout=cbind(Tmets[,1],netnorm_predictions)
+	colnames(predout)=c("Obs","Pred")
+	write.table(predout,file='../../data/PLS_regression/netnorm_predictions.tsv',sep='\t')
 
-degnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE)
-write.table(as.data.frame(RMSEP(degnorm)$val),sep='\t',file='../../data/PLS_regression/degnorm_errors.tsv')
-ncomp_degnorm=selectNcomp(degnorm,method="onesigma",plot=TRUE)
-degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=11)
-write.table(as.data.frame(degnorm_opt$coefficients),file='../../data/PLS_regression/degnorm_coefficients.tsv',sep='\t')
 
-newdat2=cbind(Tmets,TallC_norm)
-degnorm_predictions=predict(degnorm_opt,newdata=newdat2)
-predout2=cbind(Tmets[,1],degnorm_predictions)
-colnames(predout2)=c("Obs","Pred")
-write.table(predout2,file='../../data/PLS_regression/degnorm_predictions.tsv',sep='\t')
+# Degree-normalized predictions
+	TallC_norm=TallC/rowSums(TallC)
+
+	newdat2=cbind(Tmets,TallC_norm)
+	degnorm_predictions=predict(degnorm_opt,newdata=newdat2)
+	predout2=cbind(Tmets[,1],degnorm_predictions)
+	colnames(predout2)=c("Obs","Pred")
+	write.table(predout2,file='../../data/PLS_regression/degnorm_predictions.tsv',sep='\t')
 

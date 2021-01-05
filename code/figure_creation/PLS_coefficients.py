@@ -33,13 +33,15 @@ def format_graph(graph,normtype,coefs):
   graph.world.ymin=0
   graph.world.ymax=19
   graph.yaxis.tick.major=0.5
-  graph.xaxis.tick.major=1
-  if normtype=='Network':
-    graph.world.xmin=-2
-    graph.world.xmax=2
-  else:
-    graph.world.xmin=-8
-    graph.world.xmax=2.5
+  graph.xaxis.tick.major=0.5
+  graph.world.xmin=-2
+  graph.world.xmax=1
+  # elif normtype=="Degree":
+  #   graph.world.xmin=-8
+  #   graph.world.xmax=2.5
+  # else:
+  #   graph.world.xmin=-2
+  #   graph.world.xmax=2
 
   graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
   graph.yaxis.label.configure(text='Predictor',char_size=1,just=2)
@@ -58,10 +60,10 @@ def format_graph(graph,normtype,coefs):
   return graph
 
 def populate_graph(graph,normtype,coefs):
-  if normtype=='Degree':
+  if normtype in ['Degree','Raw']:
     predlist=['S:C','C','S','STL','Degree','cD8','cD7','cD6','cD5','cD4','cD3','cD2','cD1',
         'cS5','cS4','cS3','cS2','cS1']
-  else:
+  elif normtype=='Network':
     predlist=['S:C','C','S','STL','Degree','zD8','zD7','zD6','zD5','zD4','zD3','zD2','zD1',
         'zS5','zS4','zS3','zS2','zS1']
 
@@ -134,23 +136,26 @@ def read_coeffile(infile):
 ###############################################################################################
 ###############################################################################################
 
+rawfile='../../data/PLS_regression/raw_coefficients.tsv'
 degfile='../../data/PLS_regression/degnorm_coefficients.tsv'
 netfile='../../data/PLS_regression/netnorm_coefficients.tsv'
 
-coefs={'Degree':{},'Network':{}}
+coefs={'Raw':{},'Degree':{},'Network':{}}
+coefs['Raw']=read_coeffile(rawfile)
 coefs['Degree']=read_coeffile(degfile)
 coefs['Network']=read_coeffile(netfile)
 
 grace=MultiPanelGrace(colors=colors)
-grace.add_label_scheme('dummy',['A) Degree normalization','B) Network normalization','S2: omnivory','S4: direct competition','S5: apparent competition',''])
+grace.add_label_scheme('dummy',['A) Raw roles','B) Degree normalization','C) Network normalization','S2: omnivory','S4: direct competition','S5: apparent competition',''])
 grace.set_label_scheme('dummy')
-for normtype in ['Degree','Network']:
+for normtype in ['Raw','Degree','Network']:
   graph=grace.add_graph(Panel)
   graph=format_graph(graph,normtype,coefs)
   graph=populate_graph(graph,normtype,coefs[normtype])
 
 # graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=2,cols=1)
+grace.multi(rows=2,cols=2,vgap=.08,hgap=.04)
 grace.hide_redundant_labels()
+# grace.set_col_yaxislabel(rowspan=(None,None),col=0,label='Predictor',char_size=1,angle=90)
 
 grace.write_file('../../manuscript/figures/PLS/total_coefficients.eps')
