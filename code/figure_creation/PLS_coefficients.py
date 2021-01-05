@@ -34,8 +34,8 @@ def format_graph(graph,normtype,coefs):
   graph.world.ymax=19
   graph.yaxis.tick.major=0.5
   graph.xaxis.tick.major=0.5
-  graph.world.xmin=-2
-  graph.world.xmax=1
+  graph.world.xmin=-1.75
+  graph.world.xmax=0.5
   # elif normtype=="Degree":
   #   graph.world.xmin=-8
   #   graph.world.xmax=2.5
