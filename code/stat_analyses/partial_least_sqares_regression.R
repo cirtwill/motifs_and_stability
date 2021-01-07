@@ -38,27 +38,30 @@ metapreds=as.data.frame(scale(metadata)) # Scaling all predictors except motif r
 # Scaling persistence to reduce the influence of the intercept
 
 # Raw roles
-	raw=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC),validation="CV",center=FALSE)
+	# Scaling raw motif roles also
+	allC_scaled=scale(allC)
+	raw=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_scaled),validation="CV",center=FALSE)
 	write.table(as.data.frame(RMSEP(raw)$val),sep='\t',file='../../data/PLS_regression/raw_errors.tsv')
 	ncomp_raw=selectNcomp(raw,method="onesigma",plot=TRUE)
-	raw_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC),validation="CV",center=FALSE,ncomp=12)
+	raw_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_scaled),validation="CV",center=FALSE,ncomp=3)
 	write.table(as.data.frame(raw_opt$coefficients),file='../../data/PLS_regression/raw_coefficients.tsv',sep='\t')
 
 
 # Network-normalized roles
-	netnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE)
+	allZ_scaled=scale(allZ)
+	netnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ_scaled),validation="CV",center=FALSE)
 	write.table(as.data.frame(RMSEP(netnorm)$val),sep='\t',file='../../data/PLS_regression/netnorm_errors.tsv')
 	ncomp_netnorm=selectNcomp(netnorm,method="onesigma",plot=TRUE)
-	netnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ),validation="CV",center=FALSE,ncomp=4)
+	netnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allZ_scaled),validation="CV",center=FALSE,ncomp=4)
 	write.table(as.data.frame(netnorm_opt$coefficients),file='../../data/PLS_regression/netnorm_coefficients.tsv',sep='\t')
 
 
 # Degree-normalized roles
-	allC_norm=allC/rowSums(allC)
+	allC_norm=scale(allC/rowSums(allC))
 	degnorm=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE)
 	write.table(as.data.frame(RMSEP(degnorm)$val),sep='\t',file='../../data/PLS_regression/degnorm_errors.tsv')
 	ncomp_degnorm=selectNcomp(degnorm,method="onesigma",plot=TRUE)
-	degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=11)
+	degnorm_opt=plsr(metapreds$Persistence~metapreds$S*metapreds$C+metapreds$STL+metapreds$Degree+as.matrix(allC_norm),validation="CV",center=FALSE,ncomp=4)
 	write.table(as.data.frame(degnorm_opt$coefficients),file='../../data/PLS_regression/degnorm_coefficients.tsv',sep='\t')
 
 

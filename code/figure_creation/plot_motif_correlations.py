@@ -36,13 +36,22 @@ def read_file(infile):
   for line in f:
     if line.split()[0]!='"Motif"':
       name=line.split()[1][2:-1]
-      raw_beta=float(line.split()[2][1:-1])
-      raw_se=float(line.split()[3][1:-1])
-      raw_p=float(line.split()[4][1:-1])
-      prop_beta=float(line.split()[5][1:-1])
-      prop_se=float(line.split()[6][1:-1])
-      prop_p=float(line.split()[7][1:-1])
-      lmdict[name]={'raw':(raw_beta,raw_se,raw_p),'prop':(prop_beta,prop_se,prop_p)}
+      raw_int=float(line.split()[2][1:-1])
+      raw_beta=float(line.split()[3][1:-1])
+      raw_se=float(line.split()[4][1:-1])
+      raw_p=float(line.split()[5][1:-1])
+      prop_int=float(line.split()[6][1:-1])
+      prop_beta=float(line.split()[7][1:-1])
+      prop_se=float(line.split()[8][1:-1])
+      prop_p=float(line.split()[9][1:-1])
+      zed_int=float(line.split()[10][1:-1])
+      zed_beta=float(line.split()[11][1:-1])
+      zed_se=float(line.split()[12][1:-1])
+      zed_p=float(line.split()[13][1:-1])
+
+      lmdict[name]={'raw':(raw_int,raw_beta,raw_se,raw_p),
+                    'prop':(prop_int,prop_beta,prop_se,prop_p),
+                    'zed':(zed_int,zed_beta,zed_se,zed_p)}
   f.close()
   return lmdict
 
@@ -51,29 +60,80 @@ def format_linegraph(graph,form):
   graph.xaxis.bar.linewidth=1
   graph.frame.linewidth=1
 
-  graph.world.xmin=0
-  graph.world.xmax=99
-  graph.xaxis.tick.major=10
+  graph.world.xmin=1
+  graph.world.xmax=100
+  graph.xaxis.tick.major=20
 
   graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
   graph.xaxis.label.configure(text='Degree',char_size=1,just=2)
   graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
   if form=='raw':
-    graph.world.ymin=-10
-    graph.world.ymax=1000
-    graph.yaxis.tick.major=200
+    graph.world.ymin=-50
+    graph.world.ymax=1300
+    graph.yaxis.tick.major=300
 
     graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
     graph.yaxis.label.configure(text='Count of motif',char_size=1,just=2)
     graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
-  else:
+  elif form=='prop':
     graph.world.ymin=-.01
-    graph.world.ymax=1
-    graph.yaxis.tick.major=.2
+    graph.world.ymax=.55
+    graph.yaxis.tick.major=.1
 
     graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
     graph.yaxis.label.configure(text='Proportion of role',char_size=1,just=2)
+    graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  else:
+    graph.world.ymin=-1
+    graph.world.ymax=3
+    graph.yaxis.tick.major=1
+
+    graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+    graph.yaxis.label.configure(text='Z-score of motif',char_size=1,just=2)
+    graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+
+  graph.panel_label.configure(char_size=0.75,placement='iul',dy=0.02,dx=0.03)
+  # graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
+
+  return graph
+
+def format_Tgraph(graph,form):
+  graph.yaxis.bar.linewidth=1
+  graph.xaxis.bar.linewidth=1
+  graph.frame.linewidth=1
+
+  graph.world.xmin=1
+  graph.world.xmax=6
+  graph.xaxis.tick.major=1
+
+  graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+  graph.xaxis.label.configure(text='Trophic level',char_size=1,just=2)
+  graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+
+  if form=='raw':
+    graph.world.ymin=0
+    graph.world.ymax=400
+    graph.yaxis.tick.major=100
+
+    graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+    graph.yaxis.label.configure(text='Count of motif',char_size=1,just=2)
+    graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  elif form=='prop':
+    graph.world.ymin=0
+    graph.world.ymax=.45
+    graph.yaxis.tick.major=.1
+
+    graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+    graph.yaxis.label.configure(text='Proportion of role',char_size=1,just=2)
+    graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  else:
+    graph.world.ymin=-.5
+    graph.world.ymax=0.30000000000000000001
+    graph.yaxis.tick.major=.2
+
+    graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+    graph.yaxis.label.configure(text='Z-score of motif',char_size=1,just=2)
     graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
   graph.panel_label.configure(char_size=0.75,placement='iul',dy=0.02,dx=0.03)
@@ -85,34 +145,49 @@ def populate_graph(graph,datadict,form):
   if form=='raw':
     order=['S5','S2','S1','S4','D1','D3','D2','D7','D4','D6','D8','S3']
   else:
-    order=['S5','S1','S2','S4','D3','D1','D2','D7','D4','D6','D8','S3']
+    order=['S5','S1','S2','S4','D1','D3','D2','D4','D7','D6','D8','S3']
 
   sty=1
-  j=40
+  j=30
   for motif in order:
     points=[]
     upper=[]
     lower=[]
-    for x in range(0,100):
-      points.append((x,x*datadict[motif][form][0]))
-      upper.append((x,x*(datadict[motif][form][0]+1.75*datadict[motif][form][1])))
-      lower.append((x,x*(datadict[motif][form][0]-1.75*datadict[motif][form][1])))
+    for x in range(1,101):
+      points.append((x,datadict[motif][form][0]+x*datadict[motif][form][1]))
+      upper.append((x,datadict[motif][form][0]+x*(datadict[motif][form][1]+1.75*datadict[motif][form][2])))
+      lower.append((x,datadict[motif][form][0]+x*(datadict[motif][form][1]-1.75*datadict[motif][form][2])))
     if form=='raw':
-      graph.add_drawing_object(DrawText,text=motif,x=j,y=(j*datadict[motif][form][0])+25,loctype='world',just=2,char_size=.5)
-    else:
-      if motif!='S2':
-        graph.add_drawing_object(DrawText,text=motif,x=j,y=(j*datadict[motif][form][0])+.02,loctype='world',just=2,char_size=.5)
+      graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+10,loctype='world',just=2,char_size=.5)
+    elif form=='prop':
+      if motif in ['S1','S4','S5']:
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+.005,loctype='world',just=2,char_size=.5)
+      elif motif=='S2':
+        graph.add_drawing_object(DrawText,text=motif,x=45,y=(datadict[motif][form][0]+45*datadict[motif][form][1])+.005,loctype='world',just=2,char_size=.5)
       else:
-        graph.add_drawing_object(DrawText,text=motif,x=60,y=(j*datadict[motif][form][0])+.02,loctype='world',just=2,char_size=.5)
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+.001,loctype='world',just=2,char_size=.5)
+    else:
+      if motif in ['D1','D3']:
+        graph.add_drawing_object(DrawText,text=motif,x=87,y=(datadict[motif][form][0]+87*datadict[motif][form][1])-.07,loctype='world',just=2,char_size=.5)
+      elif motif in ['S3','D8','D4','S4','D6']:
+        graph.add_drawing_object(DrawText,text=motif,x=90,y=(datadict[motif][form][0]+90*datadict[motif][form][1])+.02,loctype='world',just=2,char_size=.5)
+      elif motif in ['D7']:
+        graph.add_drawing_object(DrawText,text=motif,x=92,y=(datadict[motif][form][0]+92*datadict[motif][form][1])+.02,loctype='world',just=2,char_size=.5)
+      else:
+        graph.add_drawing_object(DrawText,text=motif,x=90,y=(datadict[motif][form][0]+90*datadict[motif][form][1])+.05,loctype='world',just=2,char_size=.5)
 
     j+=5
 
     pointy=graph.add_dataset(points)
     pointy.symbol.shape=0
+    # uppy=graph.add_dataset(upper)
+    # uppy.symbol.shape=0
     if motif in ['S1','S2','S4','S5']:
       nucol=3
+      col2=5
     else:
       nucol=12
+      col2=8
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
 
     # pointy.legend=motif
@@ -125,6 +200,70 @@ def populate_graph(graph,datadict,form):
 
   return graph
 
+def populate_Tgraph(graph,datadict,form):
+  if form=='raw':
+    order=['S5','S2','S1','S4','D3','D1','D2','D4','D7','D6','D8','S3']
+  elif form=='prop':
+    order=['S5','S1','S2','S4','D3','D1','D2','D4','D7','D6','D8','S3']
+  else:
+    order=['S5','S1','S2','S4','D1','D3','D2','D4','D7','D6','D8','S3']
+
+  sty=1
+  j=2
+  for motif in order:
+    points=[]
+    upper=[]
+    lower=[]
+    for w in range(1,61):
+      x=float(w/10)
+      points.append((x,datadict[motif][form][0]+x*datadict[motif][form][1]))
+      upper.append((x,datadict[motif][form][0]+x*(datadict[motif][form][1]+1.75*datadict[motif][form][2])))
+      lower.append((x,datadict[motif][form][0]+x*(datadict[motif][form][1]-1.75*datadict[motif][form][2])))
+    if form=='raw':
+      if motif not in ['S1','S2']:
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+5,loctype='world',just=2,char_size=.5)
+      elif motif=='S1':
+        graph.add_drawing_object(DrawText,text=motif,x=4,y=(datadict[motif][form][0]+4*datadict[motif][form][1])+5,loctype='world',just=2,char_size=.5)
+      else:
+        graph.add_drawing_object(DrawText,text=motif,x=4,y=(datadict[motif][form][0]+4*datadict[motif][form][1])-20,loctype='world',just=2,char_size=.5)
+    elif form=='prop':
+      if motif in ['S4','S5']:
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])-.025,loctype='world',just=2,char_size=.5)
+      elif motif in ['S1','S2']:
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+.005,loctype='world',just=2,char_size=.5)
+      else:
+        graph.add_drawing_object(DrawText,text=motif,x=j,y=(datadict[motif][form][0]+j*datadict[motif][form][1])+.003,loctype='world',just=2,char_size=.5)
+    else:
+      if motif in ['D4','S3','D3','D1','S4']:
+        graph.add_drawing_object(DrawText,text=motif,x=4.5,y=(datadict[motif][form][0]+4.5*datadict[motif][form][1])+.02,loctype='world',just=2,char_size=.5)
+      elif motif in ['D8','D7','D6','D2','D5']:
+        graph.add_drawing_object(DrawText,text=motif,x=5,y=(datadict[motif][form][0]+5*datadict[motif][form][1])+.02,loctype='world',just=2,char_size=.5)
+      elif motif in ['S1','S2','S5']:
+        graph.add_drawing_object(DrawText,text=motif,x=4,y=(datadict[motif][form][0]+4*datadict[motif][form][1])-.055,loctype='world',just=2,char_size=.5)
+
+    j+=.3
+
+    pointy=graph.add_dataset(points)
+    pointy.symbol.shape=0
+    # uppy=graph.add_dataset(upper)
+    # uppy.symbol.shape=0
+    if motif in ['S1','S2','S4','S5']:
+      nucol=3
+      col2=5
+    else:
+      nucol=12
+      col2=8
+    pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
+
+    # pointy.legend=motif
+
+  # null=graph.add_dataset([(12,0)])
+  # null.symbol.configure(shape=9,size=1,fill_color=4)
+
+  # # Add an arrow for S
+  # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
+
+  return graph
 
 ###############################################################################################
 ###############################################################################################
@@ -134,39 +273,55 @@ def populate_graph(graph,datadict,form):
 ###############################################################################################
 ###############################################################################################
 
+# # Degree vs motifs
 # scalefile='motif_lm_scales.tsv'
 degfile='../../data/summaries/motifs_vs_degree.tsv'
 degdict=read_file(degfile)
 
-TLfile='../../data/summaries/motifs_vs_STL.tsv'
-TLdict=read_file(TLfile)
-
 grace=MultiPanelGrace(colors=colors)
-# grace.add_label_scheme('dummy',['','S1: food chain','S2: omnivory','S4: direct competition','S5: apparent competition',''])
-# grace.set_label_scheme('dummy')
+grace.add_label_scheme('dummy',['A','B','C'])
+grace.set_label_scheme('dummy')
 # colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
 #                            scale=LINEAR_SCALE,autoscale=False)
 # colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
 # colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
 # colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-raw=grace.add_graph(Panel)
-raw=format_linegraph(raw,'raw')
-raw=populate_graph(raw,degdict,'raw')
 
-prop=grace.add_graph(Panel)
-prop=format_linegraph(prop,'prop')
-raw=populate_graph(prop,degdict,'prop')
+for roletype in ['raw','prop','zed']:
+# for roletype in ['zed']:
+  graph=grace.add_graph(Panel)
+  graph=format_linegraph(graph,roletype)
+  graph=populate_graph(graph,degdict,roletype)
 
 
 # graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=2,cols=1,vgap=.03)
+grace.multi(rows=3,cols=1,vgap=.03)
 grace.hide_redundant_labels()
-# # for graph in grace.graphs:
-# #   print graph.get_view()
-# colorbar.set_view(0.9,0.15,0.975,0.9)
-# grace.graphs[1].set_view(0.125, 0.55, 0.475, 0.9)
-# grace.graphs[2].set_view(0.525, 0.55, 0.875, 0.9)
-# grace.graphs[3].set_view(0.125, 0.15, 0.475, 0.5)
-# grace.graphs[4].set_view(0.525, 0.15, 0.875, 0.5)
 
 grace.write_file('../../manuscript/figures/roles/motif_vs_degree.eps')
+
+
+# # TL vs motifs
+TLfile='../../data/summaries/motifs_vs_STL.tsv'
+TLdict=read_file(TLfile)
+
+Tgrace=MultiPanelGrace(colors=colors)
+Tgrace.add_label_scheme('dummy',['A','B','C'])
+Tgrace.set_label_scheme('dummy')
+# colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
+#                            scale=LINEAR_SCALE,autoscale=False)
+# colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
+# colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
+# colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
+
+for roletype in ['raw','prop','zed']:
+# for roletype in ['zed']:
+  graph=Tgrace.add_graph(Panel)
+  graph=format_Tgraph(graph,roletype)
+  graph=populate_Tgraph(graph,TLdict,roletype)
+
+# graph.set_view(0.1,0.45,0.9,0.95)
+Tgrace.multi(rows=3,cols=1,vgap=.03)
+Tgrace.hide_redundant_labels()
+
+Tgrace.write_file('../../manuscript/figures/roles/motif_vs_TL.eps')
