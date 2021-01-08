@@ -14,6 +14,10 @@
 
 \newcommand{\methods}{\textit{Materials \& Methods}}
 \newcommand{\SI}{\textit{Appendix}~}
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}%
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}%
 
 \topmargin -1.5cm % 0.0cm 
 \oddsidemargin 0.0cm % 0.2cm 
@@ -23,7 +27,7 @@
 
 \usepackage{authblk}
 
-\title{Participation in stable motifs delays extinction in simulated food webs}
+\title{Participation in stable motifs delays extinction in simulated food webs: Supplemental information}
 
 % - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
 
@@ -50,72 +54,75 @@ alyssa.cirtwill@gmail.com\\
 
 \renewcommand\Authands{ and }
 
+
 \begin{document} 
 \maketitle 
 \raggedright
 \setlength{\parindent}{15pt} 
 
+% % Not sure this adds anything more than is already in the PLS results.
+% \section*{SX: linear model of extinction time against motifs}
 
-\section*{SX: linear model of extinction time against motifs}
+% 	\subsection*{Methods}
 
-	\subsection*{Methods}
-
-		To test whether the frequencies of individual motifs were related to species, we fit a linear model for mean time to extinction against the frequency of each motif (without any normalization).
-		As we were interested in the relationship between raw counts of each motif and time to extinction, we did not scale or centre motif frequencies.
-		To prevent effects of overall network structure from obscuring relationships between motif roles and time to extinction, we included a random intercept for each network.
-		We fit this model using the R~\citep{R} base function 'lmer'.
+% 		To test whether the frequencies of individual motifs were related to species, we fit a linear model for mean time to extinction against the frequency of each motif (without any normalization).
+% 		As we were interested in the relationship between raw counts of each motif and time to extinction, we did not scale or centre motif frequencies.
+% 		To prevent effects of overall network structure from obscuring relationships between motif roles and time to extinction, we included a random intercept for each network.
+% 		We fit this model using the R~\citep{R} base function 'lmer'.
 
 
-	\subsection*{Results}
+% 	\subsection*{Results}
 
-		In this full model, all motifs were significant (Table~\ref{motif_lm}).
-		After performing model selection based on AICc scores, the best-fitting model was the full model including all 13 three-species motifs.
-		This suggests that despite the lack of background knowledge about the two-way motifs, all motifs do contribute information about a species' ability to persist after a perturbation.
+% 		In this full model, all motifs were significant (Table~\ref{motif_lm}).
+% 		After performing model selection based on AICc scores, the best-fitting model was the full model including all 13 three-species motifs.
+% 		This suggests that despite the lack of background knowledge about the two-way motifs, all motifs do contribute information about a species' ability to persist after a perturbation.
 
 		
-		The four stable motifs had very small coefficients within the best-fit model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
-		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
-		Note, however, that this motif is quite rare. 
-		After multiplying the coefficients in the linear model by the observed numbers of each motif (mean $\pm$1SD and maxima; the minimum for all motifs was 0), motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
-		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
-		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
-		The other two-way motifs had strong negative associations with mean time to extinction.
+% 		The four stable motifs had very small coefficients within the best-fit model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
+% 		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
+% 		Note, however, that this motif is quite rare. 
+% 		After multiplying the coefficients in the linear model by the observed numbers of each motif (mean $\pm$1SD and maxima; the minimum for all motifs was 0), motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
+% 		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
+% 		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
+% 		The other two-way motifs had strong negative associations with mean time to extinction.
 		
 
-		\begin{figure}[hb!]
-			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
-			\label{motif_coefs}
-			\includegraphics[height=.5\textheight]{figures/extinction_order/motif_lmer_summary.eps}
-			\end{figure}
+% 		\begin{figure}[hb!]
+% 			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
+% 			\label{motif_coefs}
+% 			\includegraphics[height=.5\textheight]{figures/extinction_order/motif_lmer_summary.eps}
+% 			\end{figure}
 
 
 
-		\begin{table}
-			\caption{Coefficients ($\beta$) and $p$-values from a linear model relating mean time to extinction to $Z$-scores of motif participation, species richness (S), and connectance (C). The best-fit model included terms for all 13 motifs. As these motifs have not been normalized, all 13 motifs are independent within a species' role.}
-			\label{motif_lm}
-			\begin{tabular}[h]{c |  l l |}
-			Motif & $\beta$ & $p$-value \\
-			\hline
-			S1 & 1.24$\times10^{-2}$ & \textless0.001 \\
-			S2 & 3.67$\times10^{-3}$ & \textless0.001 \\
-			S3 & 6.44$\times10^{-1}$ & \textless0.001 \\
-			S4 & 1.12$\times10^{-2}$ & \textless0.001  \\
-			S5 & 1.60$\times10^{-3}$ & \textless0.001  \\
-			D1 & 1.02$\times10^{-2}$ & \textless0.001 \\
-			D2 & -2.10$\times10^{-2}$ & \textless0.001 \\
-			D3 & 1.60$\times10^{-2}$ & \textless0.001 \\
-			D4 & -1.42$\times10^{-1}$ & \textless0.001 \\
-			D5 & -2.87$\times10^{-1}$ & \textless0.001 \\
-			D6 & 1.29$\times10^{-1}$ & \textless0.001 \\
-			D7 & -2.83$\times10^{-2}$ & \textless0.001 \\
-			D8 & -2.06$\times10^{-1}$ & \textless0.001 \\
-			\hline
-			\end{tabular}
-			\end{table}
+% 		\begin{table}
+% 			\caption{Coefficients ($\beta$) and $p$-values from a linear model relating mean time to extinction to $Z$-scores of motif participation, species richness (S), and connectance (C). The best-fit model included terms for all 13 motifs. As these motifs have not been normalized, all 13 motifs are independent within a species' role.}
+% 			\label{motif_lm}
+% 			\begin{tabular}[h]{c |  l l |}
+% 			Motif & $\beta$ & $p$-value \\
+% 			\hline
+% 			S1 & 1.24$\times10^{-2}$ & \textless0.001 \\
+% 			S2 & 3.67$\times10^{-3}$ & \textless0.001 \\
+% 			S3 & 6.44$\times10^{-1}$ & \textless0.001 \\
+% 			S4 & 1.12$\times10^{-2}$ & \textless0.001  \\
+% 			S5 & 1.60$\times10^{-3}$ & \textless0.001  \\
+% 			D1 & 1.02$\times10^{-2}$ & \textless0.001 \\
+% 			D2 & -2.10$\times10^{-2}$ & \textless0.001 \\
+% 			D3 & 1.60$\times10^{-2}$ & \textless0.001 \\
+% 			D4 & -1.42$\times10^{-1}$ & \textless0.001 \\
+% 			D5 & -2.87$\times10^{-1}$ & \textless0.001 \\
+% 			D6 & 1.29$\times10^{-1}$ & \textless0.001 \\
+% 			D7 & -2.83$\times10^{-2}$ & \textless0.001 \\
+% 			D8 & -2.06$\times10^{-1}$ & \textless0.001 \\
+% 			\hline
+% 			\end{tabular}
+% 			\end{table}
+
+\clearpage
 
 \section*{SQ: Testing consistency of times to extinction across removals}
 
-	\section*{Methods}
+	\subsection*{Methods}
 
 		We simulated population dynamics within each food web after removing each speciees separately. 
 		In order to assess species' overall vulnerability to the loss of an arbitraty other species within the food web, we used mean time to extinction across all removals as a response. 
@@ -124,7 +131,7 @@ alyssa.cirtwill@gmail.com\\
 		We fit the model using the R~\citep{R} function 'lmer' from the package \emph{lmerTest}~\citep{lmerTest}.
 
 
-	\section*{Results}
+	\subsection*{Results}
 
 		In general, time to extinction was highly correlated across removals (Fig.~\ref{extorder_corrs}). %figure_creation/extinction_order_correlations.py
 		The mean Pearson correlation for times to extinction across all removals within a network was 0.903 (range: 0.512-0.973). % stat_analysis/mean_correlation_extorder_tests.R
@@ -134,14 +141,18 @@ alyssa.cirtwill@gmail.com\\
 		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
 
 
-		\begin{figure}[hb!]
+		\begin{figure}[h!]
 			\caption{\textbf{A)} Time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interaction between them, as well as a random effect of network. Symbol and line colours indicate connectance. \textbf{B)} Mean time to extinction across all species within a network was slightly longer in small and less-connected networks. As in \textbf{A)}, line colours indicate connectance. \textbf{C)} Mean time to extinction was more strongly associated with connectance than species richness, with more-connected networks having shorter mean times to extinction. Line colours indicate species richness.}
 			\label{extorder_corrs}
 			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
 			\end{figure}		
 
 
+\clearpage
+
 \section*{SM: Details of PERMANOVA results}
+
+	All PERMANOVAs were significant, indicating that species' overall motif roles are related to their mean times to extinction.
 
 	\begin{figure}[h!]
 		\caption{Here we show (\textbf{A}) the pseudo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' roles to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values. }
@@ -190,18 +201,18 @@ alyssa.cirtwill@gmail.com\\
 		\end{tabular}
 		\end{table}
 
+\clearpage
 
 \section*{SXX: Motif labels}
 
 	\begin{figure}[h!]
 		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modelled in isolation and as potentially increasing the stability of empirical food webs. Labels are as in~\citet{Stouffer2007}.}
 		\label{motifs}
-		\includegraphics[height=.8\textheight]{figures/motifs.eps}
+		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
 		\end{figure}
 
 
-
-\section{References}
+\clearpage
 
     \bibliographystyle{ecollett} 
     \bibliography{MyCollection} % Abbreviate journal titles.

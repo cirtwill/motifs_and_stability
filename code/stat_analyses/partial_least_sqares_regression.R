@@ -40,7 +40,7 @@ for(S in seq(50,100,10)){
 	raw=plsr(metadata$Persistence~metadata$S*metadata$C+metadata$STL+metadata$Degree+as.matrix(allC),validation="CV",scale=TRUE,center=TRUE)
 	write.table(as.data.frame(RMSEP(raw)$val),sep='\t',file='../../data/PLS_regression/raw_errors.tsv')
 	ncomp_raw=selectNcomp(raw,method="onesigma",plot=TRUE)
-	raw_opt=plsr(metadata$Persistence~metadata$S*metadata$C+metadata$STL+metadata$Degree+as.matrix(allC),validation="CV",,scale=TRUE,center=TRUE,ncomp=5)
+	raw_opt=plsr(metadata$Persistence~metadata$S*metadata$C+metadata$STL+metadata$Degree+as.matrix(allC),validation="CV",scale=TRUE,center=TRUE,ncomp=5)
 	write.table(as.data.frame(raw_opt$coefficients),file='../../data/PLS_regression/raw_coefficients.tsv',sep='\t')
 
 
