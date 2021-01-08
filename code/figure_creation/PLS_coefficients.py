@@ -32,10 +32,9 @@ def format_graph(graph,normtype,coefs):
 
   graph.world.ymin=0
   graph.world.ymax=19
-  graph.yaxis.tick.major=0.5
-  graph.xaxis.tick.major=0.5
-  graph.world.xmin=-1.75
-  graph.world.xmax=0.5
+  graph.xaxis.tick.major=2
+  graph.world.xmin=-8
+  graph.world.xmax=3
   # elif normtype=="Degree":
   #   graph.world.xmin=-8
   #   graph.world.xmax=2.5
@@ -50,7 +49,49 @@ def format_graph(graph,normtype,coefs):
     tick_labels=['S:C','C','S','STL','Degree','D8','D7','D6','D5','D4','D3','D2','D1',
         'S5','S4','S3','S2','S1'])
 
-  graph.xaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+  graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+  graph.xaxis.label.configure(text='Sum of coefficients',char_size=1,just=2)
+  graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+
+  graph.panel_label.configure(char_size=0.75,placement='ouc',dx=0,dy=.01)
+  # graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
+  # graph.panel_label.configure(placement='iul',char_size=.75,dx=.02,dy=.01)/
+  return graph
+
+def format_Sgraph(graph,normtype,coefs):
+  graph.yaxis.bar.linewidth=1
+  graph.xaxis.bar.linewidth=1
+  graph.frame.linewidth=1
+
+  graph.world.ymin=0
+  graph.world.ymax=19
+  if normtype=='Network':
+    graph.world.xmin=-6
+    graph.world.xmax=9
+    graph.xaxis.tick.major=3
+  elif normtype=='Raw':
+    graph.world.xmin=-175
+    graph.world.xmax=125
+    graph.xaxis.tick.major=50
+  else:
+    graph.world.xmin=-275
+    graph.world.xmax=100
+    graph.xaxis.tick.major=50
+  # elif normtype=="Degree":
+  #   graph.world.xmin=-8
+  #   graph.world.xmax=2.5
+  # else:
+  #   graph.world.xmin=-2
+  #   graph.world.xmax=2
+
+  graph.yaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+  graph.yaxis.label.configure(text='Predictor',char_size=1,just=2)
+  graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  graph.yaxis.tick.set_spec_ticks([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],[],
+    tick_labels=['S:C','C','S','STL','Degree','D8','D7','D6','D5','D4','D3','D2','D1',
+        'S5','S4','S3','S2','S1'])
+
+  graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
   graph.xaxis.label.configure(text='Sum of coefficients',char_size=1,just=2)
   graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
@@ -68,16 +109,16 @@ def populate_graph(graph,normtype,coefs):
         'zS5','zS4','zS3','zS2','zS1']
 
   # Add grey backgrounds for stable motifs
-  upper=graph.add_dataset([(-15,18.5),(15,18.5)])
+  upper=graph.add_dataset([(-50,18.5),(50,18.5)])
   upper.line.linestyle=0
   upper.fill.configure(color=70,type=2)
-  S2=graph.add_dataset([(-15,16.5),(15,16.5)])  
+  S2=graph.add_dataset([(-50,16.5),(50,16.5)])  
   S2.fill.configure(color=0,type=2)
   S2.line.linestyle=0
-  S4=graph.add_dataset([(-15,15.5),(15,15.5)])
+  S4=graph.add_dataset([(-50,15.5),(50,15.5)])
   S4.fill.configure(color=70,type=2)
   S4.line.linestyle=0
-  S5=graph.add_dataset([(-15,13.5),(15,13.5)])
+  S5=graph.add_dataset([(-50,13.5),(50,13.5)])
   S5.fill.configure(color=0,type=2)
   S5.line.linestyle=0
 
@@ -100,12 +141,57 @@ def populate_graph(graph,normtype,coefs):
         # # color.change_opacity(60)
         # graph.add_dataset([(x0,y0), (x1,y1)], SolidRectangle, color)
 
+def populate_Sgraph(graph,normtype,coefs,scales):
+  if normtype in ['Degree','Raw']:
+    predlist=['S:C','C','S','STL','Degree','cD8','cD7','cD6','cD5','cD4','cD3','cD2','cD1',
+        'cS5','cS4','cS3','cS2','cS1']
+  elif normtype=='Network':
+    predlist=['S:C','C','S','STL','Degree','zD8','zD7','zD6','zD5','zD4','zD3','zD2','zD1',
+        'zS5','zS4','zS3','zS2','zS1']
+
+  # Add grey backgrounds for stable motifs
+  upper=graph.add_dataset([(-500,18.5),(500,18.5)])
+  upper.line.linestyle=0
+  upper.fill.configure(color=70,type=2)
+  S2=graph.add_dataset([(-500,16.5),(500,16.5)])  
+  S2.fill.configure(color=0,type=2)
+  S2.line.linestyle=0
+  S4=graph.add_dataset([(-500,15.5),(500,15.5)])
+  S4.fill.configure(color=70,type=2)
+  S4.line.linestyle=0
+  S5=graph.add_dataset([(-500,13.5),(500,13.5)])
+  S5.fill.configure(color=0,type=2)
+  S5.line.linestyle=0
+
+  y=1
+  for pred in predlist:
+    if pred!='S:C':
+      bar=graph.add_dataset([(0,y),(coefs[pred]*scales[pred],y)],)
+    else:
+      bar=graph.add_dataset([(0,y),(coefs[pred]*scales['S']*scales['C'],y)],)
+    bar.symbol.shape=0
+    bar.line.configure(linewidth=6,linestyle=1,color=3)
+    y+=1
+
+
+  # Add a line at 0
+  graph.add_drawing_object(DrawLine,end=(0,0),start=(0,19),linewidth=1,linestyle=1,loctype='world')
+
+
+  return graph
+
+        # color = colorbar.z2color(pdf)
+        # # you can change the opacity percentage of a single color, as well
+        # # color.change_opacity(60)
+        # graph.add_dataset([(x0,y0), (x1,y1)], SolidRectangle, color)
+
+# Loadings are not for each component separately but all components summed. So, take only trailing value.
 def read_coeffile(infile):
   subdict={}
   f=open(infile,'r')
 
-  for line in f:
-    if line.split('\t')[0]!='"metapreds$Persistence.1 comps"':
+  for line in f: 
+    if line.split('\t')[0]!='"metadata$Persistence.1 comps"':
       pred=line.split()[0]
       if ')' in pred:
         pred=pred.split(')')[1]
@@ -116,17 +202,27 @@ def read_coeffile(infile):
           pred=pred.split('$')[1]
       if '"' in pred:
         pred=''.join(pred.split('"'))
-      if pred=='S:metapreds':
-        print line.split()[0]
-      cos=[]
-      for val in line.split()[1:]:
-        cos.append(float(val))        
-      total=sum(cos)
-      subdict[pred]=total
+      coef=float(line.split()[-1]) # Overall coefficient in model including X components
+      # cos=[]
+      # for val in line.split()[1:]:
+      #   cos.append(float(val))        
+      # total=sum(cos)
+      subdict[pred]=coef
 
   f.close()
 
   return subdict
+
+def read_scalefile(scalefile):
+  scales={}
+  f=open(scalefile,'r')
+  for line in f:
+    if len(line.split())==2:
+      pred=line.split()[0][1:-1]
+      scale=float(line.split()[1])
+      scales[pred]=scale
+  f.close()
+  return scales
 
 ###############################################################################################
 ###############################################################################################
@@ -139,7 +235,9 @@ def read_coeffile(infile):
 rawfile='../../data/PLS_regression/raw_coefficients.tsv'
 degfile='../../data/PLS_regression/degnorm_coefficients.tsv'
 netfile='../../data/PLS_regression/netnorm_coefficients.tsv'
+scalefile='../../data/PLS_regression/scales.tsv'
 
+scales=read_scalefile(scalefile)
 coefs={'Raw':{},'Degree':{},'Network':{}}
 coefs['Raw']=read_coeffile(rawfile)
 coefs['Degree']=read_coeffile(degfile)
@@ -159,3 +257,19 @@ grace.hide_redundant_labels()
 # grace.set_col_yaxislabel(rowspan=(None,None),col=0,label='Predictor',char_size=1,angle=90)
 
 grace.write_file('../../manuscript/figures/PLS/total_coefficients.eps')
+
+Sgrace=MultiPanelGrace(colors=colors)
+Sgrace.add_label_scheme('dummy',['A) Raw roles','B) Degree normalization','C) Network normalization','S2: omnivory','S4: direct competition','S5: apparent competition',''])
+Sgrace.set_label_scheme('dummy')
+for normtype in ['Raw','Degree','Network']:
+  graph=Sgrace.add_graph(Panel)
+  graph=format_Sgraph(graph,normtype,coefs)
+  graph=populate_Sgraph(graph,normtype,coefs[normtype],scales)
+
+# graph.set_view(0.1,0.45,0.9,0.95)
+Sgrace.multi(rows=2,cols=2,vgap=.08,hgap=.04)
+Sgrace.hide_redundant_labels()
+# grace.set_col_yaxislabel(rowspan=(None,None),col=0,label='Predictor',char_size=1,angle=90)
+
+Sgrace.write_file('../../manuscript/figures/PLS/total_coefficients_descaled.eps')
+
