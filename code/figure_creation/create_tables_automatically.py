@@ -28,6 +28,29 @@ def read_permfile(infile):
 
   return subdict
 
+def read_dispfile(infile):
+  subdict={}
+  f=open(infile,'r')
+  for line in f:
+    if line.split()[0]!='"x"':
+      key=line.split()[0][1:-1]
+      val=float(line.split()[1])
+      if key in ['F','P','lm_slope','lm_pval']:
+        if key in ['P','lm_pval']:
+          val=np.round(val,3)
+          if val<0.0001:
+            val='\\textless0.001'
+        if key=='F':
+          if val<10 and val>1:
+            val=np.round(val,2)
+          else:  
+            print val
+        subdict[key]=val
+  # print ticker, ' non-significant Permanovas'
+  f.close()
+
+  return subdict
+
 def read_lmfile(infile):
   subdict={}
   f=open(infile,'r')
@@ -87,6 +110,20 @@ def write_perm_table(datadict):
         print len(str(dat[2]))
   f.close()
 
+def write_disp_table(datadict):
+  f=open('../../manuscript/betadisper_summary_table.txt','w')
+  f.write('S&C& ANOVA & & Regression & \\\\ \n')
+  f.write('S&C&$F$&$p$-value&\\beta&$p$-value\\\\ \n')
+  for s in sorted(datadict):
+    for c in sorted(datadict[s]):
+      dat=datadict[s][c]
+      f.write(str(s)+'&'+str(c)+'&')
+      f.write(str(dat['F'])+'&'+str(dat['P'])+'&')
+      f.write(str(dat['lm_slope'])+'&'+str(dat['lm_pval'])+'\n')
+  f.close()
+
+
+
 def write_lm_table(datadict):
   f=open('../../manuscript/lmer_summary_table.txt','w')
   f.write('Term&S&Beta&$p$-value\\\\ \n')
@@ -111,6 +148,16 @@ for s in sorted(os.listdir(datadir)):
   datadict[int(s)]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
 
 write_perm_table(datadict)
+
+dispdir='../../data/summaries/extorder_disps/'
+dispdict={}
+for s in sorted(os.listdir(dispdir)):
+  dispdict[int(s)]={}
+  for c in sorted(os.listdir(dispdir+'/'+s)):
+    dispdict[int(s)][float(c)]=read_dispfile(dispdir+s+'/'+c+'/mean_extorder_vs_roles_'+s+'_'+c+'.tsv')
+
+write_disp_table(dispdict)
+
 
 sys.exit()
 

@@ -45,6 +45,29 @@ def read_permfile(infile):
 
   return subdict
 
+def read_dispfile(infile):
+  subdict={}
+  f=open(infile,'r')
+  for line in f:
+    if line.split()[0]!='"x"':
+      key=line.split()[0][1:-1]
+      val=float(line.split()[1])
+      if key in ['F','P','lm_slope','lm_pval']:
+        if key in ['P','lm_pval']:
+          val=np.round(val,3)
+          if val<0.0001:
+            val='\\textless0.001'
+        if key=='F':
+          if val<10 and val>1:
+            val=np.round(val,2)
+          else:  
+            print val
+        subdict[key]=val
+  # print ticker, ' non-significant Permanovas'
+  f.close()
+
+  return subdict
+
 def format_graph(graph,form,yaxis):
   graph.yaxis.bar.linewidth=1
   graph.xaxis.bar.linewidth=1
@@ -56,6 +79,11 @@ def format_graph(graph,form,yaxis):
     graph.yaxis.tick.major=50
     graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
     graph.yaxis.label.configure(text='pseudo-F statistic',char_size=1,just=2)
+  elif yaxis=='slopes':
+    graph.yaxis.label.configure(text='slope of role variability',char_size=1,just=2)    
+    graph.world.ymax=0.0004
+    graph.yaxis.tick.major=0.0001
+    graph.yaxis.ticklabel.configure(format='scientific',prec=1,char_size=.75)
   else:
     graph.world.ymax=0.06
     graph.yaxis.tick.major=0.01
@@ -99,6 +127,16 @@ def populate_pgraph(graph,level,datadict):
   dashed.line.configure(linestyle=2,linewidth=1)
   return graph
 
+def populate_sgraph(graph,level,datadict):
+  if level=='full':
+    for S in datadict:
+      for C in datadict[S]:
+        slope=datadict[S][C]["lm_slope"]
+        dat=graph.add_dataset([(S,slope)])
+        dat.symbol.configure(fill_color=colorbar.z2color(C),shape=1,size=0.75,color=1)
+
+  return graph
+
         # color = colorbar.z2color(pdf)
         # # you can change the opacity percentage of a single color, as well
         # # color.change_opacity(60)
@@ -117,7 +155,14 @@ datadict={}
 for s in ['50','60','70','80','90','100']:
   datadict[s]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
 
-for form in ['talk','paper']:
+dispdir='../../data/summaries/extorder_disps/'
+dispdict={}
+for s in sorted(os.listdir(dispdir)):
+  dispdict[int(s)]={}
+  for c in sorted(os.listdir(dispdir+'/'+s)):
+    dispdict[int(s)][float(c)]=read_dispfile(dispdir+s+'/'+c+'/mean_extorder_vs_roles_'+s+'_'+c+'.tsv')
+
+for form in ['paper']:
   for level in ['axis','point','full']:
     grace=MultiPanelGrace(colors=colors)
     grace.add_label_scheme('dummy',['','',''])
@@ -129,25 +174,30 @@ for form in ['talk','paper']:
     colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
     graph=grace.add_graph(Panel)
     graph=format_graph(graph,form,'F')
-    pgraph=grace.add_graph(Panel)
-    pgraph=format_graph(pgraph,form,'p')
+    # pgraph=grace.add_graph(Panel)
+    # pgraph=format_graph(pgraph,form,'p')
+    sgraph=grace.add_graph(Panel)
+    sgraph=format_graph(sgraph,form,'slopes')
 
     if level in ['point','full']:
       graph=populate_graph(graph,level,datadict)
-      pgraph=populate_pgraph(pgraph,level,datadict)
+      # pgraph=populate_pgraph(pgraph,level,datadict)
+      sgraph=populate_sgraph(sgraph,level,dispdict)
 
     if form=='talk':
       graph.set_view(0.1,0.2,0.45,0.5)
-      pgraph.set_view(0.55,0.2,0.9,0.5)
+      # pgraph.set_view(0.55,0.2,0.9,0.5)
       colorbar.set_view(0.925,0.2,0.975,0.5)
     else:
-      grace.add_label_scheme('smarty',['','A','B'])
+      grace.add_label_scheme('smarty',['','A','B','C'])
       grace.set_label_scheme('smarty')
-      for graphy in [graph,pgraph]:
+      # for graphy in [graph,pgraph,sgraph]:
+      for graphy in [graph,sgraph]:
         graphy.panel_label.configure(char_size=1.25,placement='iul',dy=0.02,dx=0.02)
       graph.set_view(0.4,0.55,0.9,0.9)
       graph.xaxis.label.text=''
-      pgraph.set_view(0.4,0.15,0.9,0.5)
+      # pgraph.set_view(0.4,0.15,0.9,0.5)
+      sgraph.set_view(0.4,0.15,0.9,0.5)
       colorbar.set_view(0.95,0.1,1.0,0.9)
 
     grace.write_file('../../manuscript/figures/extinction_order/permanova_summary_'+form+'_'+level+'.eps')
