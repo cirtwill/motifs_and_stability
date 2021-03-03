@@ -188,15 +188,22 @@ def populate_graph(graph,datadict,form):
     if motif in ['S1','S2','S4','S5']:
       nucol='Tol4'
       col2=5
+      if motif=='S1' and form=='zed':
+        pointy.legend='Stable'      
     else:
       nucol='Tol5'
       col2=8
+      if motif=='D3' and form=='zed':
+        pointy.legend='Unstable'
+
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
 
     # pointy.legend=motif
 
   # null=graph.add_dataset([(12,0)])
   # null.symbol.configure(shape=9,size=1,fill_color=4)
+  if form=='zed':
+    graph.legend.configure(box_linestyle=0,char_size=.5,loc=(10,2.5),loctype='world')
 
   # # Add an arrow for S
   # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
@@ -253,15 +260,21 @@ def populate_Tgraph(graph,datadict,form):
     if motif in ['S1','S2','S4','S5']:
       nucol='Tol3'
       col2=5
+      if motif=='S1' and form=='zed':
+        pointy.legend='Stable'
     else:
       nucol='Tol7'
       col2=8
+      if motif=='D3' and form=='zed':
+        pointy.legend='Unstable'
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
 
     # pointy.legend=motif
 
   # null=graph.add_dataset([(12,0)])
   # null.symbol.configure(shape=9,size=1,fill_color=4)
+  if form=='zed':
+    graph.legend.configure(box_linestyle=0,char_size=.5,loc=(1.25,-0.2),loctype='world')
 
   # # Add an arrow for S
   # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
