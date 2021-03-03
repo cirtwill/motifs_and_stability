@@ -20,15 +20,18 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 # Do we also want a plot of extinction order vs. betas?
 
-colors=ColorBrewerScheme('RdYlBu',n=15,reverse=True)  # The blue is very beautiful but maybe harder to see.
-colors.add_color(0,12,54,'blue2') 
-colors.add_color(0,50,117,'blue4') 
-colors.add_color(0,245,181,'blue13') 
-colors.add_color(1,53,245,'blue5') 
-colors.add_color(1,109,245,'blue3')  
-# colors.add_color(120,120,120,'grey')
-# colors.add_color(255,125,125,'lightish_red')
-# colors.add_color(200,200,200,'lightgrey')
+colors=ColorBrewerScheme('Greys',reverse=True)  # The blue is very beautiful but maybe harder to see.
+colors.add_color(136,204,238,'Tol1')
+colors.add_color(122,170,153,'Tol2')
+colors.add_color(17,119,51,'Tol3')
+colors.add_color(51,34,136,'Tol4')
+colors.add_color(221,204,119,'Tol5')
+colors.add_color(153,153,51,'Tol6')
+colors.add_color(204,102,119,'Tol7')
+colors.add_color(136,34,85,'Tol8')
+colors.add_color(170,68,153,'Tol9')
+colors.add_color(221,221,221,'Tol10')
+
 
 def read_file(infile):
   lmdict={}
@@ -183,10 +186,10 @@ def populate_graph(graph,datadict,form):
     # uppy=graph.add_dataset(upper)
     # uppy.symbol.shape=0
     if motif in ['S1','S2','S4','S5']:
-      nucol=3
+      nucol='Tol4'
       col2=5
     else:
-      nucol=12
+      nucol='Tol5'
       col2=8
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
 
@@ -248,10 +251,10 @@ def populate_Tgraph(graph,datadict,form):
     # uppy=graph.add_dataset(upper)
     # uppy.symbol.shape=0
     if motif in ['S1','S2','S4','S5']:
-      nucol=3
+      nucol='Tol3'
       col2=5
     else:
-      nucol=12
+      nucol='Tol7'
       col2=8
     pointy.line.configure(linestyle=sty,linewidth=1,color=nucol)
 
@@ -325,3 +328,25 @@ Tgrace.multi(rows=3,cols=1,vgap=.03)
 Tgrace.hide_redundant_labels()
 
 Tgrace.write_file('../../manuscript/figures/roles/motif_vs_TL.eps')
+
+
+grace=MultiPanelGrace(colors=colors)
+grace.add_label_scheme('dummy',['A','B','C','D','E','F'])
+grace.set_label_scheme('dummy')
+
+for roletype in ['raw','prop','zed']:
+  for pred in ['Deg','TL']:
+    graph=grace.add_graph(Panel)
+    if pred=='Deg':
+      graph=format_linegraph(graph,roletype)
+      graph=populate_graph(graph,degdict,roletype)
+    elif pred=='TL':
+      graph=format_Tgraph(graph,roletype)
+      graph=populate_Tgraph(graph,TLdict,roletype)
+
+grace.multi(rows=3,cols=2,vgap=.03,hgap=.05)
+grace.hide_redundant_labels()
+for graph in grace.graphs:
+  graph.panel_label.configure(dy=.015)
+
+grace.write_file('../../manuscript/figures/roles/motif_vs_oneD.eps')
