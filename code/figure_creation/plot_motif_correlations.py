@@ -27,7 +27,7 @@ colors.add_color(17,119,51,'Tol3')
 colors.add_color(51,34,136,'Tol4')
 colors.add_color(221,204,119,'Tol5')
 colors.add_color(153,153,51,'Tol6')
-colors.add_color(204,102,119,'Tol7')
+colors.add_color(204,142,159,'Tol7')
 colors.add_color(136,34,85,'Tol8')
 colors.add_color(170,68,153,'Tol9')
 colors.add_color(221,221,221,'Tol10')
@@ -191,7 +191,7 @@ def populate_graph(graph,datadict,form):
       if motif=='S1' and form=='zed':
         pointy.legend='Stable'      
     else:
-      nucol='Tol5'
+      nucol='Tol7'
       col2=8
       if motif=='D3' and form=='zed':
         pointy.legend='Unstable'
@@ -263,7 +263,7 @@ def populate_Tgraph(graph,datadict,form):
       if motif=='S1' and form=='zed':
         pointy.legend='Stable'
     else:
-      nucol='Tol7'
+      nucol='Tol5'
       col2=8
       if motif=='D3' and form=='zed':
         pointy.legend='Unstable'
