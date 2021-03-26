@@ -22,7 +22,7 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 colors=ColorBrewerScheme('Greys',reverse=True)  # The blue is very beautiful but maybe harder to see.
 colors.add_color(136,204,238,'Tol1')
-colors.add_color(122,170,153,'Tol2')
+colors.add_color(142,190,173,'Tol2') # 
 colors.add_color(17,119,51,'Tol3')
 colors.add_color(51,34,136,'Tol4')
 colors.add_color(221,204,119,'Tol5')
