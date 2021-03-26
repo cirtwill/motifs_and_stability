@@ -50,7 +50,7 @@ colnames(Tresults)=c('Motif','Raw_intercept','Raw_beta','Raw_var','Raw_p','Prop_
 write.table(Tresults,file='../../data/summaries/motifs_vs_STL.tsv',sep='\t')
 
 
-Dresults=matrix(nrow=13,ncol=10)
+Dresults=matrix(nrow=13,ncol=13)
 for(i in 1:13){
 	motif=colnames(fulldata)[i+7]
 	raw_lm=lm(fulldata[,i+7]~fulldata$Degree)
@@ -64,4 +64,8 @@ for(i in 1:13){
 }
 colnames(Dresults)=c('Motif','Raw_intercept','Raw_beta','Raw_var','Raw_p','Prop_intercept','Prop_beta','Prop_var','Prop_p','Z_intercept','Z_beta','Z_var','Z_p')
 write.table(Dresults,file='../../data/summaries/motifs_vs_degree.tsv',sep='\t')
+
+
+Deg_pers=with(fulldata,lmer(Mean_order~Degree+(1|S:C)))
+STL_pers=with(fulldata,lmer(Mean_order~STL+(1|S:C)))
 
