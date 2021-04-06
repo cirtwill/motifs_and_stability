@@ -27,7 +27,7 @@
 
 \usepackage{authblk}
 
-\title{Participation in stable motifs delays extinction in simulated food webs: Supplemental information}
+\title{Stable motifs delay species loss in simulated food webs: Appendices}
 
 % - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
 
@@ -60,75 +60,35 @@ alyssa.cirtwill@gmail.com\\
 \raggedright
 \setlength{\parindent}{15pt} 
 
-% % Not sure this adds anything more than is already in the PLS results.
-% \section*{SX: linear model of extinction time against motifs}
+\section*{Table of Contents}
 
-% 	\subsection*{Methods}
-
-% 		To test whether the frequencies of individual motifs were related to species, we fit a linear model for mean time to extinction against the frequency of each motif (without any normalization).
-% 		As we were interested in the relationship between raw counts of each motif and time to extinction, we did not scale or centre motif frequencies.
-% 		To prevent effects of overall network structure from obscuring relationships between motif roles and time to extinction, we included a random intercept for each network.
-% 		We fit this model using the R~\citep{R} base function 'lmer'.
-
-
-% 	\subsection*{Results}
-
-% 		In this full model, all motifs were significant (Table~\ref{motif_lm}).
-% 		After performing model selection based on AICc scores, the best-fitting model was the full model including all 13 three-species motifs.
-% 		This suggests that despite the lack of background knowledge about the two-way motifs, all motifs do contribute information about a species' ability to persist after a perturbation.
-
-		
-% 		The four stable motifs had very small coefficients within the best-fit model, indicating that each additional instance of a stable motif in a species role contributes relatively little to its persistence. 
-% 		On the other hand, participation in the one-way loop motif S3 was strongly associated with increased mean time to extinction (Fig.~\ref{motif_coefs}A).
-% 		Note, however, that this motif is quite rare. 
-% 		After multiplying the coefficients in the linear model by the observed numbers of each motif (mean $\pm$1SD and maxima; the minimum for all motifs was 0), motifs S1 and S4 had large positive associations with mean time to extinction while motifs S2, 
-% 		S3, and S5 had smaller positive associations (Fig.~\ref{motif_coefs}B).
-% 		More occurrences of motifs D1, D2, and D6 were also associated with longer mean times to extinction and, for species with very high frequencies of these motifs, these effects had similar magnitudes to those of the four stable motifs.
-% 		The other two-way motifs had strong negative associations with mean time to extinction.
-		
-
-% 		\begin{figure}[hb!]
-% 			\caption{Here we show relationships between a species' participation in each motif and mean time to extinction, based on a linear model including the frequency of each motif. Shaded areas represent the four motifs known to be stable in isolation. \textbf{A)} All coefficients (shown $\pm$SE) were significant. Coefficients in the linear regression may be somewhat misleading based on the different ranges of frequencies for different motifs. In particular, the four stable motifs are over-represented in observed food webs and are more common than other motifs in species roles within our dataset. \textbf{B)}To provide context for the coefficients in panel A, we show the expected change in mean time to extinction based on the observed occurrences of each motif across species roles. Squares indicate the change in persistence for a species with the mean frequency of each motif (shown $\pm$1SD), while dashed lines indicate the range of effects for species with the minimum (0 for all motifs) to the maximum frequency of each motif. \textbf{C)} To complement panel \textbf{(B)}, we show the mean ($\pm$1SD) count of each motif across species roles. As in panel \textbf{(B)}, dashed lines indicate the full range of counts for each motif. The maxima for motifs S1, S2, S4, S5, and D3 (1056, 1910, 1066, 4001, and 1098, respectively) are not shown in order to more clearly display differences in means.}
-% 			\label{motif_coefs}
-% 			\includegraphics[height=.5\textheight]{figures/extinction_order/motif_lmer_summary.eps}
-% 			\end{figure}
-
-
-
-% 		\begin{table}
-% 			\caption{Coefficients ($\beta$) and $p$-values from a linear model relating mean time to extinction to $Z$-scores of motif participation, species richness (S), and connectance (C). The best-fit model included terms for all 13 motifs. As these motifs have not been normalized, all 13 motifs are independent within a species' role.}
-% 			\label{motif_lm}
-% 			\begin{tabular}[h]{c |  l l |}
-% 			Motif & $\beta$ & $p$-value \\
-% 			\hline
-% 			S1 & 1.24$\times10^{-2}$ & \textless0.001 \\
-% 			S2 & 3.67$\times10^{-3}$ & \textless0.001 \\
-% 			S3 & 6.44$\times10^{-1}$ & \textless0.001 \\
-% 			S4 & 1.12$\times10^{-2}$ & \textless0.001  \\
-% 			S5 & 1.60$\times10^{-3}$ & \textless0.001  \\
-% 			D1 & 1.02$\times10^{-2}$ & \textless0.001 \\
-% 			D2 & -2.10$\times10^{-2}$ & \textless0.001 \\
-% 			D3 & 1.60$\times10^{-2}$ & \textless0.001 \\
-% 			D4 & -1.42$\times10^{-1}$ & \textless0.001 \\
-% 			D5 & -2.87$\times10^{-1}$ & \textless0.001 \\
-% 			D6 & 1.29$\times10^{-1}$ & \textless0.001 \\
-% 			D7 & -2.83$\times10^{-2}$ & \textless0.001 \\
-% 			D8 & -2.06$\times10^{-1}$ & \textless0.001 \\
-% 			\hline
-% 			\end{tabular}
-% 			\end{table}
+    \subsection*{S1: Testing consistence of times to extinction}
+    
+        Supplemental methods and results related to testing whether the identity of the removed species has a large effect on the time to extinction for non-removed species. Includes \textbf{Figure S1}.
+    
+    \subsection*{S2: Details of PERMANOVA results}
+        
+        Supplemental results for PERMANOVAs testing whether species' overall roles are related to their mean times to exinction. Includes \textbf{Figure S2, Tables S1-S2}.
+    
+    \subsection*{S3: Relating motifs roles to other measures}
+        
+        Gives the slopes of relationships between motif roles and degree or shortest trophic level (STL) in \textbf{Tables S3-S4}.
+        
+    \subsection*{S4: Motif labels}
+        
+        \textbf{Figure S3} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
 
 \clearpage
 
-\section*{SQ: Testing consistency of times to extinction across removals}
+\section*{S1: Testing consistency of times to extinction across removals}
 
 	\subsection*{Methods}
 
-		We simulated population dynamics within each food web after removing each speciees separately. 
-		In order to assess species' overall vulnerability to the loss of an arbitraty other species within the food web, we used mean time to extinction across all removals as a response. 
+		We simulated population dynamics within each food web after removing each species separately. 
+		In order to assess species' overall vulnerability to the loss of an arbitrary other species within the food web, we used mean time to extinction across all removals as a response. 
 		To ensure that this is a robust measure, we calculated the Pearson correlation of times to extinction for each species across all extinctions in each network. 
 		We then tested whether the strength of these correlations varied with species richness and/or connectance by fitting a general linear model including fixed effects of species richness, connectance, and their interaction, as well as a random effect for network ID. 
-		We fit the model using the R~\citep{R} function 'lmer' from the package \emph{lmerTest}~\citep{lmerTest}.
+		We fit the model using the R~\citep{R} function `lmer' from the package \emph{lmerTest}~\citep{lmerTest}.
 
 
 	\subsection*{Results}
@@ -150,7 +110,7 @@ alyssa.cirtwill@gmail.com\\
 
 \clearpage
 
-\section*{SM: Details of PERMANOVA results}
+\section*{S2: Details of PERMANOVA results}
 
 	All PERMANOVAs were significant, indicating that species' overall motif roles are related to their mean times to extinction.
 
@@ -162,48 +122,149 @@ alyssa.cirtwill@gmail.com\\
 
 
 	\begin{table}[h!]
-		\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean correlation among extinction orders across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA.}
+		\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean correlation among extinction orders across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 		\label{permtable}
 		\begin{tabular}{c c | c | c c ||c c | c | c c |}
 			S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 			\hline
 			50	&	0.02	&	0.789	&	86.7	&	0.017	&	80	&	0.02	&	0.866	&	107	&	0.013	\\
 			50	&	0.04	&	0.813	&	66.4	&	0.013	&	80	&	0.04	&	0.898	&	114	&	0.014	\\
-			50	&	0.06	&	0.845	&	70.2	&	0.014	&	80	&	0.06	&	0.9	&	128	&	0.016	\\
+			50	&	0.06	&	0.845	&	70.2	&	0.014	&	80	&	0.06	&	0.9	&	128	&	0.016	\\  
 			50	&	0.08	&	0.843	&	77.4	&	0.015	&	80	&	0.08	&	0.908	&	147	&	0.018	\\
-			50	&	0.1	&	0.857	&	75	&	0.015	&	80	&	0.1	&	0.914	&	134	&	0.016	\\
-			50	&	0.12	&	0.868	&	104	&	0.02	&	80	&	0.12	&	0.915	&	140	&	0.017	\\
+			50	&	0.10	&	0.857	&	75.0	&	0.015	&	80	&	0.10	&	0.914	&	134	&	0.016	\\
+			50	&	0.12	&	0.868	&	104	&	0.020	&	80	&	0.12	&	0.915	&	140	&	0.017	\\
 			50	&	0.14	&	0.867	&	83.8	&	0.016	&	80	&	0.14	&	0.921	&	146	&	0.018	\\
 			50	&	0.16	&	0.872	&	89.7	&	0.018	&	80	&	0.16	&	0.923	&	125	&	0.015	\\
 			50	&	0.18	&	0.876	&	88.7	&	0.017	&	80	&	0.18	&	0.925	&	118	&	0.015	\\
-			50	&	0.2	&	0.88	&	103	&	0.02	&	80	&	0.2	&	0.926	&	123	&	0.015	\\
+			50	&	0.20	&	0.88	&	103	&	0.020	&	80	&	0.20	&	0.926	&	123	&	0.015	\\
 			60	&	0.02	&	0.82	&	92.7	&	0.015	&	90	&	0.02	&	0.884	&	121	&	0.013	\\
-			60	&	0.04	&	0.846	&	86	&	0.014	&	90	&	0.04	&	0.906	&	142	&	0.016	\\
+			60	&	0.04	&	0.846	&	86.0	&	0.014	&	90	&	0.04	&	0.906	&	142	&	0.016	\\
 			60	&	0.06	&	0.865	&	91.2	&	0.015	&	90	&	0.06	&	0.915	&	160	&	0.018	\\
 			60	&	0.08	&	0.872	&	99.7	&	0.016	&	90	&	0.08	&	0.923	&	151	&	0.017	\\
-			60	&	0.1	&	0.887	&	92.1	&	0.015	&	90	&	0.1	&	0.923	&	128	&	0.014	\\
+			60	&	0.10	&	0.887	&	92.1	&	0.015	&	90	&	0.10	&	0.923	&	128	&	0.014	\\
 			60	&	0.12	&	0.883	&	96.9	&	0.016	&	90	&	0.12	&	0.927	&	128	&	0.014	\\
 			60	&	0.14	&	0.891	&	102	&	0.017	&	90	&	0.14	&	0.928	&	126	&	0.014	\\
 			60	&	0.16	&	0.89	&	106	&	0.017	&	90	&	0.16	&	0.931	&	138	&	0.015	\\
 			60	&	0.18	&	0.893	&	107	&	0.018	&	90	&	0.18	&	0.934	&	107	&	0.012	\\
-			60	&	0.2	&	0.899	&	137	&	0.022	&	90	&	0.2	&	0.936	&	127	&	0.014	\\
+			60	&	0.20	&	0.899	&	137	&	0.022	&	90	&	0.20	&	0.936	&	127	&	0.014	\\
 			70	&	0.02	&	0.848	&	91.4	&	0.013	&	100	&	0.02	&	0.899	&	125	&	0.012	\\
 			70	&	0.04	&	0.875	&	108	&	0.015	&	100	&	0.04	&	0.917	&	191	&	0.019	\\
-			70	&	0.06	&	0.877	&	111	&	0.016	&	100	&	0.06	&	0.923	&	206	&	0.02	\\
+			70	&	0.06	&	0.877	&	111	&	0.016	&	100	&	0.06	&	0.923	&	206	&	0.020	\\
 			70	&	0.08	&	0.898	&	112	&	0.016	&	100	&	0.08	&	0.932	&	176	&	0.017	\\
-			70	&	0.1	&	0.904	&	134	&	0.019	&	100	&	0.1	&	0.934	&	148	&	0.015	\\
+			70	&	0.10	&	0.904	&	134	&	0.019	&	100	&	0.10	&	0.934	&	148	&	0.015	\\
 			70	&	0.12	&	0.907	&	124	&	0.017	&	100	&	0.12	&	0.934	&	156	&	0.015	\\
-			70	&	0.14	&	0.906	&	118	&	0.017	&	100	&	0.14	&	0.939	&	98.3	&	0.01	\\
+			70	&	0.14	&	0.906	&	118	&	0.017	&	100	&	0.14	&	0.939	&	98.3	&	0.010	\\
 			70	&	0.16	&	0.909	&	122	&	0.017	&	100	&	0.16	&	0.938	&	144	&	0.014	\\
 			70	&	0.18	&	0.913	&	99.9	&	0.014	&	100	&	0.18	&	0.939	&	118	&	0.012	\\
-			70	&	0.2	&	0.917	&	122	&	0.017	&	100	&	0.2	&	0.942	&	105	&	0.01	\\
+			70	&	0.20	&	0.917	&	122	&	0.017	&	100	&	0.20	&	0.942	&	105	&	0.010	\\
 			\hline
 		\end{tabular}
 		\end{table}
 
+
+	\begin{table}[h!]
+		\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable roles than others. This may cause false positives in the PERMANVOAs reported in table~\ref{permtable}. In all cases, the variability of species' roles increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+		\label{disptable}
+		\footnotesize
+		\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
+			&		&	\multicolumn{2}{c|}{ANOVA}	&\multicolumn{2}{c||}{Regression} 			& & & 	\multicolumn{2}{c|}{ANOVA}		 	&	 \multicolumn{2}{c|}{Regression} 			\\
+            S	&	C	&	$F$	&	$p$-value	&	$\beta$	&	$p$-value	&	S	&	C	&	$F$	&	$p$-value	&	$\beta$	&	$p$-value	\\
+			\hline
+        50	&	0.02	&	3.38	&	\textless0.001	&	3.36$\times10^{-4}$	&	\textless0.001	&	80	&	0.02	&	3.72	&	\textless0.001	&	1.74$\times10^{-4}$	&	\textless0.001	\\
+        50	&	0.04	&	3.90	&	\textless0.001	&	2.60$\times10^{-4}$	&	\textless0.001	&	80	&	0.04	&	3.87	&	\textless0.001	&	1.34$\times10^{-4}$	&	\textless0.001	\\
+        50	&	0.06	&	3.75	&	\textless0.001	&	2.12$\times10^{-4}$	&	\textless0.001	&	80	&	0.06	&	3.86	&	\textless0.001	&	1.15$\times10^{-4}$	&	\textless0.001	\\
+        50	&	0.08	&	3.59	&	\textless0.001	&	1.81$\times10^{-4}$	&	\textless0.001	&	80	&	0.08	&	3.83	&	\textless0.001	&	1.04$\times10^{-4}$	&	\textless0.001	\\
+        50	&	0.10	&	3.56	&	\textless0.001	&	1.76$\times10^{-4}$	&	\textless0.001	&	80	&	0.10	&	3.59	&	\textless0.001	&	8.39$\times10^{-5}$	&	\textless0.001	\\
+        50	&	0.12	&	3.76	&	\textless0.001	&	1.60$\times10^{-4}$	&	\textless0.001	&	80	&	0.12	&	3.49	&	\textless0.001	&	8.00$\times10^{-5}$	&	\textless0.001	\\
+        50	&	0.14	&	3.39	&	\textless0.001	&	1.52$\times10^{-4}$	&	\textless0.001	&	80	&	0.14	&	3.27	&	\textless0.001	&	7.80$\times10^{-5}$	&	\textless0.001	\\
+        50	&	0.16	&	3.34	&	\textless0.001	&	1.34$\times10^{-4}$	&	\textless0.001	&	80	&	0.16	&	3.02	&	\textless0.001	&	6.34$\times10^{-5}$	&	\textless0.001	\\
+        50	&	0.18	&	3.23	&	\textless0.001	&	1.28$\times10^{-4}$	&	\textless0.001	&	80	&	0.18	&	2.72	&	\textless0.001	&	5.46$\times10^{-5}$	&	\textless0.001	\\
+        50	&	0.20	&	3.12	&	\textless0.001	&	1.24$\times10^{-4}$	&	\textless0.001	&	80	&	0.20	&	2.55	&	\textless0.001	&	4.11$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.02	&	3.58	&	\textless0.001	&	2.78$\times10^{-4}$	&	\textless0.001	&	90	&	0.02	&	3.56	&	\textless0.001	&	1.52$\times10^{-4}$	&	\textless0.001	\\
+        60	&	0.04	&	3.88	&	\textless0.001	&	2.05$\times10^{-4}$	&	\textless0.001	&	90	&	0.04	&	4.00	&	\textless0.001	&	1.13$\times10^{-4}$	&	\textless0.001	\\
+        60	&	0.06	&	3.72	&	\textless0.001	&	1.74$\times10^{-4}$	&	\textless0.001	&	90	&	0.06	&	3.64	&	\textless0.001	&	9.23$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.08	&	3.47	&	\textless0.001	&	1.50$\times10^{-4}$	&	\textless0.001	&	90	&	0.08	&	3.44	&	\textless0.001	&	7.63$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.10	&	3.58	&	\textless0.001	&	1.23$\times10^{-4}$	&	\textless0.001	&	90	&	0.10	&	3.24	&	\textless0.001	&	7.03$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.12	&	3.45	&	\textless0.001	&	1.29$\times10^{-4}$	&	\textless0.001	&	90	&	0.12	&	3.02	&	\textless0.001	&	5.14$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.14	&	3.45	&	\textless0.001	&	1.12$\times10^{-4}$	&	\textless0.001	&	90	&	0.14	&	2.85	&	\textless0.001	&	5.56$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.16	&	3.30	&	\textless0.001	&	1.11$\times10^{-4}$	&	\textless0.001	&	90	&	0.16	&	2.92	&	\textless0.001	&	5.26$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.18	&	3.07	&	\textless0.001	&	1.03$\times10^{-4}$	&	\textless0.001	&	90	&	0.18	&	2.58	&	\textless0.001	&	4.11$\times10^{-5}$	&	\textless0.001	\\
+        60	&	0.20	&	3.15	&	\textless0.001	&	9.84$\times10^{-5}$	&	\textless0.001	&	90	&	0.20	&	2.59	&	\textless0.001	&	4.17$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.02	&	3.45	&	\textless0.001	&	2.16$\times10^{-4}$	&	\textless0.001	&	100	&	0.02	&	3.99	&	\textless0.001	&	1.31$\times10^{-4}$	&	\textless0.001	\\
+        70	&	0.04	&	3.76	&	\textless0.001	&	1.64$\times10^{-4}$	&	\textless0.001	&	100	&	0.04	&	3.95	&	\textless0.001	&	9.81$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.06	&	3.83	&	\textless0.001	&	1.46$\times10^{-4}$	&	\textless0.001	&	100	&	0.06	&	3.65	&	\textless0.001	&	8.23$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.08	&	3.64	&	\textless0.001	&	1.11$\times10^{-4}$	&	\textless0.001	&	100	&	0.08	&	3.31	&	\textless0.001	&	6.52$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.10	&	3.39	&	\textless0.001	&	9.72$\times10^{-5}$	&	\textless0.001	&	100	&	0.10	&	3.11	&	\textless0.001	&	5.62$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.12	&	3.42	&	\textless0.001	&	9.64$\times10^{-5}$	&	\textless0.001	&	100	&	0.12	&	3.05	&	\textless0.001	&	5.07$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.14	&	3.09	&	\textless0.001	&	8.62$\times10^{-5}$	&	\textless0.001	&	100	&	0.14	&	2.54	&	\textless0.001	&	3.22$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.16	&	3.05	&	\textless0.001	&	8.31$\times10^{-5}$	&	\textless0.001	&	100	&	0.16	&	2.56	&	\textless0.001	&	3.44$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.18	&	2.85	&	\textless0.001	&	6.25$\times10^{-5}$	&	\textless0.001	&	100	&	0.18	&	2.58	&	\textless0.001	&	3.63$\times10^{-5}$	&	\textless0.001	\\
+        70	&	0.20	&	2.81	&	\textless0.001	&	6.77$\times10^{-5}$	&	\textless0.001	&	100	&	0.20	&	2.32	&	\textless0.001	&	2.17$\times10^{-5}$	&	\textless0.001	\\
+
+    \end{tabular}
+    \end{table}
+    
+
 \clearpage
 
-\section*{SXX: Motif labels}
+\section*{S3: Relating motif roles to other measures}
+
+    \begin{table}[h!]
+        \caption{Slopes and $p$-values for linear regressions relating degree (number of interaction partners) to the raw counts of motifs, degree-normalized proportions of motifs, and network-normalized $Z$-scores of motifs. Motifs are named as in~\citet{Stouffer2007}. Motifs S1 (\emph{three-species chain}), S2 (\emph{omnivory}), S4 (\emph{direct competition}), and S5 (\emph{apparent competition}) are the 'stable' motifs of particular interest in our study (highlighted in bold). All regressions remained significant after applying the correllated Bonferroni correction~\citep{Drezner2016}.}
+        \label{degree_lms}
+        \begin{tabular}{l | c c c c c c }
+        \multirow{2}{*}{Motif} & \multicolumn{2}{c}{Raw roles} & \multicolumn{2}{c}{Degree-normalized roles} & \multicolumn{2}{c}{Network-normalized roles} \\
+        & Slope & $p$-value & Slope & $p$-value & Slope & $p$-value \\
+        \hline
+        \textbf{S1}	&	6.17	&	\textbf{\textless0.001}	& -1.24$\times10^{-3}$	&	\textbf{\textless0.001}	&	2.61$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \textbf{S2}	&	11.1	&	\textbf{\textless0.001}	& 4.21$\times10^{-3}$	&	\textbf{\textless0.001}	&	3.73$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \textbf{S4}	&	3.18	&	\textbf{\textless0.001}	& -1.04$\times10^{-3}$	&	\textbf{\textless0.001}	&	1.63$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \textbf{S5}	&	12.6	&	\textbf{\textless0.001}	& -4.13$\times10^{-3}$	&	\textbf{\textless0.001}	&	3.02$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \hline
+        S3	&	6.73$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.96$\times10^{-7}$	&	\textbf{\textless0.001}	&	8.90$\times10^{-4}$	&	\textbf{\textless0.001}	\\
+        D1	&	2.21	&	\textbf{\textless0.001}	&	8.83$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.52$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D2	&	0.797	&	\textbf{\textless0.001}	&	3.98$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.11$\times10^{-2}$
+        	&	\textbf{\textless0.001}	\\
+        D3	&	1.78	&	\textbf{\textless0.001}	&	6.37$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.08$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D4	&	0.203	&	\textbf{\textless0.001}	&	8.98$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.22$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D5	&	3.77$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.52$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.11$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D6	&	0.127	&	\textbf{\textless0.001}	&	5.85$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.78$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D7	&	0.256	&	\textbf{\textless0.001}	&	1.15$\times10^{-4}$	&	\textbf{\textless0.001}	&	1.94$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D8	&	4.04$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.61$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.06$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \hline
+        \end{tabular}
+        \end{table}
+
+
+    \begin{table}[h!]
+        \caption{Slopes and $p$-values for linear regressions relating trophic level (STL; height in the food web) to the raw counts of motifs, degree-normalized proportions of motifs, and network-normalized $Z$-scores of motifs. Motifs are named as in~\citet{Stouffer2007}. Motifs S1 (\emph{three-species chain}), S2 (\emph{omnivory}), S4 (\emph{direct competition}), and S5 (\emph{apparent competition}) are the 'stable' motifs of particular interest in our study (highlighted in bold). All regressions remained significant after applying the correllated Bonferroni correction~\citep{Drezner2016}.}
+        \label{TL_lms}
+        \begin{tabular}{l | c c c c c c }
+        \multirow{2}{*}{Motif} & \multicolumn{2}{c}{Raw roles} & \multicolumn{2}{c}{Degree-normalized roles} & \multicolumn{2}{c}{Network-normalized roles} \\
+        & Slope & $p$-value & Slope & $p$-value & Slope & $p$-value \\
+        \hline
+        \textbf{S1}	&	9.58	&	\textbf{\textless0.001}	&	-8.32$\times10^{-3}$	&	\textbf{\textless0.001}	&	-0.156	&	\textbf{\textless0.001}	\\
+        \textbf{S2}	&	3.36	&	\textbf{\textless0.001}	&	3.62$\times10^{-3}$	&	\textbf{\textless0.001}	&	-0.194	&	\textbf{\textless0.001}	\\
+        \textbf{S4}	&	3.48	&	\textbf{\textless0.001}	&	-4.59$\times10^{-3}$	&	\textbf{\textless0.001}	&	-9.51$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \textbf{S5}	&	24.0	&	\textbf{\textless0.001}	&	-6.35$\times10^{-3}$	&	\textbf{\textless0.001}	&	-9.66$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \hline													
+        S3	&	2.96$\times10^{-3}$	&	\textbf{\textless0.001}	&	4.82$\times10^{-6}$	&	\textbf{\textless0.001}	&	2.91$\times10^{-3}$	&	\textbf{\textless0.001}	\\
+        D1	&	2.48	&	\textbf{\textless0.001}	&	4.50$\times10^{-3}$	&	\textbf{\textless0.001}	&	-4.16$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D2	&	1.09	&	\textbf{\textless0.001}	&	1.61$\times10^{-3}$	&	\textbf{\textless0.001}	&	-4.53$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D3	&	3.72	&	\textbf{\textless0.001}	&	6.89$\times10^{-3}$	&	\textbf{\textless0.001}	&	-1.37$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D4	&	0.804	&	\textbf{\textless0.001}	&	1.34$\times10^{-3}$	&	\textbf{\textless0.001}	&	2.82$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D5	&	0.112	&	\textbf{\textless0.001}	&	2.05$\times10^{-4}$	&	\textbf{\textless0.001}	&	1.85$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D6	&	9.93$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.86$\times10^{-4}$	&	\textbf{\textless0.001}	&	-2.65$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        D7	&	0.380	&	\textbf{\textless0.001}	&	6.64$\times10^{-4}$	&	\textbf{\textless0.001}	&	-8.81$\times10^{-3}$	&	\textbf{\textless0.001}	\\
+        D8	&	0.135	&	\textbf{\textless0.001}	&	2.46$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.10$\times10^{-2}$	&	\textbf{\textless0.001}	\\
+        \hline
+        \end{tabular}
+        \end{table}
+        
+
+\clearpage
+
+\section*{S4: Motif labels}
 
 	\begin{figure}[h!]
 		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modelled in isolation and as potentially increasing the stability of empirical food webs. Labels are as in~\citet{Stouffer2007}.}
