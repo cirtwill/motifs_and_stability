@@ -90,6 +90,8 @@ alyssa.cirtwill@gmail.com\\
 	Two networks with the same connectance and similar values of nestedness and modularity may still have quite different meso-scale (i.e., more detailed than global-scale) arrangements of links. 
 	These meso-scale structures, described by frequencies of \emph{motifs} (unique patterns of $n$ interacting species), define the local neighborhood of a focal species and reflect its direct and close indirect interactions (Fig.~\ref{motifs}).
 	
+￼
+
 	
     In addition to providing species-level information on network structure, there are early indications that some meso-scale structures may tend to stabilize food webs~\citep{Prill2005,Borrelli2015,Monteiro2016}. 
     This possibility is supported by the fact that empirical food webs tend to contain more \emph{three-species chains} and either more \emph{omnivory} (\emph{sensu}~\citealp[]{Thompson2007b}) motifs or more \emph{apparent competition} and \emph{direct competition} motifs than random networks~\citep{Stouffer2007}. 
@@ -360,10 +362,10 @@ alyssa.cirtwill@gmail.com\\
 
     \begin{table}[h!]
         \centering
-        \caption{Summary of analyses performed and results obtained therefrom. `S' refers to species richness, `C' connectance, `Ext' to mean time to extinction across removals, `STL' to shortest trophic level, and `Deg' to degree (number of interaction partners). `role' refers to the count, proportion, or $Z$-scores of the 13 three-species motifs in a species' role as specified below. }
+        \caption{Summary of analyses performed and results obtained therefrom. `S' refers to species richness, `C' connectance, `Ext' to mean time to extinction across removals, `STL' to shortest trophic level, and `Deg' to degree (number of interaction partners).}
         \label{overview_table}
         \footnotesize
-        \begin{tabular}{m{6cm}|m{7.5cm}|m{8cm}}
+        \begin{tabular}{m{6.5cm}|m{7cm}|m{8cm}}
         Question & Test & Result \\
         \hline
         Are roles (count) related to Ext? & 
@@ -383,15 +385,8 @@ alyssa.cirtwill@gmail.com\\
             \item LM: Disp(role) vs. Ext
         \end{itemize} & \begin{itemize} \item Roles variability significantly increases with increasing Ext \end{itemize} \\
         \hline
-        Which motif counts are most strongly related to Ext? (see Fig.~\ref{coefficient_sum}). & \begin{itemize}
-            \item PLS: Ext vs. role, S, C, S:C, STL, Deg
-        \end{itemize} & \begin{itemize}\item Ext decreases with omnivory but increases with other stable motifs. \end{itemize}\\
-        Which motif proportions? (see Fig.~\ref{coefficient_sum}) & \begin{itemize}
-            \item PLS: Ext vs. role, S, C, S:C, STL, Deg
-        \end{itemize} & \begin{itemize}\item As above. \end{itemize}\\
-        Which motif $Z$-scores?(see Fig.~\ref{coefficient_sum}) & \begin{itemize}
-            \item PLS: Ext vs. role, S, C, S:C, STL, Deg
-        \end{itemize} & \begin{itemize}\item As above. \end{itemize} \\
+        Which motifs are most strongly related to Ext? (see Fig.~\ref{coefficient_sum}). & \begin{itemize}
+            \item PLS: Ext vs. role, S, C, S:C, STL, Deg \end{itemize} & \begin{itemize} \item Ext decreases with omnivory but increases with other stable motifs. \end{itemize} \\
         \hline
         How do motifs vary with Deg? \newline(see Fig.~\ref{motif_vs_degTL}) & \begin{itemize} 
         \item LM: Count vs. Deg 
@@ -461,27 +456,27 @@ alyssa.cirtwill@gmail.com\\
 
 
     \begin{figure}[h!]
-        \includegraphics[width=.9\textwidth]{figures/motifs_box.eps}
         \caption{Figure 1.}
         \label{motifs}
+        \includegraphics[width=.9\textwidth]{figures/motifs_box.eps}
     \end{figure}
 
     \clearpage
 
     % % PLS coefficients
 	\begin{figure}[h!]
-		\label{coefficient_sum}
-		\includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
 		\caption{Figure 2.}
+        \label{coefficient_sum}
+        \includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
         \end{figure}
 
     \clearpage
     
     % % Relationships between motifs and degree
 	\begin{figure}[h!]
-		\label{motif_vs_degTL}
-		\includegraphics[height=.65\textheight]{figures/roles/motif_vs_oneD.eps}
 		\caption{Figure 3.}
+        \label{motif_vs_degTL}
+        \includegraphics[height=.65\textheight]{figures/roles/motif_vs_oneD.eps}
 		\end{figure}
 
 
