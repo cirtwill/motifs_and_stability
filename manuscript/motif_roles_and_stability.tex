@@ -16,6 +16,12 @@
 \newcommand{\methods}{\textit{Materials \& Methods}}
 \newcommand{\SI}{\textit{Appendix}~}
 
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{-0\baselineskip}{-0\baselineskip}
+\titlespacing*{\subsection}{0pt}{-0\baselineskip}{-0\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{-0\baselineskip}{-0\baselineskip}
+
 \topmargin -1.5cm % 0.0cm 
 \oddsidemargin 0.0cm % 0.2cm 
 \textwidth 6.5in
@@ -90,9 +96,7 @@ alyssa.cirtwill@gmail.com\\
 	Two networks with the same connectance and similar values of nestedness and modularity may still have quite different meso-scale (i.e., more detailed than global-scale) arrangements of links. 
 	These meso-scale structures, described by frequencies of \emph{motifs} (unique patterns of $n$ interacting species), define the local neighborhood of a focal species and reflect its direct and close indirect interactions (Fig.~\ref{motifs}).
 	
-￼
 
-	
     In addition to providing species-level information on network structure, there are early indications that some meso-scale structures may tend to stabilize food webs~\citep{Prill2005,Borrelli2015,Monteiro2016}. 
     This possibility is supported by the fact that empirical food webs tend to contain more \emph{three-species chains} and either more \emph{omnivory} (\emph{sensu}~\citealp[]{Thompson2007b}) motifs or more \emph{apparent competition} and \emph{direct competition} motifs than random networks~\citep{Stouffer2007}. 
     These four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
@@ -110,6 +114,7 @@ alyssa.cirtwill@gmail.com\\
     The more interaction partners a species has, the more motifs in can participate in (Fig.~\ref{motifs}).
     This is likely to lead species with higher degrees to participate in a wider variety of motifs as well as participate more frequently in the four common, stable motifs.
     Species with high in-degrees (more prey) are also generally less likely to go extinct, as are species at lower trophic levels~\citep{Cirtwill2018FoodWebs}.
+    In addition, species with different trophic levels tend to have different motif roles~\citep{Cirtwill2018EcolLett}.
     Any test for a relationship between motif roles and time to extinction should therefore take degree and trophic level into account to avoid confounding these effects.  
     
     
@@ -122,69 +127,64 @@ alyssa.cirtwill@gmail.com\\
 
     	\subsubsection*{Generating food webs}
     
-    		We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
-    
-  
-    		After generating the network structure, we simulated community dynamics using the function "simulate" from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
-    		All non-basal species were designated as vertebrates to ensure a good match between metabolic and predator-prey body-mass ratio values. Metabolic rates in the Lotka-Volterra model are based on each species' body mass (i.e. mass of a single individual). We assigned relative body masses based on each species' trophic level, which was, in turn, calculated based on the food-web structure provided by the niche model. After basal species were assigned a body mass of 1, we used a predator-prey body-mass ratio of 3.065 to calculate the relative body masses of higher trophic levels. We selected this ratio based on the estimate for vertebrates (averaged across ecosystem and metabolic types) in~\citet{Brose2006}. We excluded reported body-mass ratios for invertebrates as these could include parasites and parasitoids, which are generally smaller than their prey, and because interactions among vertebrates are better represented in the food-web literature than interactions involving invertebrates.
-    		
-    		
-    		The persistence of each species in our simulated networks also depends on its population biomass. 
-    		We randomly assigned initial population biomasses (i.e. cumulative biomass across all individuals of a species) for each species from a uniform distribution [0,1]. Note that population biomasses and individual body masses are not calculated on the same scale. We then simulated community dynamics for 1000 time steps to obtain an equilibrium community. To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times10^{-5}$. When simulating initial (i.e. pre-perturbation or equilibrium) dynamics, we rejected any network where one or more species dropped below this biomass threshold. Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of predator $i$ eating prey $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not reach an equilibrium with all species persisting for 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated until an equilibrium with all species persisting was obtained.
-    		If a stable equilibrium still had not been reached after 100 sets of randomly-assigned initial biomasses, we discarded the network and simulated another to replace it.
-    
+            We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017} and closely mimics the meso-scale structure of empirical food webs (\citealp{Stouffer2007}; \emph{Appendix S1}).
+            To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02); similar to connectances of observed food webs~\citep{Dunne2002e}. 
+            We generated a total of 100 networks with each combination of parameters (6000 total) using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}.
+
+
+            We then simulated Lotka-Volterra community dynamics using the ``simulate" function from the Julia language package \emph{BioEnergeticFoodWebs} (\citealp{bioenergeticfw,Delmas2017}; \emph{Appendix S1}).
+            Networks which retained all species for 1000 time steps were considered to have reached an equilibrium state and retained.
+            If a network did not retain all species, we first re-simulated dynamics using up to 100 different sets of initial biomasses and, if none were successful, then discarded the network and simulated another to replace it.
+            We thus obtained 6000 networks which retained with long-term persistence of all species in the absence of perturbations.
+
     
     	\subsubsection*{Calculating species roles}
     
     
-    		We were interested in whether species' roles at equilibrium are related to their response to a perturbation, in this case the removal of another species in the network. We defined each species' role as the number of times it appears in each unique three-species motif, following~\citet{Stouffer2012,Cirtwill2015}. Note that each set of three interacting species forms exactly one motif~\citep{Cirtwill2018FoodWebs}. As our focus is on how different motifs might affect extinction risk, we do not consider the different positions species may take within a motif. We expect that appearing more frequently in stable motifs (three-species chain, apparent and direct competition, and omnivory) will correlate with lower extinction risk while appearing more frequently in unstable motifs (those containing two- or three-species loops) will be associated with higher extinction risk.	Note that cannibalistic links were ignored when calculating motif frequencies within a network and species' roles, although they were included when calculating connectance. As well as these 'raw' motif roles, we calculated 'degree-normalized' motif roles for each species by dividing the number of appearances in each motif by the total number of times the species appears in any motif (as in~\citet{Cirtwill2015}; this total is expected to strongly correlate with degree). Finally, we also calculated 'network-normalized' motif roles, defined as the z-score of the number of times a focal species appears in each motif compared to the number of times all species in the network appear in the focal motif.
-    		The degree normalization allows us to test whether trends in stability with motif participation are due to differences in the total number of motifs a species appears in, while the network normalization allows us to test whether trends in stability with participation in different motifs are related to how unusual each species is within its community context.
+    		We were interested in whether species' roles at `equilibrium' are related to their response to a perturbation. 
+            Each species' motif role is the number of times it appears in each unique three-species motif, following~\citet{Stouffer2012,Cirtwill2015}. 
+            As our focus is on how different motifs might affect extinction risk, we do not consider the different positions species may take within a motif.   
+            Note that each set of three interacting species forms exactly one motif~\citep{Cirtwill2018FoodWebs} and that cannibalistic links were ignored when calculating motif frequencies within a network and species' roles. 
+
+
+            We also calculated 'degree-normalized' motif roles for each species by dividing the number of appearances in each motif by the total number of times the species appears in any motif~\citep{Cirtwill2015}; this total is expected to strongly correlate with degree). 
+            Finally, we calculated 'network-normalized' motif roles, defined as the $Z$-score of the number of times a focal species appears in each motif compared to the number of times all species in the network appear in the focal motif.
+    		The degree normalization indicates whether trends in stability with motif participation are due to differences in the total number of motifs a species appears in, while the network normalization indicates whether trends in stability with participation in different motifs are related to how unusual each species is within its community context.
     
     
     	\subsubsection*{Perturbing networks}
     
-    		After identifying species' roles in the equilibrium networks, we perturbed the networks by removing a single species. After this removal, community dynamics were simulated for 50 rounds of 10 time-steps (500 time-steps total). After each round, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0. We recorded the biomass of each species after each round, as well as the round in which any additional extinctions occurred. After 500 time-steps, we reset the network to its original state (including all species). We then removed a new species and again simulated community dynamics. We repeated this process until all species had served as the initial removal.
-    		We then calculated the mean time to extinction across all removals as an overall measure of each species' vulnerability (\emph{Appendix S1}). 
-    		Time to extinction was highly correlated across removals in all combinations of S and C, indicating that this is a robust measure.
+    		After identifying species' roles in the equilibrium networks, we perturbed the networks by removing a single species. 
+            After this removal, community dynamics were simulated for 50 rounds of 10 time-steps (500 time-steps total). 
+            After each round, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0. 
+            We recorded the round in which all secondary extinctions (i.e., not the artificially removed species) occurred. 
+            After 500 time-steps, we reset the network to its original state (including all species). 
+            We then removed a new species and again simulated community dynamics and repeated this process until all species had been the initial removal.
+    		We then calculated the mean time to extinction across all removals as an overall measure of each species' vulnerability (\emph{Appendix S2}). 
+    		Time to extinction was highly correlated across removals in all combinations of S and C and is a robust measure of risk.
 
 
 	\subsection*{Testing effects of species' roles on time to extinction}
 
 		\subsubsection*{Overall motif roles}
 
-			To test for a relationship between time to extinction and species' overall roles, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' raw motif roles to differences in mean time to extinction (Table~\ref{overview_table}).
-			Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
-			To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of network size and connectance (60 PERMANOVAs in total).
-			We fit all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
-			As conducting so many tests risks obtaining significant results by chance, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
-			
-            
-            In addition to participation in particular motifs affecting a species' vulnerability to extinction, it may also be that those species most vulnerable to extinction (i.e. short time to extinction) have more variable roles than those which are least vulnerable, or vice versa. 
-            If there is unequal variance in roles across different times to extinction, this could cause false positive results in PERMANOVA tests.
-            To account for this possibility, we first calculated the dispersion of roles for each value of mean time to extinction (treated categorically for this analysis), relative to the centroid for all species with the same mean time to extinction, using the function `betadisper' from the R~\citep{R} package \emph{vegan}~\citep{vegan}.
-            We then tested whether some levels of mean time to extinction are associated with more widely-dispersed roles using an ANOVA test, fit using the function `anova' within the package \emph{vegan}~\citep{vegan}.
-            Finally, to test whether role dispersion generally increases or decreases with increasing mean times to extinction, we fit a linear model relating role dispersion to mean time to extinction using the R~\citep{R} base function `lm'.
+            We tested whether a species' overall motif role was related to its mean time to extinction using a series of PERMANOVAs (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
+            As non-homogeneous variance of roles can cause false-positive PERMANOVA results, we used a series of ANOVAs to test the homogeneity of role dispersion (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
+            Finally, we tested whether long or short mean times to extinction were associated with greater role dispersion using a linear model (fit using the R~\citep{R} base function `lm').
 
 
 		\subsubsection*{Identifying the motifs most strongly related to time to extinction}
 
-			While the PERMANOVAs can tell us whether a species' role as a whole is related to its mean time to extinction, it does not reveal which motifs have the strongest effect on time to extinction.
-			To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
-			Similar to a principal components analysis (PCA), PLS involves projecting the observed variables (in this case, participation in different motifs) into a new space and identifying latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls}.
-			In our case, these latent variables represent combinations of motifs which, together, explain substantial variation in mean time to extinction.
-			
-			
-			In the first PLS regression, we used mean time to extinction as the response and raw motif roles as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
+			The PERMANOVAs indicate whether roles as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
+			To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction~\citep{Mevik2004,pls}.
+			First, we used mean time to extinction as the response and raw motif roles as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
 			We include additional measures of network structure and species roles as these may affect the motif roles available to each focal species.
-			To test whether any relationship between raw motif roles and time to extinction might be due to the tendency for high-degree species to appear in more motifs, we fit a second PLS regression using degree-normalized roles instead of the raw roles, with all other variables identical to the first regression.
-			Finally, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a third PLS regression using network-normalized roles as a predictor, with all other variables identical to the first regression.
+			Next, to test whether any relationship between raw motif roles and time to extinction might be due differences in the roles of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized roles instead of the raw roles, with all other variables identical to the first regression.
+			Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized roles as a predictor and all other variables identical to the first regression.
 			
 			
-			We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls}.
-			To prevent differences in range and intercept values from influencing the fit of the PLS model, we centered and scaled all variables.
-			After initial fitting, we cross-validated each regression using 10 randomly-selected segments of the data and re-fitting the regression and then calculated the mean squared error of prediction (MSEP) for each model.
-			MSEP is a measure of the error obtained when re-fitting a PLS or PCA model on test data, and is commonly used to select the optimum number of components~\citep{Mevik2004}.
-			In order to balance obtaining a low MSEP with identifying a parsimonious model, we defined the optimum model as that with the fewest components that nevertheless had an MSEP within one standard deviation of the lowest MSEP obtained for any model.
+			We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls} using centered and scaled variables and cross-validating each regression using 10 randomly-selected segments of the data.
+            We defined the optimum number of components for each regression as the lowest number of components that yielded an MSEP~\citep{Mevik2004} within one standard deviation of the lowest MSEP obtained for any model.
 			Model selection was performed using the R~\citep{R} function 'selectNcomp' from the package \emph{plsr}~\citep{pls} using the method `onesigma'.
 			After selecting the optimum number of components for each model, we re-fit the PLS regression including only the selected components. 
 			We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
@@ -193,21 +193,17 @@ alyssa.cirtwill@gmail.com\\
 		\subsubsection*{Relating motif roles to other role definitions}
 		
 			Finally, we wanted to test the possibility that the relationships we observe between motif roles and time to extinction might be due to underlying relationships between species' numbers of interaction partners (degree) or height within the food web (trophic level) and their motif roles.
-			Species with more interaction partners will participate in more motifs (as each combination of three interacting species represents a unique motif).
-			These species might also participate in a more diverse set of motifs, or might have roles in which certain motifs are over-represented.
-			Similarly, species with very high (or very low) trophic levels may appear in fewer motifs than species with intermediate trophic levels, as they may not appear as often as prey (or predators) and therefore be excluded from some motifs.
+			We calculated each species' degree (number of predators and prey) and shortest trophic level (STL): the length of the shortest food chain between the focal species and any basal resource~\citep{Hairston1993}. 
+            Basal resources are assigned a trophic level of one and other species are assigned an STL of one plus the STL of their prey.
 			
-			
-			To test these possibilities, we calculated each species' degree (number of predators and prey) and trophic level. We defined trophic level as `shortest trophic level' (STL): the length of the shortest food chain between the focal species and any basal resource~\citep{Hairston1993}. Basal resources are assigned a trophic level of one and other species are assigned an STL of one plus the STL of their prey.
-			We then fit a series of linear regressions relating degree or STL and the count (taken from the raw motif role), proportion (taken from the degree-normalized motif role), and $Z$-score (taken from the network-normalized motif role) of each motif in the species' role using a series of linear regressions (78 regressions total; Table~\ref{overview_table}).
-			All regressions were fit with the R~\citep{R} base function `lm'.
-        	As with our PERMANOVA analysis, fitting so many regressions runs the risk of obtaining significant results by chance.
-			To increase the likelihood of detecting a true relationship between species' degrees and motif roles, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance of these regressions.
+
+            We then fit a series of linear regressions relating degree or STL and the count (taken from the raw motif role), proportion (taken from the degree-normalized motif role), or $Z$-score (taken from the network-normalized motif role) of each motif in the species' role using a series of linear regressions (78 regressions total; Table~\ref{overview_table}).
+			All regressions were fit with the R~\citep{R} base function `lm.
+            To account for multiple testing, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
 
 
             We also wanted to estimate how the associations between motif roles and degree or STL might affect the relationships between motif roles and mean time to extinction.
-            To do this, we fit two linear mixed-effect models relating mean time to extinction to a species' degree (or STL). 
-            To account for differences in mean time to extinction across different network sizes and connectances, we included a random effect for the combination of network size and connectance. 
+            To do this, we fit two linear mixed-effect models relating mean time to extinction to a species' degree (or STL) and a random effect of the combination of network size and connectance. 
             Both models were fit using the function `lmer' from the R~\citep{R} package \emph{lmerTest}~\citep{lmerTest}.
 
 
@@ -215,11 +211,11 @@ alyssa.cirtwill@gmail.com\\
 	
     \subsection*{Relating overall motif roles to mean time to extinction}
     
-		Our series of PERMANOVA tests demonstrated that species' overall raw motif roles were correlated with their mean time to extinction across all combinations of species richness and connectance (Table \emph{S1, Appendix S2}). Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
-		However, these significant results may be false positives since the variability of raw motif roles was not consistent across mean times to extinction for any combination of species richness and connectance (Table \emph{S3, Appendix S2}). 
+		Our series of PERMANOVA tests demonstrated that species' overall raw motif roles were correlated with their mean time to extinction across all combinations of species richness and connectance (Table \emph{S1, Appendix S3}). 
+		However, these significant results may be false positives since the variability of raw motif roles was not consistent across mean times to extinction for any combination of species richness and connectance (Table \emph{S3, Appendix S3}). 
 		Specifically, longer mean times to extinction were associated with significantly more variable roles, and these relationships were stronger in smaller or less-connected networks. 
 		This means that there are many roles which are associated with long times to extinction but fewer roles which are associated with short times to extinction.
-		After applying the correlated Bonferroni correction~\citep{Drezner2016}, both the ANOVAs testing for non-homogeneous variability of roles and regressions testing for relationships between role variability and time to extinction remained significant.
+		
     
 
 	\subsection*{Identifying the motifs most strongly related to mean time to extinction}
@@ -258,99 +254,93 @@ alyssa.cirtwill@gmail.com\\
         \subsubsection*{Degree}
         
             Species with higher degrees tended to have longer mean times to extinction ($\beta$=0.190, $p$\textless0.001).
-    		As expected, the count of all motifs increased significantly with increasing degree (Table \emph{S3, Appendix S3}).
+    		As expected, the count of all motifs increased significantly with increasing degree (Table \emph{S3, Appendix S5}).
     		The counts of the four stable motifs (S1, S2, S4, and S5) increased most rapidly with increasing degree (Fig.~\ref{motif_vs_degTL}A).
-    		The proportions of a species' role made up by the \emph{three-species chain}, \emph{direct competition}, and \emph{apparent competition} motifs (S1, S4, and S5) in a species' role decreased significantly with increasing degree, while the proportions of the \emph{omnivory} (S2) and all unstable motifs increased significantly with increasing degree (Table \emph{S3, Appendix S3}, Fig.~\ref{motif_vs_degTL}C).
-    		The $Z$-scores of motifs relative to other species in the network all increased significantly with increasing degree (Table \emph{S3, Appendix S3}).
+    		The proportions of a species' role made up by the \emph{three-species chain}, \emph{direct competition}, and \emph{apparent competition} motifs (S1, S4, and S5) in a species' role decreased significantly with increasing degree, while the proportions of the \emph{omnivory} (S2) and all unstable motifs increased significantly with increasing degree (Table \emph{S3, Appendix S5}, Fig.~\ref{motif_vs_degTL}C).
+    		The $Z$-scores of motifs relative to other species in the network all increased significantly with increasing degree (Table \emph{S3, Appendix S5}).
             The $Z$-scores of the \emph{omnivory} and \emph{apparent competition} motifs (S2 and S5) increased most rapidly with degree, but there was not a clear separation in the slopes of stable and unstable motifs (Fig.~\ref{motif_vs_degTL}E).
 
 
         \subsubsection*{Trophic level (height within food web)}
             
             Species with higher trophic levels tended to have shorter mean times to extinction ($\beta$=-11.0, $p$\textless0.001).
-            The count of all motifs also increased with increasing trophic level (Table \emph{S4, Appendix S3}). 
+            The count of all motifs also increased with increasing trophic level (Table \emph{S4, Appendix S5}). 
             The counts of the four stable motifs (S1, S2, S4, and S5) were higher than counts of unstable motifs for all trophic levels, and the \emph{apparent competition} (S5) and \emph{three-species chain} (S1) also showed the most rapid increases with increasing trophic level (Fig.~\ref{motif_vs_degTL}B).
-            The proportions of a species' role made up by the \emph{three-species chain}, \emph{direct competition}, and \emph{apparent competition} (S1, S4, and S5) motifs decreased significantly with increasing trophic level, while the proportions of all other motifs increased significantly (Table \emph{S4, Appendix S3; Supplemental Information}, Fig.~\ref{motif_vs_degTL}D).
-            The $Z$-scores of the four stable motifs, relative to other species in the network, decreased significantly with increasing trophic level while unstable motifs showed both significant increases and significant decreases with increasing trophic level (Table \emph{S4, Appendix S3}, Fig.~\ref{motif_vs_degTL}F).
+            The proportions of a species' role made up by the \emph{three-species chain}, \emph{direct competition}, and \emph{apparent competition} (S1, S4, and S5) motifs decreased significantly with increasing trophic level, while the proportions of all other motifs increased significantly (Table \emph{S4, Appendix S5; Supplemental Information}, Fig.~\ref{motif_vs_degTL}D).
+            The $Z$-scores of the four stable motifs, relative to other species in the network, decreased significantly with increasing trophic level while unstable motifs showed both significant increases and significant decreases with increasing trophic level (Table \emph{S4, Appendix S5}, Fig.~\ref{motif_vs_degTL}F).
 
 
 \section*{Discussion}
 
-    We found that times to extinction were tightly correlated across removals. 
-    This suggests that the position of a focal species within a network can affect its risk of extinction following a disturbance regardless of where in the network the disturbance is applied. This result also justifies our use of mean times to extinction across removals as a measure of a species' overall risk.
-    Taken together, our results show that motif roles are related to mean times to extinction and that the omnivory motif may have a distinct effect from those of the other stable motifs, at least in body-mass structured vertebrate food webs.
-    Testing whether these results hold true for other types of networks (e.g., invertebrate food-webs not structured by body mass) will require alternative simulation approaches; however, the increasing availability of highly-resolved empirical data for interactions among invertebrates~\citep{} should allow researchers to create such simulations and test the generality of our results in the near future.
+    We found that times to extinction were tightly correlated across removals, suggesting that each species has a particular risk of extinction regardless of whether it interacts directly with a removed species. 
+    Our results indicate that this species-specific risk is related to motif roles.
+    Moreover, the omnivory motif may affect time to extinction differently than other stable motifs, at least in body-mass structured vertebrate food webs (\emph{Appendix S1}).
 
 
  	\subsection*{Times to extinction are highly consistent}
 
-		The consistency of species' times to extinction across removals in our simulations suggests that some species are more likely to go extinct than others due to their position within a network.
-        This complements other work identifying sets of species which are more vulnerable to extinction due to their traits~\citep{Curtsdotter2011,Ryser2019}. 
-		Since the trophic level and degree of the species being removed can also affect which species, if any, go secondarily extinct~\citep{Wootton2016a,Dunne2002}, the properties of both disturbed and non-disturbed species affect the ways in which extinctions can cascade through a food web.
-		
-		
-		The stronger correlation of extinction orders in larger, more-connected networks, as well as the somewhat shorter mean times to extinction in these webs (Fig. S1, \emph{Appendix S1}) may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species. 
-		These short pathways are more likely to have strong effects on the population dynamics of species along them than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006}.
-		These stronger effects in turn likely explain why more secondary extinctions in large or highly-connected webs are due to indirect effects rather than direct loss of a prey or predator~\citet{Wootton2016a}. 
+		The consistency of species' times to extinction across removals suggests that some species are more likely to go extinct than others due to their position within a network, complementing other work identifying sets of species which are more vulnerable due to their traits~\citep{Curtsdotter2011,Ryser2019}. 
+		Since the network position of the species being removed can also affect which species, if any, go secondarily extinct~\citep{Wootton2016a,Dunne2002}, the properties of both disturbed and non-disturbed species affect the ways in which extinctions can cascade through a food web.
+        Mean times to extinction were strongest in larger, more-connected networks, and mean times to extinction were somewhat shorter in these webs (Fig. S1, \emph{Appendix S2}).
+        This may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species.
+        These short pathways which are more likely to have strong effects on the population dynamics of species than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006} and may cause more extinctions due to indirect effects rather than direct loss of a prey or predator~\citet{Wootton2016a}. 
 
 
 	\subsection*{Motif roles relate to extinction risk}
 
-		Overall, our results show that species' motif roles were related to their time to extinction after a disturbance (Table~\ref{overview_table}).
-		Participating in more instances of the most stable motifs identified by~\citet{Stouffer2007,Borrelli2015a}, having a greater proportion of the role made up by these motifs, or appearing in significantly more of these motifs than other species in the network were all associated with longer times to extinction. 
+		Species motif roles were related to their time to extinction after a disturbance (Table~\ref{overview_table}), with participation in more instances of the most stable motifs identified by~\citet{Stouffer2007,Borrelli2015a} being associated with longer times to extinction. 
 		Surprisingly, some unstable motifs were also associated with longer times to extinction.
+        Surprisingly, some unstable motifs were also associated with longer times to extinction.
 		The unstable motifs are, however, rare in both empirical food webs~\citep{Stouffer2007} and our simulated networks.
 		Differences in participation in these motifs is therefore unlikely to have a large practical effect on species' responses to a disturbance.
         
         
-        Part of the apparent benefit of participating in many stable motifs may be due to correlations between motif roles and degree.
+        Part of the benefit of participating in many stable motifs may be due to correlations between motif roles and degree.
         Counts of the stable motifs increased most rapidly with increasing degree, meaning that the relationship between high numbers of stable motifs and species persistence~\citep{Stouffer2007,Borrelli2015a} may be partly due to the beneficial effects of having a high degree~\citep{Cirtwill2016a}.
 		That is, while a species which participates in many stable motifs is likely to benefit from damping of population cycles~\citep{Borrelli2015a}, it is also likely to maintain a reasonable number of food sources after a perturbation.
 		The positive correlations between all four stable motifs and degree may also explain the greater variability among roles of species with long times to extinction.
 		As species wither higher degrees also tend to participate in more motifs, there is a broader set of motif roles available to these species.
 		Since high-degree species tend to participate in proportionally more stable than unstable motifs, many of the roles in this broad role-space should be associated with long times to extinction.
+
 		
-		
-        The relationships between trophic level and the counts or proportions of motifs tended to be weaker, although the $Z$-scores of all four stable motifs, tended to decrease strongly with increasing trophic level.
+        The $Z$-scores of all four stable motifs tended to decrease strongly with increasing trophic level, but associations were generally weaker than for degree.
         Species with higher trophic levels also tended to have shorter mean times to extinction, suggesting that these species could be more susceptible due to being at the tops of longer food chains, participating in motifs that tend to amplify population fluctuations~\citep{Borrelli2015a}, or both.
-        The correlations between degree, trophic level, and motif roles make identifying the precise mechanisms behind a species' short or long mean time to extinction difficult.
-        The possibility that these measures capture at least some independent information about the risk of secondary extinction, however, suggests that species with multiple `risky' roles (i.e., low degree, participation in many unstable motifs, and/or high trophic level) may be more vulnerable than species with only one of the above.
+        The correlations between different measures of a species' role makes identifying the precise mechanisms affecting mean times to extinction difficult but, because each network measure provides some unique information, species with multiple `risk factors' (i.e., low degree, participation in many unstable motifs, and/or high trophic level) may be more vulnerable than species with only one of the above.
 
         
     \subsection*{Omnivory may be an especially informative motif}
 	    
-        Although there may be many motif roles which promote long times to extinction, not all of the stable motifs are equally likely to be included in such roles.
+        Not all of the stable motifs are equally likely to be included in motif roles promoting long mean times to extinction.
         While the three-species chain, apparent competition, and direct competition motifs were all associated with longer times to extinction as expected, the omnivory motif was associated with shorter mean times to extinction. 
         This is consistent with an omnivory motif being less likely to retain all three species than the chain, apparent competition, or direct competition motifs when modeled in isolation~\citep{Borrelli2015a}. 
 
 
         It may be difficult to isolate the effect of omnivory, however, as the proportion of the omnivory motif in a species' role increased strongly with increasing degree. 
-        This relationship could partly explain the variety of earlier work showing that the omnivory can be stable or unstable under different conditions and may or may not increase the overall stability of an entire food web~\citep{McCann1997,Emmerson2004,Borrelli2015a,Monteiro2016}.
+        This relationship could partly explain earlier work showing that omnivory can be stable or unstable and may or may not increase the overall stability of an entire food web~\citep{McCann1997,Emmerson2004,Borrelli2015a,Monteiro2016}.
         If high-degree species tend to persist for a long time but high-omnivory species are more likely to go extinct, then it may be difficult to predict the outcome for a species with both high degree and a role rich in the omnivory motif.
-        However, this relationship does suggest that motif roles may help us to compare risk for species with similar degrees.
+        However, participation in omnivory may be useful for comparing extinction risk among species with similar degrees.
 
 
 	\subsection*{Moving forward with motifs}	
 
-        As motif roles become more common as tools for ecologists wishing to understand how species' positions within networks are related to their traits~\citep{Cirtwill2018EcolLett}, taxonomy~\citep{Stouffer2007}, and position in space or time~\citep{Baker2015}, it is natural to wonder how these roles might relate to a species' response to disturbance. 
+        As motif roles become more common tools for linking species' positions within networks to their traits~\citep{Cirtwill2018EcolLett}, taxonomy~\citep{Stouffer2007}, and position in space or time~\citep{Baker2015}, many researchers may also wonder how these roles relate to a species' response to disturbance. 
         Our results suggest that participation in the three-species chain, apparent competition, and direct competition motifs promote longer persistence after a disturbance, while the omnivory motif may indicate more rapid extinction.
-        However, interpreting these trends is complicated by strong relationships between motif roles and degree, which itself promotes longer persistence after a disturbance.
+        However, interpreting these trends is complicated by strong relationships between motif roles and degree, which also promotes longer persistence after a disturbance.
         
         
-	    Because relationships between motif roles and degree appear even when considering the proportion of species roles made up by each motif, as in~\citet{Baker2015,Cirtwill2015,Simmons2019}, normalizing motif roles based on the total number of motifs does not control for differences in species' roles due to degree.
-	    The papers cited above explicitly aim to control for differences due to the total number of motifs in which a species appears (which depends upon the degrees of the focal species \emph{and} those of its interaction partners) rather than degree \emph{per se}.
-	    However, this distinction is subtle (hence our use of `degree-normalization' to describe the proportional roles) and future authors should take great care that they are not using the sum of motifs as a substitute for degree as our results show that these quantities are not interchangeable.
-        Rather, our results suggest that both motif roles and simpler measures of network structure can provide information about a species' response to disturbance.
+	    % Because relationships between motif roles and degree appear even when considering the proportion of species roles made up by each motif, as in~\citet{Cirtwill2015}, normalizing motif roles based on the total number of motifs does not control for differences in species' roles due to degree.
+	    % While our `degree normalization' has previously been used to control for differences due to the total number of motifs in which a species appears (which depends upon the degrees of the focal species \emph{and} those of its interaction partners) rather than degree \emph{per se}, this distinction is quite subtle and requires careful interpretation.
+        Our results suggest that both motif roles and simpler measures of network structure can provide information about a species' response to disturbance.
         Motifs may be particularly useful when comparing species with similar  or trophic levels: the multi-dimensional nature of the motif role allows it to capture information which is lost in single-value measures such as degree or trophic level.
         While the interpretation of motif roles remains challenging, the relationships we have found between these roles and time to extinction suggest that they are worth retaining in the toolbox of ecological network analysis.
         
 
 \section*{Acknowledgments}
 
-	We thank Eva Delmas and Chris Rackauckas for their kind assistance with troubleshooting the simulation model and the Spatial Foodweb Ecology Group for providing feedback on the manuscript. ARC is supported by a Finnish Academy Postdoctoral research grant (\#332999). 
+	We thank Eva Delmas and Chris Rackauckas for their kind assistance with troubleshooting the simulation model and the Spatial Foodweb Ecology Group for providing feedback. ARC is supported by a Finnish Academy Postdoctoral research grant (\#332999). 
 
 
-\clearpage
+% \clearpage
     \bibliographystyle{ecollett} 
     \bibliography{MyCollection} % Abbreviate journal titles.
 
@@ -423,28 +413,33 @@ alyssa.cirtwill@gmail.com\\
         % \includegraphics[width=.9\textwidth]{figures/motifs_box.eps}
         \textbf{Figure 1.} A brief introduction to motifs.
         % \label{motifs}
-    % \end{figure}
+        % \end{figure}
 
-    \vspace{24pt}
+        \vspace{12pt}
 
    % % PLS coefficients
-% 	\begin{figure}[h!]		
-    \noindent \textbf{Figure 2.} Sum of loadings of motif roles, degree, shortest trophic level (STL), web size (S), connectance (C), and their interaction (S:C) in the optimum number of axes in partial least squares regressions of mean time to extinction against all of the above predictors. We fit separate models for: \textbf{A-B)} raw motif counts, \textbf{C-D)} degree-normalized motif frequencies (i.e., counts of each motif divided by the total number of all motifs for the focal species) and \textbf{E-F)} network-normalized motif frequencies (i.e., $Z$-scores for each motif compared to all species in the network). Note that coefficients refer to centered and scaled predictors (i.e., an increase of one standard deviation in each predictor); stable motifs, degree, and species richness had much larger ranges in our dataset than the other predictors.
-		Panels \textbf{A, C, E} (blue) give the sum of loadings for centered, scaled predictors.
-		Panels \textbf{B, D, F} (green) give the sum of loadings after de-scaling predictors (i.e., for a unit increase in the scale of the predictor); stable motifs, degree, and species richness had much larger ranges in our dataset than the other predictors.
-		In all panels, stable motifs are shaded. Motif names are as in~\citet{Stouffer2007}; see also Fig. S3, \emph{Appendix S4}.
-% 		\label{coefficient_sum}
-% 		\includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
-% 		\end{figure}
+        % 	\begin{figure}[h!]		
+        \noindent \textbf{Figure 2.} Sum of loadings of motif roles, degree, shortest trophic level (STL), web size (S), connectance (C), and their interaction (S:C) in the optimum number of axes in partial least squares regressions of mean time to extinction against all of the above predictors with stable motifs shaded. We fit separate models for: \textbf{A-B)} raw motif counts, \textbf{C-D)} degree-normalized motif frequencies (i.e., proportions of the role made up by each motif) and \textbf{E-F)} network-normalized motif frequencies (i.e., $Z$-scores for each motif compared to all species in the network). 
+    	Panels \textbf{A, C, E} (blue) give the sum of loadings for centered, scaled predictors.
+    	Panels \textbf{B, D, F} (green) give the sum of loadings for a unit increase in the scale of the predictor.
+    	For motif names see~\citet{Stouffer2007}; Fig. S3, \emph{Appendix S6}.
+        % 		\label{coefficient_sum}
+        % 		\includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
+        % 		\end{figure}
 
 
-    \vspace{24pt}
+    \vspace{12pt}
 
     % % Relationships between motifs and degree
 % 	\begin{figure}[h!]
-	\noindent\textbf{Figure 3.} \textbf{A-B)} Species with more interaction partners or higher trophic levels  participated in more motifs. The counts of the four stable motifs (S1, S2, S4, and S5) increased most strongly with increasing degree and trophic level. \textbf{C-D)} The proportion of a species' role made up by different motifs showed more variable trends.
-		\textbf{C)} The proportion of the omnivory motif (S2) increased with increasing degree while those of the other stable motifs decreased. \textbf{D)} The proportions of all four stable motifs  decreased with increasing trophic level.
-		\textbf{E-F)} The $Z$-scores of all motifs increased with increasing degree, but trends were more variable with respect to trophic level. \textbf{F)} Species with high trophic levels tended to show under-representation of the four stable motifs while unstable motifs could be over- or under-represented. In all panels, motifs are plotted in order of the strength of their relationship with degree and all relationships were significant. Regressions for the four stable motifs are indicated by blue or green lines while unstable motifs are indicated by yellow or pink lines. 95\% confidence intervals about the regression lines are too small to be visible in the current plot. Motif names are as in~\citet{Stouffer2007}; see also Fig. S3, \emph{Appendix S4}.
+	\noindent\textbf{Figure 3.} \textbf{A-B)} Species with more interaction partners or higher trophic levels participated in more motifs, especially the four stable motifs (S1, S2, S4, and S5). 
+        \textbf{C)} The proportion of the omnivory motif (S2) increased with increasing degree while those of the other stable motifs decreased. \textbf{D)} The proportions of all four stable motifs  decreased with increasing trophic level.
+		\textbf{E)} The $Z$-scores of all motifs increased with increasing degree.
+        \textbf{F)} Species with high trophic levels tended to show under-representation of the four stable motifs while unstable motifs could be over- or under-represented. 
+        In all panels, motifs are plotted in order of the strength of their relationship with degree and all relationships were significant. 
+        Stable motifs (S1, S2, S4, and S5) are indicated by blue or green lines. 
+        % 95\% confidence intervals about the regression lines are too small to be visible in the current plot. 
+        For motif names see~\citet{Stouffer2007}; Fig. S3, \emph{Appendix S6}.
 % 		\label{motif_vs_degTL}
 % 		\includegraphics[height=.65\textheight]{figures/roles/motif_vs_oneD.eps}
 % 		\end{figure}
@@ -488,19 +483,27 @@ alyssa.cirtwill@gmail.com\\
 
 All of the following Appendices are included as supplemental information.
 
-    \subsection*{S1: Testing consistence of times to extinction}
+    \subsection*{S1: Details of network generation}
+
+        Supplemental methods describing how the initial networks were generated and population dynamics simulated.
+
+    \subsection*{S2: Testing consistence of times to extinction}
     
         Supplemental methods and results related to testing whether the identity of the removed species has a large effect on the time to extinction for non-removed species. Includes \textbf{Figure S1}.
     
-    \subsection*{S2: Details of PERMANOVA results}
+    \subsection*{S3: Details of PERMANOVA methods and results}
         
-        Supplemental results for PERMANOVAs testing whether species' overall roles are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S2}.
+        Supplemental methods and results for PERMANOVAs testing whether species' overall roles are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S2}.
+
+    \subsection*{S4: Details of PLSR methods}
+
+        Supplemental methods for partial least squares regressions. 
     
-    \subsection*{S3: Relating motifs roles to other measures}
+    \subsection*{S5: Relating motifs roles to other measures}
         
         Gives the slopes of relationships between motif roles and degree or shortest trophic level (STL) in \textbf{Tables S3-S4}.
         
-    \subsection*{S4: Motif labels}
+    \subsection*{S6: Motif labels}
         
         \textbf{Figure S3} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
 
