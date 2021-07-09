@@ -149,10 +149,13 @@ alyssa.cirtwill@gmail.com\\
     
     	\subsubsection*{Perturbing networks}
     
-    		After identifying species' roles in the equilibrium networks, we perturbed the networks by removing a single species. 
-            After this removal, community dynamics were simulated for 50 rounds of 10 time-steps (500 time-steps total). 
-            After each round, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0. 
-            We recorded the round in which all secondary extinctions (i.e., not the artificially removed species) occurred. 
+    		Once we identified species' roles in the equilibrium networks, we perturbed the networks by removing a single species. 
+            We then simulated post-removal community dynamics for 500 time-steps.
+            After every 10 time-steps, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0.
+            This reduced temporal resolution was chosen due to computational limitations and allowed us to maintain a large set of simulated networks.
+            For each species other than the artificially removed species, we defined the time to extinction as the round of 10 time-steps in which the species' biomass fell below our threshold. 
+
+
             After 500 time-steps, we reset the network to its original state (including all species). 
             We then removed a new species and again simulated community dynamics and repeated this process until all species had been the initial removal.
     		We then calculated the mean time to extinction across all removals as an overall measure of each species' vulnerability (\emph{Appendix S2}). 
@@ -164,8 +167,8 @@ alyssa.cirtwill@gmail.com\\
 		\subsubsection*{Overall motif roles}
 
             We tested whether a species' overall motif role was related to its mean time to extinction using a series of PERMANOVAs (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
-            As non-homogeneous variance of roles can cause false-positive PERMANOVA results, we used a series of ANOVAs to test the homogeneity of role dispersion (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
-            Finally, we tested whether long or short mean times to extinction were associated with greater role dispersion using a linear model (fit using the R~\citep{R} base function `lm').
+            As non-homogeneous dispersions within groups (i.e., differences in the variability of roles across species) can cause false-positive PERMANOVA results~\citep{Anderson2001}, we used a series of ANOVAs to test the homogeneity of dispersion among roles associated with each mean time to extinction (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
+            Finally, we tested whether long or short mean times to extinction were associated with more or less variable roles  using a linear model (fit using the R~\citep{R} base function `lm').
 
 
 		\subsubsection*{Identifying the motifs most strongly related to time to extinction}
@@ -177,9 +180,10 @@ alyssa.cirtwill@gmail.com\\
 			Next, to test whether any relationship between raw motif roles and time to extinction might be due to differences in the roles of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized roles instead of the raw roles, with all other variables identical to the first regression.
 			Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized roles as a predictor and all other variables identical to the first regression.
 			
-			
-			We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls} using centered and scaled variables and cross-validating each regression using 10 randomly-selected segments of the data.
-            We defined the optimum number of components for each regression as the lowest number of components that yielded an MSEP~\citep{Mevik2004} within one standard deviation of the lowest MSEP obtained for any model.
+
+            We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls} using centered and scaled variables and cross-validating each regression using 10 randomly-selected segments of the data.
+            To define the optimum number of components, we used MSEP: a measure of error obtained by re-fitting a PLS or PCA model on test data~\citep{Mevik2004}.
+            In order to balance obtaining a low MSEP with identifying a parsimonious model, we defined the optimum number of components for each regression as the lowest number of components that yielded an MSEP~\citep{Mevik2004} within one standard deviation of the lowest MSEP obtained for any model.
 			Model selection was performed using the R~\citep{R} function 'selectNcomp' from the package \emph{plsr}~\citep{pls} using the method `onesigma'.
 			After selecting the optimum number of components for each model, we re-fit the PLS regression including only the selected components. 
 			We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
@@ -207,7 +211,7 @@ alyssa.cirtwill@gmail.com\\
     \subsection*{Relating overall motif roles to mean time to extinction}
     
 		Our series of PERMANOVA tests demonstrated that species' overall raw motif roles were correlated with their mean time to extinction across all combinations of species richness and connectance (Table \emph{S1, Appendix S3}). 
-		However, these significant results may be false positives since the variability of raw motif roles was not consistent across mean times to extinction for any combination of species richness and connectance (Table \emph{S3, Appendix S3}). 
+		However, these significant results may be false positives since the variability of raw motif roles was not consistent across mean times to extinction for any combination of species richness and connectance (Table \emph{S2, Appendix S3}). 
 		Specifically, longer mean times to extinction were associated with significantly more variable roles, and these relationships were stronger in smaller or less-connected networks. 
 		This means that there are many roles which are associated with long times to extinction but fewer roles which are associated with short times to extinction.
 		
@@ -416,8 +420,8 @@ alyssa.cirtwill@gmail.com\\
         % 	\begin{figure}[h!]		
         \noindent \textbf{Figure 2.} Sum of loadings of motif roles, degree, shortest trophic level (STL), web size (S), connectance (C), and their interaction (S:C) in the optimum number of axes in partial least squares regressions of mean time to extinction against all of the above predictors with stable motifs shaded. We fit separate models for: \textbf{A-B)} raw motif counts, \textbf{C-D)} degree-normalized motif frequencies (i.e., proportions of the role made up by each motif) and \textbf{E-F)} network-normalized motif frequencies (i.e., $Z$-scores for each motif compared to all species in the network). 
     	Panels \textbf{A, C, E} (blue) give the sum of loadings for centered, scaled predictors.
-    	Panels \textbf{B, D, F} (green) give the sum of loadings for a unit increase in the scale of the predictor.
-    	For motif names see~\citet{Stouffer2007}; Fig. S3, \emph{Appendix S6}.
+    	Panels \textbf{B, D, F} (green) give the sum of loadings from the same models, de-scaled to reflect a unit increase in the predictor.
+    	Motif names as in Fig. S3, \emph{Appendix S6}.
         % 		\label{coefficient_sum}
         % 		\includegraphics[height=0.6\textheight]{figures/PLS/total_coefficients.eps}
         % 		\end{figure}
