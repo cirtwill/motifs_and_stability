@@ -70,7 +70,7 @@ alyssa.cirtwill@gmail.com\\
     %Intro
     Some three-species motifs (unique patterns of interactions between three species) are both more stable when modeled in isolation and over-represented in empirical food webs. This suggests that these motifs may reduce extinction risk for species participating in them, ultimately stabilizing the food web as a whole. 
     % Methods
-    We test whether a species' time to extinction following a perturbation is related to its participation in stable and unstable motifs and assess how a species' motif role (the frequencies with which the species appears in each motif) co-varies with degree or trophic level.
+    We test whether a species' time to extinction following a disturbamce is related to its participation in stable and unstable motifs and assess how a species' motif role (the frequencies with which the species appears in each motif) co-varies with degree or trophic level.
     % Results
     We found that species' motif roles are related to their times to extinction following a disturbance. Specifically, participating in many omnivory motifs (whether in absolute terms, as a proportion of the species' role, or relative to other species in the network) was associated with more rapid extinction, even though omnivory has previously been identified as a stable motif. Participating in the other three stable motifs (three-species chain, apparent competition, and direct competition) was associated with longer times to extinction.
     %Discussion
@@ -84,7 +84,7 @@ alyssa.cirtwill@gmail.com\\
     
 \section*{Introduction}
 
-	The connections between food-web structure and the extinction risk of species within the food web have interested ecologists since at least the 1970's~\citep{May1972}. After early findings suggested that a large, randomly-connected network is unlikely to retain all species after small perturbations~\citep{Gardner1970,May1972}, non-random structures that might stabilize food webs (allowing all species to persist) were quickly identified. These structural features include nestedness~\citep{Allesina2012,Sauve2014}, modularity~\citep{Sauve2014,Thebault2010} and skewed distributions of link strengths~\citep{McCann1998,Gross2009,Rooney2012,Wootton2016}.
+	The connections between food-web structure and the extinction risk of species within the food web have interested ecologists since at least the 1970's~\citep{May1972}. After early findings suggested that a large, randomly-connected network is unlikely to retain all species after small disturbances~\citep{Gardner1970,May1972}, non-random structures that might stabilize food webs (allowing all species to persist) were quickly identified. These structural features include nestedness~\citep{Allesina2012,Sauve2014}, modularity~\citep{Sauve2014,Thebault2010} and skewed distributions of link strengths~\citep{McCann1998,Gross2009,Rooney2012,Wootton2016}.
 	
 	
 	Although important, these global-scale properties (i.e. properties of the network as a whole, see Fig. \ref{motifs}) can mask important differences in  network structure~\citep{Simmons2019} and do not provide information about differences between species within the same network~\citep{Cirtwill2018FoodWebs}. 
@@ -99,11 +99,11 @@ alyssa.cirtwill@gmail.com\\
     The high frequencies of these four motifs in observed networks suggest that they may be beneficial to the network containing them or, in other words, that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear as the species within them go extinct~\citep{Borrelli2015,Borrelli2015a} or links between species are lost~\citep{Tylianakis2010}.
 
 	When modeled in isolation, three species arranged in \emph{three-species chain}, \emph{apparent competition}, \emph{direct competition}, and \emph{omnivory} motifs are more likely to all persist than trios of species arranged in other motifs~\citep{Borrelli2015a}.
-	By damping perturbations and maintaining more constant populations of the species participating in them, these `stable' motifs may contribute to the stability of the network as a whole~\citep{Borrelli2015a}. 
+	By damping disturbances and maintaining more constant populations of the species participating in them, these `stable' motifs may contribute to the stability of the network as a whole~\citep{Borrelli2015a}. 
     The greater chances of maintaining all species in a stable motif could explain the over-representation of these motifs in empirical food webs if species and interactions in less-stable motifs are more likely to be ``pruned'' from empirical communities over time. We expect that stable structures will endure for longer than unstable ones, and so it is not surprising that stable structures should be over-represented in empirical communities~\citep{Borrelli2015}.
 
 
-	Given these early indications that some motifs are more stable than others, we may also expect that a species' role-- here defined as the frequency with which it participates in different motifs --could affect its probability of extinction following a perturbation.
+	Given these early indications that some motifs are more stable than others, we may also expect that a species' role-- here defined as the frequency with which it participates in different motifs --could affect its probability of extinction following a disturbance.
 	Specifically, we expect that species participating more frequently in the stable motifs identified by~\citet{Borrelli2015a} are less likely to go extinct than species whose roles are dominated by other motifs.
 	Testing this hypothesis is complicated by the fact that species' motif roles are not independent of other aspects of fine-scale network structure. 
     In particular, a species' degree (number of predators and prey) is likely to strongly affect its motif role.
@@ -131,13 +131,13 @@ alyssa.cirtwill@gmail.com\\
             We then simulated Lotka-Volterra community dynamics using the ``simulate" function from the Julia language package \emph{BioEnergeticFoodWebs} (\citealp{bioenergeticfw,Delmas2017}; \emph{Appendix S1}).
             Networks which retained all species for 1000 time steps were considered to have reached an equilibrium state and retained.
             If a network did not retain all species, we first re-simulated dynamics using up to 100 different sets of initial biomasses and, if none were successful, then discarded the network and simulated another to replace it.
-            We thus obtained 6000 networks which retained with long-term persistence of all species in the absence of perturbations.
+            We thus obtained 6000 networks which retained with long-term persistence of all species in the absence of disturbances.
 
     
     	\subsubsection*{Calculating species roles}
     
     
-    		We were interested in whether species' roles at `equilibrium' are related to their response to a perturbation. 
+    		We were interested in whether species' roles at `equilibrium' are related to their response to a disturbance. 
             Each species' motif role is the number of times it appears in each unique three-species motif, following~\citet{Stouffer2012,Cirtwill2015}. 
             As our focus is on how different motifs might affect extinction risk, we do not consider the different positions species may take within a motif.   
             Note that each set of three interacting species forms exactly one motif~\citep{Cirtwill2018FoodWebs} and that cannibalistic links were ignored when calculating motif frequencies within a network and species' roles. 
@@ -150,7 +150,7 @@ alyssa.cirtwill@gmail.com\\
     
     	\subsubsection*{Perturbing networks}
     
-    		Once we identified species' roles in the equilibrium networks, we perturbed the networks by removing a single species. 
+    		Once we identified species' roles in the equilibrium networks, we disturbed the networks by removing a single species. 
             We then simulated post-removal community dynamics for 500 time-steps.
             After every 10 time-steps, any species with a biomass below our threshold of 1$\times10^{-5}$ was considered to have gone extinct and its biomass was set to 0.
             This reduced temporal resolution was chosen due to computational limitations and allowed us to maintain a large set of simulated networks.
@@ -297,7 +297,7 @@ alyssa.cirtwill@gmail.com\\
         
         Part of the benefit of participating in many stable motifs may be due to correlations between motif roles and degree.
         Counts of the stable motifs increased most rapidly with increasing degree, meaning that the relationship between high numbers of stable motifs and species persistence~\citep{Stouffer2007,Borrelli2015a} may be partly due to the beneficial effects of having a high degree~\citep{Cirtwill2016a}.
-		That is, while a species which participates in many stable motifs is likely to benefit from damping of population cycles~\citep{Borrelli2015a}, it is also likely to maintain a reasonable number of food sources after a perturbation.
+		That is, while a species which participates in many stable motifs is likely to benefit from damping of population cycles~\citep{Borrelli2015a}, it is also likely to maintain a reasonable number of food sources after a disturbance.
 		The positive correlations between all four stable motifs and degree may also explain the greater variability among roles of species with long times to extinction.
 		As species wither higher degrees also tend to participate in more motifs, there is a broader set of motif roles available to these species.
 		Since high-degree species tend to participate in proportionally more stable than unstable motifs, many of the roles in this broad role-space should be associated with long times to extinction.
