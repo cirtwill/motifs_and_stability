@@ -70,7 +70,7 @@ alyssa.cirtwill@gmail.com\\
     %Intro
     Some three-species motifs (unique patterns of interactions between three species) are both more stable when modeled in isolation and over-represented in empirical food webs. This suggests that these motifs may reduce extinction risk for species participating in them, ultimately stabilizing the food web as a whole. 
     % Methods
-    We test whether a species' time to extinction following a perturbation is related to its participation in stable and unstable motifs and assess how motif roles co-vary with a species' degree or trophic level.
+    We test whether a species' time to extinction following a perturbation is related to its participation in stable and unstable motifs and assess how a species' motif role (the frequencies with which the species appears in each motif) co-varies with degree or trophic level.
     % Results
     We found that species' motif roles are related to their times to extinction following a disturbance. Specifically, participating in many omnivory motifs (whether in absolute terms, as a proportion of the species' role, or relative to other species in the network) was associated with more rapid extinction, even though omnivory has previously been identified as a stable motif. Participating in the other three stable motifs (three-species chain, apparent competition, and direct competition) was associated with longer times to extinction.
     %Discussion
@@ -93,6 +93,7 @@ alyssa.cirtwill@gmail.com\\
 	
 
     In addition to providing species-level information on network structure, there are early indications that some meso-scale structures may tend to stabilize food webs~\citep{Prill2005,Borrelli2015,Monteiro2016}. 
+    As three-species motifs are the best-studied in this context, we focus on this level of meso-scale structure.
     This possibility is supported by the fact that empirical food webs tend to contain more \emph{three-species chains} and either more \emph{omnivory} (\emph{sensu}~\citealp[]{Thompson2007b}) motifs or more \emph{apparent competition} and \emph{direct competition} motifs than random networks~\citep{Stouffer2007}. 
     These four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
     The high frequencies of these four motifs in observed networks suggest that they may be beneficial to the network containing them or, in other words, that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear as the species within them go extinct~\citep{Borrelli2015,Borrelli2015a} or links between species are lost~\citep{Tylianakis2010}.
@@ -221,7 +222,7 @@ alyssa.cirtwill@gmail.com\\
 
         \subsubsection*{Raw motif roles}
         
-            The absolute number of times a species a species appeared in a motif was related to mean time to extinction, but not as strongly as trophic level and network properties.
+            The absolute number of times a species appeared in a motif was related to mean time to extinction, but not as strongly as trophic level and network properties.
             The optimum PLS model for mean time to extinction including raw motif roles included five components.
             The first two components explained 13.8\% and 9.34\% of variation in the mean time to extinction, with the remaining components explaining \textless1\% of variation.
             Taking all components together, trophic level and the interaction between species richness and connectance had strong negative relationships with mean time to extinction while degree had the strongest positive relationship (Fig.~\ref{coefficient_sum}A).
@@ -281,13 +282,13 @@ alyssa.cirtwill@gmail.com\\
 		The consistency of species' times to extinction across removals suggests that some species are more likely to go extinct than others due to their position within a network, complementing other work identifying sets of species which are more vulnerable due to their traits~\citep{Curtsdotter2011,Ryser2019}. 
 		Since the network position of the species being removed can also affect which species, if any, go secondarily extinct~\citep{Wootton2016a,Dunne2002}, the properties of both disturbed and non-disturbed species affect the ways in which extinctions can cascade through a food web.
         Mean times to extinction were most consistent and somewhat shorter in larger, more-connected networks (Fig. S1, \emph{Appendix S2}).
-        This may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species.
+        This may be due to the greater number of short pathways whereby an extinction somewhere in the web can affect a focal species.
         These short pathways which are more likely to have strong effects on the population dynamics of species than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006} and may cause more extinctions due to indirect effects rather than direct loss of a prey or predator~\citet{Wootton2016a}. 
 
 
 	\subsection*{Motif roles relate to extinction risk}
 
-		Species motif roles were related to their time to extinction after a disturbance (Table~\ref{overview_table}), with participation in more instances of the most stable motifs identified by~\citet{Stouffer2007,Borrelli2015a} being associated with longer times to extinction. 
+		Species motif roles were related to their time to extinction after a disturbance (Table~\ref{overview_table}), with participation in more instances of the most stable motifs (i.e., the \emph{apparent competition}, \emph{direct competition}, and \emph{three-species chain} motifs) identified by~\citet{Stouffer2007,Borrelli2015a} being associated with longer times to extinction. 
 		Surprisingly, some unstable motifs were also associated with longer times to extinction.
         Surprisingly, some unstable motifs were also associated with longer times to extinction.
 		The unstable motifs are, however, rare in both empirical food webs~\citep{Stouffer2007} and our simulated networks.
