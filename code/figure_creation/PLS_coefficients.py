@@ -97,7 +97,7 @@ def format_Sgraph(graph,normtype,coefs):
 
   if normtype=='Raw':
     graph.yaxis.label.configure(text='Raw roles',char_size=.75,just=2,place='opposite')
-    graph.add_drawing_object(DrawText,text='De-scaled',char_size=.75,just=2,x=-25,y=20,loctype='world')
+    graph.add_drawing_object(DrawText,text='Per unit of predictor',char_size=.75,just=2,x=-25,y=20,loctype='world')
   elif normtype=='Network':
     graph.yaxis.label.configure(text='Network normalization',char_size=.75,just=2,place='opposite')
   else:
