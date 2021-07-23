@@ -10,8 +10,8 @@ for(S in seq(50,100,10)){
 	for(C in seq(0.02,0.2,0.02)){
 		dir.create(paste0('../../data/summaries/extorder_perms/',as.character(S),'/',as.character(C)))
 		print(C)
-		extorders=matrix(nrow=0,ncol=3)
-		colnames(extorders)=c("Network","Extinction_correlation","Mean_order")
+		extorders=matrix(nrow=0,ncol=5)
+		colnames(extorders)=c("Network","Extinction_correlation","Mean_order","Rank","Quantile")
 		allroles=matrix(nrow=0,ncol=30)
 
 		for(i in seq(0,99)){
@@ -23,10 +23,14 @@ for(S in seq(50,100,10)){
 
 			# Mean extinction order vs. roles, should also store strength of correlation.
 			extcorr=mean(cor(data[,2:(S+1)]))
-			mean_ext=rowSums(data[,2:(S+1)])/S
-			extdat=cbind(rep(i,S),rep(extcorr,S),mean_ext)
-			colnames(extdat)=c("Network","Extinction_correlation","Mean_order")
+			mean_ext=rowSums(data[,2:(S+1)])/S # Higher rank = longer mean time to extinction.
+			ranked=rank(mean_ext,ties.method=c("average"))/S # Rank as a fraction of the maximum rank, can be rounded.
+			quant=round(ranked,1) # grouping in blocks of 10% - blocks may not contain equal numbers of species since there were tied ranks
+			extdat=cbind(rep(i,S),rep(extcorr,S),mean_ext,ranked,quant)
+
+			colnames(extdat)=c("Network","Extinction_correlation","Mean_order","Rank","Quantile")
 			extorders=rbind(extorders,extdat)
+
 		}
 
 		extorders=as.data.frame(extorders)
