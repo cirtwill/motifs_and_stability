@@ -130,7 +130,8 @@ Editor-in-Chief, Oikos
 
 \Large{\textbf{Reply to Subject Editor}}
 
-
+    
+    \begin{quotation}    
   Recommendation by the Subject Editor (Dr. François Munoz):
 
   The reviewers and me agree that the topic of the paper is interesting and fits well the scope of Oikos.
@@ -144,6 +145,9 @@ Editor-in-Chief, Oikos
   Sincerely,
 
   François
+  \end{quotation}
+  
+  We have taken to heart the point which you and Reviewer 2 have raised about the complexity of our methodology. We have substantially revised our statistical analyses to better focus on our key questions: 1) are species' motif roles related to their risk of extinction? and 2) if so, which motifs show the strongest relationships? We have also revised the text to more clearly explain our simulation methodology. We hope that this revision is clearer and easier to follow.
 
 \clearpage
 
@@ -333,10 +337,16 @@ Editor-in-Chief, Oikos
 
       -l132: Why 1e10-5? Did you found this to be a threshold below which all species tend to vanish? On the contrary, how likely is it that the population grows again after passing under such threshold? Does it exist instead a grounded rule to determine a threshold per species depending on its bodymass and biomass? It would be much better, but I’m not familiar with Lotka-Volterra dynamics.
 
-      \textbf{R:}
-      I assume this was relatively arbitrary and I don't remember how often the population grows again after passing under the threshold, but it did happen right? (Which was why we had to introduce it?) We also talked about a threshold depending on bodymass didn't we? I now don't remember why we decided not to use it. (Also interesting that we got a reviewer who doesn't know the stability literature or lotka volterra - how many of those are there who are motif experts? Maybe many?
+      \textbf{R:} We established this threshold because, like other simulation studies, we observed a few instances of populations declining to extremely low biomass and then rebounding. While such rebounds are rare, they are ecologically implausible and should be excluded. It is therefore common practice to set a threshold at which a population size is considered to be 0.
+      
+      
+      We are not aware of any grounded rule or consensus threshold value to use in such simulations, however. For example, comparable simulation studies use thresholds of 1e10-12 (Binzer et al., 2012) and 1e10-20 (Ryser et al., 2019) without an explicit justification of these thresholds in the text. Our threshold, while admittedly arbitrary, is intermediate in this range of previous thresholds.
+      
+      
+      To demonstrate whether the choice of threshold is likely to have influenced our results, we repeated a subset of our simulations using both of the thresholds mentioned above. Because we did not find network size or connectance to strongly influence time to extinction, and in the interest of completing this revision in a timely manner, we used only networks of 70 species and a connectance of 0.12 (intermediate size and connectance).
+    %   I assume this was relatively arbitrary and I don't remember how often the population grows again after passing under the threshold, but it did happen right? (Which was why we had to introduce it?) We also talked about a threshold depending on bodymass didn't we? I now don't remember why we decided not to use it. (Also interesting that we got a reviewer who doesn't know the stability literature or lotka volterra - how many of those are there who are motif experts? Maybe many?
 
-      - I don't remember how many came back ... it was arbitrary and I have no knowledge of an algorithm for getting thresholds based on body mass (don't see why biomass should matter). If there's a good way to extract body mass from the Julia code then maybe threshold could = 1 body mass?
+    %   - I don't remember how many came back ... it was arbitrary and I have no knowledge of an algorithm for getting thresholds based on body mass (don't see why biomass should matter). If there's a good way to extract body mass from the Julia code then maybe threshold could = 1 body mass?
 
 
     8. Rejection of PLS method and misunderstanding of study aim
