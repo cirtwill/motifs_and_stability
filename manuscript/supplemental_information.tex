@@ -139,46 +139,6 @@
 
 \section*{S3: Details of PERMANOVA methods and results}
 
-\begin{table}[]
-    \centering
-    \begin{tabular}{c c | c c | c c || c c | c c | c c |}
-&&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c||}{Regression}&&&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c|}{Regression}\\
-S&C&F&$p$-value&$\beta$&$p$-value&S&C&F&$p$-value&$\beta$&$p$-value\\
-\hline50&0.02&25.75&0.0&0.106460697442&0.0&80&0.02&40.82&0.0&0.104991929857&0.0\\
-50&0.04&26.47&0.0&0.104749158257&0.0&80&0.04&26.06&0.0&0.0809618386485&0.0\\
-50&0.06&24.31&0.0&0.0973283327321&0.0&80&0.06&15.73&0.0&0.0553136773772&0.0\\
-50&0.08&13.98&0.0&0.0740960808652&0.0&80&0.08&16.07&0.0&0.0579373145553&0.0\\
-50&0.1&12.55&0.0&0.0633265324941&0.0&80&0.1&15.58&0.0&0.0401949665481&0.0\\
-50&0.12&15.32&0.0&0.0658145257061&0.0&80&0.12&9.91&0.0&0.033561483306&0.0\\
-50&0.14&15.63&0.0&0.0633525148216&0.0&80&0.14&15.59&0.0&0.0530564506736&0.0\\
-50&0.16&7.92&0.0&0.0473162517997&0.0&80&0.16&8.36&0.0&0.033012549691&0.0\\
-50&0.18&11.55&0.0&0.0567817665026&0.0&80&0.18&8.42&0.0&0.0319960707823&0.0\\
-50&0.2&9.73&0.0&0.0509019108454&0.0&80&0.2&3.73&0.0&0.0208506655431&0.0\\
-60&0.02&37.59&0.0&0.115552011275&0.0&90&0.02&46.53&0.0&0.10263032398&0.0\\
-60&0.04&28.44&0.0&0.0928053208346&0.0&90&0.04&32.1&0.0&0.0851744976863&0.0\\
-60&0.06&23.52&0.0&0.0842080597542&0.0&90&0.06&19.2&0.0&0.0579887510925&0.0\\
-60&0.08&19.47&0.0&0.0759429848946&0.0&90&0.08&16.59&0.0&0.0469144859438&0.0\\
-60&0.1&13.96&0.0&0.0541271864148&0.0&90&0.1&19.02&0.0&0.0467464264806&0.0\\
-60&0.12&15.3&0.0&0.0611141126888&0.0&90&0.12&6.93&0.0&0.0256871991907&0.0\\
-60&0.14&8.71&0.0&0.0489467620971&0.0&90&0.14&7.01&0.0&0.0247227049332&0.0\\
-60&0.16&6.12&0.0&0.0359334749628&0.0&90&0.16&7.73&0.0&0.0314103240928&0.0\\
-60&0.18&8.36&0.0&0.0419087831868&0.0&90&0.18&5.5&0.0&0.0187566990916&0.0\\
-60&0.2&15.43&0.0&0.0579674862405&0.0&90&0.2&5.58&0.0&0.0241406708956&0.0\\
-70&0.02&37.03&0.0&0.108380615646&0.0&100&0.02&50.14&0.0&0.10387390812&0.0\\
-70&0.04&27.03&0.0&0.0944347777312&0.0&100&0.04&26.82&0.0&0.0696257780375&0.0\\
-70&0.06&26.28&0.0&0.0769211701183&0.0&100&0.06&21.67&0.0&0.0557801307979&0.0\\
-70&0.08&17.71&0.0&0.0628120778453&0.0&100&0.08&14.98&0.0&0.0363808666435&0.0\\
-70&0.1&8.1&0.0&0.0391581871526&0.0&100&0.1&10.48&0.0&0.0261744541711&0.0\\
-70&0.12&16.68&0.0&0.0519237906051&0.0&100&0.12&7.59&0.0&0.0184135075043&0.0\\
-70&0.14&11.81&0.0&0.0378612469553&0.0&100&0.14&5.06&0.0&0.0119877951574&0.005\\
-70&0.16&11.12&0.0&0.0412196766848&0.0&100&0.16&2.34&0.009&0.0068752359922&0.089\\
-70&0.18&5.16&0.0&0.0292848508458&0.0&100&0.18&5.79&0.0&0.0261598772083&0.0\\
-70&0.2&7.7&0.0&0.0315692241684&0.0&100&0.2&4.32&0.0&0.00903928903425&0.019\\
-    \end{tabular}
-    \caption{Caption}
-    \label{tab:my_label}
-\end{table}
-
 	\subsection*{Methods}
 
 
@@ -198,6 +158,25 @@ S&C&F&$p$-value&$\beta$&$p$-value&S&C&F&$p$-value&$\beta$&$p$-value\\
 
 	\subsection*{Results}
 
+        \subsubsection*{Testing PERMANOVA assumptions}
+
+            For all three ways of defining motif roles (counts, species-normalization, and network-normalization), motif roles were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
+            For many combinations of network size and connectance, variability increased significantly at higher deciles.
+            This means that there are a wider variety of motif roles associated with long times to extinction than short times to extinction.
+            However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{betadisper_Tukey}).
+            Moreover, the absolute differences in variability were small.
+            Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
+            
+
+            \begin{figure}
+                \centering
+                \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
+                \caption{Variability of motif roles was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
+                \label{fig:my_label}
+            \end{figure}
+
+
+        \subsubsection*{PERMANVOA tests} [[not updated]]
 
 		Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
 		All PERMANOVAs were significant, indicating that species' overall motif roles are related to their mean times to extinction.
