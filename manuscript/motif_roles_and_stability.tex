@@ -103,7 +103,8 @@ alyssa.cirtwill@gmail.com\\
 
 	When modeled in isolation, three species arranged in \emph{three-species chain}, \emph{apparent competition}, \emph{direct competition}, and \emph{omnivory} motifs are more likely to all persist than trios of species arranged in other motifs~\citep{Borrelli2015a}.
 	By damping disturbances and maintaining more constant populations of the species participating in them, these `stable' motifs may contribute to the stability of the network as a whole~\citep{Borrelli2015a}. 
-    The greater chances of maintaining all species in a stable motif could explain the over-representation of these motifs in empirical food webs if species and interactions in less-stable motifs are more likely to be ``pruned'' from empirical communities over time. We expect that stable structures will endure for longer than unstable ones, and so it is not surprising that stable structures should be over-represented in empirical communities~\citep{Borrelli2015}.
+    The greater chances of maintaining all species in a stable motif could explain the over-representation of these motifs in empirical food webs if species and interactions if less-stable motifs are more likely to be ``pruned'' from empirical communities over time~\citep{Borrelli2015}. 
+    % We expect that stable structures will endure for longer than unstable ones, and so it is not surprising that stable structures should be over-represented in empirical communities~\citep{Borrelli2015}.
 
 
 	Given these early indications that some motifs are more stable than others, we may also expect that a species' role-- here defined as the frequency with which it participates in different motifs --could affect its probability of extinction following a disturbance.
@@ -117,7 +118,7 @@ alyssa.cirtwill@gmail.com\\
     Identifying the relationships between motif roles and simpler measures of a species' position within its food web can suggest potential mechanisms for relationships between motifs and extinction risk.
 
     
-    Here, we investigate the relationship between species roles and extinction risk by simulating the removal of species from simulated networks at stable equilibria. 
+    Here, we investigate the relationship between species roles and extinction risk by simulating the removal of species from simulated networks which retain all species for a long interval. 
     We test 1) whether species' motif roles are related to their time to extinction following the removal of another species in the network and 2) whether particular motifs (especially the stable motifs described above) are strongly correlated with time to extinction.
     To aid in interpreting the results of these tests, we also examine relationships between motif roles, degree, and trophic level.
     Taken together, these tests show that species' vulnerabilities to disturbance  is indeed shaped by motif roles, as well as other network parameters.
@@ -135,7 +136,7 @@ alyssa.cirtwill@gmail.com\\
 
 
             We then simulated Lotka-Volterra community dynamics using the ``simulate" function from the Julia language package \emph{BioEnergeticFoodWebs} (\citealp{bioenergeticfw,Delmas2017}; \emph{Appendix S1}).
-            Networks which retained all species for 1000 time steps were considered to have reached an equilibrium state and retained.
+            Networks which retained all species for 1000 time steps were considered to have reached an approximately  equilibrium state and retained.
             If a network did not retain all species, we first re-simulated dynamics using up to 100 different sets of initial biomasses and, if none were successful, then discarded the network and simulated another to replace it.
             We thus obtained 6000 networks which retained with long-term persistence of all species in the absence of disturbances.
 
