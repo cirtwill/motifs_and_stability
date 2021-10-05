@@ -158,6 +158,25 @@
 
 	\subsection*{Results}
 
+        \subsubsection*{Testing PERMANOVA assumptions}
+
+            For all three ways of defining motif roles (counts, species-normalization, and network-normalization), motif roles were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
+            For many combinations of network size and connectance, variability increased significantly at higher deciles.
+            This means that there are a wider variety of motif roles associated with long times to extinction than short times to extinction.
+            However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{betadisper_Tukey}).
+            Moreover, the absolute differences in variability were small.
+            Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
+            
+
+            \begin{figure}
+                \centering
+                \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
+                \caption{Variability of motif roles was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
+                \label{fig:my_label}
+            \end{figure}
+
+
+        \subsubsection*{PERMANVOA tests} [[not updated]]
 
 		Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
 		All PERMANOVAs were significant, indicating that species' overall motif roles are related to their mean times to extinction.
