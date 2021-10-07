@@ -471,8 +471,10 @@
 
 	\subsection*{Network-normalised ($Z$-score) motif participation}
 
-		Having a higher $Z$-score in any motif was associated with greater persistence (longer mean time to extinction; Table~\ref{tab:persistence_Z}).
-		These trends explained most variation in persistence for apparent competition, omnivory, and the three-species chain.
+		Having a higher $Z$-score in the omnivory motif was associated with lower persistence, while having a higher $Z$-score in any other motif was associated with greater persistence (longer mean time to extinction; Table~\ref{tab:persistence_Z}).
+		These trends explained less variation in persistence than count-based motif participation, but more than frequency-based motif participation.
+		$Z$-scores for participation in the omnivory motif were strongly and negatively correlated with $Z$-scores for participation in the apparent competition and three-species chain motifs, and weakly and negatively correlated with $Z$-scores for participation in the direct competition and `other' motifs (Table~\ref{tab:Z_correlations}).
+		[[More commentary needed?]]
 
 
 		\begin{table}[h!]
@@ -481,15 +483,15 @@
 		\begin{tabular}{l | c c}
 		 Motif & $\beta$ & $p$-value \\  
 		 \hline
-		 Intercept & 3.465e+01 & \textless0.001 \\
+		 Intercept & 34.7 & \textless0.001 \\
 		 \hline
-		 Apparent competition & 1.524e+00 & \textless0.001 \\
-		 Direct competition &  4.615e-01  & \textless0.001 \\
-		 Omnivory & -3.590e-01  & \textless0.001 \\
-		 Three-species chain & 1.497e+00 & \textless0.001 \\
-		 Other &  1.968e-01  & \textless0.001 \\
+		 Apparent competition & 1.52 & \textless0.001 \\
+		 Direct competition &  0.462  & \textless0.001 \\
+		 Omnivory & -0.359  & \textless0.001 \\
+		 Three-species chain & 1.50 & \textless0.001 \\
+		 Other &  1.97  & \textless0.001 \\
 		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.02151959; $R^{2}_c$=0.05085696} \\
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.022; $R^{2}_c$=0.051} \\
 		 \hline
 		 \end{tabular}
 		 \end{table}
