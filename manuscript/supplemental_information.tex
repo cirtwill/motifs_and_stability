@@ -29,12 +29,12 @@
 
 \title{Stable motifs delay species loss in simulated food webs: Appendices}
 
-% - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species roles rather than trying to put motifs as the best way to predict extinctions.
+% - in intro/discussion, make it clear that this is adding a new layer of meaning to differences/changes in species motif participation rather than trying to put motifs as the best way to predict extinctions.
 
 % 1st Theo Bio, then PeerJ. 
 % Reviewers: Jon Borrelli, Benno Simmons, Daniel Stouffer, Tim Poisot, Eva Delmas
 % To SI: PCA axes, extinction order correlations
-% Main text: permanova shows that roles are important, participation to identify which motifs are most strongly assoc. with stability.
+% Main text: permanova shows that motif participation are important, participation to identify which motifs are most strongly assoc. with stability.
 % Kate to work on coverletter, language edits
 % Need abstract, ?graphical abstract?, author contributions,  
 % Need 3-5 bullet point highlights, submitted as a separate file. 
@@ -73,17 +73,30 @@
     
     \subsection*{S3: Details of PERMANOVA methods and results}
         
-        Supplemental methods and results for PERMANOVAs testing whether species' overall roles are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S2}.
+        Supplemental methods and results for PERMANOVAs testing whether species' overall motif participation are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S2}.
 
-    \subsection*{S4: Details of PLSR methods}
+    \subsection*{S4: Checking assumptions of PERMANOVAs}
 
-        Supplemental methods for partial least squares regressions. 
-    
-    \subsection*{S5: Relating motifs roles to other measures}
-        
-        Gives the slopes of relationships between motif roles and degree or shortest trophic level (STL) in \textbf{Tables S3-S4}.
-        
-    \subsection*{S6: Motif labels}
+
+    	Supplemental methods and results testing whether the assumption of equal dispersion of species motif participation across levels of persistence was met. Unequal dispersion can cause PERMANOVAs to return false positives, meaning that the results in Appendix \emph{S3} must be treated as tentative.
+
+
+    \subsection*{S5: Pooling loop-containing motifs}
+
+    	Supplemental methods detailing how the loop-containing motifs were pooled for each version of motif participation (counts of motifs, species normalisation, or network normalisation).
+
+
+    \subsection*{S6: Relating motif participation to simple roles}
+
+    	Supplemental ?methods? and results relating motif participation to a species' degree and trophic level.
+
+
+    \subsection*{S7: Relating simple roles to persistence}
+
+        Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance.
+
+
+    \subsection*{S8: Motif labels}
         
         \textbf{Figure S3} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
 
@@ -104,8 +117,8 @@
 	We randomly assigned initial population biomasses (i.e. cumulative biomass across all individuals of a species) for each species from a uniform distribution [0,1]. Note that population biomasses and individual body masses are not calculated on the same scale. We then simulated community dynamics for 1000 time steps to obtain an `equilibrium' community. To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times10^{-5}$. When simulating initial (i.e. pre-disturbance or equilibrium) dynamics, we rejected any network where one or more species dropped below this biomass threshold. Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of predator $i$ eating prey $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not retain all species for 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated.
 	If a set of biomasses where all species persist still had not been reached after 100 sets of randomly-assigned initial biomasses, we discarded the network and simulated another to replace it.
 
-
 \clearpage
+
 
 \section*{S2: Testing consistency of times to extinction across removals}
 
@@ -125,7 +138,7 @@
 		This means that, in general, the species which go extinct fastest after species $i$ is removed also go extinct fastest after species $j$ is removed.
 		The correlation was stronger in larger webs, particularly those with high connectance ($\beta_{S}$=1.33$\times10^-3$, $p$\textless0.001; $\beta_{C}$=-8.08$\times10^-2$, $p$\textless0.001; and $\beta_{S:C}$=2.12$\times10^-3$, $p$\textless0.001, respectively). 
 		Mean time to extinction is, therefore, a good measure of a species' overall vulnerability.
-		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular roles/trophic levels causing particularly odd extinction timings?]]
+		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular motif participation/trophic levels causing particularly odd extinction timings?]]
 
 
 		\begin{figure}[h!]
@@ -134,58 +147,31 @@
 			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
 			\end{figure}		
 
-
 \clearpage
+
 
 \section*{S3: Details of PERMANOVA methods and results}
 
 	\subsection*{Methods}
 
 
-		To test for a relationship between time to extinction and species' overall roles, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' raw motif roles to differences in mean time to extinction (Table 1, \emph{Main Text}).
+		To test for a relationship between time to extinction and species' overall motif participation, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' raw motif motif participation to differences in mean time to extinction (Table 1, \emph{Main Text}).
 		Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
 		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of network size and connectance (60 PERMANOVAs in total).
 		We fit all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
 		As conducting so many tests risks obtaining significant results by chance, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
-		
-        
-        In addition to participation in particular motifs affecting a species' vulnerability to extinction, it may also be that those species most vulnerable to extinction (i.e. short time to extinction) have more variable roles than those which are least vulnerable, or vice versa. 
-        If there is unequal variance in roles across different times to extinction, this could cause false positive results in PERMANOVA tests.
-        To account for this possibility, we first calculated the dispersion of roles for each value of mean time to extinction (treated categorically for this analysis), relative to the centroid for all species with the same mean time to extinction, using the function `betadisper' from the R~\citep{R} package \emph{vegan}~\citep{vegan}.
-        We then tested whether some levels of mean time to extinction are associated with more widely-dispersed roles using an ANOVA test, fit using the function `anova' within the package \emph{vegan}~\citep{vegan}.
-        Finally, to test whether role dispersion generally increases or decreases with increasing mean times to extinction, we fit a linear model relating role dispersion to mean time to extinction using the R~\citep{R} base function `lm'.
-
 
 	\subsection*{Results}
 
-        \subsubsection*{Testing PERMANOVA assumptions}
-
-            For all three ways of defining motif roles (counts, species-normalization, and network-normalization), motif roles were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
-            For many combinations of network size and connectance, variability increased significantly at higher deciles.
-            This means that there are a wider variety of motif roles associated with long times to extinction than short times to extinction.
-            However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{betadisper_Tukey}).
-            Moreover, the absolute differences in variability were small.
-            Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
-            
-
-            \begin{figure}
-                \centering
-                \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
-                \caption{Variability of motif roles was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
-                \label{fig:my_label}
-            \end{figure}
-
-
-        \subsubsection*{PERMANVOA tests} [[not updated]]
 
 		Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
-		All PERMANOVAs were significant, indicating that species' overall motif roles are related to their mean times to extinction.
+		All PERMANOVAs were significant, indicating that species' overall motif motif participation are related to their mean times to extinction.
 		However, the significant betadisper results suggest that some of these PERMANOVA results may be false positives.
-		After applying the correlated Bonferroni correction~\citep{Drezner2016}, both the ANOVAs testing for non-homogeneous variability of roles and regressions testing for relationships between role variability and time to extinction remained significant.
+		After applying the correlated Bonferroni correction~\citep{Drezner2016}, both the ANOVAs testing for non-homogeneous variability of motif participation and regressions testing for relationships between role variability and time to extinction remained significant.
 
 
 		\begin{figure}[h!]
-			\caption{Here we show (\textbf{A}) the pseudo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' roles to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values. }
+			\caption{Here we show (\textbf{A}) the pseudo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values. }
 			\label{permfig}
 			\includegraphics[height=.5\textheight]{figures/extinction_order/permanova_summary_paper_full.eps}
 			\end{figure}
@@ -231,9 +217,45 @@
 			\end{tabular}
 			\end{table}
 
+\clearpage
+
+
+\section*{S4: Checking assumptions of PERMANOVAs}
+
+	\subsection*{Methods}
+
+        
+        In addition to participation in particular motifs affecting a species' vulnerability to extinction, it may also be that those species most vulnerable to extinction (i.e. short time to extinction) have more variable motif participation than those which are least vulnerable, or vice versa. 
+        This could occur if, for example, species with a particular level of persistence tend to participate very frequently in a single motif but not always the same motif (e.g., apparent competition or direct competition but not both). 
+        Such motif participation vectors would have a larger Bray-Curtis dissimilarity than motif participation vectors of species which participate more evenly in all motifs.
+
+
+        If there is unequal variance in motif participation across different times to extinction, this could cause false positive results in PERMANOVA tests.
+        To account for this possibility, we first calculated the dispersion of motif participation for each value of mean time to extinction (treated categorically for this analysis), relative to the centroid for all species with the same mean time to extinction, using the function `betadisper' from the R~\citep{R} package \emph{vegan}~\citep{vegan}.
+        We then tested whether some levels of mean time to extinction are associated with more widely-dispersed motif participation using an ANOVA test, fit using the function `anova' within the package \emph{vegan}~\citep{vegan}.
+        Finally, to test whether role dispersion generally increases or decreases with increasing mean times to extinction, we fit a linear model relating role dispersion to mean time to extinction using the R~\citep{R} base function `lm'.
+
+
+	\subsection*{Results}
+
+        For all three ways of defining motif motif participation (counts, species-normalization, and network-normalization), motif motif participation were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
+        For many combinations of network size and connectance, variability increased significantly at higher deciles.
+        This means that there are a wider variety of motif motif participation associated with long times to extinction than short times to extinction.
+        However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{betadisper_Tukey}).
+        Moreover, the absolute differences in variability were small.
+        Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
+        
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
+            \caption{Variability of motif motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
+            \label{fig:my_label}
+        \end{figure}
+
 
 		\begin{table}[h!]
-			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable roles than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' roles increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{disptable}
 			\footnotesize
 			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
@@ -273,20 +295,104 @@
 
 	    \end{tabular}
 	    \end{table}
-    
+
 \clearpage
 
-\section*{S4: Details of PLSR methods}
 
-	The PERMANOVAs indicate whether roles as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
+\section*{S5: Pooling loop-containing motifs [[Do these make sense?]]}
+	
+	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{StoufferXXXX} and our simulated networks (\%-\%) and are all unstable when modelled in isolation~\citep{BorrelliXXXX}.
+	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an 'other' group.
+	This reduces our set of `motifs' to five and greatly simplifies interpretation of our analyses.
+	The manner in which the loop-containing motifs differed slightly depending on the version of motifs considered (detailed below).
+
+
+	\subsection*{Participation based on motif counts}
+
+		For the non-normalised motif participation vectors, which were lists of the number of times a species appeared in each motif, we simply summed the counts of all loop-containing motifs in each species' participation vector.
+		This produces a vector of length 5 where entries are the counts of the number of times the focal species appears in the apparent competition motif, direct competition motif, omnivory motif, and three-species chain motif separately and, finally, all loop-containing motifs taken together.
+
+
+	\subsection*{Participation based on species-normalisation}
+
+		The species-normalisation version of motif participation removed any potential effects of species participating in different total counts of motifs.
+		This is accomplished by dividing each count by the total number of times a species appears in any motif; the resulting vector of frequencies sums to 1 for all species.
+		To pool the loop-containing motifs, we summed the frequencies for all such motifs.
+		The resulting vector is of length 5 and has a similar structure to the count vector above but sums to 1 in all cases.
+
+
+	\subsection*{Participation based on network normalisation}
+
+		The network-normalisation version of motif participation considers whether a species participates in many or few of each motif relative to the rest of its community.
+		Participation in each motif is included as a $Z$-score of the count for the focal species relative to the mean and standard deviation of counts for that motif within the network.
+		To pool the loop-containing motifs, we first summed the counts of these motifs as when pooling the non-normalised motifs.
+		We then calculated $Z$-scores of participation in the pooled `other' motifs.
+		This tells us whether a focal species participates in unusually few or many loop-containing motifs overall.
+
+
+\clearpage
+
+
+\section*{S6: Relating motif participation to simple roles}
+
+	\subsection*{Methods}
+
+		Not sure any simplification necessary in main text?
+
+
+	\subsection*{Results}
+
+
+		Tables, figures, etc.
+
+\clearpage
+
+
+
+\section*{S7: Relating simple roles to persistence}
+
+	\subsection*{Methods}
+
+		Not sure any simplification necessary in main text?
+
+
+	\subsection*{Results}
+
+
+		Tables, figures, etc.
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Old PLSR material}
+
+	The PERMANOVAs indicate whether motif participation as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
 	To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
 	Similar to a principal components analysis (PCA), PLS projects the observed variables (i.e., participation in different motifs) into a new space and identifies latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls} which, together, explain substantial variation in mean time to extinction.
 	
 	
-	First, we used mean time to extinction as the response and raw motif roles as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
-	We include additional measures of network structure and species roles as these may affect the motif roles available to each focal species.
-	Next, to test whether any relationship between raw motif roles and time to extinction might be due differences in the roles of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized roles instead of the raw roles, with all other variables identical to the first regression.
-	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized roles as a predictor and all other variables identical to the first regression.
+	First, we used mean time to extinction as the response and raw motif motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
+	We include additional measures of network structure and species motif participation as these may affect the motif motif participation available to each focal species.
+	Next, to test whether any relationship between raw motif motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
+	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized motif participation as a predictor and all other variables identical to the first regression.
 	
 	
 	We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls}.
@@ -301,64 +407,7 @@
 \clearpage
 
 
-\section*{S5: Relating motif roles to other measures}
-
-    \begin{table}[h!]
-        \caption{Slopes and $p$-values for linear regressions relating degree (number of interaction partners) to the raw counts of motifs, degree-normalized proportions of motifs, and network-normalized $Z$-scores of motifs. Motifs are named as in~\citet{Stouffer2007}. Motifs S1 (\emph{three-species chain}), S2 (\emph{omnivory}), S4 (\emph{direct competition}), and S5 (\emph{apparent competition}) are the 'stable' motifs of particular interest in our study (highlighted in bold). All regressions remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-        \label{degree_lms}
-        \begin{tabular}{l | c c c c c c }
-        \multirow{2}{*}{Motif} & \multicolumn{2}{c}{Raw roles} & \multicolumn{2}{c}{Degree-normalized roles} & \multicolumn{2}{c}{Network-normalized roles} \\
-        & Slope & $p$-value & Slope & $p$-value & Slope & $p$-value \\
-        \hline
-        \textbf{S1}	&	6.17	&	\textbf{\textless0.001}	& -1.24$\times10^{-3}$	&	\textbf{\textless0.001}	&	2.61$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \textbf{S2}	&	11.1	&	\textbf{\textless0.001}	& 4.21$\times10^{-3}$	&	\textbf{\textless0.001}	&	3.73$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \textbf{S4}	&	3.18	&	\textbf{\textless0.001}	& -1.04$\times10^{-3}$	&	\textbf{\textless0.001}	&	1.63$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \textbf{S5}	&	12.6	&	\textbf{\textless0.001}	& -4.13$\times10^{-3}$	&	\textbf{\textless0.001}	&	3.02$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \hline
-        S3	&	6.73$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.96$\times10^{-7}$	&	\textbf{\textless0.001}	&	8.90$\times10^{-4}$	&	\textbf{\textless0.001}	\\
-        D1	&	2.21	&	\textbf{\textless0.001}	&	8.83$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.52$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D2	&	0.797	&	\textbf{\textless0.001}	&	3.98$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.11$\times10^{-2}$
-        	&	\textbf{\textless0.001}	\\
-        D3	&	1.78	&	\textbf{\textless0.001}	&	6.37$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.08$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D4	&	0.203	&	\textbf{\textless0.001}	&	8.98$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.22$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D5	&	3.77$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.52$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.11$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D6	&	0.127	&	\textbf{\textless0.001}	&	5.85$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.78$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D7	&	0.256	&	\textbf{\textless0.001}	&	1.15$\times10^{-4}$	&	\textbf{\textless0.001}	&	1.94$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D8	&	4.04$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.61$\times10^{-5}$	&	\textbf{\textless0.001}	&	1.06$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \hline
-        \end{tabular}
-        \end{table}
-
-
-    \begin{table}[h!]
-        \caption{Slopes and $p$-values for linear regressions relating trophic level (STL; height in the food web) to the raw counts of motifs, degree-normalized proportions of motifs, and network-normalized $Z$-scores of motifs. Motifs are named as in~\citet{Stouffer2007}. Motifs S1 (\emph{three-species chain}), S2 (\emph{omnivory}), S4 (\emph{direct competition}), and S5 (\emph{apparent competition}) are the 'stable' motifs of particular interest in our study (highlighted in bold). All regressions remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-        \label{TL_lms}
-        \begin{tabular}{l | c c c c c c }
-        \multirow{2}{*}{Motif} & \multicolumn{2}{c}{Raw roles} & \multicolumn{2}{c}{Degree-normalized roles} & \multicolumn{2}{c}{Network-normalized roles} \\
-        & Slope & $p$-value & Slope & $p$-value & Slope & $p$-value \\
-        \hline
-        \textbf{S1}	&	9.58	&	\textbf{\textless0.001}	&	-8.32$\times10^{-3}$	&	\textbf{\textless0.001}	&	-0.156	&	\textbf{\textless0.001}	\\
-        \textbf{S2}	&	3.36	&	\textbf{\textless0.001}	&	3.62$\times10^{-3}$	&	\textbf{\textless0.001}	&	-0.194	&	\textbf{\textless0.001}	\\
-        \textbf{S4}	&	3.48	&	\textbf{\textless0.001}	&	-4.59$\times10^{-3}$	&	\textbf{\textless0.001}	&	-9.51$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \textbf{S5}	&	24.0	&	\textbf{\textless0.001}	&	-6.35$\times10^{-3}$	&	\textbf{\textless0.001}	&	-9.66$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \hline													
-        S3	&	2.96$\times10^{-3}$	&	\textbf{\textless0.001}	&	4.82$\times10^{-6}$	&	\textbf{\textless0.001}	&	2.91$\times10^{-3}$	&	\textbf{\textless0.001}	\\
-        D1	&	2.48	&	\textbf{\textless0.001}	&	4.50$\times10^{-3}$	&	\textbf{\textless0.001}	&	-4.16$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D2	&	1.09	&	\textbf{\textless0.001}	&	1.61$\times10^{-3}$	&	\textbf{\textless0.001}	&	-4.53$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D3	&	3.72	&	\textbf{\textless0.001}	&	6.89$\times10^{-3}$	&	\textbf{\textless0.001}	&	-1.37$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D4	&	0.804	&	\textbf{\textless0.001}	&	1.34$\times10^{-3}$	&	\textbf{\textless0.001}	&	2.82$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D5	&	0.112	&	\textbf{\textless0.001}	&	2.05$\times10^{-4}$	&	\textbf{\textless0.001}	&	1.85$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D6	&	9.93$\times10^{-2}$	&	\textbf{\textless0.001}	&	1.86$\times10^{-4}$	&	\textbf{\textless0.001}	&	-2.65$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        D7	&	0.380	&	\textbf{\textless0.001}	&	6.64$\times10^{-4}$	&	\textbf{\textless0.001}	&	-8.81$\times10^{-3}$	&	\textbf{\textless0.001}	\\
-        D8	&	0.135	&	\textbf{\textless0.001}	&	2.46$\times10^{-4}$	&	\textbf{\textless0.001}	&	2.10$\times10^{-2}$	&	\textbf{\textless0.001}	\\
-        \hline
-        \end{tabular}
-        \end{table}
-        
-
-\clearpage
-
-\section*{S6: Motif labels}
+\section*{S8: Motif labels}
 
 	\begin{figure}[h!]
 		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modeled in isolation and as potentially increasing the stability of empirical food webs. Labels are as in~\citet{Stouffer2007}.}
