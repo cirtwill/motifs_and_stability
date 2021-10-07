@@ -301,7 +301,7 @@
 
 \section*{S5: Pooling loop-containing motifs [[Do these make sense?]]}
 	
-	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{StoufferXXXX} and our simulated networks (\%-\%) and are all unstable when modelled in isolation~\citep{BorrelliXXXX}.
+	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{StoufferXXXX} and our simulated networks (means 8.99$\times10^{-4}$\%-2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{BorrelliXXXX}.
 	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an 'other' group.
 	This reduces our set of `motifs' to five and greatly simplifies interpretation of our analyses.
 	The manner in which the loop-containing motifs differed slightly depending on the version of motifs considered (detailed below).
@@ -364,11 +364,152 @@
 \clearpage
 
 
+\section*{SA: Relating motif participation to persistence}
+	
+	Position of appendix depends on whether there are methods for S6 or S7.
 
 
+	\subsection*{Non-normalised (count) motif participation}
+
+		In a LMM of persistence against all motifs (including a random effect of global network structure), motif participation explained a small amount of variation ($R^{2}_m$=0.057; $R^2_c$=0.166).
+		In this model, greater participation in the omnivory motif was associated with \emph{lower} persistence while greater participation in all other motifs was associated with greater persistence (Table~\ref{tab:persistence_motifs}).
+		The effect of participation in the omnivory motif was, however, an order of magnitude smaller than the effects of participation in the apparent competition, direct competition, and loop-containing motifs and two orders of magnitude smaller than the effect of participation in the three-species chain motif.
 
 
+		Participation in the omnivory motif was strongly and negatively correlated with participation in the apparent competition and chain motifs, and weakly and negatively correlated with participation in the direct competition and `other' motifs (Table~\ref{tab:count_correlations}).
+		Participation in the `other' motifs was strongly and positively correlated with participation in the direct competition motif.
+		Participation in the apparent competition motif was moderately and positively correlated with participation in the three-species chain motif.
 
+
+		Add a nice simple figure.
+
+
+		\begin{table}[h!]
+		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+		\label{tab:persistence_motifs}
+		\begin{tabular}{l | c c}
+		 Motif & $\beta$ & $p$-value \\  
+		 \hline
+		 Intercept & 29.7 & \textless0.001 \\
+		 \hline
+		 Apparent competition & 8.49$\times10^{-3}$ & \textless0.001 \\
+		 Direct competition & 7.06$\times10^{-3}$ & \textless0.001 \\
+		 Omnivory &  -8.99$\times10^{-4}$ & \textless0.001 \\
+		 Three-species chain &  1.64$\times10^{-2}$ & \textless0.001 \\
+		 Other &  1.10$\times10^{-3}$ & \textless0.001 \\
+		 \hline
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.057; $R^2_c$=0.166} \\
+
+		 \hline
+		 \end{tabular}
+		 \end{table}
+
+
+		 Convert all 3 correlation tables into a 3-panel heat map?
+
+
+		\begin{table}[h!]
+		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
+		\label{tab:count_correlations}
+		\begin{tabular}{l | c c c c}
+			& AC & DC & Omni & Chain \\
+		\hline
+		DC    & -0.082 &        &        &        \\   
+		Omni  & -0.594 & -0.255 &        &        \\
+		Chain &  0.323 & -0.193 & -0.418 &        \\
+		Other & -0.141 &  0.402 & -0.281 & -0.119 \\
+		\hline
+		\end{tabular}
+		\end{table}
+
+% # Alpha order of names is S5, S4, S2, S1
+	\subsection*{Species-normalised (frequency) motif participation}
+
+
+		Higher frequencies of participation in the apparent competition, omnivory, and three-species chain motifs were associated with longer persistence, while participation in the direct competition motif was not significantly associated with persistence (Table~\ref{tab:persistence_freq}).
+		Species-normalised motif participation explained much less variance in persistence than un-normalised participation.
+		Frequencies of the stable motifs were strongly and positively correlated (Table~\ref{tab:freq_correlations}).
+		Frequency of participation in the `other' motifs (not included in the LMM due to model rank deficiency) was moderately and positively correlated with participation in the omnivory motif and negatively correlated with participation in the remaining stable motifs.
+
+
+		Add a simple figure.
+
+
+		\begin{table}[h!]
+		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+		\label{tab:persistence_freq}
+		\begin{tabular}{l | c c}
+		 Motif & $\beta$ & $p$-value \\  
+		 \hline
+		 Intercept & 31.2 & \textless0.001 \\
+		 \hline
+		 Apparent competition & 2.33 & \textless0.001 \\
+		 Direct competition & -0.726 & 0.069 \\
+		 Omnivory & 12.7 & \textless0.001 \\
+		 Three-species chain & 2.77 & \textless0.001 \\
+		 \hline
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.004; $R^{2}_c$=0.047} \\
+		 \hline
+		 \end{tabular}
+		 \end{table}
+
+
+		\begin{table}[h!]
+		\caption{Correlation amongst counts of each motif in a species' species-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
+		\label{tab:freq_correlations}
+		\begin{tabular}{l | c c c c}
+			& AC & DC & Omni & Chain \\
+		\hline
+		DC    &  0.751 &       & & \\         
+		Omni  &  0.727 &  0.583 &   & \\   
+		Chain &  0.872 &  0.688 & 0.631 & \\
+		Other & -0.299 & -0.428 & 0.251 & -0.100 \\
+		\hline
+		\end{tabular}
+		\end{table}
+
+
+	\subsection*{Network-normalised ($Z$-score) motif participation}
+
+		Having a higher $Z$-score in any motif was associated with greater persistence (longer mean time to extinction; Table~\ref{tab:persistence_Z}).
+		These trends explained most variation in persistence for apparent competition, omnivory, and the three-species chain.
+
+
+		\begin{table}[h!]
+		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure.  Motif participation was defined as the $Z$-score of participation in each motif, relative to the species' community. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+		\label{tab:persistence_Z}
+		\begin{tabular}{l | c c}
+		 Motif & $\beta$ & $p$-value \\  
+		 \hline
+		 Intercept & 3.465e+01 & \textless0.001 \\
+		 \hline
+		 Apparent competition & 1.524e+00 & \textless0.001 \\
+		 Direct competition &  4.615e-01  & \textless0.001 \\
+		 Omnivory & -3.590e-01  & \textless0.001 \\
+		 Three-species chain & 1.497e+00 & \textless0.001 \\
+		 Other &  1.968e-01  & \textless0.001 \\
+		 \hline
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.02151959; $R^{2}_c$=0.05085696} \\
+		 \hline
+		 \end{tabular}
+		 \end{table}
+
+
+		\begin{table}[h!]
+		\caption{Correlation amongst counts of each motif in a species' network-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
+		\label{tab:Z_correlations}
+		\begin{tabular}{l | c c c c}
+			& AC & DC & Omni & Chain \\
+		\hline
+		DC     & -0.165 &        &        &    \\
+		Omni   & -0.598 & -0.176 &        &     \\
+		Chain  &  0.216 & -0.268 & -0.423 &      \\
+		Other  & -0.169 &  0.399 & -0.195 & -0.199 \\
+		\hline
+		\end{tabular}
+		\end{table}
+
+\clearpage
 
 
 
