@@ -45,7 +45,7 @@ def read_file(infile):
         nam=name.split('allTLs$')
         name=''.join(nam)
       effect=float(line.split()[1])
-      pval=float(line.split()[-2])
+      pval=float(line.split()[-1])
 
       lmdict[name]=((effect,pval))
 

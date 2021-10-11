@@ -436,25 +436,36 @@
             \end{equation}
             
             where $\tau_{i}$ is the mean time to extinction of species $i$ across all removals, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, and $S_{i}:C_{i}$ is a random effect of the size and connectance of the network to which $i$ belongs.
-            These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level (Appendix \emph{S7}).
+            These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level.
 
 	\subsection*{Results}
 
+		As expected, persistence was significantly related to degree and trophic level (Table~\ref{tab:per_degTL}, Fig.~\ref{fig:persistence_degTL}).
+
 
 		\begin{table}[h!]
-		\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level, and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
-		\label{tab:per_degTL}
-		\begin{tabular}{l | c c |}
-		Predictor & $\beta$ & $p$-value \\
-		\hline
-		Intercept & 49.1 & \textless0.001 \\
-		Degree & 0.466 & \textless0.001 \\
-		STL & -7.72 & \textless0.001 \\
-		Interaction & -0.174 & \textless0.001 \\
-		\hline
-		$R^2$ & \multicolumn{2}{|c}{$R^2_m$=0.211, $R^2_c$=0.23} \\
-		\end{tabular}
-		\end{table}
+			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level, and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
+			\label{tab:per_degTL}
+			\begin{tabular}{l | c c |}
+			Predictor & $\beta$ & $p$-value \\
+			\hline
+			Intercept & 49.1 & \textless0.001 \\
+			Degree & 0.466 & \textless0.001 \\
+			STL & -7.72 & \textless0.001 \\
+			Interaction & -0.174 & \textless0.001 \\
+			\hline
+			$R^2$ & \multicolumn{2}{|c}{$R^2_m$=0.211, $R^2_c$=0.23} \\
+			\end{tabular}
+			\end{table}
+
+
+	    \begin{figure}[h!]
+	        \centering
+	        \includegraphics{figures/roles/persistence_vs_degTL.eps}
+	        \caption{Mean persistence time increased with increasing degree for species at low trophic levels (STL 1-2) but decreased with increasing degree for species at high trophic levels (STL \textgreater2). The figure is based on the fixed effects in a regression of persistence against degree, trophic level, their interaction, and a random effect of global network structure.}
+	        \label{fig:persistence_degTL}
+	    \end{figure}
+
 
 \clearpage
 
