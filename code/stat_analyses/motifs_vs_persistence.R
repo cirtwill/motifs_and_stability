@@ -48,14 +48,17 @@ allTLs$globo=fulldata$globo
 
 # Models with counts (one per motif)
 all_count=with(fulldata,lmer(Mean_order~cS5+cS4+cS2+cS1+cother+(1|globo)+(1|rando)))
+write.table(summary(all_count)$coefficients,file='../../data/summaries/persistence_countmotifs.tsv')
 
 # Models with frequencies
 freq=as.data.frame(fulldata[,6:10]/rowSums(fulldata[,6:10]))
 #non-independent, so can only include 4/5 motifs...
 all_freq=with(freq,lmer(fulldata$Mean_order~cS5+cS4+cS2+cS1+(1|fulldata$globo)+(1|fulldata$rando)))
+write.table(summary(all_freq)$coefficients,file='../../data/summaries/persistence_freqmotifs.tsv')
 
 # Models with Z-scores
 all_Z=with(fulldata,lmer(Mean_order~zS5+zS4+zS2+zS1+zother+(1|globo)+(1|rando)))
+write.table(summary(all_Z)$coefficients,file='../../data/summaries/persistence_Zmotifs.tsv')
 
 
 # # Section 2.1 : Does participation relate to degree, TL?
