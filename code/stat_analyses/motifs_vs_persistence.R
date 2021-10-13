@@ -40,41 +40,47 @@ fulldata$globo=as.factor(fulldata$globo) # Global-scale random effect
 
 allTLs$globo=fulldata$globo
 
-# # Section 1.2 : Does persistence relate to particular motifs?
+# # Section 1.1 : Does persistence relate to overall motif participation?
+# # Needs double-checking that old analysis/results still good.
 
+# # Section 1.2 : Does persistence relate to particular motifs?
+# # Still needs fig.
 
 # Models with counts (one per motif)
-all_count=with(fulldata,lmer(Mean_order~cS5+cS4+cS2+cS1+cother+(1|globo)))
+all_count=with(fulldata,lmer(Mean_order~cS5+cS4+cS2+cS1+cother+(1|globo)+(1|rando)))
 
 # Models with frequencies
 freq=as.data.frame(fulldata[,6:10]/rowSums(fulldata[,6:10]))
 #non-independent, so can only include 4/5 motifs...
-all_freq=with(freq,lmer(fulldata$Mean_order~cS5+cS4+cS2+cS1+(1|fulldata$globo)))
+all_freq=with(freq,lmer(fulldata$Mean_order~cS5+cS4+cS2+cS1+(1|fulldata$globo)+(1|fulldata$rando)))
 
 # Models with Z-scores
-all_Z=with(fulldata,lmer(Mean_order~zS5+zS4+zS2+zS1+zother+(1|globo)))
+all_Z=with(fulldata,lmer(Mean_order~zS5+zS4+zS2+zS1+zother+(1|globo)+(1|rando)))
 
 
 # # Section 2.1 : Does participation relate to degree, TL?
 # Again dropping cother from frequency models
-degmotifs_count=with(fulldata,lmer(allTLs$Deg~cS5+cS4+cS2+cS1+cother+(1|globo)))
+# Not converging with random effect of network....
+degmotifs_count=with(fulldata,lmer(allTLs$Deg~cS5+cS4+cS2+cS1+cother+(1|globo)+(1|rando),control=lmerControl(optimizer="bobyqa")))
 write.table(summary(degmotifs_count)$coefficients,file='../../data/summaries/motifs_Count_Deg.tsv')
-degmotifs_freq=with(freq,lmer(allTLs$Deg~cS5+cS4+cS2+cS1+(1|fulldata$globo)))
+degmotifs_freq=with(freq,lmer(allTLs$Deg~cS5+cS4+cS2+cS1+(1|fulldata$globo)+(1|fulldata$rando),control=lmerControl(optimizer="bobyqa")))
 write.table(summary(degmotifs_freq)$coefficients,file='../../data/summaries/motifs_Freq_Deg.tsv')
-degmotifs_Z=with(fulldata,lmer(allTLs$Deg~zS5+zS4+zS2+zS1+zother+(1|globo)))
+degmotifs_Z=with(fulldata,lmer(allTLs$Deg~zS5+zS4+zS2+zS1+zother+(1|globo)+(1|rando),control=lmerControl(optimizer="bobyqa")))
 write.table(summary(degmotifs_Z)$coefficients,file='../../data/summaries/motifs_Z_Deg.tsv')
 
-TLmotifs_count=with(fulldata,lmer(allTLs$STL~cS5+cS4+cS2+cS1+cother+(1|globo)))
+# Convergence OK
+TLmotifs_count=with(fulldata,lmer(allTLs$STL~cS5+cS4+cS2+cS1+cother+(1|globo)+(1|rando)))
 write.table(summary(TLmotifs_count)$coefficients,file='../../data/summaries/motifs_Count_TL.tsv')
-TLmotifs_freq=with(freq,lmer(allTLs$STL~cS5+cS4+cS2+cS1+(1|fulldata$globo)))
+TLmotifs_freq=with(freq,lmer(allTLs$STL~cS5+cS4+cS2+cS1+(1|fulldata$globo)+(1|fulldata$rando)))
 write.table(summary(TLmotifs_freq)$coefficients,file='../../data/summaries/motifs_Freq_TL.tsv')
-TLmotifs_Z=with(fulldata,lmer(allTLs$STL~zS5+zS4+zS2+zS1+zother+(1|globo)))
+TLmotifs_Z=with(fulldata,lmer(allTLs$STL~zS5+zS4+zS2+zS1+zother+(1|globo)+(1|rando)))
 write.table(summary(TLmotifs_Z)$coefficients,file='../../data/summaries/motifs_Z_TL.tsv')
 
 
 # # Section 2.2: Does persistence relate to degree, TL?
 
-per_degTL=with(fulldata,lmer(Mean_order~allTLs$Deg*allTLs$STL+(1|globo)))
+per_degTL=with(fulldata,lmer(Mean_order~allTLs$Deg*allTLs$STL+(1|globo)+(1|rando)))
+write.table(summary(per_degTL)$coefficients,file='../../data/summaries/persistence_degTL.tsv')
 
-
+save.image('all_tests.Rdata')
 
