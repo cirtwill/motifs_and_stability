@@ -181,12 +181,13 @@ alyssa.cirtwill@gmail.com\\
                 For each version of motif participation (count, frequency, or $Z$-score), we fit a  linear mixed-effect model (LMM) of the form:
 
                 \begin{equation}
-                    \tau_{i} \approx \alpha_{i} + \delta_{i} + o_{i} + \chi_{i} + \omega_{i} + S_{i}:C_{i} ,
+                    \tau_{in} \approx \alpha_{i} + \delta_{i} + o_{i} + \chi_{i} + \omega_{i} + S_{n}:C_{n} +N_n,
                     \label{eq:persistence_motifs}
                 \end{equation}
 
-                where $\tau_{i}$ is the mean time to extinction (persistence) of species $i$,  $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, and $S_{i}:C_{i}$ is a random effect of the size and connectance of the network to which $i$ belongs.
+                where $\tau_{in}$ is the mean time to extinction (persistence) of species $i$ belonging to network $n$,  $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
                 This random effect of global network structure controls for differences in mean persistence between, for example, highly-connected and weakly-connected networks. 
+                The random effect of network ID controls for the fact that all species in the same network have the same pool of motifs to participate in and are so non-independent.
                 These models indicate whether each motif is positively or negatively correlated with persistence time, and how much variation in persistence time can be explained by each version of motif participation. 
                 We fit the LMMs using the R~\citep{R} function `lmer' from the package \emph{lmerTest}~\citep{lmerTest} and calculated variance explained using the function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.
                 
@@ -219,15 +220,17 @@ alyssa.cirtwill@gmail.com\\
 		This means that there are many roles which are associated with long times to extinction but fewer roles which are associated with short times to extinction.
 		After applying the correlated Bonferroni correction~\citep{Drezner2016}, both the ANOVAs testing for non-homogeneous variability of roles and regressions testing for relationships between role variability and time to extinction remained significant.
     
+
     \subsection*{Relating participation in particular motifs to persistence}
     
-        When defining participation based on counts, increased participation in any motif was correlated with longer persistence following species removal (Table S3, \emph{Appendix S8}).
-        Regressions against motif participation explained 0.3-2.2\% of variation in persistence time (fixed effects only).
-        When defining participation based on frequencies, greater participation in the omnivory and three-species chain motifs was correlated with longer persistence, while greater participation in any other motif was associated with reduced persistence (Table S4, \emph{Appendix S8}).
-        However, the amount of variance in persistence time explained by frequencies was extremely low (maximum 0.004; fixed effects only). 
-        When defining participation based on $Z$-scores, unusually high participation in any motif was associated with longer persistence (Table S5, \emph{Appendix S8}).
-        The amount of variance in persistence explained by trends in $Z$-score participation was lower than that explained by counts but higher than that explained by frequencies (0.3-1.4\%).
+        When defining participation based on counts, increased participation in any motif except for omnivory was correlated with longer persistence following species removal (Table S3, \emph{Appendix S8}).
+        Regressions against motif participation explained only 5.8\% of variation in persistence time (fixed effects only).
+        When defining participation based on frequencies, greater participation in the omnivory, three-species chain, and apparent competition motifs was correlated with longer persistence, while the frequency of the direct competition motif was not significantly associated with persistence (Table S4, \emph{Appendix S8}).
+        However, the amount of variance in persistence time explained by frequencies was extremely low (maximum 0.4; fixed effects only). 
+        When defining participation based on $Z$-scores, unusually high participation in the omnivory motif was associated with shorter persistence while unusually high participation in any other motif was associated with longer persistence (Table S5, \emph{Appendix S8}).
+        The amount of variance in persistence explained by trends in $Z$-score participation was lower than that explained by counts but higher than that explained by frequencies (2.2\%).
         
+
     \subsection*{Is motif participation related to simpler roles?}    
     
         As expected, a higher degree was associated with higher counts and higher $Z$-scores of any motif (Appendix \emph{S6}).
@@ -236,9 +239,10 @@ alyssa.cirtwill@gmail.com\\
         
     
         The relationships between motif participation and STL were extremely weak for all versions of motif participation (Appendix \emph{S6}).
-        Nevertheless, a higher trophic level was associated with higher counts and $Z$-scores of the apparent competition motif, higher counts, $Z$-scores, and frequencies (by implication) of the `other' motifs, and higher $Z$-scores of direct competition.
+        Nevertheless, a higher trophic level was associated with higher counts and $Z$-scores of the apparent competition motif and `other' motifs and higher $Z$-scores of direct competition.
         While significant, these trends explain so little variation in STL that motif participation and trophic level are likely to convey almost independent information about a species' place in the network.
     
+
     \subsection*{Is persistence related to simpler roles?}
     
         Simple roles (degree and STL) together explained a moderate amount of variation in persistence ($R^2_m$=0.211, $R^2_c$=0.232).
@@ -432,7 +436,7 @@ Fig. 2-4 (or 3 panels) - persistence on y axis, motif on x. Show all 5 motifs (4
 
     \begin{figure}[h!]
         \centering
-        \includegraphics{figures/motifs_vs_DegTL.eps}
+        \includegraphics{figures/motifs_vs_degTL.eps}
         \caption{Degree was strongly and significantly associated with motif participation, but trophic level was much more weakly, though still significantly, associated with motif participation (Appendix \emph{SX}). For each version of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, this is an unrealistic simplification. }
         \label{fig:motifs_degTL}
     \end{figure}

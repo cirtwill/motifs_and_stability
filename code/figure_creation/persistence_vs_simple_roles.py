@@ -20,7 +20,7 @@ from PyGrace.Styles.el import ElGraph, ElLogColorBar
 
 # Do we also want a plot of extinction order vs. betas?
 
-colors=ColorBrewerScheme('Spectral')  # The blue is very beautiful but maybe harder to see.
+colors=ColorBrewerScheme('RdBu',n=9)  # The blue is very beautiful but maybe harder to see.
 colors.add_color(136,204,238,'Tol1')
 colors.add_color(122,170,153,'Tol2')
 colors.add_color(17,119,51,'Tol3')
@@ -31,7 +31,7 @@ colors.add_color(204,142,159,'Tol7')
 colors.add_color(136,34,85,'Tol8')
 colors.add_color(170,68,153,'Tol9')
 colors.add_color(221,221,221,'Tol10')
-
+colors.add_color(220,220,220,'lightgrey')
 
 def read_file(infile):
   lmdict={}
@@ -56,6 +56,7 @@ def format_linegraph(graph):
   graph.yaxis.bar.linewidth=1
   graph.xaxis.bar.linewidth=1
   graph.frame.linewidth=1
+  # graph.frame.configure(background_color='lightgrey',background_pattern=1)
 
   graph.world.xmin=0
   graph.world.xmax=125
@@ -89,7 +90,12 @@ def populate_graph(graph,datadict):
 
     pointy=graph.add_dataset(dats)
     pointy.symbol.shape=0
-    pointy.line.configure(linestyle=1,linewidth=1,color=j)
+    if j==6:
+      pointy.line.configure(linestyle=1,linewidth=1,color=1)
+    elif j==12:
+      pointy.line.configure(linestyle=2,linewidth=1,color=1)      
+    else:
+      pointy.line.configure(linestyle=1,linewidth=1,color=j)
 
     pointy.legend=str(TL)
     j+=2

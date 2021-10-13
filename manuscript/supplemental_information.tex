@@ -340,11 +340,11 @@
         For ease of interpretation, we once again grouped the loop-containing motifs into an `unstable' group, leading to 6 LMs of the form:
 
         \begin{equation}
-            \phi_{i} \approx \alpha_{i} + \delta_{i} + o_{i} + \chi_{i} + \omega_{i} + S_{i}:C_{i} ,
+            \phi_{in} \approx \alpha_{i} + \delta_{i} + o_{i} + \chi_{i} + \omega_{i} + S_{n}:C_{n} + N_n,
             \label{eq:degTL_motifs}
         \end{equation}
 
-        where $\phi_{i}$ is the degree or trophic level of species $i$, $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, and $S_{i}:C_{i}$ is a random effect of the size and connectance of the network to which $i$ belongs .
+        where $\phi_{in}$ is the degree or trophic level of species $i$ belonging to network $n$, $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
 
 	\subsection*{Results}
 
@@ -363,17 +363,17 @@
 			& \multicolumn{2}{|c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
 			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
 			\hline
-			Intercept &  3.94  & \textless0.001 & 81.1 & \textless0.001 & 22.3 & \textless0.001\\
+			Intercept &  3.84  & \textless0.001 & 83.3 & \textless0.001 & 22.3 & \textless0.001\\
 			\hline
-			Apparent competition       &  0.0191  & \textless0.001 & -0.810 & \textless0.001 & 1.88 & \textless0.001 \\
-			Direct competition       &  0.0247  & \textless0.001 & -0.586 & \textless0.001 & 1.80 & \textless0.001\\
-			Omnivory       &  0.0276  & \textless0.001 & 0.287 & \textless0.001 & 5.69 & \textless0.001\\
-			Three-species chain       &  0.0385  & \textless0.001 & -0.879 & \textless0.001 & 1.64 & \textless0.001\\
+			Apparent competition       &  0.0194  & \textless0.001 & -83.4 & \textless0.001 & 1.88 & \textless0.001 \\
+			Direct competition       &  0.0249  & \textless0.001 & -61.5 & \textless0.001 & 1.80 & \textless0.001\\
+			Omnivory       &  0.0274  & \textless0.001 & 27.6 & \textless0.001 & 5.69 & \textless0.001\\
+			Three-species chain       &  0.0388  & \textless0.001 & -90.4 & \textless0.001 & 1.64 & \textless0.001\\
 			Other    &  0.0470  & \textless0.001 & \multicolumn{2}{c|}{NA} & 4.61 & \textless0.001 \\
 			\hline
 			$R^2$ & \multicolumn{2}{|c|}{$R^2_m$=0.926, $R^2_c$=0.977} & 
-			\multicolumn{2}{c}{$R^2_m$=0.620, $R^2_c$=0.728} & 
-			\multicolumn{2}{|c}{$R^2_m$=0.468, $R^2_c$=0.895} \\
+			\multicolumn{2}{c}{$R^2_m$=0.629, $R^2_c$=0.740} & 
+			\multicolumn{2}{|c}{$R^2_m$=0.468, $R^2_c$=0.896} \\
 			\end{tabular}
 			\end{table}
 
@@ -401,17 +401,17 @@
 			& \multicolumn{2}{|c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
 			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
 			\hline
-			Intercept & 2.26 & \textless0.001 & 2.86 & \textless0.001 & 2.13 & \textless0.001 \\
+			Intercept & 2.26 & \textless0.001 & 2.90 & \textless0.001 & 2.13 & \textless0.001 \\
 			\hline
-			Apparent competition & 1.88$\times10^{-5}$ & 0.010 & -0.603 & \textless0.001 & 2.48$\times10^{-2}$ & \textless0.001 \\
-			Direct competition   & -1.55$\times10^{-4}$ & \textless0.001 & -0.422 & \textless0.001 & 1.88$\times10^{-3}$ & \textless0.001 \\
-			Omnivory       & -5.40$\times10^{-4}$ & \textless0.001 & -1.77 & \textless0.001 & -9.98$\times10^{-2}$ & \textless0.001 \\
-			Three-species chain  & -3.64$\times10^{-4}$ & \textless0.001 & -0.623 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
-			Other    & 1.04$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
+			Apparent competition & 6.22$\times10^{-5}$ & \textless0.001 & -0.612 & \textless0.001 & 2.47$\times10^{-2}$ & \textless0.001 \\
+			Direct competition   & -1.56$\times10^{-4}$ & \textless0.001 & -0.460 & \textless0.001 & 1.88$\times10^{-3}$ & \textless0.001 \\
+			Omnivory       & -5.76$\times10^{-4}$ & \textless0.001 & -1.86 & \textless0.001 & -9.98$\times10^{-2}$ & \textless0.001 \\
+			Three-species chain  & -4.18$\times10^{-4}$ & \textless0.001 & -0.715 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
+			Other    & 1.28$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c|}{$R^2_m$=0.042, $R^2_c$=0.150} & 
-			\multicolumn{2}{c}{$R^2_m$=0.027, $R^2_c$=0.110} & 
-			\multicolumn{2}{|c}{$R^2_m$=0.021, $R^2_c$=0.067} \\
+			$R^2$ & \multicolumn{2}{|c|}{$R^2_m$=0.044, $R^2_c$=0.193} & 
+			\multicolumn{2}{c}{$R^2_m$=0.030, $R^2_c$=0.157} & 
+			\multicolumn{2}{|c}{$R^2_m$=0.021, $R^2_c$=0.110} \\
 			\end{tabular}
 			\end{table}
 
@@ -431,11 +431,11 @@
             To complete the context for our results, we fit a regression of persistence against degree, trophic level, and their interaction, as well as a random effect of global network structure:
             
             \begin{equation}
-                \tau_{i} \approx \Delta_{i} + \Upsilon_{i} + \Delta_{i}\Upsilon_{i} + S_{i}:C_{i} ,
+                \tau_{in} \approx \Delta_{i} + \Upsilon_{i} + \Delta_{i}\Upsilon_{i} + S_{n}:C_{n} + N_n ,
                 \label{eq:persistence_degTL}
             \end{equation}
             
-            where $\tau_{i}$ is the mean time to extinction of species $i$ across all removals, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, and $S_{i}:C_{i}$ is a random effect of the size and connectance of the network to which $i$ belongs.
+            where $\tau_{in}$ is the mean persistence time for species $i$, belonging to network $n$, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
             These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level.
 
 	\subsection*{Results}
@@ -454,14 +454,14 @@
 			STL & -7.72 & \textless0.001 \\
 			Interaction & -0.174 & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c}{$R^2_m$=0.211, $R^2_c$=0.23} \\
+			$R^2$ & \multicolumn{2}{|c}{$R^2_m$=0.211, $R^2_c$=0.232} \\
 			\end{tabular}
 			\end{table}
 
 
 	    \begin{figure}[h!]
 	        \centering
-	        \includegraphics{figures/roles/persistence_vs_degTL.eps}
+	        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_degTL.eps}
 	        \caption{Mean persistence time increased with increasing degree for species at low trophic levels (STL 1-2) but decreased with increasing degree for species at high trophic levels (STL \textgreater2). The figure is based on the fixed effects in a regression of persistence against degree, trophic level, their interaction, and a random effect of global network structure.}
 	        \label{fig:persistence_degTL}
 	    \end{figure}
@@ -477,9 +477,10 @@
 
 	\subsection*{Non-normalised (count) motif participation}
 
-		In a LMM of persistence against all motifs (including a random effect of global network structure), motif participation explained a small amount of variation ($R^{2}_m$=0.057; $R^2_c$=0.166).
-		In this model, greater participation in the omnivory motif was associated with \emph{lower} persistence while greater participation in all other motifs was associated with greater persistence (Table~\ref{tab:persistence_motifs}).
-		The effect of participation in the omnivory motif was, however, an order of magnitude smaller than the effects of participation in the apparent competition, direct competition, and loop-containing motifs and two orders of magnitude smaller than the effect of participation in the three-species chain motif.
+		In a LMM of persistence against all motifs (including a random effect of global network structure), motif participation explained a small amount of variation ($R^{2}_m$=0.058; $R^2_c$=0.220).
+		In this model, greater participation in all motifs except for the omnivory motif was associated with \emph{greater} persistence (Table~\ref{tab:persistence_motifs}).
+		The effect of participation in the omnivory motif was, however, an order of magnitude smaller than the effects of participation in the apparent competition and direct competition and two orders of magnitude smaller than the effect of participation in the three-species chain motif.
+		The effect of participation in the loop-containing motifs was also small, similar to the omnivory motif.
 
 
 		Participation in the omnivory motif was strongly and negatively correlated with participation in the apparent competition and chain motifs, and weakly and negatively correlated with participation in the direct competition and `other' motifs (Table~\ref{tab:count_correlations}).
@@ -487,7 +488,7 @@
 		Participation in the apparent competition motif was moderately and positively correlated with participation in the three-species chain motif.
 
 
-		Add a nice simple figure.
+		[[Add a nice simple figure.]]
 
 
 		\begin{table}[h!]
@@ -498,20 +499,20 @@
 		 \hline
 		 Intercept & 29.7 & \textless0.001 \\
 		 \hline
-		 Apparent competition & 8.49$\times10^{-3}$ & \textless0.001 \\
-		 Direct competition & 7.06$\times10^{-3}$ & \textless0.001 \\
-		 Omnivory &  -8.99$\times10^{-4}$ & \textless0.001 \\
-		 Three-species chain &  1.64$\times10^{-2}$ & \textless0.001 \\
-		 Other &  1.10$\times10^{-3}$ & \textless0.001 \\
+		 Apparent competition & 7.77$\times10^{-3}$ & \textless0.001 \\
+		 Direct competition & 8.05$\times10^{-3}$ & \textless0.001 \\
+		 Omnivory &  -3.91$\times10^{-4}$ & 0.133 \\
+		 Three-species chain &  1.73$\times10^{-2}$ & \textless0.001 \\
+		 Other &  5.76$\times10^{-4}$ & 0.039 \\
 		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.057; $R^2_c$=0.166} \\
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.058; $R^2_c$=0.220} \\
 
 		 \hline
 		 \end{tabular}
 		 \end{table}
 
 
-		 Convert all 3 correlation tables into a 3-panel heat map?
+		[[Convert all 3 correlation tables into a 3-panel heat map?]]
 
 
 		\begin{table}[h!]
@@ -520,10 +521,10 @@
 		\begin{tabular}{l | c c c c}
 			& AC & DC & Omni & Chain \\
 		\hline
-		DC    & -0.082 &        &        &        \\   
-		Omni  & -0.594 & -0.255 &        &        \\
-		Chain &  0.323 & -0.193 & -0.418 &        \\
-		Other & -0.141 &  0.402 & -0.281 & -0.119 \\
+		DC    & -0.085 &        &        &        \\   
+		Omni  & -0.592 & -0.256 &        &        \\
+		Chain &  0.311 & -0.196 & -0.417 &        \\
+		Other & -0.143 &  0.397 & -0.293 & -0.117 \\
 		\hline
 		\end{tabular}
 		\end{table}
@@ -547,14 +548,14 @@
 		\begin{tabular}{l | c c}
 		 Motif & $\beta$ & $p$-value \\  
 		 \hline
-		 Intercept & 31.2 & \textless0.001 \\
+		 Intercept & 30.7 & \textless0.001 \\
 		 \hline
-		 Apparent competition & 2.33 & \textless0.001 \\
-		 Direct competition & -0.726 & 0.069 \\
-		 Omnivory & 12.7 & \textless0.001 \\
-		 Three-species chain & 2.77 & \textless0.001 \\
+		 Apparent competition & 2.20 & \textless0.001 \\
+		 Direct competition & 0.255 & 0.528 \\
+		 Omnivory & 13.9 & \textless0.001 \\
+		 Three-species chain & 3.68 & \textless0.001 \\
 		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.004; $R^{2}_c$=0.047} \\
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.005; $R^{2}_c$=0.106} \\
 		 \hline
 		 \end{tabular}
 		 \end{table}
@@ -566,9 +567,9 @@
 		\begin{tabular}{l | c c c c}
 			& AC & DC & Omni & Chain \\
 		\hline
-		DC    &  0.751 &       & & \\         
-		Omni  &  0.727 &  0.583 &   & \\   
-		Chain &  0.872 &  0.688 & 0.631 & \\
+		DC    &  0.753 &       & & \\         
+		Omni  &  0.737 &  0.588 &   & \\   
+		Chain &  0.872 &  0.692 & 0.640 & \\
 		Other & -0.299 & -0.428 & 0.251 & -0.100 \\
 		\hline
 		\end{tabular}
@@ -595,9 +596,9 @@
 		 Direct competition &  0.462  & \textless0.001 \\
 		 Omnivory & -0.359  & \textless0.001 \\
 		 Three-species chain & 1.50 & \textless0.001 \\
-		 Other &  1.97  & \textless0.001 \\
+		 Other &  0.197  & \textless0.001 \\
 		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.022; $R^{2}_c$=0.051} \\
+		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.022; $R^{2}_c$=0.108} \\
 		 \hline
 		 \end{tabular}
 		 \end{table}
