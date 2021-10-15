@@ -30,7 +30,7 @@ using DataFrames
 
 # initialize params
 maxreps = 10000; # Giving up after this many
-reps = 100 # How many of each combination do we want?
+reps = 5 # How many of each combination do we want?
 S = 10; # how many species do we want?
 Smin=50
 Smax=100
@@ -176,9 +176,9 @@ for S in Smin:10:Smax
 				sim[:B]=collect(sim[:B])
 				## Note! If the file already exists, this will fail.
 				if check_extinction(sim)
-					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_B_$j.csv",DataFrame(sim[:B]),writeheader=true)
-					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_t_$j.csv",DataFrame(reshape(sim[:t],length(sim[:t]),1)),writeheader=true)
-					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_net_$j.csv",DataFrame(sim[:p][:A]),writeheader=true)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_B_$j.csv",DataFrame(sim[:B],:auto),writeheader=true)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_t_$j.csv",DataFrame(reshape(sim[:t],length(sim[:t]),1),:auto),writeheader=true)
+					CSV.write("../data/networks/pre_disturbance/$S/$C/initial_net_$j.csv",DataFrame(sim[:p][:A],:auto),writeheader=true)
 
 					j += 1
 				end
