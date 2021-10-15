@@ -120,14 +120,14 @@ for S in Smin:10:Smax
 		catch
 		end
 		# Run through all the webs
-		for i in 0:99
+		for i in 0:4
 			# Load in the initial web
-			B=convert(Matrix,CSV.read("../data/networks/pre_disturbance/$S/$C/initial_B_$i.csv"))
-			t=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_t_$i.csv")
-			A=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_net_$i.csv")
+			B=Matrix(CSV.read("../data/networks/pre_disturbance/$S/$C/initial_B_$i.csv",DataFrame))
+			t=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_t_$i.csv",DataFrame)
+			A=CSV.read("../data/networks/pre_disturbance/$S/$C/initial_net_$i.csv",DataFrame)
 
 			# Extract the initial food web, parameters
-			foodweb = convert(Matrix,A)
+			foodweb = Matrix(A)
 			Fwsum = sum(foodweb, dims =2)[1:end,1]
 			verts = Bool[ x > 0 for x in Fwsum]
 			params = model_parameters(foodweb, vertebrates = verts, Z=Float64(3.065))
