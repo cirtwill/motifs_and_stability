@@ -45,17 +45,6 @@ function save_biomasses(grid,S,C,i,j)
 	close(f)
 end
 
-# returns false if there are NO isolated species and true if there are TRUlY isolated species
-function check_isolated(network)
-	colsums = sum(network, dims = 1);
-	rowsums = sum(network, dims = 2);
-	sumsum  = sum(hcat(colsums',rowsums),dims = 2);
-	if 0 in sumsum
-		return true;
-	else
-		return false;
-	end
-end
 
 # whichsp is column vector of zeros (not disturbed) and ones (disturbed)
 function perturb(whichsp, magn, params, B, i, j, S, start, stop, print = true)
