@@ -155,7 +155,12 @@
 	\subsection*{Methods}
 
 
-		To test for a relationship between time to extinction and species' overall motif participation, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' raw motif motif participation to differences in mean time to extinction (Table 1, \emph{Main Text}).
+		To test for a relationship between time to extinction and species' overall motif participation, we fit a series of PERMANOVAs~\citep{Anderson2001} relating dissimilarity in motif participation to differences in mean time to extinction.
+		When defining species roles as raw counts or species-normalised frequencies, we used Bray-Curtis dissimilarity as our measure of differences in motif participation following~\citet{Baker2015,Cirtwill2015}.
+		When defining species roles as $Z$-scores, which can be negative, we used Euclidean distance as our dissimilarity metric since Bray-Curtis dissimilarity is only meaningful for positive values.
+
+
+		 in species' raw motif motif participation to differences in mean time to extinction (Table 1, \emph{Main Text}).
 		Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
 		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of network size and connectance (60 PERMANOVAs in total).
 		We fit all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.

@@ -173,10 +173,10 @@ def fill_Cgraph(graph,modeldict):
 ###############################################################################################
 ###############################################################################################
 
-datadir='../../data/summaries/extorder_perms/'
+datadir='../../data/summaries/permanova/count' # Removals are the same for all flavours of motif
 datadict={}
 for s in ['50','60','70','80','90','100']:
-  datadict[s]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
+  datadict[s]=read_permfile(datadir+'/permanova_summary_'+s+'_count.tsv')
 form='paper'
 level='full'
 

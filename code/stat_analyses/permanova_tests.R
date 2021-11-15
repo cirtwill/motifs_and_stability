@@ -8,7 +8,6 @@ library(vegan)
 
 for(method in c("count","freq","Z")){
 	for(S in seq(50,100,10)){
-	# for(S in seq(50,100,10)){
 		dir.create(paste0('../../data/permanova/',method,'/perms/',as.character(S)))
 		dir.create(paste0('../../data/permanova/',method,'/disps/',as.character(S)))
 		print(S)
@@ -49,7 +48,11 @@ for(method in c("count","freq","Z")){
 			}
 
 			extorders=as.data.frame(extorders)
-			roledist=vegdist(allroles,method="bray")
+			if(method!="Z"){
+				roledist=vegdist(allroles,method="bray")
+			} else {
+				roledist=vegdist(allroles,method="euclid")				
+			}
 			# For speed, especially in the biggest webs, doing fewer permutation at a time. Will collect them and get p-values later.
 			if(S<100){
 				for(j in seq(1,10)){
@@ -71,7 +74,7 @@ for(method in c("count","freq","Z")){
 				write.table(dists,file=paste0('../../data/permanova/',method,'/disps/',as.character(S),'/',as.character(C),'/dispersion_vs_quantile_',as.character(S),'_',as.character(C),'.tsv',sep=''),sep='\t')
 				write.table(anny,file=paste0('../../data/permanova/',method,'/disps/',as.character(S),'/',as.character(C),'/dispersion_anova_',as.character(S),'_',as.character(C),'.tsv',sep=''),sep='\t')
 			} else {
-				for(j in seq(1,999)){
+				for(j in seq(1,999)){ # From 748 on, 0.02 running separately
 					meanperm=adonis(roledist~extorders$Mean_order,strata=as.factor(extorders$Network),permutations=10)			
 					summa=meanperm$aov.tab[1,]
 					results=c(S,C,mean(extorders$Extinction_correlation),summa,meanperm$f.perms)

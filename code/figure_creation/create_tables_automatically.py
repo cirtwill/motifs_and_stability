@@ -86,8 +86,8 @@ def read_lmfile(infile):
 
   return subdict
 
-def write_perm_table(datadict):
-  f=open('../../manuscript/permanova_summary_table.txt','w')
+def write_perm_table(datadict,outfile):
+  f=open(outfile,'w')
   f.write('S&C&Extinction correlation&pseudo-$F$&$p$-value\\\\ \n')
   for s in sorted(datadict):
     for c in sorted(datadict[s]):
@@ -142,12 +142,18 @@ def write_lm_table(datadict):
 ###############################################################################################
 ###############################################################################################
 
-datadir='../../data/summaries/extorder_perms/'
-datadict={}
-for s in sorted(os.listdir(datadir)):
-  datadict[int(s)]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
+datadir='../../data/summaries/permanova/'
+for flavour in ['count','freq','Z']:
+  outfile='../../manuscript/tables/permanova_summary_table_'+flavour+'.txt'
+  datadict={}
+  for sfil in sorted(os.listdir(datadir+flavour)):
+    s=sfil.split('_')[-2]
+    print s
+    datadict[int(s)]=read_permfile(datadir+flavour+'/'+sfil)
 
-write_perm_table(datadict)
+  write_perm_table(datadict,outfile)
+
+sys.exit()
 
 dispdir='../../data/summaries/extorder_disps/'
 dispdict={}
@@ -157,9 +163,6 @@ for s in sorted(os.listdir(dispdir)):
     dispdict[int(s)][float(c)]=read_dispfile(dispdir+s+'/'+c+'/mean_extorder_vs_roles_'+s+'_'+c+'.tsv')
 
 write_disp_table(dispdict)
-
-
-sys.exit()
 
 lmdict={}
 lmdir='../../data/summaries/rolesim_extorder/'

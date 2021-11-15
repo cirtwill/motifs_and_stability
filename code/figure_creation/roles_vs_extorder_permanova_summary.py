@@ -68,7 +68,7 @@ def read_dispfile(infile):
 
   return subdict
 
-def format_graph(graph,form,yaxis):
+def format_graph(graph,form,yaxis,flavour):
   graph.yaxis.bar.linewidth=1
   graph.xaxis.bar.linewidth=1
   graph.frame.linewidth=1
@@ -78,7 +78,8 @@ def format_graph(graph,form,yaxis):
     graph.world.ymax=200
     graph.yaxis.tick.major=50
     graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
-    graph.yaxis.label.configure(text='pseudo-F statistic',char_size=1,just=2)
+    if flavour=='freq':
+      graph.yaxis.label.configure(text='pseudo-F statistic',char_size=1.25,just=2)
   elif yaxis=='slopes':
     graph.yaxis.label.configure(text='slope of role variability',char_size=1,just=2)    
     graph.world.ymax=0.0004
@@ -93,12 +94,14 @@ def format_graph(graph,form,yaxis):
   graph.world.xmin=45
   graph.world.xmax=105
   graph.xaxis.tick.major=10
-  graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
-
   graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
-  graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
-  graph.xaxis.label.configure(text='Species richness',char_size=1,just=2)
+  graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  if flavour=='Z':
+    graph.xaxis.label.configure(text='Species richness',char_size=1.25,just=2)
+    graph.xaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+  else:
+    graph.xaxis.ticklabel.char_size=0
   return graph
 
 def populate_graph(graph,level,datadict):
@@ -150,54 +153,59 @@ def populate_sgraph(graph,level,datadict):
 ###############################################################################################
 ###############################################################################################
 
-datadir='../../data/summaries/extorder_perms/'
+
+# Dispersions have gone awry somehow.
+
+
+datadir='../../data/summaries/permanova/'
 datadict={}
-for s in ['50','60','70','80','90','100']:
-  datadict[s]=read_permfile(datadir+s+'/extorder_roles_permanova_summary_'+s+'.tsv')
+# dispdict={}
+for flavour in ['count','freq','Z']:
+  datadict[flavour]={}
+  # dispdict[flavour]={}
+  for s in ['50','60','70','80','90','100']:
+    datadict[flavour][s]=read_permfile(datadir+flavour+'/permanova_summary_'+s+'_'+flavour+'.tsv')
 
-dispdir='../../data/summaries/extorder_disps/'
-dispdict={}
-for s in sorted(os.listdir(dispdir)):
-  dispdict[int(s)]={}
-  for c in sorted(os.listdir(dispdir+'/'+s)):
-    dispdict[int(s)][float(c)]=read_dispfile(dispdir+s+'/'+c+'/mean_extorder_vs_roles_'+s+'_'+c+'.tsv')
+  # For each S in each flavour, [(s,F)]=(c,p)
 
-for form in ['paper']:
-  for level in ['axis','point','full']:
-    grace=MultiPanelGrace(colors=colors)
-    grace.add_label_scheme('dummy',['','',''])
-    grace.set_label_scheme('dummy')
-    colorbar = grace.add_graph(ElLogColorBar,domain=(0,0.2),
-                               scale=LINEAR_SCALE,autoscale=False)
-    colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
-    colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
-    colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-    graph=grace.add_graph(Panel)
-    graph=format_graph(graph,form,'F')
-    # pgraph=grace.add_graph(Panel)
-    # pgraph=format_graph(pgraph,form,'p')
-    sgraph=grace.add_graph(Panel)
-    sgraph=format_graph(sgraph,form,'slopes')
+#   dispdir='../../data/permanova/'+flavour+'/disps/'
+#   for s in sorted(os.listdir(dispdir)):
+#     dispdict[flavour][int(s)]={}
+#     for c in sorted(os.listdir(dispdir+'/'+s)):
+#       dispdict[flavour][int(s)][float(c)]=read_dispfile(dispdir+s+'/'+c+'/mean_extorder_vs_roles_'+s+'_'+c+'.tsv')
 
-    if level in ['point','full']:
-      graph=populate_graph(graph,level,datadict)
-      # pgraph=populate_pgraph(pgraph,level,datadict)
-      sgraph=populate_sgraph(sgraph,level,dispdict)
+# print dispdict
+# sys.exit()
 
-    if form=='talk':
-      graph.set_view(0.1,0.2,0.45,0.5)
-      # pgraph.set_view(0.55,0.2,0.9,0.5)
-      colorbar.set_view(0.925,0.2,0.975,0.5)
-    else:
-      grace.add_label_scheme('smarty',['','A','B','C'])
-      grace.set_label_scheme('smarty')
-      # for graphy in [graph,pgraph,sgraph]:
-      for graphy in [graph,sgraph]:
-        graphy.panel_label.configure(char_size=1.25,placement='iul',dy=0.02,dx=0.02)
-      graph.set_view(0.4,0.55,0.9,0.9)
-      graph.xaxis.label.text=''
-      # pgraph.set_view(0.4,0.15,0.9,0.5)
-      sgraph.set_view(0.4,0.15,0.9,0.5)
-      colorbar.set_view(0.95,0.1,1.0,0.9)
+level="full"
+form=''
 
-    grace.write_file('../../manuscript/figures/extinction_order/permanova_summary_'+form+'_'+level+'.eps')
+grace=MultiPanelGrace(colors=colors)
+grace.add_label_scheme('smarty',['','A: count','B: frequency','C: Z-score'])
+grace.set_label_scheme('smarty')
+colorbar = grace.add_graph(ElLogColorBar,domain=(0,0.2),
+                           scale=LINEAR_SCALE,autoscale=False)
+colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
+colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
+colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
+for flavour in datadict:
+  graph=grace.add_graph(Panel)
+  graph=format_graph(graph,form,'F',flavour)
+  # pgraph=grace.add_graph(Panel)
+  # pgraph=format_graph(pgraph,form,'p')
+  # sgraph=grace.add_graph(Panel)
+  # sgraph=format_graph(sgraph,form,'slopes')
+
+  graph=populate_graph(graph,level,datadict[flavour])
+  # pgraph=populate_pgraph(pgraph,level,datadict)
+  # sgraph=populate_sgraph(sgraph,level,dispdict)
+
+  graph.panel_label.configure(char_size=1,placement='iul',dy=0.02,dx=0.02)
+
+grace.graphs[1].set_view(0.4,0.65,0.9,0.9)
+grace.graphs[2].set_view(0.4,0.35,0.9,0.6)
+grace.graphs[3].set_view(0.4,0.05,0.9,0.3)
+# graph.xaxis.label.text=''
+colorbar.set_view(0.95,0.05,1.0,0.9)
+
+grace.write_file('../../manuscript/figures/extinction_order/permanova_summary.eps')

@@ -1,5 +1,6 @@
 # Large data files we don't want on Git
 data/networks/pre_disturbance/*/*/*.json
+data/networks/pre_disturbance/*/*/*.csv
 data/paths/*
 data/roles/*
 data/motifs/*
@@ -7,6 +8,9 @@ data/edgelists/*
 data/participation/*
 data/summaries/*
 
+*/*/*.DS_Store
+*/*.DS_Store
+*.DS_Store
 
 # Any data files in code will be re-made by running said code
 code/stat_analyses/.Rapp.history

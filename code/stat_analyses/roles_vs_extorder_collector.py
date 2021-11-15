@@ -57,30 +57,33 @@ def recreate_aovtab(datadict,outfile):
 
 def main():
 
-  motifdir='../../data/summaries/extorder_perms/'
+	motifdir='../../data/permanova/'
+	for flavour in ['count','freq','Z']:
+		for s in sorted(os.listdir(motifdir+flavour+'/perms/')):  	
+			outfile='../../data/summaries/permanova/'+flavour+'/permanova_summary_'+s+'_'+flavour+'.tsv'
+			datadict={}
+			print flavour, s
+			for c in sorted(os.listdir(motifdir+flavour+'/perms/'+s)):
+				filelist=sorted(os.listdir(motifdir+flavour+'/perms/'+s+'/'+c))
+				permfiles=[x for x in filelist if 'mean_extorder_vs_roles' in x]
 
-  for s in sorted(os.listdir(motifdir)):  	
-    outfile='../../data/summaries/extorder_perms/'+s+'/extorder_roles_permanova_summary_'+s+'.tsv'
-    datadict={}
-    for c in [x for x in sorted(os.listdir(motifdir+s)) if 'summary_' not in x]:
-      filelist=sorted(os.listdir(motifdir+s+'/'+c))
-      permfiles=[x for x in filelist if 'mean_extorder_vs_roles' in x]
+				datadict[c]=permfile_reader(motifdir+flavour+'/perms/'+s+'/'+c+'/'+permfiles[0],"observed")
+				all_perms=[]
 
-      datadict[c]=permfile_reader(motifdir+s+'/'+c+'/'+permfiles[0],"observed")
-      all_perms=[]
 
-      for permfile in permfiles:
-		perms=permfile_reader(motifdir+s+'/'+c+'/'+permfile,"random")      	
-		for perm in perms:
-			all_perms.append(perm)
+				for permfile in permfiles:
+					perms=permfile_reader(motifdir+flavour+'/perms/'+s+'/'+c+'/'+permfile,"random")      	
+					for perm in perms:
+						all_perms.append(perm)
 
-      if len(all_perms)==9999:
-      	datadict[c]['pval']=pval_calculator(datadict[c]['model_F'],all_perms)
-      	print 'All present and correct with ',s,c
-      else:
-      	print 'Missing ',str(9999-len(all_perms)),' perms for run: ',s,' ',c
+				if len(all_perms)==9999:
+					datadict[c]['pval']=pval_calculator(datadict[c]['model_F'],all_perms)
+					print 'All present and correct with ',flavour,s,c
+				else:
+					print 'Missing ',str(9999-len(all_perms)),' perms for run: ',flavour,' ',s,' ',c
+					sys.exit()
 
-    recreate_aovtab(datadict,outfile)
+			recreate_aovtab(datadict,outfile)
 
 if __name__ == '__main__':
   main()
