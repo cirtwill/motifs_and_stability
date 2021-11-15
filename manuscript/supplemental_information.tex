@@ -183,7 +183,7 @@
 
 		\begin{table}[h!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-			\label{permtable}
+			\label{permtable_count}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 				\hline
@@ -223,7 +223,7 @@
 
 		\begin{table}[h!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its species-normalised (frequency) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-			\label{permtable}
+			\label{permtable_freq}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 				\hline
@@ -263,7 +263,7 @@
 
 		\begin{table}[h!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its network-normalised ($Z$-score) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-			\label{permtable}
+			\label{permtable_Z}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 				\hline
@@ -325,7 +325,7 @@
 
 	\subsection*{Results}
 
-        For all three ways of defining motif motif participation (counts, species-normalization, and network-normalization), motif motif participation were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
+        For all three ways of defining motif motif participation (counts, species-normalization, and network-normalization), motif motif participation were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_freq},~\ref{betadisp_Z}). 
         For many combinations of network size and connectance, variability increased slightly but significantly at higher deciles (Fig.~\ref{fig:dispfig}).
         This means that there are a wider variety of motif motif participation associated with long times to extinction than short times to extinction.
         However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{fig:betadisper_Tukey}).
@@ -348,7 +348,7 @@
 
 
 		\begin{table}[h!]
-			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable raw motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable raw motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_count}
 			\footnotesize
 			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
@@ -390,7 +390,7 @@
 	    \end{table}
 
 		\begin{table}[h!]
-			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable species-normalised (frequency) motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable species-normalised (frequency) motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_freq}
 			\footnotesize
 			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
@@ -433,7 +433,7 @@
 
 
 		\begin{table}[h!]
-			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable network-normalised ($Z$-score) motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable network-normalised ($Z$-score) motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_Z}
 			\footnotesize
 			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
@@ -550,9 +550,7 @@
 			Three-species chain       &  0.0388  & \textless0.001 & -90.4 & \textless0.001 & 1.64 & \textless0.001\\
 			Other    &  0.0470  & \textless0.001 & \multicolumn{2}{c|}{NA} & 4.61 & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c|}{$R^2_m$=0.926, $R^2_c$=0.977} & 
-			\multicolumn{2}{c}{$R^2_m$=0.629, $R^2_c$=0.740} & 
-			\multicolumn{2}{|c}{$R^2_m$=0.468, $R^2_c$=0.896} \\
+			$R^2$ & \multicolumn{2}{|c|}{\tiny{$R^2_m$=0.926, $R^2_c$=0.977}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.629, $R^2_c$=0.740}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.468, $R^2_c$=0.896}} \\
 			\end{tabular}
 			\end{table}
 
@@ -588,9 +586,9 @@
 			Three-species chain  & -4.18$\times10^{-4}$ & \textless0.001 & -0.715 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
 			Other    & 1.28$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c|}{$R^2_m$=0.044, $R^2_c$=0.193} & 
-			\multicolumn{2}{c}{$R^2_m$=0.030, $R^2_c$=0.157} & 
-			\multicolumn{2}{|c}{$R^2_m$=0.021, $R^2_c$=0.110} \\
+			$R^2$ & \multicolumn{2}{|c|}{\tiny{$R^2_m$=0.044, $R^2_c$=0.193}} & 
+			\multicolumn{2}{c}{\tiny{$R^2_m$=0.030, $R^2_c$=0.157}} & 
+			\multicolumn{2}{|c}{\tiny{$R^2_m$=0.021, $R^2_c$=0.110}} \\
 			\end{tabular}
 			\end{table}
 
