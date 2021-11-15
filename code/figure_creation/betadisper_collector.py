@@ -156,11 +156,72 @@ def plot_differences(all_Tukeys):
   grace.set_col_yaxislabel(label='Difference between groups',char_size=1,perpendicular_offset=.07,col=0,rowSpan=(None,None))
   grace.write_file('../../manuscript/figures/Tukey_differences.eps')
 
+def format_slopegraph(graph,key):
+  graph.yaxis.bar.linewidth=1
+  graph.xaxis.bar.linewidth=1
+  graph.frame.linewidth=1
+  graph.panel_label.configure(char_size=0.75,placement='iul',dx=0.03,dy=0.03)
+  graph.world.ymin=0
+  graph.world.xmin=45
+  graph.world.xmax=105
+  graph.xaxis.tick.major=10
+  graph.yaxis.tick.major=0.003
+  graph.yaxis.ticklabel.configure(format='scientific',prec=1,char_size=.75)
 
+  if key=='count':
+    graph.world.ymax=.015
+    graph.yaxis.tick.major=0.003
+
+  if key=='freq':
+    graph.yaxis.label.configure(text='Slope of role variability',char_size=1,just=2)    
+    graph.world.ymax=.01
+    graph.yaxis.tick.major=0.002
+
+  if key=='Z':
+    graph.xaxis.ticklabel.configure(char_size=.75,format='decimal',prec=0)
+    graph.xaxis.label.configure(text='Species richness',char_size=1,just=2)
+    graph.world.ymax=.12
+    graph.yaxis.tick.major=0.03
+    graph.yaxis.ticklabel.configure(format='scientific',prec=1,char_size=.75)
+  else:
+    graph.xaxis.ticklabel.configure(char_size=0,format='decimal',prec=0)
+
+  graph.xaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+  graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.7,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
+
+  return graph
+
+def plot_slopes(all_lms):
+  grace=MultiPanelGrace(colors=colors)
+
+  grace.add_label_scheme('smarty',['','A: count','B: frequency','C: Z-score'])
+  grace.set_label_scheme('smarty')
+  colorbar = grace.add_graph(ElLogColorBar,domain=(0,0.2),
+                             scale=LINEAR_SCALE,autoscale=False)
+  colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
+  colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
+  colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
+  for key in ['count','freq','Z']:
+    graph=grace.add_graph(Panel)
+    graph=format_slopegraph(graph,key)
+    for S in all_lms[key]:
+      for C in all_lms[key][S]:
+        slope=all_lms[key][S][C][0]
+        dat=graph.add_dataset([(S,slope)])
+        dat.symbol.configure(fill_color=colorbar.z2color(C),shape=1,size=0.75,color=1)
+    graph.panel_label.configure(char_size=.75,placement='iul',dy=0.02,dx=0.02)
+
+  grace.graphs[1].set_view(0.4,0.65,0.9,0.9)
+  grace.graphs[2].set_view(0.4,0.35,0.9,0.6)
+  grace.graphs[3].set_view(0.4,0.05,0.9,0.3)
+  colorbar.set_view(0.95,0.05,1.0,0.9)
+
+  grace.write_file('../../manuscript/figures/dispersion_lms.eps')
 
 
 def main():
 
+  all_lms={}
   all_Tukeys={}
   dispdir='../../data/permanova/'
   for roletype in os.listdir(dispdir): # count, network norm, species norm
@@ -176,11 +237,12 @@ def main():
         lmdir=prep_table_linmod(lmdir,dispdir+roletype+'/disps/'+S+'/'+C+'/LM_dispersion_vs_quantile_'+S+'_'+C+'.tsv')
         Tukeydir=prep_table_Tukey(Tukeydir,dispdir+roletype+'/disps/'+S+'/'+C+'/Tukey_dispersion_vs_quantile_'+S+'_'+C+'.tsv')
 
-        all_Tukeys[roletype]=Tukeydir
-
+    all_Tukeys[roletype]=Tukeydir
+    all_lms[roletype]=lmdir
     write_supptable(anovadir,lmdir,roletype)
 
   plot_differences(all_Tukeys)
+  plot_slopes(all_lms)
 
 if __name__ == '__main__':
   main()
