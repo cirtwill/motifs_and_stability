@@ -155,9 +155,9 @@
 	\subsection*{Methods}
 
 
-		To test for a relationship between time to extinction and species' overall motif participation, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' raw motif motif participation to differences in mean time to extinction (Table 1, \emph{Main Text}).
+		To test for a relationship between time to extinction and species' overall motif participation, we fit a series of PERMANOVAs~\citep{Anderson2001} relating Bray-Curtis dissimilarity~\citep{Baker2015,Cirtwill2015} in species' motif participation (count, frequency, or $Z$-score) to differences in mean time to extinction (Table 1, \emph{Main Text}).
 		Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
-		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of network size and connectance (60 PERMANOVAs in total).
+		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of motif definition, network size, and connectance (180 PERMANOVAs in total).
 		We fit all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
 		As conducting so many tests risks obtaining significant results by chance, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
 
@@ -173,7 +173,7 @@
 		\begin{figure}[h!]
 			\caption{Here we show (\textbf{A}) the pseudo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values. }
 			\label{permfig}
-			\includegraphics[height=.5\textheight]{figures/extinction_order/permanova_summary_paper_full.eps}
+			\includegraphics[height=.65\textheight]{figures/extinction_order/permanova_summary.eps}
 			\end{figure}
 
 
@@ -183,36 +183,116 @@
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
 				\hline
-				50	&	0.02	&	0.789	&	86.7	&	0.017	&	80	&	0.02	&	0.866	&	107	&	0.013	\\
-				50	&	0.04	&	0.813	&	66.4	&	0.013	&	80	&	0.04	&	0.898	&	114	&	0.014	\\
-				50	&	0.06	&	0.845	&	70.2	&	0.014	&	80	&	0.06	&	0.9	&	128	&	0.016	\\  
-				50	&	0.08	&	0.843	&	77.4	&	0.015	&	80	&	0.08	&	0.908	&	147	&	0.018	\\
-				50	&	0.10	&	0.857	&	75.0	&	0.015	&	80	&	0.10	&	0.914	&	134	&	0.016	\\
-				50	&	0.12	&	0.868	&	104	&	0.020	&	80	&	0.12	&	0.915	&	140	&	0.017	\\
-				50	&	0.14	&	0.867	&	83.8	&	0.016	&	80	&	0.14	&	0.921	&	146	&	0.018	\\
-				50	&	0.16	&	0.872	&	89.7	&	0.018	&	80	&	0.16	&	0.923	&	125	&	0.015	\\
-				50	&	0.18	&	0.876	&	88.7	&	0.017	&	80	&	0.18	&	0.925	&	118	&	0.015	\\
-				50	&	0.20	&	0.88	&	103	&	0.020	&	80	&	0.20	&	0.926	&	123	&	0.015	\\
-				60	&	0.02	&	0.82	&	92.7	&	0.015	&	90	&	0.02	&	0.884	&	121	&	0.013	\\
-				60	&	0.04	&	0.846	&	86.0	&	0.014	&	90	&	0.04	&	0.906	&	142	&	0.016	\\
-				60	&	0.06	&	0.865	&	91.2	&	0.015	&	90	&	0.06	&	0.915	&	160	&	0.018	\\
-				60	&	0.08	&	0.872	&	99.7	&	0.016	&	90	&	0.08	&	0.923	&	151	&	0.017	\\
-				60	&	0.10	&	0.887	&	92.1	&	0.015	&	90	&	0.10	&	0.923	&	128	&	0.014	\\
-				60	&	0.12	&	0.883	&	96.9	&	0.016	&	90	&	0.12	&	0.927	&	128	&	0.014	\\
-				60	&	0.14	&	0.891	&	102	&	0.017	&	90	&	0.14	&	0.928	&	126	&	0.014	\\
-				60	&	0.16	&	0.89	&	106	&	0.017	&	90	&	0.16	&	0.931	&	138	&	0.015	\\
-				60	&	0.18	&	0.893	&	107	&	0.018	&	90	&	0.18	&	0.934	&	107	&	0.012	\\
-				60	&	0.20	&	0.899	&	137	&	0.022	&	90	&	0.20	&	0.936	&	127	&	0.014	\\
-				70	&	0.02	&	0.848	&	91.4	&	0.013	&	100	&	0.02	&	0.899	&	125	&	0.012	\\
-				70	&	0.04	&	0.875	&	108	&	0.015	&	100	&	0.04	&	0.917	&	191	&	0.019	\\
-				70	&	0.06	&	0.877	&	111	&	0.016	&	100	&	0.06	&	0.923	&	206	&	0.020	\\
-				70	&	0.08	&	0.898	&	112	&	0.016	&	100	&	0.08	&	0.932	&	176	&	0.017	\\
-				70	&	0.10	&	0.904	&	134	&	0.019	&	100	&	0.10	&	0.934	&	148	&	0.015	\\
-				70	&	0.12	&	0.907	&	124	&	0.017	&	100	&	0.12	&	0.934	&	156	&	0.015	\\
-				70	&	0.14	&	0.906	&	118	&	0.017	&	100	&	0.14	&	0.939	&	98.3	&	0.010	\\
-				70	&	0.16	&	0.909	&	122	&	0.017	&	100	&	0.16	&	0.938	&	144	&	0.014	\\
-				70	&	0.18	&	0.913	&	99.9	&	0.014	&	100	&	0.18	&	0.939	&	118	&	0.012	\\
-				70	&	0.20	&	0.917	&	122	&	0.017	&	100	&	0.20	&	0.942	&	105	&	0.010	\\
+				50&0.02&0.789&37.8&0.008	&	80&0.02&0.866&43.1&0.005\\
+                50&0.04&0.813&25.4&0.005	&	80&0.04&0.898&48.4&0.006\\
+                50&0.06&0.845&27.1&0.005	&	80&0.06&0.900&90.6&0.011\\
+                50&0.08&0.843&37.3&0.007	&	80&0.08&0.908&122&0.015\\
+                50&0.1&0.857&38.2&0.008	&	80&0.1&0.914&138&0.017\\
+                50&0.12&0.868&66.9&0.013	&	80&0.12&0.915&130&0.016\\
+                50&0.14&0.867&49.1&0.010	&	80&0.14&0.921&106&0.013\\
+                50&0.16&0.872&62.9&0.012	&	80&0.16&0.923&100&0.012\\
+                50&0.18&0.876&55.1&0.011	&	80&0.18&0.925&115&0.014\\
+                50&0.2&0.880&69.8&0.014	&	80&0.2&0.926&109&0.013\\
+                60&0.02&0.820&53.0&0.009	&	90&0.02&0.884&41.9&0.005\\
+                60&0.04&0.846&40.5&0.007	&	90&0.04&0.906&72.6&0.008\\
+                60&0.06&0.865&44.8&0.007	&	90&0.06&0.915&93.4&0.010\\
+                60&0.08&0.872&61.6&0.010	&	90&0.08&0.923&128&0.014\\
+                60&0.1&0.887&56.6&0.009	&	90&0.1&0.923&127&0.014\\
+                60&0.12&0.883&63.1&0.010	&	90&0.12&0.927&146&0.016\\
+                60&0.14&0.891&68.6&0.011	&	90&0.14&0.928&140&0.015\\
+                60&0.16&0.890&88.0&0.014	&	90&0.16&0.931&140&0.015\\
+                60&0.18&0.893&83.7&0.014	&	90&0.18&0.934&100&0.011\\
+                60&0.2&0.899&87.1&0.014	&	90&0.2&0.936&116&0.013\\
+                70&0.02&0.848&44.6&0.006	&	100&0.02&0.899&48.0&0.005\\
+                70&0.04&0.875&43.7&0.006	&	100&0.04&0.917&126&0.012\\
+                70&0.06&0.877&73.4&0.010	&	100&0.06&0.923&167&0.016\\
+                70&0.08&0.898&69.9&0.010	&	100&0.08&0.932&193&0.019\\
+                70&0.1&0.904&110&0.015	&	100&0.1&0.934&166&0.016\\
+                70&0.12&0.907&89.8&0.013	&	100&0.12&0.934&187&0.018\\
+                70&0.14&0.906&114&0.016	&	100&0.14&0.939&116&0.012\\
+                70&0.16&0.909&92.2&0.013	&	100&0.16&0.938&179&0.018\\
+                70&0.18&0.913&94.8&0.013	&	100&0.18&0.939&121&0.012\\
+                70&0.2&0.917&103&0.014	&	100&0.2&0.942&98.4&0.010\\
+				\hline
+			\end{tabular}
+			\end{table}
+
+		\begin{table}[h!]
+			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its species-normalised (frequency) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\label{permtable}
+			\begin{tabular}{c c | c | c c ||c c | c | c c |}
+				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
+				\hline
+                50&0.02&0.789&84.7&0.017	&	80&0.02&0.866&92.9&0.011\\
+                50&0.04&0.813&43.8&0.009	&	80&0.04&0.898&28.3&0.004\\
+                50&0.06&0.845&23.4&0.005	&	80&0.06&0.900&6.84&0.001\\
+                50&0.08&0.843&23.1&0.005	&	80&0.08&0.908&9.95&0.001\\
+                50&0.1&0.857&12.4&0.002	&	80&0.1&0.914&10.8&0.001\\
+                50&0.12&0.868&11.6&0.002	&	80&0.12&0.915&16.0&0.002\\
+                50&0.14&0.867&13.3&0.003	&	80&0.14&0.921&17.6&0.002\\
+                50&0.16&0.872&12.0&0.002	&	80&0.16&0.923&34.3&0.004\\
+                50&0.18&0.876&24.4&0.005	&	80&0.18&0.925&38.7&0.005\\
+                50&0.2&0.880&33.6&0.007	&	80&0.2&0.926&79.4&0.010\\
+                60&0.02&0.820&89.5&0.015	&	90&0.02&0.884&74.0&0.008\\
+                60&0.04&0.846&34.3&0.006	&	90&0.04&0.906&17.1&0.002\\
+                60&0.06&0.865&15.3&0.003	&	90&0.06&0.915&7.81&0.001\\
+                60&0.08&0.872&5.72&0.001	&	90&0.08&0.923&9.07&0.001\\
+                60&0.1&0.887&9.98&0.002	&	90&0.1&0.923&10.6&0.001\\
+                60&0.12&0.883&10.4&0.002	&	90&0.12&0.927&20.3&0.002\\
+                60&0.14&0.891&17.2&0.003	&	90&0.14&0.928&53.0&0.006\\
+                60&0.16&0.890&22.0&0.004	&	90&0.16&0.931&43.9&0.005\\
+                60&0.18&0.893&32.0&0.005	&	90&0.18&0.934&48.1&0.005\\
+                60&0.2&0.899&44.6&0.007	&	90&0.2&0.936&90.3&0.010\\
+                70&0.02&0.848&92.5&0.013	&	100&0.02&0.899&81.1&0.008\\
+                70&0.04&0.875&35.7&0.005	&	100&0.04&0.917&10.4&0.001\\
+                70&0.06&0.877&7.92&0.001	&	100&0.06&0.923&12.4&0.001\\
+                70&0.08&0.898&16.6&0.002	&	100&0.08&0.932&22.8&0.002\\
+                70&0.1&0.904&8.82&0.001	&	100&0.1&0.934&23.2&0.002\\
+                70&0.12&0.907&14.5&0.002	&	100&0.12&0.934&54.3&0.005\\
+                70&0.14&0.906&14.1&0.002	&	100&0.14&0.939&33.7&0.003\\
+                70&0.16&0.909&30.0&0.004	&	100&0.16&0.938&85.6&0.008\\
+                70&0.18&0.913&36.9&0.005	&	100&0.18&0.939&60.7&0.006\\
+                70&0.2&0.917&62.5&0.009	&	100&0.2&0.942&73.8&0.007\\
+				\hline
+			\end{tabular}
+			\end{table}
+
+		\begin{table}[h!]
+			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its network-normalised ($Z$-score) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\label{permtable}
+			\begin{tabular}{c c | c | c c ||c c | c | c c |}
+				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
+				\hline
+                50&0.02&0.789&15.2&0.003	&	80&0.02&0.866&9.76&0.001\\
+                50&0.04&0.813&6.69&0.001	&	80&0.04&0.898&29.2&0.004\\
+                50&0.06&0.845&13.3&0.003	&	80&0.06&0.900&49.8&0.006\\
+                50&0.08&0.843&22.2&0.004	&	80&0.08&0.908&64.1&0.008\\
+                50&0.1&0.857&26.7&0.005	&	80&0.1&0.914&63.8&0.008\\
+                50&0.12&0.868&40.4&0.008	&	80&0.12&0.915&68.8&0.009\\
+                50&0.14&0.867&34.7&0.007	&	80&0.14&0.921&56.9&0.007\\
+                50&0.16&0.872&36.7&0.007	&	80&0.16&0.923&53.9&0.007\\
+                50&0.18&0.876&34.4&0.007	&	80&0.18&0.925&55.0&0.007\\
+                50&0.2&0.880&37.1&0.007	&	80&0.2&0.926&49.8&0.006\\
+                60&0.02&0.820&13.2&0.002	&	90&0.02&0.884&18.6&0.002\\
+                60&0.04&0.846&25.5&0.004	&	90&0.04&0.906&47.2&0.005\\
+                60&0.06&0.865&27.6&0.005	&	90&0.06&0.915&60.5&0.007\\
+                60&0.08&0.872&35.2&0.006	&	90&0.08&0.923&74.5&0.008\\
+                60&0.1&0.887&46.9&0.008	&	90&0.1&0.923&65.4&0.007\\
+                60&0.12&0.883&37.8&0.006	&	90&0.12&0.927&71.9&0.008\\
+                60&0.14&0.891&38.6&0.006	&	90&0.14&0.928&67.3&0.007\\
+                60&0.16&0.890&44.0&0.007	&	90&0.16&0.931&68.0&0.008\\
+                60&0.18&0.893&39.7&0.007	&	90&0.18&0.934&49.2&0.005\\
+                60&0.2&0.899&49.4&0.008	&	90&0.2&0.936&56.4&0.006\\
+                70&0.02&0.848&8.33&0.001	&	100&0.02&0.899&15.3&0.002\\
+                70&0.04&0.875&31.1&0.004	&	100&0.04&0.917&82.9&0.008\\
+                70&0.06&0.877&48.2&0.007	&	100&0.06&0.923&88.6&0.009\\
+                70&0.08&0.898&45.3&0.006	&	100&0.08&0.932&87.0&0.009\\
+                70&0.1&0.904&63.4&0.009	&	100&0.1&0.934&81.6&0.008\\
+                70&0.12&0.907&59.1&0.008	&	100&0.12&0.934&91.0&0.009\\
+                70&0.14&0.906&55.7&0.008	&	100&0.14&0.939&49.0&0.005\\
+                70&0.16&0.909&52.8&0.007	&	100&0.16&0.938&74.3&0.007\\
+                70&0.18&0.913&45.3&0.006	&	100&0.18&0.939&57.0&0.006\\
+                70&0.2&0.917&51.7&0.007	&	100&0.2&0.942&45.3&0.005\\
 				\hline
 			\end{tabular}
 			\end{table}
