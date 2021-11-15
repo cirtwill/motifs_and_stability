@@ -74,22 +74,11 @@ def format_graph(graph,form,yaxis,flavour):
   graph.frame.linewidth=1
 
   graph.world.ymin=0
-  if yaxis=='F':
-    graph.world.ymax=200
-    graph.yaxis.tick.major=50
-    graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
-    if flavour=='freq':
-      graph.yaxis.label.configure(text='pseudo-F statistic',char_size=1.25,just=2)
-  elif yaxis=='slopes':
-    graph.yaxis.label.configure(text='slope of role variability',char_size=1,just=2)    
-    graph.world.ymax=0.0004
-    graph.yaxis.tick.major=0.0001
-    graph.yaxis.ticklabel.configure(format='scientific',prec=1,char_size=.75)
-  else:
-    graph.world.ymax=0.06
-    graph.yaxis.tick.major=0.01
-    graph.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-    graph.yaxis.label.configure(text='p-value',char_size=1,just=2)    
+  graph.world.ymax=200
+  graph.yaxis.tick.major=50
+  graph.yaxis.ticklabel.configure(format='decimal',prec=0,char_size=.75)
+  if flavour=='freq':
+    graph.yaxis.label.configure(text='pseudo-F statistic',char_size=1.25,just=2)
 
   graph.world.xmin=45
   graph.world.xmax=105
