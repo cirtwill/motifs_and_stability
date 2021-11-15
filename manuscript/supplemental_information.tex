@@ -175,7 +175,7 @@
 
 
 		\begin{figure}[h!]
-			\caption{Here we show (\textbf{A}) the pseudo-$F$ statistics and (\textbf{B}) the $p$-values for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of species richness and connectance. $p$-values for each PERMANOVA are based on 9999 permutations, stratified by network. Symbols below the dotted line in \textbf{B} indicate a significant $p$-values. }
+			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
 			\label{permfig}
 			\includegraphics[height=.65\textheight]{figures/extinction_order/permanova_summary.eps}
 			\end{figure}
@@ -315,70 +315,165 @@
 
 
         If there is unequal variance in motif participation across different times to extinction, this could cause false positive results in PERMANOVA tests.
-        To account for this possibility, we first calculated the dispersion of motif participation for each value of mean time to extinction (treated categorically for this analysis), relative to the centroid for all species with the same mean time to extinction, using the function `betadisper' from the R~\citep{R} package \emph{vegan}~\citep{vegan}.
-        We then tested whether some levels of mean time to extinction are associated with more widely-dispersed motif participation using an ANOVA test, fit using the function `anova' within the package \emph{vegan}~\citep{vegan}.
+        To account for this possibility, we first calculated the dispersion of motif participation across the range of mean time to extinction.
+        To create groups of species with similar mean times to extinction, we first ranked species by their mean time to extinction (allowing ties) and then converted these ranks to deciles. 
+        Note that not all deciles contained equal numbers of species since all ties were included in the same group.
+        We then calculated the dispersion of roles for species in each decile using the function `betadisper' from the R~\citep{R} package \emph{vegan}~\citep{vegan}.
+        We then tested whether some decile levels of mean time to extinction are associated with more widely-dispersed motif participation using an ANOVA test, fit using the function `anova' within the package \emph{vegan}~\citep{vegan}.
         Finally, to test whether role dispersion generally increases or decreases with increasing mean times to extinction, we fit a linear model relating role dispersion to mean time to extinction using the R~\citep{R} base function `lm'.
 
 
 	\subsection*{Results}
 
         For all three ways of defining motif motif participation (counts, species-normalization, and network-normalization), motif motif participation were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_species},~\ref{betadisp_network}). 
-        For many combinations of network size and connectance, variability increased significantly at higher deciles.
+        For many combinations of network size and connectance, variability increased slightly but significantly at higher deciles (Fig.~\ref{fig:dispfig}).
         This means that there are a wider variety of motif motif participation associated with long times to extinction than short times to extinction.
-        However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{betadisper_Tukey}).
+        However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{fig:betadisper_Tukey}).
         Moreover, the absolute differences in variability were small.
         Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
+
+		\begin{figure}[h!]
+			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
+			\label{fig:dispfig}
+			\includegraphics[height=.65\textheight]{figures/dispersion_lms.eps}
+			\end{figure}
         
 
         \begin{figure}[h!]
             \centering
             \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
             \caption{Variability of motif motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
-            \label{fig:my_label}
+            \label{fig:betadisper_Tukey}
         \end{figure}
 
 
 		\begin{table}[h!]
-			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
-			\label{disptable}
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable raw motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\label{betadisp_count}
 			\footnotesize
 			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
 				&		&	\multicolumn{2}{c|}{ANOVA}	&\multicolumn{2}{c||}{Regression} 			& & & 	\multicolumn{2}{c|}{ANOVA}		 	&	 \multicolumn{2}{c|}{Regression} 			\\
 	            S	&	C	&	$F$	&	$p$-value	&	$\beta$	&	$p$-value	&	S	&	C	&	$F$	&	$p$-value	&	$\beta$	&	$p$-value	\\
 				\hline
-	        50	&	0.02	&	3.38	&	\textless0.001	&	3.36$\times10^{-4}$	&	\textless0.001	&	80	&	0.02	&	3.72	&	\textless0.001	&	1.74$\times10^{-4}$	&	\textless0.001	\\
-	        50	&	0.04	&	3.90	&	\textless0.001	&	2.60$\times10^{-4}$	&	\textless0.001	&	80	&	0.04	&	3.87	&	\textless0.001	&	1.34$\times10^{-4}$	&	\textless0.001	\\
-	        50	&	0.06	&	3.75	&	\textless0.001	&	2.12$\times10^{-4}$	&	\textless0.001	&	80	&	0.06	&	3.86	&	\textless0.001	&	1.15$\times10^{-4}$	&	\textless0.001	\\
-	        50	&	0.08	&	3.59	&	\textless0.001	&	1.81$\times10^{-4}$	&	\textless0.001	&	80	&	0.08	&	3.83	&	\textless0.001	&	1.04$\times10^{-4}$	&	\textless0.001	\\
-	        50	&	0.10	&	3.56	&	\textless0.001	&	1.76$\times10^{-4}$	&	\textless0.001	&	80	&	0.10	&	3.59	&	\textless0.001	&	8.39$\times10^{-5}$	&	\textless0.001	\\
-	        50	&	0.12	&	3.76	&	\textless0.001	&	1.60$\times10^{-4}$	&	\textless0.001	&	80	&	0.12	&	3.49	&	\textless0.001	&	8.00$\times10^{-5}$	&	\textless0.001	\\
-	        50	&	0.14	&	3.39	&	\textless0.001	&	1.52$\times10^{-4}$	&	\textless0.001	&	80	&	0.14	&	3.27	&	\textless0.001	&	7.80$\times10^{-5}$	&	\textless0.001	\\
-	        50	&	0.16	&	3.34	&	\textless0.001	&	1.34$\times10^{-4}$	&	\textless0.001	&	80	&	0.16	&	3.02	&	\textless0.001	&	6.34$\times10^{-5}$	&	\textless0.001	\\
-	        50	&	0.18	&	3.23	&	\textless0.001	&	1.28$\times10^{-4}$	&	\textless0.001	&	80	&	0.18	&	2.72	&	\textless0.001	&	5.46$\times10^{-5}$	&	\textless0.001	\\
-	        50	&	0.20	&	3.12	&	\textless0.001	&	1.24$\times10^{-4}$	&	\textless0.001	&	80	&	0.20	&	2.55	&	\textless0.001	&	4.11$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.02	&	3.58	&	\textless0.001	&	2.78$\times10^{-4}$	&	\textless0.001	&	90	&	0.02	&	3.56	&	\textless0.001	&	1.52$\times10^{-4}$	&	\textless0.001	\\
-	        60	&	0.04	&	3.88	&	\textless0.001	&	2.05$\times10^{-4}$	&	\textless0.001	&	90	&	0.04	&	4.00	&	\textless0.001	&	1.13$\times10^{-4}$	&	\textless0.001	\\
-	        60	&	0.06	&	3.72	&	\textless0.001	&	1.74$\times10^{-4}$	&	\textless0.001	&	90	&	0.06	&	3.64	&	\textless0.001	&	9.23$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.08	&	3.47	&	\textless0.001	&	1.50$\times10^{-4}$	&	\textless0.001	&	90	&	0.08	&	3.44	&	\textless0.001	&	7.63$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.10	&	3.58	&	\textless0.001	&	1.23$\times10^{-4}$	&	\textless0.001	&	90	&	0.10	&	3.24	&	\textless0.001	&	7.03$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.12	&	3.45	&	\textless0.001	&	1.29$\times10^{-4}$	&	\textless0.001	&	90	&	0.12	&	3.02	&	\textless0.001	&	5.14$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.14	&	3.45	&	\textless0.001	&	1.12$\times10^{-4}$	&	\textless0.001	&	90	&	0.14	&	2.85	&	\textless0.001	&	5.56$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.16	&	3.30	&	\textless0.001	&	1.11$\times10^{-4}$	&	\textless0.001	&	90	&	0.16	&	2.92	&	\textless0.001	&	5.26$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.18	&	3.07	&	\textless0.001	&	1.03$\times10^{-4}$	&	\textless0.001	&	90	&	0.18	&	2.58	&	\textless0.001	&	4.11$\times10^{-5}$	&	\textless0.001	\\
-	        60	&	0.20	&	3.15	&	\textless0.001	&	9.84$\times10^{-5}$	&	\textless0.001	&	90	&	0.20	&	2.59	&	\textless0.001	&	4.17$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.02	&	3.45	&	\textless0.001	&	2.16$\times10^{-4}$	&	\textless0.001	&	100	&	0.02	&	3.99	&	\textless0.001	&	1.31$\times10^{-4}$	&	\textless0.001	\\
-	        70	&	0.04	&	3.76	&	\textless0.001	&	1.64$\times10^{-4}$	&	\textless0.001	&	100	&	0.04	&	3.95	&	\textless0.001	&	9.81$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.06	&	3.83	&	\textless0.001	&	1.46$\times10^{-4}$	&	\textless0.001	&	100	&	0.06	&	3.65	&	\textless0.001	&	8.23$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.08	&	3.64	&	\textless0.001	&	1.11$\times10^{-4}$	&	\textless0.001	&	100	&	0.08	&	3.31	&	\textless0.001	&	6.52$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.10	&	3.39	&	\textless0.001	&	9.72$\times10^{-5}$	&	\textless0.001	&	100	&	0.10	&	3.11	&	\textless0.001	&	5.62$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.12	&	3.42	&	\textless0.001	&	9.64$\times10^{-5}$	&	\textless0.001	&	100	&	0.12	&	3.05	&	\textless0.001	&	5.07$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.14	&	3.09	&	\textless0.001	&	8.62$\times10^{-5}$	&	\textless0.001	&	100	&	0.14	&	2.54	&	\textless0.001	&	3.22$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.16	&	3.05	&	\textless0.001	&	8.31$\times10^{-5}$	&	\textless0.001	&	100	&	0.16	&	2.56	&	\textless0.001	&	3.44$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.18	&	2.85	&	\textless0.001	&	6.25$\times10^{-5}$	&	\textless0.001	&	100	&	0.18	&	2.58	&	\textless0.001	&	3.63$\times10^{-5}$	&	\textless0.001	\\
-	        70	&	0.20	&	2.81	&	\textless0.001	&	6.77$\times10^{-5}$	&	\textless0.001	&	100	&	0.20	&	2.32	&	\textless0.001	&	2.17$\times10^{-5}$	&	\textless0.001	\\
-
+                50  & 0.02  & 45.29 & \textless0.001 & 1.21$\times10^{-2}$ & \textless0.001 & 80  & 0.02  & 74.51 & \textless0.001 & 1.20$\times10^{-2}$ & \textless0.001 \\
+                50  & 0.04  & 42.48 & \textless0.001 & 1.18$\times10^{-2}$ & \textless0.001 & 80  & 0.04  & 39.75 & \textless0.001 & 8.84$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.06  & 37.44 & \textless0.001 & 1.05$\times10^{-2}$ & \textless0.001 & 80  & 0.06  & 27.73 & \textless0.001 & 5.93$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.08  & 19.4  & \textless0.001 & 7.70$\times10^{-3}$ & \textless0.001 & 80  & 0.08  & 24.88 & \textless0.001 & 6.18$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.1 & 19.64 & \textless0.001 & 6.98$\times10^{-3}$ & \textless0.001 & 80  & 0.1 & 22.73 & \textless0.001 & 3.97$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.12  & 19.81 & \textless0.001 & 6.72$\times10^{-3}$ & \textless0.001 & 80  & 0.12  & 11.33 & \textless0.001 & 3.09$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.14  & 22.81 & \textless0.001 & 6.60$\times10^{-3}$ & \textless0.001 & 80  & 0.14  & 19.27 & \textless0.001 & 5.25$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.16  & 9.49  & \textless0.001 & 4.77$\times10^{-3}$ & \textless0.001 & 80  & 0.16  & 9.58  & \textless0.001 & 3.09$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.18  & 14.48 & \textless0.001 & 5.65$\times10^{-3}$ & \textless0.001 & 80  & 0.18  & 8.93  & \textless0.001 & 2.99$\times10^{-3}$ & \textless0.001 \\
+                50  & 0.2 & 11.58 & \textless0.001 & 4.95$\times10^{-3}$ & \textless0.001 & 80  & 0.2 & 4.49  & \textless0.001 & 1.86$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.02  & 65.32 & \textless0.001 & 1.32$\times10^{-2}$ & \textless0.001 & 90  & 0.02  & 80.35 & \textless0.001 & 1.16$\times10^{-2}$ & \textless0.001 \\
+                60  & 0.04  & 50.75 & \textless0.001 & 1.07$\times10^{-2}$ & \textless0.001 & 90  & 0.04  & 54.65 & \textless0.001 & 9.12$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.06  & 39.07 & \textless0.001 & 9.36$\times10^{-3}$ & \textless0.001 & 90  & 0.06  & 29.67 & \textless0.001 & 5.96$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.08  & 27.25 & \textless0.001 & 7.92$\times10^{-3}$ & \textless0.001 & 90  & 0.08  & 24.43 & \textless0.001 & 4.83$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.1 & 22.91 & \textless0.001 & 6.01$\times10^{-3}$ & \textless0.001 & 90  & 0.1 & 27.19 & \textless0.001 & 4.73$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.12  & 19.13 & \textless0.001 & 6.16$\times10^{-3}$ & \textless0.001 & 90  & 0.12  & 7.62  & \textless0.001 & 2.45$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.14  & 10.37 & \textless0.001 & 4.87$\times10^{-3}$ & \textless0.001 & 90  & 0.14  & 8.26  & \textless0.001 & 2.31$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.16  & 6.02  & \textless0.001 & 3.35$\times10^{-3}$ & \textless0.001 & 90  & 0.16  & 9.52  & \textless0.001 & 3.13$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.18  & 7.87  & \textless0.001 & 3.84$\times10^{-3}$ & \textless0.001 & 90  & 0.18  & 5.71  & \textless0.001 & 1.72$\times10^{-3}$ & \textless0.001 \\
+                60  & 0.2 & 18.11 & \textless0.001 & 5.58$\times10^{-3}$ & \textless0.001 & 90  & 0.2 & 6.02  & \textless0.001 & 2.30$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.02  & 59.6  & \textless0.001 & 1.25$\times10^{-2}$ & \textless0.001 & 100 & 0.02  & 88.82 & \textless0.001 & 1.16$\times10^{-2}$ & \textless0.001 \\
+                70  & 0.04  & 44.48 & \textless0.001 & 1.03$\times10^{-2}$ & \textless0.001 & 100 & 0.04  & 42.54 & \textless0.001 & 7.36$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.06  & 38.91 & \textless0.001 & 8.44$\times10^{-3}$ & \textless0.001 & 100 & 0.06  & 34.04 & \textless0.001 & 5.87$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.08  & 29.5  & \textless0.001 & 6.84$\times10^{-3}$ & \textless0.001 & 100 & 0.08  & 21.73 & \textless0.001 & 3.61$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.1 & 12.55 & \textless0.001 & 4.10$\times10^{-3}$ & \textless0.001 & 100 & 0.1 & 14.35 & \textless0.001 & 2.57$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.12  & 22.37 & \textless0.001 & 5.26$\times10^{-3}$ & \textless0.001 & 100 & 0.12  & 11.46 & \textless0.001 & 1.79$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.14  & 16.01 & \textless0.001 & 3.72$\times10^{-3}$ & \textless0.001 & 100 & 0.14  & 7.13  & \textless0.001 & 1.28$\times10^{-3}$ & 0.001  \\
+                70  & 0.16  & 14.66 & \textless0.001 & 4.11$\times10^{-3}$ & \textless0.001 & 100 & 0.16  & 2.72  & 0.002  & 6.84$\times10^{-4}$ & 0.07 \\
+                70  & 0.18  & 7.24  & \textless0.001 & 3.02$\times10^{-3}$ & \textless0.001 & 100 & 0.18  & 6.22  & \textless0.001 & 2.37$\times10^{-3}$ & \textless0.001 \\
+                70  & 0.2 & 8.6 & \textless0.001 & 3.03$\times10^{-3}$ & \textless0.001 & 100 & 0.2 & 6.17  & \textless0.001 & 7.37$\times10^{-4}$ & 0.04 \\
+        \hline
 	    \end{tabular}
 	    \end{table}
+
+		\begin{table}[h!]
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable species-normalised (frequency) motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\label{betadisp_freq}
+			\footnotesize
+			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
+        &&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c||}{Regression}&&&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c|}{Regression}\\
+        S&C&F&$p$-value&$\beta$&$p$-value&S&C&F&$p$-value&$\beta$&$p$-value\\
+        \hline
+        50  & 0.02  & 22.69 & \textless0.001  & 7.68$\times10^{-3}$ & \textless0.001  & 80  & 0.02  & 60.57 & \textless0.001  & 8.21$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.04  & 30.77 & \textless0.001  & 7.63$\times10^{-3}$ & \textless0.001  & 80  & 0.04  & 33.95 & \textless0.001  & 5.52$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.06  & 29.19 & \textless0.001  & 6.88$\times10^{-3}$ & \textless0.001  & 80  & 0.06  & 19.59 & \textless0.001  & 3.17$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.08  & 18.17 & \textless0.001  & 5.68$\times10^{-3}$ & \textless0.001  & 80  & 0.08  & 15.93 & \textless0.001  & 2.87$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.1 & 17.78 & \textless0.001  & 4.96$\times10^{-3}$ & \textless0.001  & 80  & 0.1 & 16.28 & \textless0.001  & 2.37$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.12  & 8.89  & \textless0.001  & 3.60$\times10^{-3}$ & \textless0.001  & 80  & 0.12  & 7.28  & \textless0.001  & 1.39$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.14  & 18.36 & \textless0.001  & 4.68$\times10^{-3}$ & \textless0.001  & 80  & 0.14  & 14.24 & \textless0.001  & 2.99$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.16  & 5.89  & \textless0.001  & 2.92$\times10^{-3}$ & \textless0.001  & 80  & 0.16  & 9.19  & \textless0.001  & 1.63$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.18  & 10.67 & \textless0.001  & 3.12$\times10^{-3}$ & \textless0.001  & 80  & 0.18  & 9.65  & \textless0.001  & 1.27$\times10^{-3}$ & \textless0.001  \\
+        50  & 0.2 & 6.04  & \textless0.001  & 2.49$\times10^{-3}$ & \textless0.001  & 80  & 0.2 & 3.98  & \textless0.001  & 8.20$\times10^{-4}$ & 0.015 \\
+        60  & 0.02  & 31.72 & \textless0.001  & 7.47$\times10^{-3}$ & \textless0.001  & 90  & 0.02  & 73.16 & \textless0.001  & 7.82$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.04  & 38.37 & \textless0.001  & 6.46$\times10^{-3}$ & \textless0.001  & 90  & 0.04  & 45.5  & \textless0.001  & 5.48$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.06  & 28.46 & \textless0.001  & 5.79$\times10^{-3}$ & \textless0.001  & 90  & 0.06  & 20.95 & \textless0.001  & 3.20$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.08  & 14.48 & \textless0.001  & 3.45$\times10^{-3}$ & \textless0.001  & 90  & 0.08  & 13.53 & \textless0.001  & 1.93$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.1 & 14.72 & \textless0.001  & 3.34$\times10^{-3}$ & \textless0.001  & 90  & 0.1 & 19.22 & \textless0.001  & 2.41$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.12  & 15.33 & \textless0.001  & 4.10$\times10^{-3}$ & \textless0.001  & 90  & 0.12  & 6.07  & \textless0.001  & 6.88$\times10^{-4}$ & 0.038 \\
+        60  & 0.14  & 7.5 & \textless0.001  & 2.85$\times10^{-3}$ & \textless0.001  & 90  & 0.14  & 5.84  & \textless0.001  & 6.25$\times10^{-4}$ & 0.053 \\
+        60  & 0.16  & 4.91  & \textless0.001  & 1.80$\times10^{-3}$ & \textless0.001  & 90  & 0.16  & 7.52  & \textless0.001  & 1.21$\times10^{-3}$ & \textless0.001  \\
+        60  & 0.18  & 5.2 & \textless0.001  & 2.41$\times10^{-3}$ & \textless0.001  & 90  & 0.18  & 8.95  & \textless0.001  & 5.90$\times10^{-5}$ & 0.853 \\
+        60  & 0.2 & 8.11  & \textless0.001  & 2.61$\times10^{-3}$ & \textless0.001  & 90  & 0.2 & 3.71  & \textless0.001  & 1.14$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.02  & 39.44 & \textless0.001  & 7.68$\times10^{-3}$ & \textless0.001  & 100 & 0.02  & 71.38 & \textless0.001  & 7.00$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.04  & 33.31 & \textless0.001  & 5.79$\times10^{-3}$ & \textless0.001  & 100 & 0.04  & 28.34 & \textless0.001  & 4.17$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.06  & 27.75 & \textless0.001  & 4.33$\times10^{-3}$ & \textless0.001  & 100 & 0.06  & 20.82 & \textless0.001  & 2.85$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.08  & 17.92 & \textless0.001  & 3.69$\times10^{-3}$ & \textless0.001  & 100 & 0.08  & 16.05 & \textless0.001  & 1.67$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.1 & 8.21  & \textless0.001  & 2.47$\times10^{-3}$ & \textless0.001  & 100 & 0.1 & 13.37 & \textless0.001  & 1.33$\times10^{-3}$ & \textless0.001  \\
+        70  & 0.12  & 16.86 & \textless0.001  & 3.23$\times10^{-3}$ & \textless0.001  & 100 & 0.12  & 9.17  & \textless0.001  & 2.79$\times10^{-4}$ & 0.366 \\
+        70  & 0.14  & 11.75 & \textless0.001  & 1.96$\times10^{-3}$ & \textless0.001  & 100 & 0.14  & 6.93  & \textless0.001  & 5.98$\times10^{-4}$ & 0.046 \\
+        70  & 0.16  & 9.52  & \textless0.001  & 1.90$\times10^{-3}$ & \textless0.001  & 100 & 0.16  & 5.47  & \textless0.001  & -6.28$\times10^{-4}$  & 0.036 \\
+        70  & 0.18  & 5.97  & \textless0.001  & 1.55$\times10^{-3}$ & \textless0.001  & 100 & 0.18  & 5.56  & \textless0.001  & 6.05$\times10^{-4}$ & 0.041 \\
+        70  & 0.2 & 7.38  & \textless0.001  & 1.50$\times10^{-3}$ & \textless0.001  & 100 & 0.2 & 1.94  & 0.035 & -1.93$\times10^{-4}$  & 0.519 \\
+        \hline
+	    \end{tabular}
+	    \end{table}
+
+
+		\begin{table}[h!]
+			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable network-normalised ($Z$-score) motif participation than others. This may cause false positives in the PERMANOVAs reported in table~\ref{permtable}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\label{betadisp_Z}
+			\footnotesize
+			\begin{tabular}{c c | c c| c c ||c c | c c | c c |}
+            &&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c||}{Regression}&&&\multicolumn{2}{c|}{ANOVA}&\multicolumn{2}{c|}{Regression}\\
+            S&C&F&$p$-value&$\beta$&$p$-value&S&C&F&$p$-value&$\beta$&$p$-value\\
+            \hline
+            50  & 0.02  & 6.14  & \textless0.001  & 1.68$\times10^{-2}$ & 0.016 & 80  & 0.02  & 11.42 & \textless0.001  & 3.67$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.04  & 8.67  & \textless0.001  & 3.90$\times10^{-2}$ & \textless0.001  & 80  & 0.04  & 14.04 & \textless0.001  & 6.84$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.06  & 11.07 & \textless0.001  & 6.53$\times10^{-2}$ & \textless0.001  & 80  & 0.06  & 17.68 & \textless0.001  & 7.34$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.08  & 12.38 & \textless0.001  & 5.41$\times10^{-2}$ & \textless0.001  & 80  & 0.08  & 24.62 & \textless0.001  & 7.40$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.1 & 13.3  & \textless0.001  & 6.24$\times10^{-2}$ & \textless0.001  & 80  & 0.1 & 20.49 & \textless0.001  & 5.52$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.12  & 15.45 & \textless0.001  & 7.14$\times10^{-2}$ & \textless0.001  & 80  & 0.12  & 32.56 & \textless0.001  & 6.70$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.14  & 15.24 & \textless0.001  & 7.19$\times10^{-2}$ & \textless0.001  & 80  & 0.14  & 40.38 & \textless0.001  & 8.08$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.16  & 13.88 & \textless0.001  & 3.06$\times10^{-2}$ & 0.001 & 80  & 0.16  & 39.86 & \textless0.001  & 6.11$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.18  & 25.73 & \textless0.001  & 5.44$\times10^{-2}$ & \textless0.001  & 80  & 0.18  & 56.23 & \textless0.001  & 6.75$\times10^{-2}$ & \textless0.001  \\
+            50  & 0.2 & 35.09 & \textless0.001  & 6.16$\times10^{-2}$ & \textless0.001  & 80  & 0.2 & 60.86 & \textless0.001  & 4.31$\times10^{-2}$ & \textless0.002  \\
+            60  & 0.02  & 11.48 & \textless0.001  & 3.80$\times10^{-2}$ & \textless0.001  & 90  & 0.02  & 29.17 & \textless0.001  & 6.48$\times10^{-2}$ & \textless0.003  \\
+            60  & 0.04  & 10.03 & \textless0.001  & 6.67$\times10^{-2}$ & \textless0.001  & 90  & 0.04  & 23.23 & \textless0.001  & 9.97$\times10^{-2}$ & \textless0.004  \\
+            60  & 0.06  & 12.64 & \textless0.001  & 7.69$\times10^{-2}$ & \textless0.001  & 90  & 0.06  & 20.88 & \textless0.001  & 7.48$\times10^{-2}$ & \textless0.005  \\
+            60  & 0.08  & 13.98 & \textless0.001  & 7.00$\times10^{-2}$ & \textless0.001  & 90  & 0.08  & 28.25 & \textless0.001  & 8.66$\times10^{-2}$ & \textless0.006  \\
+            60  & 0.1 & 14.65 & \textless0.001  & 8.23$\times10^{-2}$ & \textless0.001  & 90  & 0.1 & 31.51 & \textless0.001  & 6.80$\times10^{-2}$ & \textless0.007  \\
+            60  & 0.12  & 20.88 & \textless0.001  & 6.84$\times10^{-2}$ & \textless0.001  & 90  & 0.12  & 49.26 & \textless0.001  & 4.40$\times10^{-2}$ & \textless0.008  \\
+            60  & 0.14  & 25.98 & \textless0.001  & 6.67$\times10^{-2}$ & \textless0.001  & 90  & 0.14  & 41.66 & \textless0.001  & 4.76$\times10^{-2}$ & \textless0.009  \\
+            60  & 0.16  & 31.99 & \textless0.001  & 4.83$\times10^{-2}$ & \textless0.001  & 90  & 0.16  & 56.8  & \textless0.001  & 5.76$\times10^{-2}$ & \textless0.010  \\
+            60  & 0.18  & 35.05 & \textless0.001  & 6.08$\times10^{-2}$ & \textless0.001  & 90  & 0.18  & 39.67 & \textless0.001  & 4.78$\times10^{-2}$ & \textless0.011  \\
+            60  & 0.2 & 42.4  & \textless0.001  & 8.26$\times10^{-2}$ & \textless0.001  & 90  & 0.2 & 74.24 & \textless0.001  & 5.39$\times10^{-2}$ & \textless0.012  \\
+            70  & 0.02  & 11.32 & \textless0.001  & 3.26$\times10^{-2}$ & \textless0.001  & 100 & 0.02  & 18.75 & \textless0.001  & 5.35$\times10^{-2}$ & \textless0.013  \\
+            70  & 0.04  & 16.91 & \textless0.001  & 7.76$\times10^{-2}$ & \textless0.001  & 100 & 0.04  & 31.22 & \textless0.001  & 1.04$\times10^{-1}$ & \textless0.014  \\
+            70  & 0.06  & 14.7  & \textless0.001  & 8.35$\times10^{-2}$ & \textless0.001  & 100 & 0.06  & 21.38 & \textless0.001  & 8.69$\times10^{-2}$ & \textless0.015  \\
+            70  & 0.08  & 14.26 & \textless0.001  & 7.74$\times10^{-2}$ & \textless0.001  & 100 & 0.08  & 34.71 & \textless0.001  & 6.87$\times10^{-2}$ & \textless0.016  \\
+            70  & 0.1 & 28.74 & \textless0.001  & 5.33$\times10^{-2}$ & \textless0.001  & 100 & 0.1 & 30.83 & \textless0.001  & 5.82$\times10^{-2}$ & \textless0.017  \\
+            70  & 0.12  & 27.65 & \textless0.001  & 9.60$\times10^{-2}$ & \textless0.001  & 100 & 0.12  & 43.69 & \textless0.001  & 5.50$\times10^{-2}$ & \textless0.018  \\
+            70  & 0.14  & 18.38 & \textless0.001  & 4.69$\times10^{-2}$ & \textless0.001  & 100 & 0.14  & 55.38 & \textless0.001  & 3.77$\times10^{-2}$ & \textless0.019  \\
+            70  & 0.16  & 36.24 & \textless0.001  & 7.01$\times10^{-2}$ & \textless0.001  & 100 & 0.16  & 56.03 & \textless0.001  & 3.58$\times10^{-2}$ & \textless0.020  \\
+            70  & 0.18  & 45.95 & \textless0.001  & 4.57$\times10^{-2}$ & \textless0.001  & 100 & 0.18  & 67.17 & \textless0.001  & 5.03$\times10^{-2}$ & \textless0.021  \\
+            70  & 0.2 & 49.13 & \textless0.001  & 5.33$\times10^{-2}$ & \textless0.001  & 100 & 0.2 & 100.74  & \textless0.001  & 2.47$\times10^{-2}$ & \textless0.022  \\
+        \hline
+	    \end{tabular}
+	    \end{table}
+
 
 \clearpage
 
