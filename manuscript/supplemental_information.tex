@@ -168,11 +168,12 @@
 	\subsection*{Results}
 
 
-		Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
-		All PERMANOVAs were significant, indicating that species' overall motif motif participation are related to their mean times to extinction.
-		However, the significant betadisper results suggest that some of these PERMANOVA results may be false positives.
-		After applying the correlated Bonferroni correction~\citep{Drezner2016}, both the ANOVAs testing for non-homogeneous variability of motif participation and regressions testing for relationships between role variability and time to extinction remained significant.
-
+		Taken individually, each PERMANOVA for the raw count motif roles was significant (all $p$\textless0.02). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
+		For the species-normalised (frequency) motif roles, each PERMANOVA was again individually significant (all $p$\textless0.02) and remained significant after applying the correlated Bonferroni correction.
+		Likewise, for the network-normalised ($Z$-score) motif roles, each PERMANOVA was individually significant (all $p$\textless0.01) and remained significant after applying the correlated Bonferroni correction.
+		As a final check for inflated significance due to multiple testing, we applied the correlated Bonferroni correction to the full set of 180 PERMANOVAs.
+		Once again, all remained significant.
+		These significant PERMANOVAs indicate that species' overall motif motif participation are related to their mean times to extinction.
 
 		\begin{figure}[h!]
 			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
@@ -333,7 +334,7 @@
         Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
 
 		\begin{figure}[h!]
-			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
+			\caption{Here we show the slope of variability in motif participation against the decile rank of time to extinction for species in networks of each size-connectance combination. In most cases, variability increased slightly but significantly with increasing time to extinction. Significant slopes are indicated with solid-coloured circles; non-significant slopes are indicated with empty squares.}
 			\label{fig:dispfig}
 			\includegraphics[height=.65\textheight]{figures/dispersion_lms.eps}
 			\end{figure}
