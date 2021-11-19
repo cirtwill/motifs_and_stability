@@ -176,6 +176,10 @@ def format_slopegraph(graph,key):
     graph.yaxis.label.configure(text='Slope of role variability',char_size=1,just=2)    
     graph.world.ymax=.01
     graph.yaxis.tick.major=0.002
+    graph.world.ymin=-0.002
+    dots=graph.add_dataset([(0,0),(110,0)])
+    dots.symbol.shape=0
+    dots.line.configure(linestyle=3,linewidth=.5)
 
   if key=='Z':
     graph.xaxis.ticklabel.configure(char_size=.75,format='decimal',prec=0)
@@ -201,20 +205,34 @@ def plot_slopes(all_lms):
   colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
   colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
   colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
+  leg1=0
+  leg2=0
   for key in ['count','freq','Z']:
     graph=grace.add_graph(Panel)
     graph=format_slopegraph(graph,key)
     for S in all_lms[key]:
       for C in all_lms[key][S]:
         slope=all_lms[key][S][C][0]
+        p=all_lms[key][S][C][1]
         dat=graph.add_dataset([(S,slope)])
-        dat.symbol.configure(fill_color=colorbar.z2color(C),shape=1,size=0.75,color=1)
+        dat.line.linestyle=0
+        if p<0.05:
+          dat.symbol.configure(fill_color=colorbar.z2color(C),shape=1,size=0.75,color=1)
+          if leg1==0:
+            dat.legend="Significant slope"
+            leg1=1
+        else:
+          dat.symbol.configure(fill_color=0,shape=2,size=0.75,color=1)
+          if leg2==0:
+            dat.legend="Non-significant slope"
+            leg2=1
     graph.panel_label.configure(char_size=.75,placement='iul',dy=0.02,dx=0.02)
+    graph.legend.configure(loc=(110,0.015),loctype='world',char_size=0.75,box_linestyle=0)
 
   grace.graphs[1].set_view(0.4,0.65,0.9,0.9)
   grace.graphs[2].set_view(0.4,0.35,0.9,0.6)
   grace.graphs[3].set_view(0.4,0.05,0.9,0.3)
-  colorbar.set_view(0.95,0.05,1.0,0.9)
+  colorbar.set_view(0.95,0.05,1.0,0.8)
 
   grace.write_file('../../manuscript/figures/dispersion_lms.eps')
 
