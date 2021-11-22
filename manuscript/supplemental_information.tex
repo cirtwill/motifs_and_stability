@@ -59,6 +59,7 @@
 \begin{document} 
 \maketitle 
 \raggedright
+\vspace{-1.25in}
 \setlength{\parindent}{15pt} 
 
 \section*{Table of Contents}
@@ -73,12 +74,12 @@
     
     \subsection*{S3: Details of PERMANOVA methods and results}
         
-        Supplemental methods and results for PERMANOVAs testing whether species' overall motif participation are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S2}.
+        Supplemental methods and results for PERMANOVAs testing whether species' overall motif participation are related to their mean times to extinction. Includes \textbf{Figure S2, Tables S1-S3}.
 
     \subsection*{S4: Checking assumptions of PERMANOVAs}
 
 
-    	Supplemental methods and results testing whether the assumption of equal dispersion of species motif participation across levels of persistence was met. Unequal dispersion can cause PERMANOVAs to return false positives, meaning that the results in Appendix \emph{S3} must be treated as tentative.
+    	Supplemental methods and results testing whether the assumption of equal dispersion of species motif participation across levels of persistence was met. Unequal dispersion can cause PERMANOVAs to return false positives, meaning that the results in Appendix \emph{S3} must be treated as tentative. Includes \textbf{Figures S3-S4, Tables S4-S6}.
 
 
     \subsection*{S5: Pooling loop-containing motifs}
@@ -88,17 +89,22 @@
 
     \subsection*{S6: Relating motif participation to simple roles}
 
-    	Supplemental ?methods? and results relating motif participation to a species' degree and trophic level.
+    	Supplemental ?methods? and results relating motif participation to a species' degree and trophic level. Includes \textbf{Tables S7-S8}.
 
 
     \subsection*{S7: Relating simple roles to persistence}
 
-        Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance.
+        Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S5, Table S9}.
 
 
-    \subsection*{S8: Motif labels}
+    \subsection*{S8: Relating motif participation to persistence}
+
+    	Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S6, Tables S10-S15}.
+
+    \subsection*{S9: Motif labels}
         
-        \textbf{Figure S3} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
+        \textbf{Figure S7} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
+
 
 \clearpage
 \begin{spacing}{2.0}
@@ -109,7 +115,7 @@
 	We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
 
 
-	After generating the network structure, we simulated community dynamics using the function "simulate" from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
+	After generating the network structure, we simulated community dynamics using the function ``simulate'' from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
 	All non-basal species were designated as vertebrates to ensure a good match between metabolic and predator-prey body-mass ratio values. Metabolic rates in the Lotka-Volterra model are based on each species' body mass (i.e. mass of a single individual). We assigned relative body masses based on each species' trophic level, which was, in turn, calculated based on the food-web structure provided by the niche model. After basal species were assigned a body mass of 1, we used a predator-prey body-mass ratio of 3.065 to calculate the relative body masses of higher trophic levels. We selected this ratio based on the estimate for vertebrates (averaged across ecosystem and metabolic types) in~\citet{Brose2006}. We excluded reported body-mass ratios for invertebrates as these could include parasites and parasitoids, which are generally smaller than their prey, and because interactions among vertebrates are better represented in the food-web literature than interactions involving invertebrates.
 	
 	
@@ -162,7 +168,7 @@
 
 		Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
 		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of motif definition, network size, and connectance (180 PERMANOVAs in total).
-		We fit all PERMANOVAs using the R~\citep{R} function 'adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
+		We fit all PERMANOVAs using the R~\citep{R} function `adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
 		As conducting so many tests risks obtaining significant results by chance, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
 
 	\subsection*{Results}
@@ -476,10 +482,10 @@
 \clearpage
 
 
-\section*{S5: Pooling loop-containing motifs [[Do these make sense?]]}
+\section*{S5: Pooling loop-containing motifs} 
 	
-	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{StoufferXXXX} and our simulated networks (means 8.99$\times10^{-4}$\%-2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{BorrelliXXXX}.
-	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an 'other' group.
+	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{Stouffer2007} and our simulated networks (means 8.99$\times10^{-4}$-2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{Borrelli2015a}.
+	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an `other' group.
 	This reduces our set of `motifs' to five and greatly simplifies interpretation of our analyses.
 	The manner in which the loop-containing motifs differed slightly depending on the version of motifs considered (detailed below).
 
@@ -514,14 +520,15 @@
 
 	\subsection*{Methods}
 
-        For ease of interpretation, we once again grouped the loop-containing motifs into an `unstable' group, leading to 6 LMs of the form:
+		We related each of our three versions of motif participation roles to degree and trophic level.
+        For ease of interpretation, we once again grouped the loop-containing motifs into an `other' group, leading to 6 linear models (LMs; one per version of motif roles and simple role) of the form:
 
         \begin{equation}
             \phi_{in} \approx \alpha_{i} + \delta_{i} + o_{i} + \chi_{i} + \omega_{i} + S_{n}:C_{n} + N_n,
             \label{eq:degTL_motifs}
         \end{equation}
 
-        where $\phi_{in}$ is the degree or trophic level of species $i$ belonging to network $n$, $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
+        \noindent where $\phi_{in}$ is the degree or trophic level of species $i$ belonging to network $n$, $\alpha_{i}$, $\delta_{i}$, $o_{i}$, and $\chi_{i}$ are the species' participation in the apparent competition, direct competition, omnivory, and three-species chain motifs (respectively), $\omega_{i}$ is the species' participation in the unstable motif group, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
 
 	\subsection*{Results}
 
@@ -530,14 +537,14 @@
 			Degree increased significantly with the count of each motif (Table~\ref{tab:motifs_vs_deg}).
 			Taken together, motif counts explained \textgreater90\% of the variation in degree. 
 			As a species has more interactions, it naturally participates in more of each type of motif.
-			This increase was especially strong for the `other' and three-species chain motifs (Fig.~\ref{fig:motif_counts_vs_deg}).
+			This increase was especially strong for the `other' and three-species chain motifs (Fig. 4A, \emph{Main Text}).
 
 
 			\begin{table}[h!]
 			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation.}
 			\label{tab:motifs_vs_deg}
 			\begin{tabular}{l | c c | c c | c c}
-			& \multicolumn{2}{|c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
+			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
 			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
 			\hline
 			Intercept &  3.84  & \textless0.001 & 83.3 & \textless0.001 & 22.3 & \textless0.001\\
@@ -548,32 +555,32 @@
 			Three-species chain       &  0.0388  & \textless0.001 & -90.4 & \textless0.001 & 1.64 & \textless0.001\\
 			Other    &  0.0470  & \textless0.001 & \multicolumn{2}{c|}{NA} & 4.61 & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c|}{\tiny{$R^2_m$=0.926, $R^2_c$=0.977}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.629, $R^2_c$=0.740}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.468, $R^2_c$=0.896}} \\
+			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.926, $R^2_c$=0.977}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.629, $R^2_c$=0.740}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.468, $R^2_c$=0.896}} \\
 			\end{tabular}
 			\end{table}
 
 
-			Degree increased significantly with an increasing frequency of the omnivory motif, but decreased significantly with increasing frequencies of the apparent competition, direct competition, and three-species chain motifs (Table~\ref{tab:motifs_vs_deg}).
+			Degree increased significantly with an increasing frequency of the omnivory motif, but decreased significantly with increasing frequencies of the apparent competition, direct competition, and three-species chain motifs (Table~\ref{tab:motifs_vs_deg}; Fig. 4B, \emph{Main Text}).
 			Species-normalised motif participation explained less variation in degree ($\approx$ 60\%) than count-based motif participation, although the two role definitons are still strongly linked.
-			[[One-sentence ref to figure (Fig.~\ref{fig:motif_freq_vs_deg}).]]
 
 
-			As with counts, degree increased significantly with increasing $Z$-scores of all motifs (Table~\ref{tab:motifs_vs_deg}).
+			As with counts, degree increased significantly with increasing $Z$-scores of all motifs (Table~\ref{tab:motifs_vs_deg}; Fig. 4C, \emph{Main Text}).
 			Network-normalised motif participation explained the least variation in degree ($\approx$ 50\%), although the two role definitons are still strongly linked.
-			The increase in degree was strongest with increases in the omnivory motif and `other' motifs (Fig.~\ref{fig:motif_Z_vs_deg})
+			The increase in degree was strongest with increases in the omnivory motif and `other' motifs.
 
 
 		\textbf{STL (shortest trophic level)}
 
 
-			[[Is it worth unpacking these much, since the R2 are so extremely low?]]
+			Regressions relating shortest trophic level to each version of motif participation roles explained very little (\textless5\%) of the total variation in STL. 
+			Raw motifs were most closely related to STL and $Z$-scores the least.
 
 
 			\begin{table}[h!]
-			\caption{}
+			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
 			\label{tab:motifs_vs_STL}
 			\begin{tabular}{l | c c | c c | c c}
-			& \multicolumn{2}{|c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
+			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
 			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
 			\hline
 			Intercept & 2.26 & \textless0.001 & 2.90 & \textless0.001 & 2.13 & \textless0.001 \\
@@ -584,19 +591,14 @@
 			Three-species chain  & -4.18$\times10^{-4}$ & \textless0.001 & -0.715 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
 			Other    & 1.28$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
 			\hline
-			$R^2$ & \multicolumn{2}{|c|}{\tiny{$R^2_m$=0.044, $R^2_c$=0.193}} & 
-			\multicolumn{2}{c}{\tiny{$R^2_m$=0.030, $R^2_c$=0.157}} & 
-			\multicolumn{2}{|c}{\tiny{$R^2_m$=0.021, $R^2_c$=0.110}} \\
+			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.044, $R^2_c$=0.193}} & 
+			\multicolumn{2}{c|}{\tiny{$R^2_m$=0.030, $R^2_c$=0.157}} & 
+			\multicolumn{2}{c}{\tiny{$R^2_m$=0.021, $R^2_c$=0.110}} \\
 			\end{tabular}
 			\end{table}
 
 
-
-		Tables, figures, etc.
-
-
 \clearpage
-
 
 
 \section*{S7: Relating simple roles to persistence}
@@ -610,16 +612,17 @@
                 \label{eq:persistence_degTL}
             \end{equation}
             
-            where $\tau_{in}$ is the mean persistence time for species $i$, belonging to network $n$, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
+            \noindent where $\tau_{in}$ is the mean persistence time for species $i$, belonging to network $n$, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
             These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level.
 
 	\subsection*{Results}
 
 		As expected, persistence was significantly related to degree and trophic level (Table~\ref{tab:per_degTL}, Fig.~\ref{fig:persistence_degTL}).
+		Higher degree and lower trophic levels were associated with longer times to extinction, although a negative interaction means that an increase in degree is less beneficial for species with high trophic level.
 
 
 		\begin{table}[h!]
-			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level, and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
+			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
 			\label{tab:per_degTL}
 			\begin{tabular}{l | c c |}
 			Predictor & $\beta$ & $p$-value \\
@@ -647,8 +650,6 @@
 
 \section*{S8: Relating motif participation to persistence}
 	
-	Position of appendix depends on whether there are methods for S6 or S7.
-
 
 	\subsection*{Non-normalised (count) motif participation}
 
@@ -656,14 +657,6 @@
 		In this model, greater participation in all motifs except for the omnivory motif was associated with \emph{greater} persistence (Table~\ref{tab:persistence_motifs}).
 		The effect of participation in the omnivory motif was, however, an order of magnitude smaller than the effects of participation in the apparent competition and direct competition and two orders of magnitude smaller than the effect of participation in the three-species chain motif.
 		The effect of participation in the loop-containing motifs was also small, similar to the omnivory motif.
-
-
-		Participation in the omnivory motif was strongly and negatively correlated with participation in the apparent competition and chain motifs, and weakly and negatively correlated with participation in the direct competition and `other' motifs (Table~\ref{tab:count_correlations}).
-		Participation in the `other' motifs was strongly and positively correlated with participation in the direct competition motif.
-		Participation in the apparent competition motif was moderately and positively correlated with participation in the three-species chain motif.
-
-
-		[[Add a nice simple figure.]]
 
 
 		\begin{table}[h!]
@@ -687,7 +680,9 @@
 		 \end{table}
 
 
-		[[Convert all 3 correlation tables into a 3-panel heat map?]]
+		Participation in the omnivory motif was strongly and negatively correlated with participation in the apparent competition and chain motifs, and weakly and negatively correlated with participation in the direct competition and `other' motifs (Table~\ref{tab:count_correlations}).
+		Participation in the `other' motifs was strongly and positively correlated with participation in the direct competition motif.
+		Participation in the apparent competition motif was moderately and positively correlated with participation in the three-species chain motif.
 
 
 		\begin{table}[h!]
@@ -704,6 +699,15 @@
 		\end{tabular}
 		\end{table}
 
+
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
+        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID.}
+        \label{fig:persistence_motifs}
+    \end{figure}
+
 	% # Alpha order of names is S5, S4, S2, S1
 	\subsection*{Species-normalised (frequency) motif participation}
 
@@ -712,9 +716,6 @@
 		Species-normalised motif participation explained much less variance in persistence than un-normalised participation.
 		Frequencies of the stable motifs were strongly and positively correlated (Table~\ref{tab:freq_correlations}).
 		Frequency of participation in the `other' motifs (not included in the LMM due to model rank deficiency) was moderately and positively correlated with participation in the omnivory motif and negatively correlated with participation in the remaining stable motifs.
-
-
-		Add a simple figure.
 
 
 		\begin{table}[h!]
@@ -756,7 +757,6 @@
 		Having a higher $Z$-score in the omnivory motif was associated with lower persistence, while having a higher $Z$-score in any other motif was associated with greater persistence (longer mean time to extinction; Table~\ref{tab:persistence_Z}).
 		These trends explained less variation in persistence than count-based motif participation, but more than frequency-based motif participation.
 		$Z$-scores for participation in the omnivory motif were strongly and negatively correlated with $Z$-scores for participation in the apparent competition and three-species chain motifs, and weakly and negatively correlated with $Z$-scores for participation in the direct competition and `other' motifs (Table~\ref{tab:Z_correlations}).
-		[[More commentary needed?]]
 
 
 		\begin{table}[h!]
@@ -793,12 +793,6 @@
 		\end{tabular}
 		\end{table}
 
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
-        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID.}
-        \label{fig:persistence_motifs}
-    \end{figure}
 
 \clearpage
 
@@ -814,29 +808,29 @@
 
 
 
-\section*{Old PLSR material}
+% \section*{Old PLSR material}
 
-	The PERMANOVAs indicate whether motif participation as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
-	To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
-	Similar to a principal components analysis (PCA), PLS projects the observed variables (i.e., participation in different motifs) into a new space and identifies latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls} which, together, explain substantial variation in mean time to extinction.
+% 	The PERMANOVAs indicate whether motif participation as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
+% 	To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
+% 	Similar to a principal components analysis (PCA), PLS projects the observed variables (i.e., participation in different motifs) into a new space and identifies latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls} which, together, explain substantial variation in mean time to extinction.
 	
 	
-	First, we used mean time to extinction as the response and raw motif motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
-	We include additional measures of network structure and species motif participation as these may affect the motif motif participation available to each focal species.
-	Next, to test whether any relationship between raw motif motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
-	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized motif participation as a predictor and all other variables identical to the first regression.
+% 	First, we used mean time to extinction as the response and raw motif motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
+% 	We include additional measures of network structure and species motif participation as these may affect the motif motif participation available to each focal species.
+% 	Next, to test whether any relationship between raw motif motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
+% 	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized motif participation as a predictor and all other variables identical to the first regression.
 	
 	
-	We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls}.
-	To prevent differences in range and intercept values from influencing the fit of the PLS model, we centered and scaled all variables.
-	After initial fitting, we cross-validated each regression using 10 randomly-selected segments of the data and re-fitting the regression and then calculated the mean squared error of prediction (MSEP) for each model.
-	MSEP is a measure of the error obtained when re-fitting a PLS or PCA model on test data, and is commonly used to select the optimum number of components~\citep{Mevik2004}.
-	In order to balance obtaining a low MSEP with identifying a parsimonious model, we defined the optimum model as that with the fewest components that nevertheless had an MSEP within one standard deviation of the lowest MSEP obtained for any model.
-	Model selection was performed using the R~\citep{R} function 'selectNcomp' from the package \emph{plsr}~\citep{pls} using the method `onesigma'.
-	After selecting the optimum number of components for each model, we re-fit the PLS regression including only the selected components. 
-	We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
+% 	We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls}.
+% 	To prevent differences in range and intercept values from influencing the fit of the PLS model, we centered and scaled all variables.
+% 	After initial fitting, we cross-validated each regression using 10 randomly-selected segments of the data and re-fitting the regression and then calculated the mean squared error of prediction (MSEP) for each model.
+% 	MSEP is a measure of the error obtained when re-fitting a PLS or PCA model on test data, and is commonly used to select the optimum number of components~\citep{Mevik2004}.
+% 	In order to balance obtaining a low MSEP with identifying a parsimonious model, we defined the optimum model as that with the fewest components that nevertheless had an MSEP within one standard deviation of the lowest MSEP obtained for any model.
+% 	Model selection was performed using the R~\citep{R} function 'selectNcomp' from the package \emph{plsr}~\citep{pls} using the method `onesigma'.
+% 	After selecting the optimum number of components for each model, we re-fit the PLS regression including only the selected components. 
+% 	We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
 
-\clearpage
+% \clearpage
 
 
 \section*{S9: Motif labels}
