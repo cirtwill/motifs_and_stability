@@ -116,7 +116,10 @@ def populate_graph(graph,datadict,normtype):
     dats=[]
     for x in xs:
       motpart=datadict['intercept'][0]+x*datadict[motif][0]
-      otherpart=sum([motif_means[normtype][mot]*datadict[mot][0] for mot in motifs if mot!=motif])
+      if normtype!='freq':
+        otherpart=sum([motif_means[normtype][mot]*datadict[mot][0] for mot in motifs if mot!=motif])
+      else:
+        otherpart=sum([(1-x)*float(motif_means[normtype][mot]/sum(motif_means[normtype].values()))*datadict[mot][0]for mot in motifs if mot!=motif]) 
       dats.append((x,motpart+otherpart))
 
     pointy=graph.add_dataset(dats)

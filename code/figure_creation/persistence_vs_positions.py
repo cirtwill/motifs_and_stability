@@ -126,7 +126,10 @@ def populate_graph(graph,datadict,normtype,motif,motif_means):
     dats=[]
     for x in xs: # Mean values of all other motifs, just varying focal. Not completely right for frequencies though.
       motpart=datadict['intercept'][0]+x*datadict[p][0]
-      otherpart=sum([motif_means[d]*datadict[d][0] for d in datadict.keys() if d not in [p,'intercept']])
+      if normtype!='freq':
+        otherpart=sum([motif_means[d]*datadict[d][0] for d in datadict.keys() if d not in [p,'intercept']])
+      else:
+        otherpart=sum([(1-x)*float(motif_means[d]/sum(motif_means.values()))*datadict[d][0]for d in datadict.keys() if d not in [p,'intercept']])
       dats.append((x,motpart+otherpart))
       # print x, motpart+otherpart, motif
     pointy=graph.add_dataset(dats)
