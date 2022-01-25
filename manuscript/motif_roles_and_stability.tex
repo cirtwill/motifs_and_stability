@@ -49,12 +49,19 @@
 % A/Both - finish reply
 
 
-\author{Alyssa R. Cirtwill$^{1\dagger}$, Kate Wootton $^{2}$} 
-\date{\small$^1$Department of Agricultural Sciences\\ 
+\author{Alyssa R. Cirtwill$^{1\dagger}$, Kate Wootton $^{2,3}$} 
+\date{\small$^1$Spatial Foodweb Ecology Group\\
+Research Centre for Ecological Change, Organismal and Evolutionary\\
+Biology Research Programme\\
+Faculty of Biological and Environmental
+Sciences\\
 University of Helsinki\\
-Helsinki, Finland
 \medskip
-\small$^2$ Swedish Agricultural University\\
+\small$^2$ Biofrontiers Institute\\
+University of Colorado Boulder\\
+Boulder, Colorado, USA\\
+\medskip
+\small$^3$ Swedish University of Agricultural Sciences\\
 Uppsala, Sweden\\
 \medskip
 $^\dagger$ Corresponding author:\\
@@ -81,7 +88,7 @@ alyssa.cirtwill@gmail.com\\
     % Results
     We found that species' motif roles are related to their times to extinction following a disturbance. Specifically, participating in many omnivory motifs (whether in absolute terms, as a proportion of the species' role, or relative to other species in the network) was associated with more rapid extinction, even though omnivory has previously been identified as a stable motif. Participating in the other three stable motifs (three-species chain, apparent competition, and direct competition) was associated with longer times to extinction.
     %Discussion
-    While motif roles were associated with extinction risk, they also varied strongly with degree and trophic level. This means that these simpler measures of a species' role may be sufficient to roughly predict which species are most vulnerable to disturbance, but the additional information encapsulated in a motif role can further refine predictions of vulnerability. Moreover, where researchers are \emph{a priori} interested in motif roles, our results confirm that these roles can be interpreted with respect to extinction risk.%If motif roles are already of interest, however, they can also be used to comment on which species are at greatest risk.
+    While motif roles were associated with extinction risk, they also varied strongly with degree and trophic level. This means that these simpler measures of a species' role may be sufficient to roughly predict which species are most vulnerable to disturbance, but the additional information encapsulated in a motif role can further refine predictions of vulnerability. Previous research showed that certain motifs appear more frequently in stable webs; we show that this is at least in part because participating in these motifs provides protection from extinction.%%If motif roles are already of interest, however, they can also be used to comment on which species are at greatest risk.
 
 \section*{Keywords}
 
@@ -101,7 +108,7 @@ alyssa.cirtwill@gmail.com\\
 	
     In addition to providing species-level information on network structure, there are early indications that some meso-scale structures may tend to stabilize food webs~\citep{Prill2005,Borrelli2015,Monteiro2016}. 
     This possibility is supported by the fact that empirical food webs tend to contain more \emph{three-species chains} and either more \emph{omnivory} (\emph{sensu}~\citealp[]{Thompson2007b}) motifs or more \emph{apparent competition} and \emph{direct competition} motifs than random networks~\citep{Stouffer2007}. 
-    These four motifs make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
+    These four motifs (out of XXX total 3-species motifs) make up, on average, about 95\% of all three-species motifs in food webs~\citep{Stouffer2010b}. 
     The high frequencies of these four motifs in observed networks suggest that they may be beneficial to the network containing them or, in other words, that more stable motifs appear more frequently in empirical food webs because unstable motifs are more likely to disappear as the species within them go extinct~\citep{Borrelli2015,Borrelli2015a} or links between species are lost~\citep{Tylianakis2010}.
 
 	When modelled in isolation, three species arranged in \emph{three-species chain}, \emph{apparent competition}, \emph{direct competition}, and \emph{omnivory} motifs are more likely to all persist than trios of species arranged in other motifs~\citep{Borrelli2015a}.
@@ -169,6 +176,7 @@ alyssa.cirtwill@gmail.com\\
                 Due to computational constraints, we fit one PERMANOVA per combination of network size and connectance (60 combinations). 
                 We repeated these sets of PERMANOVAs for each version of motif participation vectors (counts, species-normalised, and network-normalised; 180 PERMANOVAs in total).
                 As PERMANOVAs can return false positives if assumptions about the variability of motif participation vectors are not met (see \emph{Appendix S4}), the results of these tests are indicative but not conclusive.
+                Because the assumptions underlying the PERMANOVAs for motif participation were not met, we did use PERMANOVAs to test whether motif roles including positions were related to time to extinction.
 
 
             \textbf{Participation in particular motifs}
@@ -218,25 +226,35 @@ alyssa.cirtwill@gmail.com\\
         Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
 		However, these significant results may be false positives since the variability of raw motif roles was not consistent across mean times to extinction for most combinations of species richness and connectance (Tables \emph{S4-6, Appendix S3}). 
         In most cases, motif roles were more variable among species with longer times to extinction (Fig. \emph{S3, Appendix S2}).
-        This unequal variability means that the PERMANOVA results, while indicative, cannot be taken as conclusive proof that motif roles are related to species' time to extinciton.
+        This unequal variability means that the PERMANOVA results, while indicative, cannot be taken as conclusive proof that motif roles are related to species' time to extinction.
     
 
     \subsection*{Relating participation in particular motifs to persistence}
     
-        When defining participation based on counts, increased participation in any motif except for omnivory was correlated with longer persistence following species removal (Table \emph{S10, Appendix S8}).
+        When defining participation based on counts, increased participation in any motif except for omnivory was correlated with longer persistence following species removal (Fig.~\ref{fig:persistence_motifs}, Table \emph{S10, Appendix S8}).
         Regressions against motif participation explained only 5.8\% of variation in persistence time (fixed effects only).
-        When defining participation based on frequencies, greater participation in the omnivory, three-species chain, and apparent competition motifs was correlated with longer persistence, while the frequency of the direct competition motif was not significantly associated with persistence (Table \emph{S12, Appendix S8}).
-        However, the amount of variance in persistence time explained by frequencies was extremely low (0.5\%; fixed effects only). 
-        When defining participation based on $Z$-scores, unusually high participation in the omnivory motif was associated with shorter persistence while unusually high participation in any other motif was associated with longer persistence (Table \emph{S14, Appendix S8}).
-        The amount of variance in persistence explained by trends in $Z$-score participation was lower than that explained by counts but higher than that explained by frequencies (2.2\%).
+        When considering counts of participation in each motif, increased participation in any of the positions in the omnivory motif was correlated with shorter time to extinction while increased participation in positions in the apparent competition, direct competition, and three-species chain motifs was associated with longer persistence (Fig.~\ref{fig:persistence_positions}).
+        Regressions against count-based motif roles including positions explained a similar amount of variation in persistence time to motif participation alone (R$^2_M$=0.058).
         
+        
+        When defining participation based on frequencies, greater participation in the omnivory, three-species chain, and apparent competition motifs was correlated with longer persistence, while the frequency of the direct competition motif was not significantly associated with persistence (Fig.~\ref{fig:persistence_motifs}, Table \emph{S12, Appendix S8}).
+        However, the amount of variance in persistence time explained by frequencies was extremely low (0.5\%; fixed effects only). 
+        The amount of variance in persistence time explained by frequencies of appearing in different positions was substantially higher (8.1\%; fixed effects only).
+        Persistence time increased with the frequency of appearing in the bottom position in the apparent competition motif, the top position of the direct competition motif, and the middle position of the three-species chain motif (Fig.~\ref{fig:persistence_positions}).
+
+        
+        When defining participation based on $Z$-scores, unusually high participation in the omnivory motif was associated with shorter persistence while unusually high participation in any other motif was associated with longer persistence (Fig.~\ref{fig:persistence_motifs}, Table \emph{S14, Appendix S8}).
+        The amount of variance in persistence explained by trends in $Z$-score participation was lower than that explained by counts but higher than that explained by frequencies (2.2\%; fixed effects only).
+        The amount of variance in persistence explained by $Z$-scores of appearing in different positions was higher than that explained by participation in whole motifs (4.9\%; fixed effects only).
+        Unusually high participation in the bottom position in the apparent competition motif, either position in the direct competition motif, and middle position in the three-species chain were associated with longer persistence (Fig.~\ref{fig:persistence_positions}).
+
 
     \subsection*{Is motif participation related to simpler roles?}    
     
         As expected, a higher degree was associated with higher counts and higher $Z$-scores of any motif (Fig.~\ref{fig:motifs_degTL}; Appendix \emph{S6}).
         A greater frequency of omnivory was also associated with higher degree, while the converse was true for all other motifs.
         Raw motif participation explained almost all variance in degree, while the correlation between network-normalised ($Z$-score) motif participation and degree was weaker.
-        Based on these correlations, raw motif participation is likely to provide most of the information given by degree while species-normalised and network-normalised motif participation are likley to be more independent from degree.
+        Based on these correlations, raw motif participation is likely to provide most of the information given by degree while species-normalised and network-normalised motif participation are likely to be more independent from degree.
         
     
         The relationships between motif participation and STL were extremely weak for all versions of motif participation (Appendix \emph{S6}).
@@ -268,7 +286,7 @@ alyssa.cirtwill@gmail.com\\
 		
 		The stronger correlation of extinction orders in larger, more-connected networks, as well as the somewhat shorter mean times to extinction in these webs (Fig. S1, \emph{Appendix S1}) may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species. 
 		These short pathways are more likely to have strong effects on the population dynamics of species along them than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006}.
-		These stronger effects in turn likely explain why more secondary extinctions in large or highly-connected webs are due to indirect effects rather than direct loss of a prey or predator~\citet{Wootton2016a}. 
+		These stronger effects in turn likely explain why more secondary extinctions in large or highly-connected webs are due to indirect effects rather than direct loss of a prey or predator~\citep{Wootton2016a}. 
 
 
 	\subsection*{Motif roles relate to extinction risk}
@@ -285,7 +303,7 @@ alyssa.cirtwill@gmail.com\\
 
         The counts and $Z$-scores of all motifs increased with increasing degree, but only counts and $Z$-scores of the three-species chain, apparent competition, and direct competition motifs were associated with longer times to extinction. 
         Higher counts and $Z$-scores of the omnivory motif are, therefore, associated with shorter times to extinction \emph{despite} being associated with higher degree.
-        This is consistent with~\citet{Borelli2015a}'s finding that omnivory motifs are less likely to be stable than the chain and competition motifs.
+        This is consistent with~\citet{Borrelli2015a}'s finding that omnivory motifs are less likely to be stable than the chain and competition motifs.
         However, while~\citep{Borrelli2015a} found that omnivory motifs were more stable than the loop containing motifs we pooled as `other', we found that the `other' motifs had slightly positive relationships to persistence time while relationships with omnivory were negative.
 
         
