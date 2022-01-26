@@ -36,6 +36,10 @@ motif_means={'Count':{'Chain':152.89997,'Omni':151.80711,'DC':91.24644,'AC':274.
 'Freq':{'Chain':0.23425806,'Omni':0.15057811,'DC':0.14015832,'AC':0.42344680,'Other':0.05155872},
 'Z':{'Chain':3.317912e-16,'Omni':2.107330e-15,'DC':5.396885e-15,'AC':-2.344344e-16,'Other':-1.111925e-15}}
 
+# Adding overall R2(fixed) to each panel
+R2={'Deg':{'Count':0.926,'Freq':0.629,'Z':0.896},
+'TL':{'Count':0.044,'Freq':0.030,'Z':0.021}}
+
 def read_file(infile):
   lmdict={}
   f=open(infile,'r')
@@ -101,6 +105,32 @@ def format_linegraph(graph,normtype,simple):
 
   graph.panel_label.configure(char_size=0.75,placement='iul',dy=0.02,dx=0.03)
   # graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
+
+  return graph
+
+def add_R2(graph,normtype,simple):
+  if simple=='Deg':
+    if normtype=='Count':
+      x=2500
+      y=25
+    elif normtype=='Freq':
+      x=0.6
+      y=100
+    else:
+      x=5
+      y=100
+  else:
+    if normtype=='Count':
+      x=250
+      y=.5
+    elif normtype=='Freq':
+      x=0.1
+      y=.5
+    else:
+      x=-2
+      y=.5
+
+  graph.add_drawing_object(DrawText,text='R2='+str(R2[simple][normtype]),loctype='world',x=x,y=y,char_size=.75)
 
   return graph
 
@@ -173,6 +203,7 @@ for simple in ['Deg','TL']:
     # Need to update populate_graph
     graph=grace.add_graph(Panel)
     graph=format_linegraph(graph,normtype,simple)
+    graph=add_R2(graph,normtype,simple)
     graph=populate_graph(graph,datdict,normtype,simple)
 
 
