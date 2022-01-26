@@ -29,9 +29,11 @@ Simulation project testing for links between species roles and their extinction 
 - plot these using code/figure_generation/motif_correlations.py
 
 
-12) Check correlations of extinction orders using code/stat_analyses/mean_correlation_extorder_tests.R Plot using code/figure_creation/extinction_order_correlations.py [[done both]]
+12) Check correlations of extinction orders using code/stat_analyses/permanova_tests.R Plot using code/figure_creation/extinction_order_correlations.py, 
 
-13) Fit lmers for mean time to extinction vs. participation in motifs using [[likely unnecessary code/stat_analyses/extorder_vs_PCApositions.R]] and code/stat_analyses/motif_participation_vs_extorder.R [[done both]]
+13) Calculate slopes of role dispersion vs. decile rank extinction time and Tukey tests for between-decile differences using code/stat_analysis/permanova_dispersion_tests.R. Prepare for plots of difference between groups vs. difference between deciles using code/figure_creation/betadisper_collector.py
+
+14) Fit lmers for mean time to extinction vs. participation in motifs using [[likely unnecessary code/stat_analyses/extorder_vs_PCApositions.R]] and code/stat_analyses/motif_participation_vs_extorder.R [[done both]]
 
 
 # Haven't necessarily updated all figures yet

@@ -79,13 +79,13 @@ degmotifs_count=with(fulldata,lmer(allTLs$Deg~
   c38.0.2+c38.1.1+c38.2.0+
   c6.0.2+c6.1.0
   +cother+(1|globo)+(1|rando),control=lmerControl(optimizer="bobyqa")))
-write.table(summary(degmotifs_count)$coefficients,file='../../data/summaries/positions_Count_Deg.tsv')
+write.table(summary(degmotifs_count)$coefficients,file='../../data/summaries/positions_count_Deg.tsv')
 degmotifs_freq=with(freq,lmer(allTLs$Deg~
     c12.0.1+c12.1.0+c12.1.1+
   c36.0.1+c36.2.0+
   c38.0.2+c38.1.1+c38.2.0+
   c6.0.2+c6.1.0+(1|fulldata$globo)+(1|fulldata$rando),control=lmerControl(optimizer="bobyqa")))
-write.table(summary(degmotifs_freq)$coefficients,file='../../data/summaries/positions_Freq_Deg.tsv')
+write.table(summary(degmotifs_freq)$coefficients,file='../../data/summaries/positions_freq_Deg.tsv')
 degmotifs_Z=with(fulldata,lmer(allTLs$Deg~
   z12.0.1+z12.1.0+z12.1.1+
   z36.0.1+z36.2.0+
@@ -98,12 +98,12 @@ TLmotifs_count=with(fulldata,lmer(allTLs$STL~c12.0.1+c12.1.0+c12.1.1+
   c36.0.1+c36.2.0+
   c38.0.2+c38.1.1+c38.2.0+
   c6.0.2+c6.1.0+cother+(1|globo)+(1|rando)))
-write.table(summary(TLmotifs_count)$coefficients,file='../../data/summaries/positions_Count_TL.tsv')
+write.table(summary(TLmotifs_count)$coefficients,file='../../data/summaries/positions_count_TL.tsv')
 TLmotifs_freq=with(freq,lmer(allTLs$STL~c12.0.1+c12.1.0+c12.1.1+
   c36.0.1+c36.2.0+
   c38.0.2+c38.1.1+c38.2.0+
   c6.0.2+c6.1.0+(1|fulldata$globo)+(1|fulldata$rando)))
-write.table(summary(TLmotifs_freq)$coefficients,file='../../data/summaries/positions_Freq_TL.tsv')
+write.table(summary(TLmotifs_freq)$coefficients,file='../../data/summaries/positions_freq_TL.tsv')
 TLmotifs_Z=with(fulldata,lmer(allTLs$STL~z12.0.1+z12.1.0+z12.1.1+
   z36.0.1+z36.2.0+z38.0.2+z38.1.1+z38.2.0+
   z6.0.2+z6.1.0+zother+(1|globo)+(1|rando)))
@@ -119,6 +119,7 @@ fmeans=colMeans(freq)
 write.table(as.matrix(fmeans),file='../../data/summaries/mean_positions_freq.tsv',sep='\t')
 
 zmeans=colMeans(fulldata[,17:27])
+write.table(as.matrix(zmeans),file='../../data/summaries/mean_positions_Z.tsv',sep='\t')
 
 save.image('position_tests.Rdata')
 
