@@ -36,6 +36,8 @@ motif_means={'count':{'Chain':152.89997,'Omni':151.80711,'DC':91.24644,'AC':274.
 'freq':{'Chain':0.23425806,'Omni':0.15057811,'DC':0.14015832,'AC':0.42344680,'Other':0.05155872},
 'Z':{'Chain':3.317912e-16,'Omni':2.107330e-15,'DC':5.396885e-15,'AC':-2.344344e-16,'Other':-1.111925e-15}}
 
+R2={'count':0.058,'freq':0.005,'Z':0.022}
+
 def read_file(infile):
   lmdict={}
   f=open(infile,'r')
@@ -73,17 +75,19 @@ def format_linegraph(graph,normtype):
     graph.world.xmax=4000
     graph.xaxis.tick.major=1000
     graph.xaxis.label.configure(text='Count',char_size=1,just=2)
+    x=2500
   elif normtype=='freq':
     graph.world.xmax=1
     graph.xaxis.tick.major=.2
     graph.xaxis.label.configure(text='Frequency',char_size=1,just=2)
     graph.xaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
+    x=0.6
   else:
     graph.world.xmin=-3
     graph.world.xmax=10
     graph.xaxis.tick.major=2
     graph.xaxis.label.configure(text='Z-score',char_size=1,just=2)
-
+    x=5
 
   graph.world.ymin=0
   graph.world.ymax=50
@@ -94,6 +98,7 @@ def format_linegraph(graph,normtype):
 
   graph.panel_label.configure(char_size=0.75,placement='iul',dy=0.02,dx=0.03)
   # graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
+  graph.add_drawing_object(DrawText,text='R2='+str(R2[normtype]),char_size=.75,loctype='world',x=x,y=10)
 
   return graph
 
@@ -136,7 +141,7 @@ def populate_graph(graph,datadict,normtype):
 
   # graph.add_drawing_object(DrawText,text='STL',x=90,y=16,loctype='world',just=0,char_size=1)
   if normtype=='Z':
-    graph.legend.configure(box_linestyle=0,char_size=.5,loc=(0,30),loctype='world')
+    graph.legend.configure(box_linestyle=0,char_size=.5,loc=(-2,30),loctype='world')
 
   # # Add an arrow for S
   # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
