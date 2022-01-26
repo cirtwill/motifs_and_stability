@@ -291,7 +291,7 @@ alyssa.cirtwill@gmail.com\\
 
 	\subsection*{Motif roles relate to extinction risk}
 
-		Overall, our results show that species' motif roles were related to their time to extinction after a disturbance (Table~\ref{overview_table}).
+		Overall, our results show that species' motif roles were related to their time to extinction after a disturbance.
 		Participating in more instances of the apparent competition, direct competition, and three-species chain motifs, having a higher frequency of omnivory motifs, or a higher $Z$-score of the three-species chain or direct competition motifs were most strongly associated with increasing time to extinction.
         Taken as a group, all other motifs had only weak relationships to stability.
 
@@ -421,7 +421,7 @@ alyssa.cirtwill@gmail.com\\
 \section*{Figures}
 
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \includegraphics[width=.9\textwidth]{figures/motifs_box.eps}
         \caption{A brief introduction to motifs.}
         \label{motifs}
@@ -429,7 +429,7 @@ alyssa.cirtwill@gmail.com\\
 
     \clearpage
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
         \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID.}
@@ -437,10 +437,18 @@ alyssa.cirtwill@gmail.com\\
     \end{figure}
 
 
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_positions.eps}
+        \caption{Mean persistence time vs appearance in different motif positions participation. The figure is based on the fixed effects in a regression of persistence against participation in positions in the apparent competition, direct competition, omnivory, three-species chain and motifs, with all positions in the `other' (loop-containing; not shown) motifs grouped, as well as random effects of global network structure and network ID. Top positions have prey but no predators within the motif, bottom positions have predators but no prey within the motif, and middle positions have both prey and predators within the motif.}
+        \label{fig:persistence_positions}
+    \end{figure}
+
+
 
     \clearpage
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=\textwidth]{figures/motifs_vs_degTL.eps}
         \caption{Degree was strongly and significantly associated with motif participation, but trophic level was much more weakly, though still significantly, associated with motif participation (Appendix \emph{SX}). For each version of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, this is an unrealistic simplification. }
@@ -450,7 +458,7 @@ alyssa.cirtwill@gmail.com\\
     \clearpage
 
 
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=\textwidth]{figures/roles/persistence_vs_degTL.eps}
         \caption{Mean persistence time increased with increasing degree for species at low trophic levels (STL 1-2) but decreased with increasing degree for species at high trophic levels (STL \textgreater2). The figure is based on the fixed effects in a regression of persistence against degree, trophic level, their interaction, and a random effect of global network structure.}
