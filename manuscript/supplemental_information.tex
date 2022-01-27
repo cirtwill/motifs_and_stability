@@ -541,23 +541,23 @@
 
 
 			\begin{table}[h!]
-			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation.}
-			\label{tab:motifs_vs_deg}
-			\begin{tabular}{l | c c | c c | c c}
-			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
-			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
-			\hline
-			Intercept &  3.84  & \textless0.001 & 83.3 & \textless0.001 & 22.3 & \textless0.001\\
-			\hline
-			Apparent competition       &  0.0194  & \textless0.001 & -83.4 & \textless0.001 & 1.88 & \textless0.001 \\
-			Direct competition       &  0.0249  & \textless0.001 & -61.5 & \textless0.001 & 1.80 & \textless0.001\\
-			Omnivory       &  0.0274  & \textless0.001 & 27.6 & \textless0.001 & 5.69 & \textless0.001\\
-			Three-species chain       &  0.0388  & \textless0.001 & -90.4 & \textless0.001 & 1.64 & \textless0.001\\
-			Other    &  0.0470  & \textless0.001 & \multicolumn{2}{c|}{NA} & 4.61 & \textless0.001 \\
-			\hline
-			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.926, $R^2_c$=0.977}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.629, $R^2_c$=0.740}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.468, $R^2_c$=0.896}} \\
-			\end{tabular}
-			\end{table}
+    			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation.}
+    			\label{tab:motifs_vs_deg}
+    			\begin{tabular}{l | c c | c c | c c}
+    			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
+    			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
+    			\hline
+    			Intercept &  3.84  & \textless0.001 & 83.3 & \textless0.001 & 22.3 & \textless0.001\\
+    			\hline
+    			Apparent competition       &  0.0194  & \textless0.001 & -83.4 & \textless0.001 & 1.88 & \textless0.001 \\
+    			Direct competition       &  0.0249  & \textless0.001 & -61.5 & \textless0.001 & 1.80 & \textless0.001\\
+    			Omnivory       &  0.0274  & \textless0.001 & 27.6 & \textless0.001 & 5.69 & \textless0.001\\
+    			Three-species chain       &  0.0388  & \textless0.001 & -90.4 & \textless0.001 & 1.64 & \textless0.001\\
+    			Other    &  0.0470  & \textless0.001 & \multicolumn{2}{c|}{NA} & 4.61 & \textless0.001 \\
+    			\hline
+    			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.926, $R^2_c$=0.977}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.629, $R^2_c$=0.740}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.468, $R^2_c$=0.896}} \\
+    			\end{tabular}
+    			\end{table}
 
 
 			Degree increased significantly with an increasing frequency of the omnivory motif, but decreased significantly with increasing frequencies of the apparent competition, direct competition, and three-species chain motifs (Table~\ref{tab:motifs_vs_deg}; Fig. 4B, \emph{Main Text}).
@@ -569,34 +569,88 @@
 			The increase in degree was strongest with increases in the omnivory motif and `other' motifs.
 
 
-		\textbf{STL (shortest trophic level)}
-
-
-			Regressions relating shortest trophic level to each version of motif participation roles explained very little (\textless5\%) of the total variation in STL. 
-			Raw motifs were most closely related to STL and $Z$-scores the least.
-
+            Degree was also significantly correlated with a species' appearance in most positions, however we defined species roles (Table~\ref{tab:positions_vs_deg}).
+            As with motif participation, count-based motif roles explained most variation in degree, followed by species-normalised (frequency) roles, and network-normalised ($Z$-score) roles.
+            
 
 			\begin{table}[h!]
-			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
-			\label{tab:motifs_vs_STL}
-			\begin{tabular}{l | c c | c c | c c}
-			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
-			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
-			\hline
-			Intercept & 2.26 & \textless0.001 & 2.90 & \textless0.001 & 2.13 & \textless0.001 \\
-			\hline
-			Apparent competition & 6.22$\times10^{-5}$ & \textless0.001 & -0.612 & \textless0.001 & 2.47$\times10^{-2}$ & \textless0.001 \\
-			Direct competition   & -1.56$\times10^{-4}$ & \textless0.001 & -0.460 & \textless0.001 & 1.88$\times10^{-3}$ & \textless0.001 \\
-			Omnivory       & -5.76$\times10^{-4}$ & \textless0.001 & -1.86 & \textless0.001 & -9.98$\times10^{-2}$ & \textless0.001 \\
-			Three-species chain  & -4.18$\times10^{-4}$ & \textless0.001 & -0.715 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
-			Other    & 1.28$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
-			\hline
-			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.044, $R^2_c$=0.193}} & 
-			\multicolumn{2}{c|}{\tiny{$R^2_m$=0.030, $R^2_c$=0.157}} & 
-			\multicolumn{2}{c}{\tiny{$R^2_m$=0.021, $R^2_c$=0.110}} \\
-			\end{tabular}
-			\end{table}
+    			\caption{A species' degree was strongly correlated with its participation in different positions within motifs. This association was especially strong for un-normalised (count-based) motif participation.}
+    			\label{tab:positions_vs_deg}
+    			\begin{tabular}{l | c c | c c | c c}
+    			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
+    			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
+    			\hline
+                Intercept	&	4.28	&	\textless0.001	&	2.87	&	0.001	&	22.3	&	\textless0.001	\\
+                Chain: top	&	0.0436	&	\textless0.001	&	53.6	&	\textless0.001	&	4.06	&	\textless0.001	\\
+                Chain: bottom	&	0.0358	&	\textless0.001	&	-15.2	&	\textless0.001	&	0.00849	&	0.424	\\
+                Chain: middle	&	0.0352	&	\textless0.001	&	-5.10	&	\textless0.001	&	-0.310	&	\textless0.001	\\
+                DC: top	&	0.0267	&	\textless0.001	&	50.7	&	\textless0.001	&	2.04	&	\textless0.001	\\
+                DC: bottom	&	0.0303	&	\textless0.001	&	-10.3	&	\textless0.001	&	0.874	&	\textless0.001	\\
+                Omnivory: top	&	0.0364	&	\textless0.001	&	48.8	&	\textless0.001	&	2.52	&	\textless0.001	\\
+                Omnivory: middle	&	0.00918 	&	\textless0.001	&	112	&	\textless0.001	&	3.62	&	\textless0.001	\\
+                Omnivory: bottom	&	0.0377	&	\textless0.001	&	47.3	&	\textless0.001	&	2.11	&	\textless0.001	\\
+                AC: top	&	0.0273	&	\textless0.001	&	51.6	&	\textless0.001	&	1.68	&	\textless0.001	\\
+                AC: bottom	&	0.0299	&	\textless0.001	&	47.7	&	\textless0.001	&	3.24	&	\textless0.001	\\
+                Other	&	0.0162	&	\textless0.001	& \multicolumn{2}{c|}{NA} &	-1.12	&	\textless0.001	\\
+    			\hline
+    			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.934, $R^2_c$=0.979}} & \multicolumn{2}{c}{\tiny{$R^2_m$=0.729, $R^2_c$=0.920}} & \multicolumn{2}{|c}{\tiny{$R^2_m$=0.472, $R^2_c$=0.900}} \\
+    			\hline
+                \end{tabular}
+                \end{table}
 
+
+		\textbf{STL (shortest trophic level)}
+
+			Regressions relating shortest trophic level to each version of motif participation roles explained very little (\textless5\%) of the total variation in STL (Table~\ref{tab:motifs_vs_STL}). 
+			Raw motifs were most closely related to STL and $Z$-scores the least.
+            Adding positions within motifs explained little extra variation in shortest trophic levels (up to 10\%; Table~\ref{tab:positions_vs_STL}).
+
+			\begin{table}[h!]
+    			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
+    			\label{tab:motifs_vs_STL}
+    			\begin{tabular}{l | c c | c c | c c}
+    			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
+    			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
+    			\hline
+    			Intercept & 2.26 & \textless0.001 & 2.90 & \textless0.001 & 2.13 & \textless0.001 \\
+    			\hline
+    			Apparent competition & 6.22$\times10^{-5}$ & \textless0.001 & -0.612 & \textless0.001 & 2.47$\times10^{-2}$ & \textless0.001 \\
+    			Direct competition   & -1.56$\times10^{-4}$ & \textless0.001 & -0.460 & \textless0.001 & 1.88$\times10^{-3}$ & \textless0.001 \\
+    			Omnivory       & -5.76$\times10^{-4}$ & \textless0.001 & -1.86 & \textless0.001 & -9.98$\times10^{-2}$ & \textless0.001 \\
+    			Three-species chain  & -4.18$\times10^{-4}$ & \textless0.001 & -0.715 & \textless0.001 & -3.14$\times10^{-2}$ & \textless0.001 \\
+    			Other    & 1.28$\times10^{-4}$ & \textless0.001 & \multicolumn{2}{c|}{NA} & 2.54$\times10^{-2}$ & \textless0.001 \\
+    			\hline
+    			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.044, $R^2_c$=0.193}} & 
+    			\multicolumn{2}{c|}{\tiny{$R^2_m$=0.030, $R^2_c$=0.157}} & 
+    			\multicolumn{2}{c}{\tiny{$R^2_m$=0.021, $R^2_c$=0.110}} \\
+    			\end{tabular}
+    			\end{table}
+
+			\begin{table}[h!]
+    			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
+    			\label{tab:positions_vs_STL}
+    			\begin{tabular}{l | c c | c c | c c}
+    			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
+    			Motif & $\beta$ & $p$-value & $\beta$ & $p$-value & $\beta$ & $p$-value \\
+    			\hline
+                Intercept	&	2.27	&	\textless0.001	&	2.32	&	\textless0.001	&	2.13	&	\textless0.001	\\
+                Chain: top	&	-1.21$\times10^{-4}$	&	\textless0.001	&	0.119	&	\textless0.001	&	-0.00897	&	\textless0.001	\\
+                Chain: bottom	&	1.60$\times10^{-4}$	&	\textless0.001	&	0.887	&	\textless0.001	&	0.0487	&	\textless0.001	\\
+                Chain: middle	&	-3.38$\times10^{-3}$	&	\textless0.001	&	-1.46	&	\textless0.001	&	-0.248	&	\textless0.001	\\
+                DC: top	&	-1.05$\times10^{-3}$	&	\textless0.001	&	-0.645	&	\textless0.001	&	-0.0546	&	\textless0.001	\\
+                DC: bottom	&	-2.66$\times10^{-4}$	&	\textless0.001	&	0.309	&	\textless0.001	&	-0.0135	&	\textless0.001	\\
+                Omnivory: top	&	1.05$\times10^{-3}$	&	\textless0.001	&	0.158	&	\textless0.001	&	0.107	&	\textless0.001	\\
+                Omnivory: middle	&	-9.46$\times10^{-5}$ &	\textless0.001	&	-0.567	&	\textless0.001	&	0.0241	&	\textless0.001	\\
+                Omnivory: bottom	&	1.23$\times10^{-4}$	&	\textless0.001	&	-0.0790	&	\textless0.001	&	-0.00813	&	\textless0.001	\\
+                AC: top	&	9.57$\times10^{-4}$	&	\textless0.001	&	-0.0511	&	0.042	&	-0.0186	&	\textless0.001	\\
+                AC: bottom	&	-2.33$\times10^{-4}$	&	\textless0.001	&	-1.08	&	\textless0.001	&	-0.0983	&	\textless0.001	\\
+                Other	&	1.94$\times10^{-4}$	&	\textless0.001	&				&	0.0606	&	\textless0.001	\\
+    			\hline
+    			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.077, $R^2_c$=0.216}} & 
+    			\multicolumn{2}{c|}{\tiny{$R^2_m$=0.104, $R^2_c$=0.185}} & 
+    			\multicolumn{2}{c}{\tiny{$R^2_m$=0.085, $R^2_c$=0.175}} \\
+    			\end{tabular}
+    			\end{table}
 
 \clearpage
 
@@ -650,7 +704,6 @@
 
 \section*{S8: Relating motif participation to persistence}
 	
-
 	\subsection*{Non-normalised (count) motif participation}
 
 		In a LMM of persistence against all motifs (including a random effect of global network structure), motif participation explained a small amount of variation ($R^{2}_m$=0.058; $R^2_c$=0.220).
@@ -660,25 +713,24 @@
 
 
 		\begin{table}[h!]
-		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
-		\label{tab:persistence_motifs}
-		\begin{tabular}{l | c c}
-		 Motif & $\beta$ & $p$-value \\  
-		 \hline
-		 Intercept & 29.7 & \textless0.001 \\
-		 \hline
-		 Apparent competition & 7.77$\times10^{-3}$ & \textless0.001 \\
-		 Direct competition & 8.05$\times10^{-3}$ & \textless0.001 \\
-		 Omnivory &  -3.91$\times10^{-4}$ & 0.133 \\
-		 Three-species chain &  1.73$\times10^{-2}$ & \textless0.001 \\
-		 Other &  5.76$\times10^{-4}$ & 0.039 \\
-		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.058; $R^2_c$=0.220} \\
-
-		 \hline
-		 \end{tabular}
-		 \end{table}
-
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\label{tab:persistence_motifs}
+    		\begin{tabular}{l | c c}
+    		 Motif & $\beta$ & $p$-value \\  
+    		 \hline
+    		 Intercept & 29.7 & \textless0.001 \\
+    		 \hline
+    		 Apparent competition & 7.77$\times10^{-3}$ & \textless0.001 \\
+    		 Direct competition & 8.05$\times10^{-3}$ & \textless0.001 \\
+    		 Omnivory &  -3.91$\times10^{-4}$ & 0.133 \\
+    		 Three-species chain &  1.73$\times10^{-2}$ & \textless0.001 \\
+    		 Other &  5.76$\times10^{-4}$ & 0.039 \\
+    		 \hline
+    		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.058; $R^2_c$=0.220} \\
+    		 \hline
+    		 \end{tabular}
+    		 \end{table}
+    
 
 		Participation in the omnivory motif was strongly and negatively correlated with participation in the apparent competition and chain motifs, and weakly and negatively correlated with participation in the direct competition and `other' motifs (Table~\ref{tab:count_correlations}).
 		Participation in the `other' motifs was strongly and positively correlated with participation in the direct competition motif.
@@ -686,20 +738,71 @@
 
 
 		\begin{table}[h!]
-		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
-		\label{tab:count_correlations}
-		\begin{tabular}{l | c c c c}
-			& AC & DC & Omni & Chain \\
-		\hline
-		DC    & -0.085 &        &        &        \\   
-		Omni  & -0.592 & -0.256 &        &        \\
-		Chain &  0.311 & -0.196 & -0.417 &        \\
-		Other & -0.143 &  0.397 & -0.293 & -0.117 \\
-		\hline
-		\end{tabular}
-		\end{table}
+    		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
+    		\label{tab:count_correlations}
+    		\begin{tabular}{l | c c c c}
+    			& AC & DC & Omni & Chain \\
+    		\hline
+    		DC    & -0.085 &        &        &        \\   
+    		Omni  & -0.592 & -0.256 &        &        \\
+    		Chain &  0.311 & -0.196 & -0.417 &        \\
+    		Other & -0.143 &  0.397 & -0.293 & -0.117 \\
+    		\hline
+    		\end{tabular}
+    		\end{table}
 
 
+		\begin{table}[h!]
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\label{tab:count_positions}
+    		\begin{tabular}{l | c c}
+    		Motif & $\beta$ & $p$-value \\  
+    		\hline
+            Intercept	&	31.5	&	\textless0.001	\\
+            Chain: top	&	2.27$\times10^{-3}$	&	\textless0.001	\\
+            Chain: bottom	&	3.97$\times10^{-3}$	&	\textless0.001	\\
+            Chain: middle	&	5.53$\times10^{-2}$	&	\textless0.001	\\
+            DC: top	&	2.49$\times10^{-2}$	&	\textless0.001	\\
+            DC: bottom	&	1.23$\times10^{-2}$	&	\textless0.001	\\
+            Omnivory: top	&	-5.67$\times10^{-2}$	&	\textless0.001	\\
+            Omnivory: middle	&	-2.08$\times10^{-2}$	&	\textless0.001	\\
+            Omnivory: bottom	&	-7.38$\times10^{-3}$	&	\textless0.001	\\
+            AC: top	&	4.25$\times10^{-3}$	&	\textless0.001	\\
+            AC: bottom	&	1.85E-02	&	\textless0.001	\\
+            Other	&	-2.64$\times10^{-3}$	&	\textless0.001	\\
+            \hline
+    		Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.079; $R^2_c$=0.185} \\
+    		\hline
+    		\end{tabular}
+    		\end{table}
+
+        
+        When including participation in unique positions within motifs, count-based roles explained slightly more variation in persistence time (Table~\ref{tab:position_count_correlations}).
+        Participation in all positions in our four focal motifs was significantly associated with persistence time.
+        Persistence increased with increasing participation in positions in the chain, direct competition, and apparent competition motifs, but decreased with increasing participation in positions in the omnivory and `other' motifs.
+
+
+		\begin{table}[h!]
+    		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
+    		\label{tab:position_count_correlations}
+    		\footnotesize
+    		\begin{tabular}{l | c c c c c c c c c c c c}    
+        		&	Ch: t	&	Ch: b	&	Ch: m	&	DC: t	&	DC: b	&	Om: t	&	Om: m	&	Om: b	&	AC: t	&	AC: b	\\
+                \hline
+                Chain: bottom	&	0.051	&		&		&		&		&		&		&		&		&		\\
+                Chain: middle	&	0.217	&	0.455	&		&		&		&		&		&		&		&		\\
+                DC: top	&	-0.021	&	0.113	&	0.149	&		&		&		&		&		&		&		\\
+                DC: bottom	&	0.323	&	0.099	&	0.121	&	-0.59	&		&		&		&		&		&		\\
+                Omniv.: top	&	-0.195	&	-0.168	&	-0.51	&	-0.075	&	0.096	&		&		&		&		&		\\
+                Omniv.: middle	&	0.03	&	0.267	&	0.103	&	-0.106	&	-0.037	&	-0.156	&		&		&		&		\\
+                Omniv.: bottom	&	-0.117	&	0.037	&	0.128	&	-0.537	&	0.132	&	-0.237	&	0.032	&		&		&		\\
+                AC: top	&	0.062	&	-0.073	&	-0.447	&	-0.217	&	0.13	&	-0.236	&	0.161	&	-0.057	&		&		\\
+                AC: bottom	&	-0.223	&	-0.212	&	-0.045	&	-0.005	&	-0.013	&	0.128	&	-0.878	&	0.08	&	-0.178	&		\\
+                Other	&	0.261	&	0.484	&	0.547	&	-0.035	&	0.066	&	-0.352	&	0.166	&	0.296	&	-0.382	&	0.006	\\
+                \hline
+            \end{tabular}
+            \end{table}
+            
 
     \begin{figure}[h!]
         \centering
@@ -711,7 +814,6 @@
 	% # Alpha order of names is S5, S4, S2, S1
 	\subsection*{Species-normalised (frequency) motif participation}
 
-
 		Higher frequencies of participation in the apparent competition, omnivory, and three-species chain motifs were associated with longer persistence, while participation in the direct competition motif was not significantly associated with persistence (Table~\ref{tab:persistence_freq}).
 		Species-normalised motif participation explained much less variance in persistence than un-normalised participation.
 		Frequencies of the stable motifs were strongly and positively correlated (Table~\ref{tab:freq_correlations}).
@@ -719,37 +821,86 @@
 
 
 		\begin{table}[h!]
-		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
-		\label{tab:persistence_freq}
-		\begin{tabular}{l | c c}
-		 Motif & $\beta$ & $p$-value \\  
-		 \hline
-		 Intercept & 30.7 & \textless0.001 \\
-		 \hline
-		 Apparent competition & 2.20 & \textless0.001 \\
-		 Direct competition & 0.255 & 0.528 \\
-		 Omnivory & 13.9 & \textless0.001 \\
-		 Three-species chain & 3.68 & \textless0.001 \\
-		 \hline
-		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.005; $R^{2}_c$=0.106} \\
-		 \hline
-		 \end{tabular}
-		 \end{table}
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\label{tab:persistence_freq}
+    		\begin{tabular}{l | c c}
+    		 Motif & $\beta$ & $p$-value \\  
+    		 \hline
+    		 Intercept & 30.7 & \textless0.001 \\
+    		 \hline
+    		 Apparent competition & 2.20 & \textless0.001 \\
+    		 Direct competition & 0.255 & 0.528 \\
+    		 Omnivory & 13.9 & \textless0.001 \\
+    		 Three-species chain & 3.68 & \textless0.001 \\
+    		 \hline
+    		 Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.005; $R^{2}_c$=0.106} \\
+    		 \hline
+    		 \end{tabular}
+    		 \end{table}
 
 
 		\begin{table}[h!]
-		\caption{Correlation amongst counts of each motif in a species' species-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
-		\label{tab:freq_correlations}
-		\begin{tabular}{l | c c c c}
-			& AC & DC & Omni & Chain \\
-		\hline
-		DC    &  0.753 &       & & \\         
-		Omni  &  0.737 &  0.588 &   & \\   
-		Chain &  0.872 &  0.692 & 0.640 & \\
-		Other & -0.299 & -0.428 & 0.251 & -0.100 \\
-		\hline
-		\end{tabular}
-		\end{table}
+    		\caption{Correlation amongst counts of each motif in a species' species-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
+    		\label{tab:freq_correlations}
+    		\begin{tabular}{l | c c c c}
+    			& AC & DC & Omni & Chain \\
+    		\hline
+    		DC    &  0.753 &       & & \\         
+    		Omni  &  0.737 &  0.588 &   & \\   
+    		Chain &  0.872 &  0.692 & 0.640 & \\
+    		Other & -0.299 & -0.428 & 0.251 & -0.100 \\
+    		\hline
+    		\end{tabular}
+    		\end{table}
+
+        
+        When including positions, species-normalised roles explained similar variation in persistence time to count-based roles (Table~\ref{tab:freq_positions}).
+        Participation in all positions in our focal motifs was significantly related to persistence time; as species-normalised roles must sum to one positions in the `other' motifs were not included in the model.
+        Persistence time increased with increasing frequencies of the middle position in the three-species chain motif, top position in the direct competition motif, and bottom position in the apparent competition motif, and decreased with increasing frequencies of all other motifs.
+        
+
+		\begin{table}[h!]
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\label{tab:freq_positions}
+    		\begin{tabular}{l | c c}
+    		Motif & $\beta$ & $p$-value \\  
+    		\hline
+            Intercept	&	33.2	&	\textless0.001	\\
+            Chain: top	&	-4.82	&	\textless0.001	\\
+            Chain: bottom	&	-16.8	&	\textless0.001	\\
+            Chain: middle	&	26.7	&	\textless0.001	\\
+            DC: top	&	19.8	&	\textless0.001	\\
+            DC: bottom	&	-7.73	&	\textless0.001	\\
+            Omnivory: top	&	-28.2	&	\textless0.001	\\
+            Omnivory: middle	&	-18.6	&	\textless0.001	\\
+            Omnivory: bottom	&	-15.5	&	\textless0.001	\\
+            AC: top	&	-9.30	&	\textless0.001	\\
+            AC: bottom	&	40.8	&	\textless0.001	\\
+            \hline
+    		Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.081; $R^2_c$=0.148} \\
+    		\hline
+    		\end{tabular}
+    		\end{table}
+
+		\begin{table}[h!]
+    		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
+    		\label{tab:position_freq_correlations}
+    		\footnotesize
+    		\begin{tabular}{l | c c c c c c c c c c c}    
+        		&	Ch: t	&	Ch: b	&	Ch: m	&	DC: t	&	DC: b	&	Om: t	&	Om: m	&	Om: b	&	AC: t	\\
+        		\hline
+                Chain: bottom	&	-0.022	&		&		&		&		&		&		&		&		\\
+                Chain: middle	&	0.146	&	0.228	&		&		&		&		&		&		&		\\
+                DC: top	&	0.096	&	0.25	&	0.244	&		&		&		&		&		&		\\
+                DC: bottom	&	0.3	&	0.125	&	0.138	&	-0.409	&		&		&		&		&		\\
+                Omnivory: top	&	0.011	&	0.175	&	-0.368	&	-0.049	&	0.268	&		&		&		&		\\
+                Omnivory: middle	&	0.125	&	0.25	&	0.012	&	-0.083	&	0.073	&	-0.084	&		&		&		\\
+                Omnivory: bottom	&	-0.064	&	-0.08	&	0.035	&	-0.336	&	0.195	&	-0.104	&	0.044	&		&		\\
+                AC: top	&	0.299	&	0.271	&	-0.088	&	-0.096	&	0.298	&	-0.147	&	0.424	&	0.088	&		\\
+                AC: bottom	&	-0.146	&	-0.243	&	0.037	&	-0.043	&	0.023	&	0.179	&	-0.746	&	0.004	&	-0.158	\\
+                \hline
+            \end{tabular}
+            \end{table}
 
 
 	\subsection*{Network-normalised ($Z$-score) motif participation}
@@ -792,6 +943,59 @@
 		\hline
 		\end{tabular}
 		\end{table}
+
+
+        When including positions, network-normalised roles explained less variation in persistence time than count-based or species-normalised roles (Table~\ref{tab:Z_positions}).
+        Persistence time increased with increasing relative participation in the top and middle positions of the three-species chain motif, and with both positions of the direct competition and apparent competition motifs.
+        Greater relative participation in the bottom position of the three-species chain, any position in the omnivory motif, or the `other' positions was associated with shorter persistence time.
+        
+
+		\begin{table}[h!]
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\label{tab:Z_positions}
+    		\begin{tabular}{l | c c}
+    		Motif & $\beta$ & $p$-value \\  
+    		\hline
+            Intercept	&	34.7	&	\textless0.001	\\
+            Chain: top	&	0.149	&	\textless0.001	\\
+            Chain: bottom	&	-0.222	&	\textless0.001	\\
+            Chain: middle	&	3.78	&	\textless0.001	\\
+            DC: top	&	1.77	&	\textless0.001	\\
+            DC: bottom	&	0.663	&	\textless0.001	\\
+            Omnivory: top	&	-2.64	&	\textless0.001	\\
+            Omnivory: middle	&	-2.08	&	\textless0.001	\\
+            Omnivory: bottom	&	-0.814	&	\textless0.001	\\
+            AC: top	&	0.240	&	\textless0.001	\\
+            AC: bottom	&	3.85	&	\textless0.001	\\
+            Other	&	-0.950	&	\textless0.001	\\
+            \hline
+    		Variance explained & \multicolumn{2}{c}{$R^{2}_m$=0.049; $R^2_c$=0.136} \\
+    		\hline
+    		\end{tabular}
+    		\end{table}
+
+		\begin{table}[h!]
+    		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
+    		\label{tab:position_Z_correlations}
+    		\footnotesize
+    		\begin{tabular}{l | c c c c c c c c c c c c}    
+        		&	Ch: t	&	Ch: b	&	Ch: m	&	DC: t	&	DC: b	&	Om: t	&	Om: m	&	Om: b	&	AC: t	& AC: b\\
+        		\hline
+                Chain: bottom	&	-0.082	&		&		&		&		&		&		&		&		&		\\
+                Chain: middle	&	0.154	&	0.328	&		&		&		&		&		&		&		&		\\
+                DC: top	&	-0.031	&	0.146	&	0.154	&		&		&		&		&		&		&		\\
+                DC: bottom	&	0.265	&	0.029	&	0.09	&	-0.638	&		&		&		&		&		&		\\
+                Omniv.: top	&	-0.102	&	-0.103	&	-0.646	&	-0.129	&	0.109	&		&		&		&		&		\\
+                Omniv.: middle	&	0.096	&	0.122	&	0.02	&	-0.08	&	-0.105	&	-0.033	&		&		&		&		\\
+                Omniv.: bottom	&	-0.17	&	-0.07	&	0.048	&	-0.423	&	0.096	&	-0.206	&	0.04	&		&		&		\\
+                AC: top	&	0.024	&	-0.038	&	-0.245	&	-0.23	&	0.157	&	-0.246	&	0.057	&	0.029	&		&		\\
+                AC: bottom	&	-0.257	&	-0.185	&	-0.025	&	-0.037	&	0.03	&	0.029	&	-0.898	&	0.038	&	-0.054	&		\\
+                Other	&	0.153	&	0.299	&	0.367	&	-0.023	&	-0.031	&	-0.31	&	0.052	&	0.202	&	-0.377	&	0.006	\\
+            \hline
+            \end{tabular}
+            \end{table}
+
+
 
 
 \clearpage

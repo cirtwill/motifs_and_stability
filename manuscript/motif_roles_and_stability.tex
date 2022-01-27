@@ -204,6 +204,11 @@ alyssa.cirtwill@gmail.com\\
                 Participation in the count and $Z$-score motifs also may not be independent (e.g., species which participate in especially many interactions may have high counts and $Z$-scores of several motifs).
                 To illustrate these potential interdependences, we also present the correlations among all motifs for each version of motif participation, calculated using the function `lmer' as above.
                 
+                
+                To obtain more detail about the relationships between motif participation and persistence time, we repeated the analyses above while defining roles based on a species' participation in each unique position (e.g., top, middle, and bottom species in a three-species chain) in each motif.
+                As we are most interested in relationships between persistence and the apparent competition, direct competition, omnivory, and chain motifs, we grouped all other positions into an `other' category.
+                We calculated raw count, species-normalised, and network-normalised roles including positions as above.
+                
 
         \subsubsection*{Adding context: how does motif participation relate to simple roles?}
 
@@ -212,6 +217,7 @@ alyssa.cirtwill@gmail.com\\
             These LMs also included a random effect of global network structure.
             For ease of interpretation, we once again grouped the loop-containing motifs into an `other' group. 
             When using species-normalised motifs, we removed the `other' motifs from the model to avoid a rank-deficient model matrix.
+            As with the relationship between motif participation and persistence time, we repeated the analyses above for roles including positions within each of our focal motifs.
             
             
             To complete this background, we fit a regression of persistence against degree, trophic level, and their interaction, as well as a random effect of global network structure (Appendix \emph{S7}). 
