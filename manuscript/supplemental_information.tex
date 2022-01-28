@@ -532,6 +532,14 @@
 
 	\subsection*{Results}
 
+	    \begin{figure}[ht!]
+	        \centering
+	        \includegraphics[width=\textwidth]{figures/motifs_vs_degTL.eps}
+	        \caption{Degree was strongly and significantly associated with motif participation, but trophic level was much more weakly, though still significantly, associated with motif participation (Appendix \emph{S6}). For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
+	        \label{fig:motifs_degTL}
+	    \end{figure}
+
+
 		\textbf{Degree}
 
 			Degree increased significantly with the count of each motif (Table~\ref{tab:motifs_vs_deg}).
@@ -626,8 +634,17 @@
     			\end{tabular}
     			\end{table}
 
+
+		    \begin{figure}[ht!]
+		        \centering
+		        \includegraphics[width=\textwidth]{figures/positions_vs_TL.eps}
+		        \caption{A species' pattern of appearance in different positions within motifs was significantly correlated with trophic level, but motif roles explained very little variation in trophic level between species (Table~\ref{tab:positions_vs_STL}). For each version of motif participation, we show the marginal effect of changes in participation in a single position, calculated as for motifs above.}
+		        \label{fig:positions_TL}
+			    \end{figure}
+
+
 			\begin{table}[h!]
-    			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
+    			\caption{A species' shortest trophic level (STL) was weakly correlated with its participation in different positions within motifs. This association was strongest for un-normalised (count-based) motif participation.}
     			\label{tab:positions_vs_STL}
     			\begin{tabular}{l | c c | c c | c c}
     			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
@@ -703,6 +720,15 @@
 
 
 \section*{S8: Relating motif participation to persistence}
+
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
+        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID. For the raw count and network-normalised ($Z$-score) versions of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, we weighted participation in other motifs by their mean values. For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
+        \label{fig:persistence_motifs}
+	    \end{figure}
+
 	
 	\subsection*{Non-normalised (count) motif participation}
 
