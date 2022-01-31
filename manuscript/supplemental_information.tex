@@ -751,6 +751,13 @@
     		\end{tabular}
     		\end{table}
 
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=\textwidth]{figures/roles/persistence_vs_positions_count.eps}
+            \caption{Mean persistence time varied significantly with counts of appearance in different motif positions ($R^2$=0.079). The figure is based on the fixed effects in a regression of persistence against participation in positions in the apparent competition, direct competition, omnivory, three-species chain and motifs, with all positions in the `other' (loop-containing; not shown) motifs grouped, as well as random effects of global network structure and network ID. Top positions have prey but no predators within the motif, bottom positions have predators but no prey within the motif, and middle positions have both prey and predators within the motif. We show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values.}
+            \label{fig:persistence_positions_count}
+        \end{figure}
+
 
 		\begin{table}[h!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
@@ -944,6 +951,13 @@
 		\end{tabular}
 		\end{table}
 
+
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=\textwidth]{figures/roles/persistence_vs_positions_Z.eps}
+            \caption{Mean persistence time varied significantly with $Z$-scores of appearance in different motif positions ($R^2$=0.049). The figure is based on the fixed effects in a regression of persistence against participation in positions in the apparent competition, direct competition, omnivory, three-species chain and motifs, with all positions in the `other' (loop-containing; not shown) motifs grouped, as well as random effects of global network structure and network ID. Top positions have prey but no predators within the motif, bottom positions have predators but no prey within the motif, and middle positions have both prey and predators within the motif. We show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values.}
+            \label{fig:persistence_positions_Z}
+        \end{figure}
 
         When including positions, network-normalised roles explained less variation in persistence time than count-based or species-normalised roles (Table~\ref{tab:Z_positions}).
         Persistence time increased with increasing relative participation in the top and middle positions of the three-species chain motif, and with both positions of the direct competition and apparent competition motifs.
