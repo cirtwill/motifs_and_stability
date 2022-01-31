@@ -89,7 +89,7 @@ def format_linegraph(graph,normtype,simple,motif):
   elif normtype=='freq':
     graph.world.xmax=1
     graph.xaxis.tick.major=.2
-    graph.xaxis.label.configure(text='Frequency',char_size=1,just=2)
+    # graph.xaxis.label.configure(text='Frequency',char_size=1,just=2)
     graph.xaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
   else:
     graph.world.xmin=-3.65
@@ -115,7 +115,6 @@ def format_linegraph(graph,normtype,simple,motif):
   return graph
 
 def populate_graph(graph,datadict,normtype,simple,motif,motif_means):
-  print motif
   if normtype=='count':
     xs=range(1,1101,100)
   elif normtype=='freq':
@@ -179,35 +178,73 @@ def populate_graph(graph,datadict,normtype,simple,motif,motif_means):
 
 
 grace=MultiPanelGrace(colors=colors)
-# grace.add_label_scheme('dummy',['A','B','C','D','E','F'])
-# grace.set_label_scheme('dummy')
-# colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
-#                            scale=LINEAR_SCALE,autoscale=False)
-# colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
-# colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
-# colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
-
-for simple in ['TL']:
-# for simple in ['Deg','TL']:
-  for motif in ['6','36','38','12']:
-    for normtype in ['count','freq','Z']:
-      datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
-      datdict=read_file(datfile)
-      motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
-      # Need to update populate_graph
-      graph=grace.add_graph(Panel)
-      graph=format_linegraph(graph,normtype,simple,motif)
-      graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
+simple='TL'
+for motif in ['6','36','38','12']:
+  for normtype in ['count','freq','Z']:
+    datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
+    datdict=read_file(datfile)
+    motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
+    # Need to update populate_graph
+    graph=grace.add_graph(Panel)
+    graph=format_linegraph(graph,normtype,simple,motif)
+    graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
 
 
-  # graph.set_view(0.1,0.45,0.9,0.95)
-  grace.multi(rows=4,cols=3,vgap=.03,hgap=.05)
-  if simple=='Deg':
-    grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
-  else:
-    grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Trophic level",char_size=1.5,just=2,place='normal')
-  grace.hide_redundant_labels()
+# graph.set_view(0.1,0.45,0.9,0.95)
+grace.multi(rows=4,cols=3,vgap=.03,hgap=.05)
+if simple=='Deg':
+  grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
+else:
+  grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Trophic level",char_size=1.5,just=2,place='normal')
+grace.hide_redundant_labels()
 
-  grace.write_file('../../manuscript/figures/positions_vs_'+simple+'.eps')
-  print simple
+grace.write_file('../../manuscript/figures/positions_vs_'+simple+'.eps')
+
+
+grace=MultiPanelGrace(colors=colors)
+grace.add_label_scheme('dummy',['App. Comp.','Dir. Comp.','Omnivory','Chain','E','F'])
+grace.set_label_scheme('dummy')
+simple='Deg'
+normtype='freq'
+for motif in ['6','36','38','12']:
+  datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
+  datdict=read_file(datfile)
+  motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
+  # Need to update populate_graph
+  graph=grace.add_graph(Panel)
+  graph=format_linegraph(graph,normtype,simple,motif)
+  graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
+
+# graph.set_view(0.1,0.45,0.9,0.95)
+grace.multi(rows=2,cols=2,vgap=.03,hgap=.05)
+grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
+grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Frequency",char_size=1.5,just=2,place='normal')
+grace.hide_redundant_labels()
+
+grace.write_file('../../manuscript/figures/positions_vs_Deg_freq.eps')
+
+
+grace=MultiPanelGrace(colors=colors)
+for motif in ['6','36','38','12']:
+  for normtype in ['count','Z']:
+    datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
+    datdict=read_file(datfile)
+    motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
+    # Need to update populate_graph
+    graph=grace.add_graph(Panel)
+    graph=format_linegraph(graph,normtype,simple,motif)
+    graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
+
+
+# graph.set_view(0.1,0.45,0.9,0.95)
+grace.multi(rows=4,cols=2,vgap=.03,hgap=.05)
+grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
+# grace.set_row_xaxislabel(row=0,colspan=(None,None),label="Count",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
+# grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Z-score",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
+grace.hide_redundant_labels()
+
+grace.write_file('../../manuscript/figures/positions_vs_Deg_countZ.eps')
+
+
+
 
