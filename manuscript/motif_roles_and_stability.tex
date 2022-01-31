@@ -266,6 +266,7 @@ alyssa.cirtwill@gmail.com\\
         The relationships between motif participation and STL were extremely weak for all versions of motif participation (Appendix \emph{S6}).
         Nevertheless, a higher trophic level was associated with higher counts and $Z$-scores of the apparent competition motif and `other' motifs and higher $Z$-scores of direct competition.
         While significant, these trends explain so little variation in STL that motif participation and trophic level are likely to convey almost entirely different information about a species' place in the network.
+        Counts, frequencies, and $Z$-scores for appearing in different positions explained somewhat more variation in STL, but these relationships were will far weaker than those with degree.
     
 
     \subsection*{Persistence was related to simpler roles}
@@ -335,6 +336,9 @@ alyssa.cirtwill@gmail.com\\
         Motifs may be particularly useful when comparing species with similar degrees or trophic levels: the multi-dimensional nature of the motif role allows it to capture information which is lost in single-value measures, and participation in the omnivory motif shows a relationship to extinction risk which cannot be explained based on degree or trophic level.
         While the interpretation of motif roles remains challenging, our results suggest that they are nevertheless a valuable tool and that the omnivory motif in particular may be useful when predicting responses to future disturbances.
         
+
+    \subsection*{Speculation and alternative viewpoints}
+
 
 \section*{Acknowledgements}
 
@@ -434,30 +438,12 @@ alyssa.cirtwill@gmail.com\\
 
     \clearpage
 
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
-        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID. For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
-        \label{fig:persistence_motifs}
-    \end{figure}
-
 
     \begin{figure}[ht!]
         \centering
-        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_positions.eps}
-        \caption{Mean persistence time vs appearance in different motif positions participation. The figure is based on the fixed effects in a regression of persistence against participation in positions in the apparent competition, direct competition, omnivory, three-species chain and motifs, with all positions in the `other' (loop-containing; not shown) motifs grouped, as well as random effects of global network structure and network ID. Top positions have prey but no predators within the motif, bottom positions have predators but no prey within the motif, and middle positions have both prey and predators within the motif.}
+        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_positions_freq.eps}
+        \caption{Mean persistence time was significantly related to the frequency of appearing in different motif positions (R$^2$=0.081). The figure is based on the fixed effects in a regression of persistence against participation in positions in the apparent competition, direct competition, omnivory, three-species chain and motifs, with all positions in the `other' (loop-containing; not shown) motifs grouped, as well as random effects of global network structure and network ID. Top positions have prey but no predators within the motif, bottom positions have predators but no prey within the motif, and middle positions have both prey and predators within the motif. We show the marginal effects of increasing frequencies of each position. As position frequencies must sum to 1, we weighted participation in other motifs by their mean values.}
         \label{fig:persistence_positions}
-    \end{figure}
-
-
-
-    \clearpage
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=\textwidth]{figures/motifs_vs_degTL.eps}
-        \caption{Degree was strongly and significantly associated with motif participation, but trophic level was much more weakly, though still significantly, associated with motif participation (Appendix \emph{S6}). For the raw count and network-normalised ($Z$-score) versions of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, we weighted participation in other motifs by their mean values. For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
-        \label{fig:motifs_degTL}
     \end{figure}
 
     \clearpage
@@ -468,13 +454,6 @@ alyssa.cirtwill@gmail.com\\
         \includegraphics[width=\textwidth]{figures/positions_vs_Deg.eps}
         \caption{Counts of all positions in our four focal motifs increased with increasing degree. The frequencies of the bottom position in the direct competition motif and the bottom and middle positions in the three-species chain decreased with increasing degree while the frequencies of the other positions in our focal motifs increased. $Z$-scores of appearing in the bottom and middle positions of the three-species chain decreased with increasing degree while $Z$-scores of the other positions in our focal motifs increased. For each version of motif participation, we show the marginal effect of changes in participation in a single position, calculated as for motifs above.}
         \label{fig:positions_deg}
-    \end{figure}
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=\textwidth]{figures/positions_vs_TL.eps}
-        \caption{These are all over the place... not sure which results are even interesting. For each version of motif participation, we show the marginal effect of changes in participation in a single position, calculated as for motifs above.}
-        \label{fig:positions_TL}
     \end{figure}
 
 \clearpage
