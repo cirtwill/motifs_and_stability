@@ -60,7 +60,6 @@ def read_file(infile):
         name='intercept'
       elif len(name.split('.'))==3:
         motif=str(int(name.split('.')[0][1:]))
-        print motif
         preds=int(name.split('.')[1])
         preys=int(name.split('.')[2])
         name=(motif,preds,preys)
@@ -74,7 +73,7 @@ def read_file(infile):
   return lmdict
 
 def format_linegraph(graph,normtype,motif):
-  motdict={'6':'App. Comp.','36':'Dir. Comp.','38':'Omnivory','12':'Chain'}
+  # motdict={'6':'App. Comp.','36':'Dir. Comp.','38':'Omnivory','12':'Chain'}
   graph.yaxis.bar.linewidth=1
   graph.xaxis.bar.linewidth=1
   graph.frame.linewidth=1
@@ -96,7 +95,7 @@ def format_linegraph(graph,normtype,motif):
     graph.world.xmax=9.56
     graph.xaxis.tick.major=3
     graph.xaxis.label.configure(text='Z-score',char_size=1,just=2)
-    graph.yaxis.label.configure(text=motdict[motif],char_size=1,just=2,place='opposite')
+    # graph.yaxis.label.configure(text=motdict[motif],char_size=1,just=2,place='opposite')
 
   graph.world.ymin=0
   graph.world.ymax=50
@@ -111,7 +110,6 @@ def format_linegraph(graph,normtype,motif):
 
 def populate_graph(graph,datadict,normtype,motif,motif_means):
   # Actually I want to plot the marginal effects, not the whole thing...
-  print motif
   if normtype=='count':
     xs=range(1,1101,100)
   elif normtype=='freq':
@@ -131,24 +129,23 @@ def populate_graph(graph,datadict,normtype,motif,motif_means):
       else:
         otherpart=sum([(1-x)*float(motif_means[d]/sum(motif_means.values()))*datadict[d][0]for d in datadict.keys() if d not in [p,'intercept']])
       dats.append((x,motpart+otherpart))
-      # print x, motpart+otherpart, motif
     pointy=graph.add_dataset(dats)
     pointy.symbol.shape=0
     if p[1]==0: # Top
       pointy.line.linestyle=1
       j=12
-      if normtype=='Z':
-        pointy.legend='Top'
+      # if normtype=='Z':
+      pointy.legend='Top'
     elif p[2]==0: # Bottom
       pointy.line.linestyle=2
       j=21
-      if normtype=='Z':
-        pointy.legend='Bottom'
+      # if normtype=='Z':
+      pointy.legend='Bottom'
     else:
       pointy.line.linestyle=3
       j=14
-      if normtype=='Z':
-        pointy.legend='Middle'
+    # if normtype=='Z':
+      pointy.legend='Middle'
 
     # if normtype=='Z':
     #   pointy.legend=motif
@@ -156,7 +153,12 @@ def populate_graph(graph,datadict,normtype,motif,motif_means):
 
   # # graph.add_drawing_object(DrawText,text='STL',x=90,y=16,loctype='world',just=0,char_size=1)
   if normtype=='Z':
-    graph.legend.configure(box_linestyle=0,char_size=.5,loc=(-3,25),loctype='world')
+    graph.legend.configure(box_linestyle=0,char_size=.75,loc=(-3,15),loctype='world')
+  elif normtype=='count':
+    graph.legend.configure(box_linestyle=0,char_size=.75,loc=(50,15),loctype='world')
+  else:
+    graph.legend.configure(box_linestyle=0,char_size=.75,loc=(0.05,15),loctype='world')
+
 
   # # # Add an arrow for S
   # # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
@@ -173,29 +175,30 @@ def populate_graph(graph,datadict,normtype,motif,motif_means):
 ###############################################################################################
 
 
-grace=MultiPanelGrace(colors=colors)
-# grace.add_label_scheme('dummy',['A','B','C','D','E','F'])
-# grace.set_label_scheme('dummy')
 # colorbar = grace.add_graph(ElLogColorBar,domain=(0.02,0.2),
 #                            scale=LINEAR_SCALE,autoscale=False)
 # colorbar.yaxis.label.configure(text="Connectance",char_size=1,just=2)
 # colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
 # colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
 
-for motif in ['6','36','38','12']:
-  for normtype in ['count','freq','Z']:
-    datfile='../../data/summaries/persistence_'+normtype+'positions.tsv'
-    datdict=read_file(datfile)
-    means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
-    graph=grace.add_graph(Panel)
-    graph=format_linegraph(graph,normtype,motif)
-    graph=populate_graph(graph,datdict,normtype,motif,means)
-    print motif, normtype
+for normtype in ['count','freq','Z']:
+  grace=MultiPanelGrace(colors=colors)
+  grace.add_label_scheme('dummy',['App. Comp.','Dir. Comp.','Omnivory','Chain','E','F'])
+  grace.set_label_scheme('dummy')
+  # motdict={'6':'App. Comp.','36':'Dir. Comp.','38':'Omnivory','12':'Chain'}
+  for motif in ['6','36','38','12']:
+      datfile='../../data/summaries/persistence_'+normtype+'positions.tsv'
+      datdict=read_file(datfile)
+      means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
+      graph=grace.add_graph(Panel)
+      graph=format_linegraph(graph,normtype,motif)
+      graph=populate_graph(graph,datdict,normtype,motif,means)
+      print motif, normtype
 
-# graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=4,cols=3,vgap=.03,hgap=.05)
-grace.hide_redundant_labels()
-grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Mean persistence time",char_size=1.5,just=2)
+  # graph.set_view(0.1,0.45,0.9,0.95)
+  grace.multi(rows=2,cols=2,vgap=.03,hgap=.05)
+  grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Mean persistence time",char_size=1.5,just=2,position='normal')
+  grace.hide_redundant_labels()
 
-grace.write_file('../../manuscript/figures/roles/persistence_vs_positions.eps')
+  grace.write_file('../../manuscript/figures/roles/persistence_vs_positions_'+normtype+'.eps')
 
