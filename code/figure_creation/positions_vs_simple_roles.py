@@ -89,7 +89,7 @@ def format_linegraph(graph,normtype,simple,motif):
   elif normtype=='freq':
     graph.world.xmax=1
     graph.xaxis.tick.major=.2
-    # graph.xaxis.label.configure(text='Frequency',char_size=1,just=2)
+    graph.xaxis.label.configure(text='Frequency',char_size=1,just=2)
     graph.xaxis.ticklabel.configure(format='decimal',prec=1,char_size=.75)
   else:
     graph.world.xmin=-3.65
