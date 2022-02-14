@@ -15,11 +15,6 @@ Simulation project testing for links between species roles and their extinction 
  *This produces the extinction order and biomass files that are on Git*
 6) compile extinction orders and initial roles into one file per network (all removals) with code/roles_to_extorder.py: gives the roles/matched_to_extorder/ files. Also compiles motif participation (counts and normalised), degrees, and TL's (shortest TL). 
 
-
-- Fit partial least squares regressions of degree-normalized and network-normalized motifs (plus S, C, S:C, degree, STL) against persistence using code/stat_analysis/partial_least_squares_regression.R
-- plot coefficients from above across all optimum axes using code/figure_generation/PLS_coefficients.py (produces manuscript/figures/PLS/total_coefficients.eps)
-
-
 7) test roles! Test mean extinction order vs. role with code/stat_analyses/roles_vs_extorder_removal.R *slow* [[done]]
 8) When all permutations are finished, collect results using code/stat_analyses/roles_vs_extorder_collector.py. *This produces the permanova files that are on Git* [[done]]
 9) Display permanova results using code/figure_creation/roles_vs_extorder_permanova_summary.py and make table with code/figure_creation/create_tables_automatically.py [[done]]
