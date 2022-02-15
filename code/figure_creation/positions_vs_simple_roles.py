@@ -214,6 +214,7 @@ for motif in ['6','36','38','12']:
   # Need to update populate_graph
   graph=grace.add_graph(Panel)
   graph=format_linegraph(graph,normtype,simple,motif)
+  graph.xaxis.label.text=''
   graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
 
 # graph.set_view(0.1,0.45,0.9,0.95)

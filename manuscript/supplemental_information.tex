@@ -583,7 +583,7 @@
 
 		    \begin{figure}[ht!]
 		        \centering
-		        \includegraphics[height=\.75\textheight]{figures/positions_vs_Deg_countZ.eps}
+		        \includegraphics[width=\textwidth]{figures/positions_vs_Deg_countZ.eps}
 		        \caption{Counts of all positions in our four focal motifs increased with increasing degree. $Z$-scores of appearing in the bottom and middle positions of the three-species chain decreased with increasing degree while $Z$-scores of the other positions in our focal motifs increased. For each version of motif participation, we show the marginal effect of changes in participation in a single position, calculated as for motifs above.}
 		        \label{fig:positions_deg}
 		    \end{figure}
@@ -694,11 +694,6 @@
             \noindent where $\tau_{in}$ is the mean persistence time for species $i$, belonging to network $n$, $\Delta_i$ is the degree of species $i$, $\Upsilon_i$ is the shortest trophic level of species $i$, $S_{n}:C_{n}$ is a random effect of the size and connectance of network $n$, and $N_n$ is a random effect of belonging to network $n$.
             These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level.
 
-	\subsection*{Results}
-
-		As expected, persistence was significantly related to degree and trophic level (Table~\ref{tab:per_degTL}, Fig.~\ref{fig:persistence_degTL}).
-		Higher degree and lower trophic levels were associated with longer times to extinction, although a negative interaction means that an increase in degree is less beneficial for species with high trophic level.
-
 
 		\begin{table}[h!]
 			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
@@ -715,10 +710,15 @@
 			\end{tabular}
 			\end{table}
 
+	\subsection*{Results}
+
+		As expected, persistence was significantly related to degree and trophic level (Table~\ref{tab:per_degTL}, Fig.~\ref{fig:persistence_degTL}).
+		Higher degree and lower trophic levels were associated with longer times to extinction, although a negative interaction means that an increase in degree is less beneficial for species with high trophic level.
+
 
 	    \begin{figure}[h!]
 	        \centering
-	        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_degTL.eps}
+	        \includegraphics[width=.75\textwidth]{figures/roles/persistence_vs_degTL.eps}
 	        \caption{Mean persistence time increased with increasing degree for species at low trophic levels (STL 1-2) but decreased with increasing degree for species at high trophic levels (STL \textgreater2). The figure is based on the fixed effects in a regression of persistence against degree, trophic level, their interaction, and a random effect of global network structure.}
 	        \label{fig:persistence_degTL}
 	    \end{figure}
@@ -1088,7 +1088,7 @@
 \section*{S9: Motif labels}
 
 	\begin{figure}[h!]
-		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modeled in isolation and as potentially increasing the stability of empirical food webs. Labels are as in~\citet{Stouffer2007}.}
+		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modeled in isolation and as potentially increasing the stability of empirical food webs. Each motif contains one or more unique positions (e.g., the top, middle, and bottom positions in the three-species chain). Each unique position is coloured differently within each motif. Note that two species may occupy the same position within a motif (e.g., the two predators in a direct competition motif). Labels are as in~\citet{Stouffer2007}.}
 		\label{motifs}
 		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
 		\end{figure}
