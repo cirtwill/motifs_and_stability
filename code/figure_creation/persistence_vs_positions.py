@@ -181,6 +181,7 @@ def populate_graph(graph,datadict,normtype,motif,motif_means):
 # colorbar.yaxis.tick.configure(major=0.02,major_size=.5,minor_ticks=0)
 # colorbar.yaxis.ticklabel.configure(format='decimal',prec=2,char_size=.75)
 
+altnames={'count':'Count','freq':'Frequency','Z':'Z-score'}
 for normtype in ['count','freq','Z']:
   grace=MultiPanelGrace(colors=colors)
   grace.add_label_scheme('dummy',['App. Comp.','Dir. Comp.','Omnivory','Chain','E','F'])
@@ -192,12 +193,14 @@ for normtype in ['count','freq','Z']:
       means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
       graph=grace.add_graph(Panel)
       graph=format_linegraph(graph,normtype,motif)
+      graph.xaxis.label.text=''
       graph=populate_graph(graph,datdict,normtype,motif,means)
       print motif, normtype
 
   # graph.set_view(0.1,0.45,0.9,0.95)
   grace.multi(rows=2,cols=2,vgap=.03,hgap=.05)
   grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Mean persistence time",char_size=1.5,just=2,position='normal')
+  grace.set_row_xaxislabel(row=1,colspan=(None,None),label=altnames[normtype],char_size=1.5,just=2,position='normal')
   grace.hide_redundant_labels()
 
   grace.write_file('../../manuscript/figures/roles/persistence_vs_positions_'+normtype+'.eps')

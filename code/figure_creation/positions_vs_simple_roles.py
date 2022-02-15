@@ -32,6 +32,8 @@ colors.add_color(136,34,85,'Tol8')
 colors.add_color(170,68,153,'Tol9')
 colors.add_color(221,221,221,'Tol10')
 
+motdict={'6':'App. Comp.','36':'Dir. Comp.','38':'Omnivory','12':'Chain'}
+
 def read_means(meanfile):
   motif_means={}
   f=open(meanfile,'r')
@@ -74,7 +76,6 @@ def read_file(infile):
   return lmdict
 
 def format_linegraph(graph,normtype,simple,motif):
-  motdict={'6':'App. Comp.','36':'Dir. Comp.','38':'Omnivory','12':'Chain'}
   graph.yaxis.bar.linewidth=1
   graph.xaxis.bar.linewidth=1
   graph.frame.linewidth=1
@@ -225,22 +226,25 @@ grace.write_file('../../manuscript/figures/positions_vs_Deg_freq.eps')
 
 
 grace=MultiPanelGrace(colors=colors)
-for motif in ['6','36','38','12']:
-  for normtype in ['count','Z']:
+for normtype in ['count','Z']:
+  for motif in ['6','36','38','12']:
     datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
     datdict=read_file(datfile)
     motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
     # Need to update populate_graph
     graph=grace.add_graph(Panel)
     graph=format_linegraph(graph,normtype,simple,motif)
+    graph.yaxis.label.text=''
+    if normtype=='count':
+      graph.add_drawing_object(DrawText,text=motdict[motif],loctype='world',x=500,y=130,just=2,char_size=1)
     graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
 
 
 # graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=4,cols=2,vgap=.03,hgap=.05)
+grace.multi(rows=2,cols=4,vgap=.09,hgap=.03)
 grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
-# grace.set_row_xaxislabel(row=0,colspan=(None,None),label="Count",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
-# grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Z-score",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
+grace.set_row_xaxislabel(row=0,colspan=(None,None),label="Count",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
+grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Z-score",char_size=1,just=2,place='normal',perpendicular_offset=0.05)
 grace.hide_redundant_labels()
 
 grace.write_file('../../manuscript/figures/positions_vs_Deg_countZ.eps')
