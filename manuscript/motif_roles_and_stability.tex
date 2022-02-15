@@ -277,9 +277,13 @@ alyssa.cirtwill@gmail.com\\
 \section*{Discussion}
 
     We found that times to extinction were tightly correlated across removals. 
-    This suggests that the position of a focal species within a network can affect its risk of extinction following a disturbance regardless of where in the network the disturbance is applied. This result also justifies our use of mean times to extinction across removals as a measure of a species' overall risk.
-    Taken together, our results show that motif roles are related to mean times to extinction and that the omnivory motif may have a distinct effect from those of the other stable motifs, at least in body-mass structured vertebrate food webs.
-    Testing whether these results hold true for other types of networks (e.g., invertebrate food-webs not structured by body mass) will require alternative simulation approaches; however, the increasing availability of highly-resolved empirical data for interactions among invertebrates~\citep{Waldner2012} should allow researchers to create such simulations and test the generality of our results in the near future.
+    This suggests that the position of a focal species within a network can affect its risk of extinction following a disturbance regardless of where in the network the disturbance is applied. 
+    This result also justifies our use of mean times to extinction across removals as a measure of a species' overall risk.
+    
+    
+    Taken together, our results show that motif roles are related to mean times to extinction.
+    Species-normalised (frequency) motif roles including participation in different positions explained the most variation in time to extinction.
+    As expected, participation in positions in the apparent competition, direct competition, and three-species chain were especially associated with longer times to extinction.
 
 
  	\subsection*{Times to extinction are highly consistent}
@@ -297,6 +301,10 @@ alyssa.cirtwill@gmail.com\\
 	\subsection*{Motif roles relate to extinction risk}
 
 		Overall, our results show that species' motif roles were related to their time to extinction after a disturbance.
+        As species-normalised motif roles including positions explained most variation in time to extinction, we focus on those results below. 
+        Note however, that in all cases the counts, frequencies, or $Z$-scores of the four most stable motifs~\citep{Borrelli2015a} were most strongly associated with persistence time.
+        This supports earlier work suggesting
+        
 		Participating in more instances of the apparent competition, direct competition, and three-species chain motifs, having a higher frequency of omnivory motifs, or a higher $Z$-score of the three-species chain or direct competition motifs were most strongly associated with increasing time to extinction.
         Taken as a group, all other motifs had only weak relationships to stability.
 
@@ -337,6 +345,23 @@ alyssa.cirtwill@gmail.com\\
 
     \subsection*{Speculation and alternative viewpoints}
 
+        We note that our simulations reflect only body-mass structured vertebrate food webs, we note that 
+        Testing whether these results hold true for other types of networks (e.g., invertebrate food-webs not structured by body mass) will require alternative simulation approaches; however, the increasing availability of highly-resolved empirical data for interactions among invertebrates~\citep{Waldner2012} should allow researchers to create such simulations and test the generality of our results in the near future.
+
+    
+        Different network-building mechanisms are likely to result in networks with different motif frequencies overall.
+        This will lead to species roles dominated by different motifs and positions.
+        Nevertheless, as our four focal motifs are the most common in a variety of empirical networks~\citep{Stouffer2007} we expect that positions within them will remain important regardless of the type of food web under investigation.
+        
+        
+        We also note that our choice of extinction threshold is, in the absence of a best-practice consensus, arbitrary.
+        The choice of a lower threshold would permit species to remain extant at lower biomasses and lengthen times to extinction for the species most prone to reach low biomasses.
+        This could make it more difficult to detect relationships between motif roles and persistence if persistence times became more similar across species, but we do not expect that \emph{which} motifs are associated with persistence would change.
+        A lower extinction threshold might also reduce the impact of degree on persistence time as species would be more likely to retain all of their interaction partners.
+        However, as interaction strengths depended upon the abundance of a partner, the effect of retaining a very rare predator prey would be minimal.
+        
+
+
 
 \section*{Acknowledgements}
 
@@ -349,64 +374,6 @@ alyssa.cirtwill@gmail.com\\
 
 \clearpage
 \end{spacing}
-
-% \begin{landscape}
-% \section*{Tables}
-
-%     \begin{table}[h!]
-%         \centering
-%         \footnotesize
-%         \caption{Summary of analyses performed and results obtained therefrom. `S' refers to species richness, `C' connectance, `Ext' to mean time to extinction across removals, `STL' to shortest trophic level, and `Deg' to degree (number of interaction partners). }
-%         \label{overview_table}
-%         \begin{tabular}{m{6cm}|m{7.5cm}|m{8cm}}
-%         Question & Test & Result \\
-%         \hline
-%         Are roles (count) related to Ext? & 
-%         \begin{itemize}
-%             \item PERMANOVA of Ext vs. role
-%             \item one per S-C combination (60 total)
-%         \end{itemize} 
-%         & \begin{itemize} \item Yes. All PERMANOVA significant. \end{itemize} \\
-%         Are roles (count) similarly variable in species with long and short Ext? & 
-%         \begin{itemize}
-%             \item ANOVA of Disp(role) vs. Ext
-%             \item Disp(role) calculated by Betadisper
-%             \item one per S-C combination (60 total)
-%         \end{itemize}
-%         & \begin{itemize} \item No. All ANOVA significant. \end{itemize} \\
-%         Do species with long or short Ext have more variable roles? & \begin{itemize}
-%             \item LM: Disp(role) vs. Ext
-%         \end{itemize} & \begin{itemize} \item Roles variability significantly increases with increasing Ext \end{itemize} \\
-%         \hline
-%         Which motif counts, proportions, and $Z$-scores are most strongly related to Ext? (see Fig.~\ref{coefficient_sum}). & \begin{itemize}
-%             \item PLS: Ext vs. role, S, C, S:C, STL, Deg
-%         \end{itemize} & \begin{itemize}\item Ext decreases with omnivory but increases with other stable motifs. \end{itemize}\\
-%         \hline
-%         How do motifs vary with Deg? \newline(see Fig.~\ref{motif_vs_degTL}) & \begin{itemize} 
-%         \item LM: Count vs. Deg 
-%         \item LM: Proportion vs. Deg 
-%         \item LM: $Z$-score vs. Deg 
-%         \item One LM per motif (39 total)
-%         \end{itemize} 
-%         & 
-%         \begin{itemize}
-%             \item All counts increase with increasing Deg
-%             \item Prop. omnivory increases with Deg, other stable motifs decrease
-%             \item All $Z$-scores increase with Deg \end{itemize}\\
-%         How do motifs vary with STL? \newline(see Fig.~\ref{motif_vs_degTL}) & \begin{itemize} 
-%         \item LM: Count vs. STL 
-%         \item LM: Proportion vs. STL 
-%         \item LM: $Z$-score vs. STL
-%         \item One LM per motif (39 total)
-%         \end{itemize} &
-%         \begin{itemize}
-%             \item All counts increase with increasing STL
-%             \item Proportion of stable motifs except omnivory decrease with STL
-%             \item $Z$-scores of stable motifs decrease with STL
-%         \end{itemize} \\
-%         \end{tabular}
-%     \end{table}
-% \end{landscape}
 
 \clearpage
 
