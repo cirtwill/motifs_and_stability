@@ -148,7 +148,7 @@
 		% [[Could look at which removals cause the biggest deviation from the mean. Are species which have particular motif participation/trophic levels causing particularly odd extinction timings?]]
 
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{\textbf{A)} Time to extinction for each species within a simulated network was highly correlated across removals. Circles indicate the mean correlation of time to extinction across removals for all species in all 100 simulated networks for a given combination of species richness and connectance. Lines indicate the predicted correlation based on the fixed effects of a linear model including species richness, connectance, and the interaction between them, as well as a random effect of network. Symbol and line colors indicate connectance. \textbf{B)} Mean time to extinction across all species within a network was slightly longer in small and less-connected networks. As in \textbf{A)}, line colors indicate connectance. \textbf{C)} Mean time to extinction was more strongly associated with connectance than species richness, with more-connected networks having shorter mean times to extinction. Line colors indicate species richness.}
 			\label{extorder_corrs}
 			\includegraphics[width=.75\textwidth]{figures/extinction_order/extorder_correlations.eps}
@@ -182,14 +182,14 @@
 		Once again, all remained significant.
 		These significant PERMANOVAs indicate that species' overall motif motif participation are related to their mean times to extinction.
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
 			\label{permfig}
 			\includegraphics[height=.65\textheight]{figures/extinction_order/permanova_summary.eps}
 			\end{figure}
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_count}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
@@ -229,7 +229,7 @@
 			\end{tabular}
 			\end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its species-normalised (frequency) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_freq}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
@@ -269,7 +269,7 @@
 			\end{tabular}
 			\end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its network-normalised ($Z$-score) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_Z}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
@@ -340,20 +340,20 @@
         Moreover, the absolute differences in variability were small.
         Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
 
-		\begin{figure}[h!]
+		\begin{figure}[hb!]
 			\caption{Here we show the slope of variability in motif participation against the decile rank of time to extinction for species in networks of each size-connectance combination. In most cases, variability increased slightly but significantly with increasing time to extinction. Significant slopes are indicated with solid-coloured circles; non-significant slopes are indicated with empty squares.}
 			\label{fig:dispfig}
 			\includegraphics[height=.65\textheight]{figures/dispersion_lms.eps}
 			\end{figure}
         
-        \begin{figure}[h!]
+        \begin{figure}[hb!]
             \centering
             \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
             \caption{Variability of motif motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
             \label{fig:betadisper_Tukey}
         \end{figure}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable raw motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_count}
 			\footnotesize
@@ -395,7 +395,7 @@
 	    \end{tabular}
 	    \end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable species-normalised (frequency) motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_freq}
 			\footnotesize
@@ -437,7 +437,7 @@
 	    \end{tabular}
 	    \end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{For each combination of species richness (S) and connectance (C), some levels of mean time to extinction were associated with more variable network-normalised ($Z$-score) motif participation than others. This may cause false positives in the PERMANOVAs reported in tables~\ref{permtable_count}-\ref{permtable_Z}. In all cases, the variability of species' motif participation increased significantly with increasingly long mean times to extinction. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{betadisp_Z}
 			\footnotesize
@@ -485,7 +485,7 @@
 
 \section*{S5: Pooling loop-containing motifs} 
 	
-	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{Stouffer2007} and our simulated networks (means 8.99$\times10^{-4}$-2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{Borrelli2015a}.
+	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{Stouffer2007} and our simulated networks (mean frequencies of 8.99$\times10^{-4}$ to 2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{Borrelli2015a}.
 	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an `other' group.
 	This reduces our set of `motifs' to five and greatly simplifies interpretation of our analyses.
 	The manner in which the loop-containing motifs differed slightly depending on the version of motifs considered (detailed below).
@@ -549,7 +549,7 @@
 			This increase was especially strong for the `other' and three-species chain motifs (Fig. 4A, \emph{Main Text}).
 
 
-			\begin{table}[h!]
+			\begin{table}[hb!]
     			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation.}
     			\label{tab:motifs_vs_deg}
     			\begin{tabular}{l | c c | c c | c c}
@@ -590,7 +590,7 @@
 		    \end{figure}
 
 
-			\begin{table}[h!]
+			\begin{table}[hb!]
     			\caption{A species' degree was strongly correlated with its participation in different positions within motifs. This association was especially strong for un-normalised (count-based) motif participation.}
     			\label{tab:positions_vs_deg}
     			\begin{tabular}{l | c c | c c | c c}
@@ -622,7 +622,7 @@
 			Raw motifs were most closely related to STL and $Z$-scores the least.
             Adding positions within motifs explained little extra variation in shortest trophic levels (up to 10\%; Table~\ref{tab:positions_vs_STL}).
 
-			\begin{table}[h!]
+			\begin{table}[hb!]
     			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
     			\label{tab:motifs_vs_STL}
     			\begin{tabular}{l | c c | c c | c c}
@@ -652,7 +652,7 @@
 			    \end{figure}
 
 
-			\begin{table}[h!]
+			\begin{table}[hb!]
     			\caption{A species' shortest trophic level (STL) was weakly correlated with its participation in different positions within motifs. This association was strongest for un-normalised (count-based) motif participation.}
     			\label{tab:positions_vs_STL}
     			\begin{tabular}{l | c c | c c | c c}
@@ -696,7 +696,7 @@
             These regressions are intended only to confirm whether our simulations show the expected increase in persistence with degree and decrease in persistence with trophic level.
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
 			\label{tab:per_degTL}
 			\begin{tabular}{l | c c |}
@@ -717,7 +717,7 @@
 		Higher degree and lower trophic levels were associated with longer times to extinction, although a negative interaction means that an increase in degree is less beneficial for species with high trophic level.
 
 
-	    \begin{figure}[h!]
+	    \begin{figure}[hb!]
 	        \centering
 	        \includegraphics[width=.75\textwidth]{figures/roles/persistence_vs_degTL.eps}
 	        \caption{Mean persistence time increased with increasing degree for species at low trophic levels (STL 1-2) but decreased with increasing degree for species at high trophic levels (STL \textgreater2). The figure is based on the fixed effects in a regression of persistence against degree, trophic level, their interaction, and a random effect of global network structure.}
@@ -734,7 +734,7 @@
     \begin{figure}[ht!]
         \centering
         \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
-        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID. For the raw count and network-normalised ($Z$-score) versions of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, we weighted participation in other motifs by their mean values. For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
+        \caption{Mean persistence time varied with motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID. For the raw count and network-normalised ($Z$-score) versions of motif participation, we show the marginal effect of changes in participation in a single motif, holding participation in all other motifs constant at their mean values. For the species-normalised (frequency) motifs, which must sum to 1, we weighted participation in other motifs by their mean values. For each panel, we also give the marginal R$^2$ value for the corresponding regression (fixed effects only).}
         \label{fig:persistence_motifs}
 	    \end{figure}
 
@@ -742,12 +742,12 @@
 	\subsection*{Non-normalised (count) motif participation}
 
 		In a LMM of persistence against all motifs (including a random effect of global network structure), motif participation explained a small amount of variation ($R^{2}_m$=0.058; $R^2_c$=0.220).
-		In this model, greater participation in all motifs except for the omnivory motif was associated with \emph{greater} persistence (Table~\ref{tab:persistence_motifs}).
+		In this model, greater participation in all motifs except for the omnivory motif was associated with \emph{greater} persistence (Fig.~\ref{fig:persistence_motifs}, Table~\ref{tab:persistence_motifs}).
 		The effect of participation in the omnivory motif was, however, an order of magnitude smaller than the effects of participation in the apparent competition and direct competition and two orders of magnitude smaller than the effect of participation in the three-species chain motif.
 		The effect of participation in the loop-containing motifs was also small, similar to the omnivory motif.
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
     		\label{tab:persistence_motifs}
     		\begin{tabular}{l | c c}
@@ -772,7 +772,7 @@
 		Participation in the apparent competition motif was moderately and positively correlated with participation in the three-species chain motif.
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
     		\label{tab:count_correlations}
     		\begin{tabular}{l | c c c c}
@@ -794,7 +794,7 @@
         \end{figure}
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
     		\label{tab:count_positions}
     		\begin{tabular}{l | c c}
@@ -824,7 +824,7 @@
         Persistence increased with increasing participation in positions in the chain, direct competition, and apparent competition motifs, but decreased with increasing participation in positions in the omnivory and `other' motifs.
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
     		\label{tab:position_count_correlations}
     		\footnotesize
@@ -846,13 +846,6 @@
             \end{table}
             
 
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=\textwidth]{figures/roles/persistence_vs_motifs.eps}
-        \caption{Mean persistence time vs motif participation. \textbf{A)} Persistence increased with the counts of the apparent competition, direct competition, and three-species chain motifs. \textbf{B)} Persistence increased with the frequency of the omnivory motif. \textbf{C)} Persistence increased with the $Z$-score of participation in the three-species chain and direct compeition motifs, but decreased with increasing $Z$-score of participation in the omnivory motif. \\The figure is based on the fixed effects in a regression of persistence against participation in the apparent competition, direct competition, omnivory, three-species chain, and `other' (loop-containing) motifs, as well as random effects of global network structure and network ID.}
-        \label{fig:persistence_motifs}
-    \end{figure}
-
 	% # Alpha order of names is S5, S4, S2, S1
 	\subsection*{Species-normalised (frequency) motif participation}
 
@@ -862,7 +855,7 @@
 		Frequency of participation in the `other' motifs (not included in the LMM due to model rank deficiency) was moderately and positively correlated with participation in the omnivory motif and negatively correlated with participation in the remaining stable motifs.
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
     		\label{tab:persistence_freq}
     		\begin{tabular}{l | c c}
@@ -881,7 +874,7 @@
     		 \end{table}
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Correlation amongst counts of each motif in a species' species-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
     		\label{tab:freq_correlations}
     		\begin{tabular}{l | c c c c}
@@ -901,7 +894,7 @@
         Persistence time increased with increasing frequencies of the middle position in the three-species chain motif, top position in the direct competition motif, and bottom position in the apparent competition motif, and decreased with increasing frequencies of all other motifs.
         
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
     		\label{tab:freq_positions}
     		\begin{tabular}{l | c c}
@@ -924,7 +917,7 @@
     		\end{tabular}
     		\end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
     		\label{tab:position_freq_correlations}
     		\footnotesize
@@ -952,7 +945,7 @@
 		$Z$-scores for participation in the omnivory motif were strongly and negatively correlated with $Z$-scores for participation in the apparent competition and three-species chain motifs, and weakly and negatively correlated with $Z$-scores for participation in the direct competition and `other' motifs (Table~\ref{tab:Z_correlations}).
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure.  Motif participation was defined as the $Z$-score of participation in each motif, relative to the species' community. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
 		\label{tab:persistence_Z}
 		\begin{tabular}{l | c c}
@@ -972,7 +965,7 @@
 		 \end{table}
 
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
 		\caption{Correlation amongst counts of each motif in a species' network-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category. The `other' motifs were not included in the LMM; correlations between the four stable motifs and the pooled `other' motifs were calculated separately.}
 		\label{tab:Z_correlations}
 		\begin{tabular}{l | c c c c}
@@ -999,7 +992,7 @@
         Greater relative participation in the bottom position of the three-species chain, any position in the omnivory motif, or the `other' positions was associated with shorter persistence time.
         
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
     		\label{tab:Z_positions}
     		\begin{tabular}{l | c c}
@@ -1023,7 +1016,7 @@
     		\end{tabular}
     		\end{table}
 
-		\begin{table}[h!]
+		\begin{table}[hb!]
     		\caption{Correlation amongst counts of each motif in a species' non-normalised participation vector. The 8 loop-containing motifs have been grouped into a single `other' category.}
     		\label{tab:position_Z_correlations}
     		\footnotesize
@@ -1088,7 +1081,7 @@
 
 \section*{S9: Motif labels}
 
-	\begin{figure}[h!]
+	\begin{figure}[hb!]
 		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modeled in isolation and as potentially increasing the stability of empirical food webs. Each motif contains one or more unique positions (e.g., the top, middle, and bottom positions in the three-species chain). Each unique position is coloured differently within each motif. Note that two species may occupy the same position within a motif (e.g., the two predators in a direct competition motif). Labels are as in~\citet{Stouffer2007}.}
 		\label{motifs}
 		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
