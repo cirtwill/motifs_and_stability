@@ -111,7 +111,6 @@ def format_linegraph(graph,normtype,simple,motif):
   graph.yaxis.tick.configure(onoff='on',minor_ticks=0,major_size=.5,minor_size=.5,place='both',major_linewidth=1,minor_linewidth=1)
 
   graph.panel_label.configure(char_size=0.75,placement='iul',dy=0.02,dx=0.03)
-  # graph.legend.configure(char_size=0.75,box_linestyle=0,loctype='world',loc=(750,300))
 
   return graph
 
@@ -141,27 +140,26 @@ def populate_graph(graph,datadict,normtype,simple,motif,motif_means):
     if p[1]==0: # Top
       pointy.line.linestyle=1
       j=12
-      if normtype=='Z':
+      if normtype in ['Z','freq']:
         pointy.legend='Top'
     elif p[2]==0: # Bottom
       pointy.line.linestyle=2
       j=21
-      if normtype=='Z':
+      if normtype in ['Z','freq']:
         pointy.legend='Bottom'
     else:
       pointy.line.linestyle=3
       j=14
-      if normtype=='Z':
+      if normtype in ['Z','freq']:
         pointy.legend='Middle'
 
     pointy.line.configure(linewidth=3,color=j)
 
-  # graph.add_drawing_object(DrawText,text='STL',x=90,y=16,loctype='world',just=0,char_size=1)
+  print normtype, motif
   if normtype=='Z':
-    if simple=='Deg':
-      graph.legend.configure(box_linestyle=0,char_size=.5,loc=(0,120),loctype='world')
-    else:
-      graph.legend.configure(box_linestyle=0,char_size=.5,loc=(-3,1.5),loctype='world')
+    graph.legend.configure(box_linestyle=0,char_size=.75,loc=(-3,30),loctype='world')
+  else:
+    graph.legend.configure(box_linestyle=0,char_size=.75,loc=(0.7,120),loctype='world')
 
   # # # Add an arrow for S
   # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
@@ -177,53 +175,30 @@ def populate_graph(graph,datadict,normtype,simple,motif,motif_means):
 ###############################################################################################
 ###############################################################################################
 
-
-grace=MultiPanelGrace(colors=colors)
-simple='TL'
-for motif in ['6','36','38','12']:
-  for normtype in ['count','freq','Z']:
-    datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
-    datdict=read_file(datfile)
-    motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
-    # Need to update populate_graph
-    graph=grace.add_graph(Panel)
-    graph=format_linegraph(graph,normtype,simple,motif)
-    graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
-
-
-# graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=4,cols=3,vgap=.03,hgap=.05)
-if simple=='Deg':
-  grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
-else:
-  grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Trophic level",char_size=1.5,just=2,place='normal')
-grace.hide_redundant_labels()
-
-grace.write_file('../../manuscript/figures/positions_vs_'+simple+'.eps')
-
-
-grace=MultiPanelGrace(colors=colors)
-grace.add_label_scheme('dummy',['App. Comp.','Dir. Comp.','Omnivory','Chain','E','F'])
-grace.set_label_scheme('dummy')
-simple='Deg'
 normtype='freq'
-for motif in ['6','36','38','12']:
-  datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
-  datdict=read_file(datfile)
-  motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
-  # Need to update populate_graph
-  graph=grace.add_graph(Panel)
-  graph=format_linegraph(graph,normtype,simple,motif)
-  graph.xaxis.label.text=''
-  graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
+for simple in ['TL','Deg']:
+  grace=MultiPanelGrace(colors=colors)
+  grace.add_label_scheme('dummy',['App. Comp.','Dir. Comp.','Omnivory','Chain','E','F'])
+  grace.set_label_scheme('dummy')
+  for motif in ['6','36','38','12']:
+      datfile='../../data/summaries/positions_'+normtype+'_'+simple+'.tsv'
+      datdict=read_file(datfile)
+      motif_means=read_means('../../data/summaries/mean_positions_'+normtype+'.tsv')
+      # Need to update populate_graph
+      graph=grace.add_graph(Panel)
+      graph=format_linegraph(graph,normtype,simple,motif)
+      graph.xaxis.label.text=''
+      graph=populate_graph(graph,datdict,normtype,simple,motif,motif_means)
 
-# graph.set_view(0.1,0.45,0.9,0.95)
-grace.multi(rows=2,cols=2,vgap=.03,hgap=.05)
-grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
-grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Frequency",char_size=1.5,just=2,place='normal')
-grace.hide_redundant_labels()
+  grace.multi(rows=2,cols=2,vgap=.03,hgap=.05)
+  if simple=='Deg':
+    grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Degree",char_size=1.5,just=2,place='normal')
+  else:
+    grace.set_col_yaxislabel(col=0,rowspan=(None,None),label="Trophic level",char_size=1.5,just=2,place='normal')
+  grace.set_row_xaxislabel(row=1,colspan=(None,None),label="Frequency",char_size=1.5,just=2,place='normal')
+  grace.hide_redundant_labels()
 
-grace.write_file('../../manuscript/figures/positions_vs_Deg_freq.eps')
+  grace.write_file('../../manuscript/figures/positions_vs_'+simple+'_freq.eps')
 
 
 grace=MultiPanelGrace(colors=colors)
