@@ -81,7 +81,7 @@ Based on the referee(s) comments, the subject editor has recommended substantial
 At this stage, we strongly encourage authors to contribute with text (maximum 200 words each) for the sessions Speculations and Alternative Viewpoints (among co-authors) to appear after the Discussion session.  These sessions are not compulsory and aim at increasing the visibility of your published work and encourage debate in ecology. Contributions to these sessions can be after the manuscript undergoes peer review or just in the version before final acceptance for publication.   For detailed information go to: http://www.oikosjournal.org/authors/author-guidelines
 
 Author Contribution Indication
-The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the “Provide CRediT Contribution” link for each author in the ‘Authors & Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
+The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the ``Provide CRediT Contribution'' link for each author in the ‘Authors & Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
 
 There are two ways to submit your revised manuscript. You may use the link below to submit your revision online with no need to enter log in details:
 
@@ -215,9 +215,10 @@ Editor-in-Chief, Oikos
 
     \textbf{R:} In response to Reviewer 2's request for a simplified analysis, we no longer use the model described in the old Figure 2. We hope that our current figures are clearer.
 
+
   5. Request for discussion of low explanatory power [not done] [Kate]
 
-    lines 217, 232, 246: Seems like the predictor variables are not explaining much of the variation in mean time to extinction (around 20-25\%), which is not necessarily bad, but what do you think might be missing? Could be worth including in the discussion.
+    Lines 217, 232, 246: Seems like the predictor variables are not explaining much of the variation in mean time to extinction (around 20-25\%), which is not necessarily bad, but what do you think might be missing? Could be worth including in the discussion.
 
     \textbf{R:}
     Position in motif? Link strengths? Could also be effects of removed species, which have been shown to be large. (Check that there's something in discussion).
@@ -253,7 +254,6 @@ Editor-in-Chief, Oikos
   We hope that as sampling methods continuously improve an empirically-based study may become feasible in the future.
 
 
-2. 
 
   \begin{quotation}
   However, the overall methodology is quite complex, sometimes over-complex in my opinion. Even though I took time to understand it as fully as I could, I couldn’t fully understand the data analysis part, which is problematic as it prevented me to assess the adequation of the conclusions with the evidence. Regarding this statistical methods (e.g. PLS, predictor scaling, see my major comments), not only some points lack clarity, but they often lack a motivation compared to simpler and probably more suited alternatives. My main suggestion is to drastically simplify by removing the PLS, the simple linear regressions (L187 to L193) and you linear mixed models (L194 to 199), and replace all that by 3 multiple linear regressions over all the (6000)networks using time to extinction as the output variable and the following predictors: motif roles (count OR degree standardize OR Z-score), C, R, C:R, degree, STL. I think you would basically get all the answers you are seeking from these 3 models, or I missed something.
@@ -264,13 +264,15 @@ Editor-in-Chief, Oikos
   Accordingly, we have substantially simplified our approach and hope that it is now clearer.
   However, the proposed multiple linear regression will not suffice to answer our question of interest. We are primarily interested in how motif roles relate to time to extinction and secondarily interested in how motif roles relate to simpler measures (degree and trophic level). With respect to our first question: motif roles, as inherently multivariate descriptors, don't fit well in a linear regression together with univariate predictors. The univariate predictors may have larger effects than any motif individually, but this undervalues the effect of the motif role as a whole. The idea of simplifying a linear regression by removing some elements of a motif role also does not make much sense conceptually.
 
+
   Regarding our second question: we could indeed fit and interpret the suggested multiple linear regression. However, this would not tell us how motif roles vary with degree and STL. This is an essential but surprisingly neglected piece of background information that we feel makes an important contribution to efforts to interpret motif roles.
   We appreciate that this second goal was not clear in our previous draft and have revised the manuscript with this in mind.
 
 
   \begin{quotation}
-  Regarding the form, I think some parts of the methods and results section may be passed to appendix or presented in a much simplified way. I would suggest condensing the three first paragraphs of Results section, which basically say the same things, into one much shorter. One option I would like would be to keep just one type of motif roles in the main manuscript results (the Z-score?), and describe the others in the appendice.
+  Regarding the form, I think some parts of the methods and results section may be passed to appendix or presented in a much simplified way. I would suggest condensing the three first paragraphs of Results section, which basically say the same things, into one much shorter. One option I would like would be to keep just one type of motif roles in the main manuscript results (the Z-score?), and describe the others in the appendix.
   \end{quotation}
+
 
   \textbf{R:} [Kate] We thank the Reviewer for the excellent suggestion. We now present the results for XX motifs in detail and have moved the other versions to the Appendix.
 
@@ -310,11 +312,13 @@ Editor-in-Chief, Oikos
         We therefore want to explicitly identify relationships between a) trophic level and stability and b) trophic level and motifs in order to uncover whether a relationship between c) motifs and stability matches or does not match what we expect base on a) and b).
         We have revised the paragraph to make it clearer why we are including degree and trophic level in our analyses.
 
+        
+        Lines 73-85:
       
         \begin{quotation}
             Testing this hypothesis is complicated by the fact that species' motif roles are not independent of other aspects of fine-scale network structure. 
             In particular, a species' degree (number of predators and prey) is likely to strongly affect its motif role.
-            The more interaction partners a species has, the more motifs in can participate in (Fig.~\ref{motifs}).
+            The more interaction partners a species has, the more motifs in can participate in (Fig. 1).
             This is likely to lead species with higher degrees to participate in a wider variety of motifs as well as participate more frequently in the four common, stable motifs.
             Likewise, species with different trophic levels tend to have different motif roles~\citep{Cirtwill2018EcolLett}.
             As well as these correlations between simple network measures and motif roles, species with high in-degrees (more prey) or lower trophic levels are also generally less likely to go extinct~\citep{Cirtwill2018FoodWebs}.
@@ -338,6 +342,8 @@ Editor-in-Chief, Oikos
       \textbf{R:} We have rephrased this line as quoted below and hope that it is now clearer.
 
     
+        Lines 167-172:
+        
         \begin{quotation}
     		The species normalisation allows us to test whether trends in stability with motif participation are due to differences in the total number of motifs a species appears in, while the network normalisation allows us to test whether trends in stability are related to how unusual a species' motif participation is relative to other species in its community, rather than which specific motifs a species participates in.
         \end{quotation}
@@ -355,7 +361,7 @@ Editor-in-Chief, Oikos
 
     8. Questions about PLS method and study aim [done]
 
-        -L153-156:  I don’t think the PLS method is fitted to the purpose here and neither the simplest method to answer your question on quantifying the individual effect of each motif role/participation on the time to extinction. Regarding parsimony, as you have a ``large'' sample of networks, I don’t see a need for a latent space with reduced dimensionality. Regarding relevance, you wrote earlier (e.g. the previous sentence), and it’s meant by the coef you reconstruct later l.177, that you want here to estimate the effect of each motif role independently (question A), and now you just slide to another question that comes out of the blue: You want to get the effect of participation to a combination of motifs (question B) using PLS. But, if you want to answer question A, which I understood as your real goal, you can use a much simpler method: A multiple linear regression of the “time to extinction” (dependent variable) versus the motif roles, and your other variables (explanatory variables).
+        -L153-156:  I don’t think the PLS method is fitted to the purpose here and neither the simplest method to answer your question on quantifying the individual effect of each motif role/participation on the time to extinction. Regarding parsimony, as you have a ``large'' sample of networks, I don’t see a need for a latent space with reduced dimensionality. Regarding relevance, you wrote earlier (e.g. the previous sentence), and it’s meant by the coef you reconstruct later l.177, that you want here to estimate the effect of each motif role independently (question A), and now you just slide to another question that comes out of the blue: You want to get the effect of participation to a combination of motifs (question B) using PLS. But, if you want to answer question A, which I understood as your real goal, you can use a much simpler method: A multiple linear regression of the ``time to extinction'' (dependent variable) versus the motif roles, and your other variables (explanatory variables).
         
         \textbf{R:}
         The motif role is the 13-dimensional set of participation in all motifs. What we really want to understand is how the 'shape' of this vector relates to time to extinction. 
@@ -398,7 +404,7 @@ Editor-in-Chief, Oikos
 
     12. Confusion about de-scaled effects [done]
 
-        -L225: I’m totally lost with this sentence. What do you mean by “effect” here? Is it the sum of coefficients of the predictor across PLS axes? Or is it its product with the standard deviation of the predictor across the dataset? Then, you tell that the motif roles (counts) effects appear small because the variables are scaled, but the fitted coefficients should be comparable between variables, no?  Then, you talk about the “un-scaled effects” and here I don’t know what you mean and I find myself unable to interpret for comparing STL/degree with motif roles in all PLS models.
+        -L225: I’m totally lost with this sentence. What do you mean by ``effect'' here? Is it the sum of coefficients of the predictor across PLS axes? Or is it its product with the standard deviation of the predictor across the dataset? Then, you tell that the motif roles (counts) effects appear small because the variables are scaled, but the fitted coefficients should be comparable between variables, no?  Then, you talk about the ``un-scaled effects'' and here I don’t know what you mean and I find myself unable to interpret for comparing STL/degree with motif roles in all PLS models.
         
         \textbf{R:} As part of our methodological changes, we no longer include motifs and degree or trophic level in the same models. We hope that this avoids confusion as we do not have scaled and de-scaled models to compare.
 
@@ -418,15 +424,16 @@ Editor-in-Chief, Oikos
 
     14. Potential for larger motifs to affect stability [done]
 
-      L47-51: Another possible interpretation is that higher size motifs (or some whole network architectures), containing the three species motifs mentioned earlier, are determinant for stability. This would mean that the frequencies of the three species motifs themselves are not a driver but is induced by the frequency of higher size motifs. I think that determining if there exist some higher size motifs that explain networks stability better than the three species motifs is an open problem and would deserve discussion.
-
-      \textbf{R:} The Reviewer is correct that motifs of different sizes are closely related. However, our understanding is that smaller motifs constrain larger ones. The number of one-way and two-way interactions (two-species motifs) constrain the number of three-way motifs that can occur and whether any of the two-way motifs can occur. Similarly, no four-species motif which includes two predators consuming a common prey can occur if the three-species direct competition motif does not occur. Larger motifs may indeed by a better predictor of stability than three-species motifs, but we are not aware of any studies of these larger motifs which could motivate such a discussion. If the Reviewer can suggest any, we would be happy to include them. In the meantime, we have added a line stating that we focus on three-species motifs since they are the most-commonly studied size of motif with respect to stability.
-
-
-      \begin{quotation}
-          In addition to providing species-level information on network structure, there are early indications that some meso-scale structures may tend to stabilize food webs~\citep{Prill2005,Borrelli2015,Monteiro2016}. 
-          As three-species motifs are the best-studied in this context, we focus on this level of meso-scale structure.
-      \end{quotation}
+        L47-51: Another possible interpretation is that higher size motifs (or some whole network architectures), containing the three species motifs mentioned earlier, are determinant for stability. This would mean that the frequencies of the three species motifs themselves are not a driver but is induced by the frequency of higher size motifs. I think that determining if there exist some higher size motifs that explain networks stability better than the three species motifs is an open problem and would deserve discussion.
+        
+        \textbf{R:} The Reviewer is correct that motifs of different sizes are closely related. However, our understanding is that smaller motifs constrain larger ones. The number of one-way and two-way interactions (two-species motifs) constrain the number of three-way motifs that can occur and whether any of the two-way motifs can occur. Similarly, no four-species motif which includes two predators consuming a common prey can occur if the three-species direct competition motif does not occur. Larger motifs may indeed by a better predictor of stability than three-species motifs, but we are not aware of any studies of these larger motifs which could motivate such a discussion. If the Reviewer can suggest any, we would be happy to include them. In the meantime, we have added a line stating that we focus on three-species motifs since they are the most-commonly studied size of motif with respect to stability.
+        
+        Lines 38-43:
+        
+        \begin{quotation}
+    	These meso-scale structures, described by frequencies of \emph{motifs} (unique patterns of $n$ interacting species), define the local neighbourhood of a focal species and reflect its direct and close indirect interactions (Fig. 1).
+        As three-species motifs are the best studied, particularly with respect to stability~\citep{Stouffer2007,Borrelli2015,Borrelli2015a,Gilling2019}, we also focus on this size of motif.
+        \end{quotation}
 
 
 
@@ -440,11 +447,11 @@ Editor-in-Chief, Oikos
 
     16. Small language edits [done]
 
-      -L214: “a species” is repeated.
+      -L214: ``a species'' is repeated.
 
         \textbf{R:} Corrected
 
-      -L300: I think “which” may be removed from this sentence.
+      -L300: I think ``which'' may be removed from this sentence.
 
         \textbf{R:} Changed `by which' to `whereby'
 
