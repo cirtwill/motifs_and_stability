@@ -89,17 +89,17 @@
 
     \subsection*{S6: Relating motif participation to simple roles}
 
-    	Supplemental ?methods? and results relating motif participation to a species' degree and trophic level. Includes \textbf{Tables S7-S8}.
+    	Supplemental methods and results relating motif participation to a species' degree and trophic level. Includes \textbf{Tables S7-S8}.
 
 
     \subsection*{S7: Relating simple roles to persistence}
 
-        Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S5, Table S9}.
+        Supplemental methods and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S5, Table S9}.
 
 
     \subsection*{S8: Relating motif participation to persistence}
 
-    	Supplemental ?methods? and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S6, Tables S10-S15}.
+    	Supplemental results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S6, Tables S10-S15}.
 
     \subsection*{S9: Motif labels}
         
@@ -110,8 +110,6 @@
 \begin{spacing}{2.0}
 \linenumbers
 \section*{S1: Details of network generation}
-
-	[[Copied into Bayesian version per reviewer request - may need to simplify here? Or cite `with permission' from ourselves?]]
 
 	We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
 
@@ -646,7 +644,7 @@
 
 		    \begin{figure}[ht!]
 		        \centering
-		        \includegraphics[width=\textwidth]{figures/positions_vs_TL.eps}
+		        \includegraphics[width=\textwidth]{figures/positions_vs_TL_all.eps}
 		        \caption{A species' pattern of appearance in different positions within motifs was significantly correlated with trophic level, but motif roles explained very little variation in trophic level between species (Table~\ref{tab:positions_vs_STL}). For each version of motif participation, we show the marginal effect of changes in participation in a single position, calculated as for motifs above.}
 		        \label{fig:positions_TL}
 			    \end{figure}
