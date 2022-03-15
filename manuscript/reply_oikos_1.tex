@@ -147,6 +147,7 @@ Editor-in-Chief, Oikos
   François
   \end{quotation}
   
+  [Alyssa]
   We have taken to heart the point which you and Reviewer 2 have raised about the complexity of our methodology. We have substantially revised our statistical analyses to better focus on our key questions: 1) are species' motif roles related to their risk of extinction? and 2) if so, which motifs show the strongest relationships? We have also revised the text to more clearly explain our simulation methodology. We hope that this revision is clearer and easier to follow.
 
 \clearpage
@@ -182,34 +183,29 @@ Editor-in-Chief, Oikos
     \end{quotation}
 
 
-  2. Role dispersion not clear [not done]
+    2. Role dispersion not clear [done]
 
 
-    I am not clear on what role dispersion (line 146) is in this case. Is this the variance of the counts for each motif per species? In other words, what does it mean to have a more or less variable role (line 208)?
-
-    \textbf{R:} Dispersion is, essentially, a multivariate extension of variance which takes counts of all motifs into account simultaneously. 
-    Each species has only one role; we are calculating the dispersion of roles among species with different mean times to extinction. We find that there is a greater variety of roles among species with long times to extinction than short times to extinction. 
-
-
-    The relationship between city coordinates and temperature may be a useful analogy. Temperate cities are very widely dispersed in latitude and longitude, while very hot cities have lower dispersion as they are restricted to the tropics.
-
-
-    We have revised this paragraph to be clearer that dispersion is a measure across species rather than within a single species' role and hope that this makes our methodology clearer.
-
-
-    \begin{quotation}
-
-            As non-homogeneous dispersions within groups (i.e., differences in the variability of roles across species) can cause false-positive PERMANOVA results~\citep{Anderson2001}, we used a series of ANOVAs to test the homogeneity of dispersion among roles associated with each mean time to extinction (using the R~\citep{R} package \emph{vegan}~\citep{vegan}; \emph{Appendix S3}).
-            Finally, we tested whether long or short mean times to extinction were associated with more or less variable roles  using a linear model (fit using the R~\citep{R} base function `lm').
-
-    \end{quotation}    
+        I am not clear on what role dispersion (line 146) is in this case. Is this the variance of the counts for each motif per species? In other words, what does it mean to have a more or less variable role (line 208)?
+        
+        \textbf{R:} Dispersion is, essentially, a multivariate extension of variance which takes counts of all motifs into account simultaneously. 
+        Each species has only one role; we are calculating the dispersion of roles among species with different mean times to extinction. 
+        We find that there is a greater variety of roles among species with long times to extinction than short times to extinction.
+        The relationship between city coordinates and temperature may be a useful analogy. 
+        Temperate cities are very widely dispersed in latitude and longitude, while very hot cities have lower dispersion as they are restricted to the tropics.
+        
+        
+        This difference in dispersion is important because it violates one of the assumptions of the PERMANOVA test.
+        This is why we perform supplemental tests and do not place much weight upon the PERMANOVA results.
+        We recognise that the concept of role dispersion may be difficult for those not familiar with PERMANOVA tests.
+        We therefore have refered only to the violation of assumptions in the Main Text and discuss role dispersion in the Appendix for those who are interested in the details.
 
 
-  3. Request for explanation of MSEP in main text [done]
+    3. Request for explanation of MSEP in main text [done]
 
-    line 172: MSEP is defined in the Appendix but not the main text. I think it would be especially helpful if the text from lines 133-139 describing MSEP and providing a bit more detail on model selection was moved to the main text.
-
-    \textbf{R:} In response to Reviewer 2's request for a simplified analysis, we no longer use partial least squares. As such, MSEP is no longer used as a model-selection parameter.
+        line 172: MSEP is defined in the Appendix but not the main text. I think it would be especially helpful if the text from lines 133-139 describing MSEP and providing a bit more detail on model selection was moved to the main text.
+        
+        \textbf{R:} In response to Reviewer 2's request for a simplified analysis, we no longer use partial least squares. As such, MSEP is no longer used as a model-selection parameter.
 
 
   4. Confusion over de-scaled version of Figure 2 [done]
@@ -260,7 +256,7 @@ Editor-in-Chief, Oikos
 2. 
 
   \begin{quotation}
-  However, the overall methodology is quite complex, sometimes over-complex in my opinion. Even though I took time to understand it as fully as I could, I couldn’t fully understand the data analysis part, which is problematic as it prevented me to assess the adequation of the conclusions with the evidence. Regarding this statistical methods (e.g. PLS, predictor scaling, see my major comments), not only some points lack clarity, but they often lack a motivation compared to simpler and probably more suited alternatives. My main suggestion is to drastically simplify by removing the PLS, the simple linear regressions (l187 to l193) and you linear mixed models (l194 to 199), and replace all that by 3 multiple linear regressions over all the (6000)networks using time to extinction as the output variable and the following predictors: motif roles (count OR degree standardize OR Z-score), C, R, C:R, degree, STL. I think you would basically get all the answers you are seeking from these 3 models, or I missed something.
+  However, the overall methodology is quite complex, sometimes over-complex in my opinion. Even though I took time to understand it as fully as I could, I couldn’t fully understand the data analysis part, which is problematic as it prevented me to assess the adequation of the conclusions with the evidence. Regarding this statistical methods (e.g. PLS, predictor scaling, see my major comments), not only some points lack clarity, but they often lack a motivation compared to simpler and probably more suited alternatives. My main suggestion is to drastically simplify by removing the PLS, the simple linear regressions (L187 to L193) and you linear mixed models (L194 to 199), and replace all that by 3 multiple linear regressions over all the (6000)networks using time to extinction as the output variable and the following predictors: motif roles (count OR degree standardize OR Z-score), C, R, C:R, degree, STL. I think you would basically get all the answers you are seeking from these 3 models, or I missed something.
   \end{quotation}
 
 
@@ -283,14 +279,14 @@ Editor-in-Chief, Oikos
 
     1. Are perturbation and disturbance interchangeable? [done]
 
-      - l54: Now you use perturbation instead of disturbance: Are you talking about the same concept? You seem to use interchangeably those concepts in the following.
+      - L54: Now you use perturbation instead of disturbance: Are you talking about the same concept? You seem to use interchangeably those concepts in the following.
 
       \textbf{R:} Yes, we are talking about the same concept. We now use `disturbance' exclusively in order to avoid confusion.
 
 
     2. Motivation for using stable network unclear
 
-      - l80: Why networks “networks at stable equilibria”? You don’t justify this methodological choice here, and neither in the methodology section. My guess is that you initially need a network at equilibrium to isolate the effect of the introduced extinction on the targeted species extinction time from a potential effect of an initial disequilibrium state. Whatever is you real reason, it is important to motivate it to justify the extra methodological complexification required to obtain this equilibrium state.
+      - L80: Why networks ``networks at stable equilibria''? You don’t justify this methodological choice here, and neither in the methodology section. My guess is that you initially need a network at equilibrium to isolate the effect of the introduced extinction on the targeted species extinction time from a potential effect of an initial disequilibrium state. Whatever is you real reason, it is important to motivate it to justify the extra methodological complexity  required to obtain this equilibrium state.
 
       \textbf{R:} [Kate]
       Well he/she figured out why, but I guess we can state that explicitly
@@ -298,19 +294,34 @@ Editor-in-Chief, Oikos
 
     3. Specify disturbance earlier
 
-      - (l81) You only specify now (and not even fully) what was meant by disturbance/perturbation to the network: The removal of a species in the network. First, why using the term disturbance which is vague, while you could use extinction instead? Second, why do you chose this type of disturbance? It should be justified regarding the hypothesis you test. Plus, it doesnt appear consistent with the definitions of stability found in the corpus of articles from which you derive your hypotheses on stable motifs: Indeed, both the local stability (May, 1972) and the Quasi Sign stability (Allesina and Pascual, 2008, and later Borrelli, 2015) are related to the stability of populations to small perturbations around the equilibrium state. So why dont you define your disturbance as a small perturbation of species populations in your network instead of an extinction? I quickly read the cited articles and I may have missed some link with your work, but bringing a justification for this choice of disturbance, which determines time to extinction and is thus at the center of your methodology, is critically important.
+      - (L81) You only specify now (and not even fully) what was meant by disturbance/perturbation to the network: The removal of a species in the network. First, why using the term disturbance which is vague, while you could use extinction instead? Second, why do you chose this type of disturbance? It should be justified regarding the hypothesis you test. Plus, it doesn't appear consistent with the definitions of stability found in the corpus of articles from which you derive your hypotheses on stable motifs: Indeed, both the local stability (May, 1972) and the Quasi Sign stability (Allesina and Pascual, 2008, and later Borrelli, 2015) are related to the stability of populations to small perturbations around the equilibrium state. So why don't you define your disturbance as a small perturbation of species populations in your network instead of an extinction? I quickly read the cited articles and I may have missed some link with your work, but bringing a justification for this choice of disturbance, which determines time to extinction and is thus at the center of your methodology, is critically important.
 
       \textbf{R:} [Kate]
-      I guess "robustness" is actually the term usually used to talk about secondary extinctions following a primary extinction? Although I guess that's not about time to extinction but simply number of secondary extinctions. But it seems this reviewer doesn't really know the stability literature and doesn't know that local stability isn't something that we can just cause a small disturbance and then see how individual species respond. Maybe we should give a general "stability is a multifaceted concept that many people are interested in (refs). The aspect of stability we focus on is....".
+      I guess ``robustness'' is actually the term usually used to talk about secondary extinctions following a primary extinction? Although I guess that's not about time to extinction but simply number of secondary extinctions. But it seems this reviewer doesn't really know the stability literature and doesn't know that local stability isn't something that we can just cause a small disturbance and then see how individual species respond. Maybe we should give a general ``stability is a multifaceted concept that many people are interested in (refs). The aspect of stability we focus on is....''.
 
 
-    4. Controlling for trophic level not clear
+    4. Purpose of including trophic level not clear [done]
 
-      -(l77) This is unclear to me why you have to control for trophic level while testing the effect of motif roles on time to extinction? If the purpose is just to test if trophic level, which is indeed a simpler species level measure, is more suited to describe the species stability, then write it more clearly here.
+        -(L77) This is unclear to me why you have to control for trophic level while testing the effect of motif roles on time to extinction? If the purpose is just to test if trophic level, which is indeed a simpler species level measure, is more suited to describe the species stability, then write it more clearly here.
+        
+        \textbf{R:} As described above, we are not interested in testing whether trophic level is ``more suited'' to describe species stability, we are interested in testing the assertion that motif roles are \emph{also} related to stability.
+        As regards trophic level, we are interested in whether any relationship between motif roles and species extinction risk is merely due to underlying relationships between motif roles and trophic level and trophic level and extinction risk.
+        Note, however, that motif roles and trophic level are both measurements of a species' place in the network and neither causes the other, such that this relationship is correlative only.
+        We therefore want to explicitly identify relationships between a) trophic level and stability and b) trophic level and motifs in order to uncover whether a relationship between c) motifs and stability matches or does not match what we expect base on a) and b).
+        We have revised the paragraph to make it clearer why we are including degree and trophic level in our analyses.
 
-      \textbf{R:}
-      I thought the sentence before explained it pretty well, but maybe not.... It says "In addition, species with different75trophic levels tend to have different motif roles (Cirtwill & Ekl ̈of, 2018). Any test for a76relationship between motif roles and time to extinction should therefore take degree and77trophic level into account to avoid confounding these effects."
-
+      
+        \begin{quotation}
+            Testing this hypothesis is complicated by the fact that species' motif roles are not independent of other aspects of fine-scale network structure. 
+            In particular, a species' degree (number of predators and prey) is likely to strongly affect its motif role.
+            The more interaction partners a species has, the more motifs in can participate in (Fig.~\ref{motifs}).
+            This is likely to lead species with higher degrees to participate in a wider variety of motifs as well as participate more frequently in the four common, stable motifs.
+            Likewise, species with different trophic levels tend to have different motif roles~\citep{Cirtwill2018EcolLett}.
+            As well as these correlations between simple network measures and motif roles, species with high in-degrees (more prey) or lower trophic levels are also generally less likely to go extinct~\citep{Cirtwill2018FoodWebs}.
+            This means that relationships between motif roles and extinction risk could be describing relationships between degree and/or trophic level and both extinction risk and motif roles.
+            This possibility should be taken into account when interpreting any such relationship between motif roles and extinction.
+        \end{quotation}
+      
 
     5. Missing sentence?
 
@@ -322,75 +333,81 @@ Editor-in-Chief, Oikos
 
     6. Vague sentence
 
-      -l127: This last statement is a bit vague and misleading. Your network normalization will tell how the species stability is related with how much it participates to a given motif compared to the participation to this motif over all species of the community. The explanation provided l164 is much better.
+      -L127: This last statement is a bit vague and misleading. Your network normalization will tell how the species stability is related with how much it participates to a given motif compared to the participation to this motif over all species of the community. The explanation provided L164 is much better.
 
-      \textbf{R:} [Alyssa]
-      L127 says: "...while the network normalization indicates whether125trends in stability with participation in different motifs are related to how unusual each126species is within its community context." L164 says: " Third, to163understand whether it is the absolute frequency of motifs or the relative frequency164compared to other species in the network that is related to time to extinction" I think they say the same thing, but I perhaps the first sentence is a bit harder to understand for a non-native speaker. Maybe rephrase something like "...while the network normalization indicates whether trends in stability due to participation in different motifs are related to how unusual its motif participation is relative to other species in its community" Or is it more "how unusual within the community the motifs are that a species participates in"?
+      \textbf{R:} We have rephrased this line as quoted below and hope that it is now clearer.
 
-
-    7. Justify choice of threshold
-
-      -l132: Why 1e10-5? Did you found this to be a threshold below which all species tend to vanish? On the contrary, how likely is it that the population grows again after passing under such threshold? Does it exist instead a grounded rule to determine a threshold per species depending on its bodymass and biomass? It would be much better, but I’m not familiar with Lotka-Volterra dynamics.
-
-      \textbf{R:} We established this threshold because, like other simulation studies, we observed a few instances of populations declining to extremely low biomass and then rebounding. While such rebounds are rare, they are ecologically implausible and should be excluded. It is therefore common practice to set a threshold at which a population size is considered to be 0.
-      
-      
-      We are not aware of any grounded rule or consensus threshold value to use in such simulations, however. For example, comparable simulation studies use thresholds of 1e10-12 (Binzer et al., 2012) and 1e10-20 (Ryser et al., 2019) without an explicit justification of these thresholds in the text. Our threshold, while admittedly arbitrary, is intermediate in this range of previous thresholds.
-      
-      
-      To demonstrate whether the choice of threshold is likely to have influenced our results, we repeated a subset of our simulations using both of the thresholds mentioned above. Because we did not find network size or connectance to strongly influence time to extinction, and in the interest of completing this revision in a timely manner, we used only networks of 70 species and a connectance of 0.12 (intermediate size and connectance).
-    %   I assume this was relatively arbitrary and I don't remember how often the population grows again after passing under the threshold, but it did happen right? (Which was why we had to introduce it?) We also talked about a threshold depending on bodymass didn't we? I now don't remember why we decided not to use it. (Also interesting that we got a reviewer who doesn't know the stability literature or lotka volterra - how many of those are there who are motif experts? Maybe many?
-
-    %   - I don't remember how many came back ... it was arbitrary and I have no knowledge of an algorithm for getting thresholds based on body mass (don't see why biomass should matter). If there's a good way to extract body mass from the Julia code then maybe threshold could = 1 body mass?
+    
+        \begin{quotation}
+    		The species normalisation allows us to test whether trends in stability with motif participation are due to differences in the total number of motifs a species appears in, while the network normalisation allows us to test whether trends in stability are related to how unusual a species' motif participation is relative to other species in its community, rather than which specific motifs a species participates in.
+        \end{quotation}
 
 
-    8. Questions about PLS method and study aim
+    7. Justify choice of threshold [Kate to review]
 
-      -l153-156:  I don’t think the PLS method is fitted to the purpose here and neither the simplest method to answer your question on quantifying the individual effect of each motif role/participation on the time to extinction. Regarding parsimony, as you have a “large” sample of networks, I don’t see a need for a latent space with reduced dimensionality. Regarding relevance, you wrote earlier (e.g. the previous sentence), and it’s meant by the coef you reconstruct later l.177, that you want here to estimate the effect of each motif role independently (question A), and now you just slide to another question that comes out of the blue: You want to get the effect of participation to a combination of motifs (question B) using PLS. But, if you want to answer question A, which I understood as your real goal, you can use a much simpler method: A multiple linear regression of the “time to extinction” (dependent variable) versus the motif roles, and your other variables (explanatory variables).
+        -L132: Why 1e10-5? Did you found this to be a threshold below which all species tend to vanish? On the contrary, how likely is it that the population grows again after passing under such threshold? Does it exist instead a grounded rule to determine a threshold per species depending on its bodymass and biomass? It would be much better, but I’m not familiar with Lotka-Volterra dynamics.
 
-      \textbf{R:}
-      The motif role is the 13-dimensional set of participation in all motifs. What we really want to understand is how the 'shape' of this vector relates to time to extinction. The PERMANOVA test tells us whether the motif role as a whole is related to time to extinction, but not which motifs might be particularly important. An equivalent question in community ecology would be `Is diversity different between sites and, if so, what groups drive this difference?` Our main goal is closer to question B, but as question A is simpler we answered it `on the way'.
+        \textbf{R:} This is an arbitrary, but small threshold. In Lotka-Volterra simulations, the simulated populations never reach 0, so it is necessary to apply an artificial threshold. Otherwise, a species can sometimes reach a simulated abundance of >>1 individual but then recover to a large population.
+        We are not aware of any grounded rule or consensus threshold value to use in such simulations, however. These values are simply chosen to be quite small. For example, comparable simulation studies use thresholds of 1e10-12 (Binzer et al., 2012) and 1e10-20 (Ryser et al., 2019) without an explicit justification of these thresholds in the text. 
+        In response to the Reviewer's question and the Editor's suggestion, we have added a brief discussion of what might change with a different choice of threshold in the ``Speculations and Alternative Viewpoints'' section of the discussion. 
+        Although establishing a ``best practice'' choice of threshold is beyond the scope of the present manuscript, we hope this acknowledgement of potential threshold effects will ease the Reviewer's mind.
+        
+
+    8. Questions about PLS method and study aim [done]
+
+        -L153-156:  I don’t think the PLS method is fitted to the purpose here and neither the simplest method to answer your question on quantifying the individual effect of each motif role/participation on the time to extinction. Regarding parsimony, as you have a ``large'' sample of networks, I don’t see a need for a latent space with reduced dimensionality. Regarding relevance, you wrote earlier (e.g. the previous sentence), and it’s meant by the coef you reconstruct later l.177, that you want here to estimate the effect of each motif role independently (question A), and now you just slide to another question that comes out of the blue: You want to get the effect of participation to a combination of motifs (question B) using PLS. But, if you want to answer question A, which I understood as your real goal, you can use a much simpler method: A multiple linear regression of the “time to extinction” (dependent variable) versus the motif roles, and your other variables (explanatory variables).
+        
+        \textbf{R:}
+        The motif role is the 13-dimensional set of participation in all motifs. What we really want to understand is how the 'shape' of this vector relates to time to extinction. 
+        The PERMANOVA test tells us whether the motif role as a whole is related to time to extinction, but not which motifs might be particularly important. 
+        An equivalent question in community ecology would be `Is diversity different between sites and, if so, what groups drive this difference?` 
+        Our main goal is closer to question B, but as question A is simpler we answered it `on the way'.
 
 
-    As described above, we have simplified our methodology in this revision and hope that it is now clearer.
+        As described above, we have simplified our methodology in this revision.
+        We have also minimised the discussion of the PERMANOVA in the Main Text.
+        We hope that these changes make our focus clearer.
     
 
     9. Description of STL not clear
 
-      -l186: The description of STL in this sentence is unclear and not consistent with the description in the previous sentence, so you better remove this sentence.
+      -L186: The description of STL in this sentence is unclear and not consistent with the description in the previous sentence, so you better remove this sentence.
 
       \textbf{R:} [Kate]
       Actually this sentence is a continuation of the description of STL from the previous sentence: "shortest trophic level (STL): the length of the shortest food chain between the focal species184and any basal resource (Hairston & Hairston, 1993). Basal resources are assigned a trophic185level of one and other species are assigned an STL of one plus the STL of their prey." Maybe rephrase like "shortest trophic level (STL): calculated as the shortest food chain between the focal species and any basal resource (). To calculate STL, basal resources are assigned a trophic level of 1, and other species are assigned an STL of one than their lowest trophic level prey".
 
 
-    10. Another complaint that PLS not fit for purpose and misunderstanding of aim
+    10. Further questions about PLS approach [done]
 
-      -l187: Again, the chosen method doesn’t appear fit to the purpose. What you want to do is jointly measure the relative effects of the different predictors, i.e. the motif roles, degree and STL, on the time to extinction, which you can do with a multiple linear regression of the time to extinction (dependent variable Y) versus all predictors at once (explanatory). Actually, a multiple linear regression would answer two of your questions at once, namely the relative effect of each motif role compared to others AND the relative effect of motif roles VS other predictors, and simplify your methodology.
-      
-      \textbf{R:} No, we do not want to jointly measure the relative effects of the different predictors. We are not particularly interested in whether degree explains time to extinction better than participation in isolated motifs. Instead, we are specifically interested in how motif participation varies with degree and trophic level. Our aim here is to relate a species' motif role more explicitly to other network properties than has been done previously.
-
-      Refers to this sentence "We then fit a series of linear regressions relating degree or STL and the count (taken187from the raw motif role), proportion (taken from the degree-normalized motif role), or188Z-score (taken from the network-normalized motif role) of each motif in the species’ role189using a series of linear regressions (78 regressions total; Table 1"
+        -L187: Again, the chosen method doesn't appear fit to the purpose. What you want to do is jointly measure the relative effects of the different predictors, i.e. the motif roles, degree and STL, on the time to extinction, which you can do with a multiple linear regression of the time to extinction (dependent variable Y) versus all predictors at once (explanatory). Actually, a multiple linear regression would answer two of your questions at once, namely the relative effect of each motif role compared to others AND the relative effect of motif roles VS other predictors, and simplify your methodology.
+        
+        \textbf{R:} Unfortunately, the Reviewer has mis-understood our aim and this comment is rooted in that misunderstanding.
+        As stated above, we are not particularly interested in whether degree explains time to extinction better than participation in isolated motifs.
+        Rather, we want to know whether motif participation is at all related to extinction risk (this has not yet been shown except in isolated motifs).
+        We further want to know how motif participation varies with degree and trophic level, and whether these associations can completely explain any connection between motifs and extinction. 
+        Our aim here is to relate a species' motif role more explicitly to other network properties than has been done previously.
+        We hope that our simplified methodology and revised text make our goals, and the correspondence between these goals and our models, clearer.
 
 
     11. Comment not clear [done]
-
-      - l. If your predictors are scaled you should compare directly your the fitted coefficient values between predictors to assess which
-
-      \textbf{R:} As part of our methodological changes, we no longer include motifs and degree or trophic level in the same models. We hope that this avoids confusion as we do not have scaled and de-scaled models to compare.
+        
+        - L. If your predictors are scaled you should compare directly your the fitted coefficient values between predictors to assess which
+        
+        \textbf{R:} As part of our methodological changes, we no longer include motifs and degree or trophic level in the same models. We hope that this avoids confusion as we do not have scaled and de-scaled models to compare.
 
 
     12. Confusion about de-scaled effects [done]
 
-      -l225: I’m totally lost with this sentence. What do you mean by “effect” here? Is it the sum of coefficients of the predictor across PLS axes? Or is it its product with the standard deviation of the predictor across the dataset? Then, you tell that the motif roles (counts) effects appear small because the variables are scaled, but the fitted coefficients should be comparable between variables, no?  Then, you talk about the “un-scaled effects” and here I don’t know what you mean and I find myself unable to interpret for comparing STL/degree with motif roles in all PLS models.
-
-      \textbf{R:} As part of our methodological changes, we no longer include motifs and degree or trophic level in the same models. We hope that this avoids confusion as we do not have scaled and de-scaled models to compare.
+        -L225: I’m totally lost with this sentence. What do you mean by “effect” here? Is it the sum of coefficients of the predictor across PLS axes? Or is it its product with the standard deviation of the predictor across the dataset? Then, you tell that the motif roles (counts) effects appear small because the variables are scaled, but the fitted coefficients should be comparable between variables, no?  Then, you talk about the “un-scaled effects” and here I don’t know what you mean and I find myself unable to interpret for comparing STL/degree with motif roles in all PLS models.
+        
+        \textbf{R:} As part of our methodological changes, we no longer include motifs and degree or trophic level in the same models. We hope that this avoids confusion as we do not have scaled and de-scaled models to compare.
 
 
   \textbf{Minor comments:}
 
     13. Meaning of motif roles not clear in abstract [done]
 
-      L7  I’m unsure about meaning of a species motif roles at this stage. You define it later as the frequency with which it participates in different motifs (l64), but you should introduce it directly here or be more explicit.
+      L7  I’m unsure about meaning of a species motif roles at this stage. You define it later as the frequency with which it participates in different motifs (L64), but you should introduce it directly here or be more explicit.
 
       \textbf{R:} We have added a definition of motif roles to the abstract. To avoid confusion we have also retained the definition in the introduction.
 
@@ -438,14 +455,14 @@ Editor-in-Chief, Oikos
 
     17. Suggestion to do a multiple regression [done]
 
-      - l313: Which is typically what a multiple regression would disentangle…
+      - L313: Which is typically what a multiple regression would disentangle…
 
       \textbf{R:} See response to the Reviewer's opening comments, above.
 
 
     18. Request for Lotka-Volterra equations [Kate?]
 
-      Appendix l26: can you be more explicit on how you compute these metabolic rates? Further l46 you also say talk about a consumption rate. In this appendix, can you write the form of the Lotka-Volterra equations as a function of the body masses, the metabolic rates and the consumption rates? It would make the understanding .
+      Appendix L26: can you be more explicit on how you compute these metabolic rates? Further L46 you also say talk about a consumption rate. In this appendix, can you write the form of the Lotka-Volterra equations as a function of the body masses, the metabolic rates and the consumption rates? It would make the understanding .
 
       \textbf{R:}
       Fair, we just say they're "based on each species' body mass" - I assume it's a 3/4 power but I'll double check to remind myself.
