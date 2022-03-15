@@ -162,7 +162,7 @@ def populate_graph(graph,datadict,normtype,simple,motif,motif_means):
 
     if simple=='Deg':
       if normtype=='Z':
-        graph.legend.configure(box_linestyle=0,char_size=.75,loc=(-3,30),loctype='world')
+        graph.legend.configure(box_linestyle=0,char_size=.5,loc=(3,120),loctype='world')
       else:
         graph.legend.configure(box_linestyle=0,char_size=.75,loc=(0.7,120),loctype='world')
     else:
