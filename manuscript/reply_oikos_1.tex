@@ -42,6 +42,12 @@ Lund, Sweden}
 
 \opening{Dear Prof. Bonte:}
 
+Thank you for the time and effort you have put into reviewing our manuscript, and for the helpful feedback provided. In light of this feedback, we have made a number of changes to the manuscript. We believe these changes have substantially strengthened the manuscript. In particular, we have substantially simplified the methods and this section should now be much clearer. We now also look at \emph{where} in a motif species are (their motif position) as opposed to simply which motifs they appear in, in order to delve more deeply into how this may affect their stability. 
+
+We must also apologise for the long delay in returning this manuscript. It has been a particularly busy and difficult time for a number of reasons (largely Covid related), including one author moving continents. We also have to confess to having missed the statement of the deadline, so did not ask for an extension of time. We hope you will still accept this as a resubmission. 
+
+Below is a point-by-point response to the reviewers comments. Our responses follow the reviewers comments and are preceded by a bold \textbf{R}. Sections quoted from the manuscript are indented.
+
 %   My co-author and I are happy to invite you to consider our manuscript
 %   \emph{Stable motifs delay species loss in simulated food webs} for publication in \textbf{Oikos}.
 
@@ -154,6 +160,9 @@ Editor-in-Chief, Oikos
 
 \Large{\textbf{Reply to Reviewer 1}} [still needs preface.]
 
+\textbf{R:} Reviewer 1's only major wish was that we make the code available, which we now do (see below). We also address their minor comments below. Many of these are no longer relevant due to our simplification of methods. Those that are relevant have helped us refine and clarify the manuscript.
+
+\textbf{Comments by Reviewer 1:}
   In this work the author present a modelling study to explore how a species' participation in network motifs that are either stable or unstable relates to their extinction risk following a perturbation. The authors also discuss how species roles relate to other common network properties like species' degree and trophic position. 
 
   My only major wish is that the code was made available either as a supplement, or in a repository such as Zenodo or Figshare. The methods were fairly clear, but being able to review the code would be very helpful.
@@ -216,12 +225,38 @@ Editor-in-Chief, Oikos
     \textbf{R:} In response to Reviewer 2's request for a simplified analysis, we no longer use the model described in the old Figure 2. We hope that our current figures are clearer.
 
 
-  5. Request for discussion of low explanatory power [not done] [Kate]
+  5. Request for discussion of low explanatory power [done]
 
     Lines 217, 232, 246: Seems like the predictor variables are not explaining much of the variation in mean time to extinction (around 20-25\%), which is not necessarily bad, but what do you think might be missing? Could be worth including in the discussion.
 
     \textbf{R:}
-    Position in motif? Link strengths? Could also be effects of removed species, which have been shown to be large. (Check that there's something in discussion).
+    The reviewer raises a very good question. In reviewing the manuscript, we now also explore what portion of the variance is explained by trophic level or degree, separately from motif, and find that these species-level descriptors explain up to 0.23\% of the variance. We also discuss other variables which may be important in the discussion.
+    
+    \begin{quotation}
+        Since the trophic level and degree of the species being removed can also affect which species, if any, go secondarily extinct~\citep{Wootton2016a,Dunne2002}, the properties of both disturbed and non-disturbed species affect the ways in which extinctions can cascade through a food web.
+        
+        The stronger correlation of extinction orders in larger, more-connected networks, as well as the somewhat shorter mean times to extinction in these webs (Fig. S1, \emph{Appendix S1}) may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species. 
+		These short pathways are more likely to have strong effects on the population dynamics of species along them than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006}.
+		These stronger effects in turn likely explain why more secondary extinctions in large or highly-connected webs are due to indirect effects rather than direct loss of a prey or predator~\citep{Wootton2016a}. 
+
+    \end{quotation}
+    
+    We also discuss the importance of link strength, particularly in reference to the omnivory motif.
+    
+    \begin{quotation}
+        This could be related to the distribution of link strengths within a food web.
+        In small (3-5 species) model communities and soil food webs, weak interactions only promote stability if omnivory is present~\citep{Neutel2002,Emmerson2004} and the loss of the omnivorous species dramatically reduces stability~\citep{Emmerson2004}.
+        In our terms, if the top species in an omnivory motif is lost, the others will be strongly affected.
+
+    \end{quotation}
+    
+    Finally, in revising the manuscript we now also look at a species \emph{position} within motifs, in addition to simply the motifs it participates in. We find that motif position explains more variance than simply motif role, because some positions are more stabilizing than others.
+    
+    \begin{quotation}
+        Species tended to have longer times to extinction if their roles contained higher frequencies of the bottom position in the apparent competition motif, top position in the direct competition motif, or middle position in the three-species chain.
+        Higher frequencies of all other positions, notably all positions in the omnivory motif, were associated with shorter mean persistence times.
+
+    \end{quotation}
 
 
   6. Corrections to table references [done]
@@ -236,6 +271,8 @@ Editor-in-Chief, Oikos
 \clearpage
 
 \Large{\textbf{Reply to Reviewer 2}}
+
+\textbf{R:} Reviewer 2 notes that this is 'a very interesting and original question that is well grounded on earlier work in the literature' and thinks that it 'may help to broaden our theoretical understanding of trophic dynamics'. Their major concerns were that we use only artificial networks and that our methods were too complex. They also give a number of suggestions which have helped to clarify the network. We address all points below.
 
   \begin{quotation}
   Authors investigate the link between the motif roles of a species, i.e. its frequency of participation to each of the 13 triangular motifs inside a trophic network, and the time before it goes extinct after the primary extinction of another species in the network. Thus, they aim at identifying which motif roles contribute to a species stability or instability given its position in the network. They also try to disentangle the specific effect of the species motif roles from network level effects (richness, connectance) and other species level effects (trophic level, degree).
@@ -274,7 +311,7 @@ Editor-in-Chief, Oikos
   \end{quotation}
 
 
-  \textbf{R:} [Kate] We thank the Reviewer for the excellent suggestion. We now present the results for XX motifs in detail and have moved the other versions to the Appendix.
+  \textbf{R:}  We thank the Reviewer for the excellent suggestion. We now present the results for species-normalized motifs in detail and have moved the other versions to the Appendix.
 
 
   \textbf{Major comments:}
@@ -290,16 +327,28 @@ Editor-in-Chief, Oikos
 
       - L80: Why networks ``networks at stable equilibria''? You don’t justify this methodological choice here, and neither in the methodology section. My guess is that you initially need a network at equilibrium to isolate the effect of the introduced extinction on the targeted species extinction time from a potential effect of an initial disequilibrium state. Whatever is you real reason, it is important to motivate it to justify the extra methodological complexity  required to obtain this equilibrium state.
 
-      \textbf{R:} [Kate]
-      Well he/she figured out why, but I guess we can state that explicitly
+      \textbf{R:}
+      The reviewer is exactly right in their guess. We now state this explicitly.
+      
+      \begin{quotation}
+          We use an equilibrium community to ensure that secondary extinctions are caused by the initial disturbance (i.e. removal of a species) and not due to existing disequilibrium.
+      \end{quotation}
+      
 
 
     3. Specify disturbance earlier
 
       - (L81) You only specify now (and not even fully) what was meant by disturbance/perturbation to the network: The removal of a species in the network. First, why using the term disturbance which is vague, while you could use extinction instead? Second, why do you chose this type of disturbance? It should be justified regarding the hypothesis you test. Plus, it doesn't appear consistent with the definitions of stability found in the corpus of articles from which you derive your hypotheses on stable motifs: Indeed, both the local stability (May, 1972) and the Quasi Sign stability (Allesina and Pascual, 2008, and later Borrelli, 2015) are related to the stability of populations to small perturbations around the equilibrium state. So why don't you define your disturbance as a small perturbation of species populations in your network instead of an extinction? I quickly read the cited articles and I may have missed some link with your work, but bringing a justification for this choice of disturbance, which determines time to extinction and is thus at the center of your methodology, is critically important.
 
-      \textbf{R:} [Kate]
-      I guess ``robustness'' is actually the term usually used to talk about secondary extinctions following a primary extinction? Although I guess that's not about time to extinction but simply number of secondary extinctions. But it seems this reviewer doesn't really know the stability literature and doesn't know that local stability isn't something that we can just cause a small disturbance and then see how individual species respond. Maybe we should give a general ``stability is a multifaceted concept that many people are interested in (refs). The aspect of stability we focus on is....''.
+      \textbf{R:} [done]
+      
+      The reviewer is correct that stability is a multifaceted concept. We use both 'stability' and 'disturbance' as general terms which relate to other work on, and the importance of, this topic, while clearly defining exactly what we mean by stability and disturbance. Importantly, we are interested in 'stable' motifs, by a number of definitions, and we are here exploring a different dimension of stability. We chose "time to extinction after an initial extinction" as our measure of stability as this gives a clear and dynamic measure of the consequences of a sustained disturbance, such as an extinction. It is also a more realistic representation of the types of disturbances that ecosystems face today than the some of the mathematical definitions of stability such as local stability. We use the word 'disturbance' rather than 'extinction' to avoid confusion between extinction of the initial species and the secondary extinctions it causes. 
+      
+      We now make this clear in the introduction.
+      
+      \begin{quotation}
+	While 'stability' and 'disturbance' are multifaceted concepts \citep{Donahue2013,Radchuck2019}, we here focus on a dynamic measure of stability to a permanent disturbance --- the time to extinction after a primary extinction. 
+      \end{quotation}
 
 
     4. Purpose of including trophic level not clear [done]
@@ -331,8 +380,13 @@ Editor-in-Chief, Oikos
 
       -l.85 to l.88: I don't get where does that sentence come from. Is that derived from earlier results? Then they should be referred here. Otherwise, this is a result of your study and should be in the results section.
 
-      \textbf{R:} [Kate]
-      Oh this is a good point. This is in the abstract and we essentially say "these are our questions" and then say "Taken together, these85tests show that species are generally consistent in their vulnerability to disturbances,86regardless of the location in the network of that disturbance, and this vulnerability is87shaped by both motif roles and other network parameters." Maybe we could simply rephrase as "Taken together, the results we obtain for these tests show..."
+      \textbf{R:} 
+     We thank the reviewer for pointing out the gap in our logic here. We now phrase this more clearly as follows.
+      
+     \begin{quotation}
+         Taken together, the results we obtain for these tests show that species are generally consistent in their vulnerability to disturbances...
+     \end{quotation}
+
 
 
     6. Vague sentence
@@ -379,9 +433,14 @@ Editor-in-Chief, Oikos
 
       -L186: The description of STL in this sentence is unclear and not consistent with the description in the previous sentence, so you better remove this sentence.
 
-      \textbf{R:} [Kate]
-      Actually this sentence is a continuation of the description of STL from the previous sentence: "shortest trophic level (STL): the length of the shortest food chain between the focal species184and any basal resource (Hairston & Hairston, 1993). Basal resources are assigned a trophic185level of one and other species are assigned an STL of one plus the STL of their prey." Maybe rephrase like "shortest trophic level (STL): calculated as the shortest food chain between the focal species and any basal resource (). To calculate STL, basal resources are assigned a trophic level of 1, and other species are assigned an STL of one than their lowest trophic level prey".
-
+      \textbf{R:} [Done]
+      We have now clarified our definition of trophic level as follows.
+      
+      \begin{quotation}
+        Trophic levels, in turn, were calculated based on the food-web structure provided by the niche model. We use the shortest trophic level (STL), i.e. the shortest path between the species and a basal species.
+      \end{quotation}
+      
+      We also simply use "trophic level" where possible to avoid confusion.
 
     10. Further questions about PLS approach [done]
 
@@ -437,12 +496,18 @@ Editor-in-Chief, Oikos
 
 
 
-    15. Confusion about model relating extinction to STL [Kate but Alyssa review]
+    15. Confusion about model relating extinction to STL [Done but Alyssa review]
 
       -L194: In this paragraph, I’m totally lost: I don’t understand the question, nor how the models answer it. Are you trying to test whether the values of degrees/STL may affect the response of time to extinction to motif roles? The sentence must be clarified.
 
-      \textbf{R:} [Kate - say what we do now]
-      Referring to: "We also wanted to estimate how the associations between motif roles and degree or STL might affect the relationships between motif roles and mean time to extinction. To do this,195we fit two linear mixed-effect models relating mean time to extinction to a species’ degree196(or STL) and a random effect of the combination of network size and connectance. Both197models were fit using the function ‘lmer’ from the R (R Core Team, 2016) package198lmerTest(Kuznetsovaet al., 2017)."
+      \textbf{R:} [Done]
+      As a result of our revisions, we have simplified this analysis. We now use a simple linear model rather than a mixed effects model. The point of this analysis is to compare the importance of species-level metrics (i.e. trophic level and degree) to motif roles, to learn whether motif roles in fact tell us anything new.
+      
+      \begin{quotation}
+      To interpret the results of the analyses above, especially the LMMs, we must bear in mind the potential for motif participation to reflect differences in degree, trophic level, and global network structure. 
+      To establish this context, we therefore fit a series of linear models (LMs) relating degree, trophic level, network size, and connectance to each version of the motif role (\emph{Appendix S6}). 
+      \end{quotation}
+      
 
 
     16. Small language edits [done]
@@ -467,13 +532,19 @@ Editor-in-Chief, Oikos
       \textbf{R:} See response to the Reviewer's opening comments, above.
 
 
-    18. Request for Lotka-Volterra equations [Kate?]
+    18. Request for Lotka-Volterra equations [done]
 
       Appendix L26: can you be more explicit on how you compute these metabolic rates? Further L46 you also say talk about a consumption rate. In this appendix, can you write the form of the Lotka-Volterra equations as a function of the body masses, the metabolic rates and the consumption rates? It would make the understanding .
 
       \textbf{R:}
-      Fair, we just say they're "based on each species' body mass" - I assume it's a 3/4 power but I'll double check to remind myself.
-
+      To clarify this point, we now state the following in the appendix.
+      
+      \begin{quotation}
+      This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details)...... Metabolic and consumptive rates in the Lotka-Volterra model follow a negative quarter power-law relationship with each species' body mass (i.e. proportional to $M^{-0.25}$, where $M$ is the mass of a single, typical adult individual). 
+      \end{quotation}
+      
+      We do not write the full form of the Lotka Volterra equations as they are very long, and they are laid out clearly in \citep{Delmas2017}.
+      
 
     19. Suggestion to move line L111 earlier (to main text?) [done]
 
