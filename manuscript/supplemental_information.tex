@@ -111,7 +111,7 @@
 \linenumbers
 \section*{S1: Details of network generation}
 
-	We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function "nichemodel" within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
+	We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function ``nichemodel'' within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
 
 
 	After generating the network structure, we simulated community dynamics using the function ``simulate'' from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
@@ -177,11 +177,10 @@
 		Taken individually, each PERMANOVA for the raw count motif roles was significant (all $p$\textless0.02). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
 		For the species-normalised (frequency) motif roles, each PERMANOVA was again individually significant (all $p$\textless0.02) and remained significant after applying the correlated Bonferroni correction.
 		Likewise, for the network-normalised ($Z$-score) motif roles, each PERMANOVA was individually significant (all $p$\textless0.01) and remained significant after applying the correlated Bonferroni correction.
-		As a final check for inflated significance due to multiple testing, we applied the correlated Bonferroni correction to the full set of 180 PERMANOVAs.
-		Once again, all remained significant.
-		These significant PERMANOVAs indicate that species' overall motif motif participation are related to their mean times to extinction.
+		These significant PERMANOVAs indicate that species' overall motif participation are related to their mean times to extinction.
 
 		\begin{figure}[hb!]
+		    \centering
 			\caption{Here we show the pseudo-$F$ statistics for each PERMANOVA relating species' motif participation to their mean extinction order when all species in the web are separately removed. We fit one PERMANOVA per combination of motif definition, species richness and connectance. All PERMANOVAs were separately significant based on 9999 permutations, stratified by network. }
 			\label{permfig}
 			\includegraphics[height=.65\textheight]{figures/extinction_order/permanova_summary.eps}
@@ -332,14 +331,15 @@
 
 	\subsection*{Results}
 
-        For all three ways of defining motif motif participation (counts, species-normalization, and network-normalization), motif motif participation were not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_freq},~\ref{betadisp_Z}). 
+        For all three ways of defining motif participation (counts, species-normalization, and network-normalization), motif participation was not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_freq},~\ref{betadisp_Z}). 
         For most combinations of network size and connectance, variability increased slightly but significantly at higher deciles (Fig.~\ref{fig:dispfig}).
-        This means that there are a wider variety of motif motif participation associated with long times to extinction than short times to extinction.
+        This means that there are a wider variety of motif participation associated with long times to extinction than short times to extinction.
         However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{fig:betadisper_Tukey}).
         Moreover, the absolute differences in variability were small.
         Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
 
 		\begin{figure}[hb!]
+		    \centering
 			\caption{Here we show the slope of variability in motif participation against the decile rank of time to extinction for species in networks of each size-connectance combination. In most cases, variability increased slightly but significantly with increasing time to extinction. Significant slopes are indicated with solid-coloured circles; non-significant slopes are indicated with empty squares.}
 			\label{fig:dispfig}
 			\includegraphics[height=.65\textheight]{figures/dispersion_lms.eps}
@@ -348,7 +348,7 @@
         \begin{figure}[hb!]
             \centering
             \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
-            \caption{Variability of motif motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
+            \caption{Variability of motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
             \label{fig:betadisper_Tukey}
         \end{figure}
 
@@ -486,7 +486,7 @@
 	
 	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{Stouffer2007} and our simulated networks (mean frequencies of 8.99$\times10^{-4}$ to 2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{Borrelli2015a}.
 	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an `other' group.
-	This reduces our set of `motifs' to five and greatly simplifies interpretation of our analyses.
+	This reduces our set of `motifs' to five and greatly simplifies interpretation of our results.
 	The manner in which the loop-containing motifs differed slightly depending on the version of motifs considered (detailed below).
 
 
@@ -569,11 +569,11 @@
 
 
 			Degree increased significantly with an increasing frequency of the omnivory motif, but decreased significantly with increasing frequencies of the apparent competition, direct competition, and three-species chain motifs (Table~\ref{tab:motifs_vs_deg}; Fig. 4B, \emph{Main Text}).
-			Species-normalised motif participation explained less variation in degree ($\approx$ 60\%) than count-based motif participation, although the two role definitons are still strongly linked.
+			Species-normalised motif participation explained less variation in degree ($\approx$ 60\%) than count-based motif participation, although the two role definitions are still strongly linked.
 
 
 			As with counts, degree increased significantly with increasing $Z$-scores of all motifs (Table~\ref{tab:motifs_vs_deg}; Fig. 4C, \emph{Main Text}).
-			Network-normalised motif participation explained the least variation in degree ($\approx$ 50\%), although the two role definitons are still strongly linked.
+			Network-normalised motif participation explained the least variation in degree ($\approx$ 50\%), although the two role definitions are still strongly linked.
 			The increase in degree was strongest with increases in the omnivory motif and `other' motifs.
 
 
@@ -669,7 +669,7 @@
                 Omnivory: bottom	&	1.23$\times10^{-4}$	&	\textless0.001	&	-0.0790	&	\textless0.001	&	-0.00813	&	\textless0.001	\\
                 AC: top	&	9.57$\times10^{-4}$	&	\textless0.001	&	-0.0511	&	0.042	&	-0.0186	&	\textless0.001	\\
                 AC: bottom	&	-2.33$\times10^{-4}$	&	\textless0.001	&	-1.08	&	\textless0.001	&	-0.0983	&	\textless0.001	\\
-                Other	&	1.94$\times10^{-4}$	&	\textless0.001	&				&	0.0606	&	\textless0.001	\\
+                Other	&	1.94$\times10^{-4}$	&	\textless0.001	&	\multicolumn{2}{c|}{NA}			&	0.0606	&	\textless0.001	\\
     			\hline
     			$R^2$ & \multicolumn{2}{c|}{\tiny{$R^2_m$=0.077, $R^2_c$=0.216}} & 
     			\multicolumn{2}{c|}{\tiny{$R^2_m$=0.104, $R^2_c$=0.185}} & 
@@ -698,7 +698,7 @@
 		\begin{table}[hb!]
 			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
 			\label{tab:per_degTL}
-			\begin{tabular}{l | c c |}
+			\begin{tabular}{l | c c }
 			Predictor & $\beta$ & $p$-value \\
 			\hline
 			Intercept & 49.1 & \textless0.001 \\
@@ -1060,9 +1060,9 @@
 % 	Similar to a principal components analysis (PCA), PLS projects the observed variables (i.e., participation in different motifs) into a new space and identifies latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls} which, together, explain substantial variation in mean time to extinction.
 	
 	
-% 	First, we used mean time to extinction as the response and raw motif motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
-% 	We include additional measures of network structure and species motif participation as these may affect the motif motif participation available to each focal species.
-% 	Next, to test whether any relationship between raw motif motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
+% 	First, we used mean time to extinction as the response and raw motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
+% 	We include additional measures of network structure and species motif participation as these may affect the motif participation available to each focal species.
+% 	Next, to test whether any relationship between raw motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
 % 	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized motif participation as a predictor and all other variables identical to the first regression.
 	
 	
