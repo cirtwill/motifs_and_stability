@@ -333,7 +333,7 @@
 
         For all three ways of defining motif participation (counts, species-normalization, and network-normalization), motif participation was not homogeneously variable across deciles of mean time to extinction (Tables~\ref{betadisp_count},~\ref{betadisp_freq},~\ref{betadisp_Z}). 
         For most combinations of network size and connectance, variability increased slightly but significantly at higher deciles (Fig.~\ref{fig:dispfig}).
-        This means that there are a wider variety of motif participation associated with long times to extinction than short times to extinction.
+        This means that there are a wider variety of motif participation vectors associated with long times to extinction than short times to extinction.
         However, the difference in variability between deciles did not obviously increase between more distant deciles (e.g., deciles 2 and 10 vs. deciles 2 and 3; Fig.~\ref{fig:betadisper_Tukey}).
         Moreover, the absolute differences in variability were small.
         Therefore, despite the violation of some assumptions of the PERMANOVA tests we performed, we nevertheless view the results as highly suggestive.
@@ -348,7 +348,7 @@
         \begin{figure}[hb!]
             \centering
             \includegraphics[height=.75\textheight]{figures/Tukey_differences.eps}
-            \caption{Variability of motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version. Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
+            \caption{Variability of motif participation was not homogeneous between groups, but the difference in variability between deciles of mean time to extinction did not obviously increase with the difference between deciles and the absolute differences in variability between groups were low. We show the difference in variability between all pairs of deciles in all PERMANOVAs (60 PERMANOVAs per motif version). Significant differences are indicated in red and juddered left; non-significant differences are indicated in blue and juddered right.}
             \label{fig:betadisper_Tukey}
         \end{figure}
 
@@ -1037,46 +1037,7 @@
             \end{table}
 
 
-
-
 \clearpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-% \section*{Old PLSR material}
-
-% 	The PERMANOVAs indicate whether motif participation as a whole are related to mean time to extinction but do not reveal which motifs have the strongest effect on time to extinction.
-% 	To answer this question, we used a set of partial least squares (PLS) regressions to identify combinations of motifs which, together, explain substantial variation in time to extinction. 
-% 	Similar to a principal components analysis (PCA), PLS projects the observed variables (i.e., participation in different motifs) into a new space and identifies latent variables made up of linear combinations of the observed variables~\citep{Mevik2004,pls} which, together, explain substantial variation in mean time to extinction.
-	
-	
-% 	First, we used mean time to extinction as the response and raw motif participation as well as network size, connectance, the interaction between size and connectance, in-degree (number of prey), and shortest trophic level (STL)~\citep{Hairston1993} as predictors (Table~\ref{overview_table}).
-% 	We include additional measures of network structure and species motif participation as these may affect the motif participation available to each focal species.
-% 	Next, to test whether any relationship between raw motif participation and time to extinction might be due differences in the motif participation of species appearing in different total numbers of motifs, we fit a second PLS regression using degree-normalized motif participation instead of the raw motif participation, with all other variables identical to the first regression.
-% 	Third, to understand whether it is the absolute frequency of motifs or the relative frequency compared to other species in the network that is related to time to extinction, we fit a final PLS regression using network-normalized motif participation as a predictor and all other variables identical to the first regression.
-	
-	
-% 	We fit all regressions using the R~\citep{R} function 'plsr' from the package \emph{pls}~\citep{pls}.
-% 	To prevent differences in range and intercept values from influencing the fit of the PLS model, we centered and scaled all variables.
-% 	After initial fitting, we cross-validated each regression using 10 randomly-selected segments of the data and re-fitting the regression and then calculated the mean squared error of prediction (MSEP) for each model.
-% 	MSEP is a measure of the error obtained when re-fitting a PLS or PCA model on test data, and is commonly used to select the optimum number of components~\citep{Mevik2004}.
-% 	In order to balance obtaining a low MSEP with identifying a parsimonious model, we defined the optimum model as that with the fewest components that nevertheless had an MSEP within one standard deviation of the lowest MSEP obtained for any model.
-% 	Model selection was performed using the R~\citep{R} function 'selectNcomp' from the package \emph{plsr}~\citep{pls} using the method `onesigma'.
-% 	After selecting the optimum number of components for each model, we re-fit the PLS regression including only the selected components. 
-% 	We then summed the coefficients of each predictor across axes to obtain an overall measure of the effect of each predictor on mean time to extinction.
-
-% \clearpage
-
 
 \section*{S9: Motif labels}
 
