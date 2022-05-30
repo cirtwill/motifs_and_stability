@@ -114,28 +114,13 @@ Dear Dr. Cirtwill:
 
 Manuscript ID OIK-09436 entitled "Stable motifs delay species loss in simulated food webs" which you submitted to Oikos, has been reviewed.  The comments of the reviewer(s) and recommendation by the SE are included at the bottom of this letter.
 
-Based on the referee(s) comments, the subject editor has  recommended some minor revisions to your manuscript.  Therefore, I invite you to respond to the reviewer(s)' comments and revise your manuscript.
-
-At this stage, we strongly encourage authors to contribute with text (maximum 200 words each) for the sessions Speculations and Alternative Viewpoints (among co-authors) to appear after the Discussion session.  These sessions are not compulsory and aim at increasing the visibility of your published work and encourage debate in ecology. Contributions to these sessions can be after the manuscript undergoes peer review or just in the version before final acceptance for publication.   For detailed information go to: http://www.oikosjournal.org/authors/author-guidelines
 
 Author Contribution Indication
 The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the “Provide CRediT Contribution” link for each author in the ‘Authors & Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
 
-There are two ways to submit your revised manuscript. You may use the link below to submit your revision online with no need to enter log in details:
-
-*** PLEASE NOTE: This is a two-step process. After clicking on the link, you will be directed to a webpage to confirm. ***
-
-https://mc.manuscriptcentral.com/oikos?URL_MASK=d737de3c59d5484e88d3cd07f2cdeb8d
-
-Alternatively log into https://mc.manuscriptcentral.com/oikos and enter your Author Center. You can use the revision link or you will find your manuscript title listed under "Manuscripts with Decisions."  Under "Actions," click on "Create a Revision."  Your manuscript number has been appended to denote a revision.  Please DO NOT upload your revised manuscripts as a new submission.
-
-You will be unable to make your revisions directly on the original uploaded version of the manuscript.  Instead, revise your manuscript using a word processing program and save it on your computer.
 
 Please highlight the changes to your manuscript within the document by using the track changes mode in MS Word or by using bold or colored text. Once the revised manuscript is prepared, you can upload it and submit it through your Author Center.
 
-Please revise the manuscript carefully in line with suggestions made by the reviewer(s) and respond to the criticism in the space provided or as a separate uploaded cover letter.  In order to expedite the processing of the revised manuscript, please be as specific as possible in your response to the reviewer(s).
-
-IMPORTANT: Your original files are available to you when you upload your revised manuscript.  Please delete any redundant files before completing the submission.
 
 TEXT: Please read the instruction for authors thoroughly before resubmitting your manuscript.
 
@@ -144,8 +129,6 @@ FIGURES: Please ensure that your illustrations are of high quality (> 300 dpi), 
 REFERENCES: Please revise the reference list so that it complies with our style as seen in current issues of Oikos. Papers with incomplete or malformatted reference lists, will not be officially accepted for publication.
 
 MANUSCRIPT DETAILS: If any changes have been made to the title and/or abstract, please ensure that the relevant parts in the manuscript details within your Author Center are updated accordingly.
-
-Because we are trying to facilitate timely publication of manuscripts submitted to Oikos, your revised manuscript should be uploaded as soon as possible and not later than within 1 month from today.  If it is not possible for you to submit your revision in a reasonable amount of time, we may have to consider your paper as a new submission.  If you feel that you will be unable to submit your revision within the time allowed please contact me to discuss the possibility of extending the revision time.
 
 PLEASE: Submit your revised manuscript as MS Word or OpenOffice file(s). Submit your manuscript as one complete file, which includes: the text, legends, illustrations, tables and references.
 
@@ -164,7 +147,7 @@ Editor-in-Chief, Oikos
 {\large \textbf{Reply to Subject Editor}}
 
   \begin{quotation}
-    Recommendation by the Subject Editor (Dr. François Munoz):
+    Recommendation by the Subject Editor (Dr. Fran\c{c}ois Munoz):
 
     We have received three insightful reviews of this manuscript.
 
@@ -172,11 +155,11 @@ Editor-in-Chief, Oikos
 
     Sincerely,
 
-    François
+    Fran\c{c}ois
   \end{quotation}
 
   
-  \textbf{R:} 
+  \textbf{R:} We have taken the Reviewers' comments to heart and implemented all suggestions to the best of our ability. This includes adding a supplemental Mantel test and reporting all R$^2$ values as per Reviewer 1's request, refining our text as per Reviewer 2's suggestions, and addressing Reviewer 3's remaining questions in the discussion. We believe that these revisions have strengthened and clarified the manuscript and thank the Subject Editor and Reviewers for the thoughtful feedback.
 
 
 \clearpage
@@ -250,6 +233,10 @@ Editor-in-Chief, Oikos
 
     1. I would suggest removing the last sentence of the abstract. Nothing in the manuscript supports the idea of a causal relationship, and the sentence as written is too strongly worded.
 
+    \begin{quotation}
+      Previous research showed that certain motifs appear more frequently in stable webs; we show that this is at least in part because participating in these motifs provides protection from extinction.
+    \end{quotation}
+
     \smallskip
 
     \textbf{R:}
@@ -258,9 +245,13 @@ Editor-in-Chief, Oikos
 
     2. Missing ref. on line 72.
 
+    \begin{quotation}
+    (Donohue et al., 2013; Radchuk et al., 2019)
+    \end{quotation}
+
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} In our compilation of the manuscript both references are shown. When submitting our revision we have taken careful note that this reference is shown.
 
     \smallskip
 
@@ -274,17 +265,25 @@ Editor-in-Chief, Oikos
 
     4. One line 118, I think a more complete list of the (many) parameters of the model would help.
 
-    \smallskip
-
-    \textbf{R:}
-
-    \smallskip
-
-    5. L. 121 - this is not quite a LV model, as explained in the original publication; instead, this is the Y&I bioenergetic model adapted to multiple trophic levels. I would have also expected to see more discussion of rewiring, since the package now offers several models to do it.
+    % End of paragrpah summarizing network simulation
+    % Requirements: 50-100 species (steps of 10), C 0.02-0.2 (steps of 0.02), no disconnected species or components, path lengths fully resolved.
+    % Other model parameters baked into Julia? Is this what he wants?
 
     \smallskip
 
     \textbf{R:}
+
+    \smallskip
+
+    5. L. 121 - this is not quite a LV model, as explained in the original publication; instead, this is the Y\&I bioenergetic model adapted to multiple trophic levels. I would have also expected to see more discussion of rewiring, since the package now offers several models to do it.
+
+    \begin{quotation}
+    After generating the network structure, we simulated community dynamics using the function “simulate” from the Julia language package BioEnergeticFoodWebs (Delmas et al., 2019, 2017).
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:} Kate?
 
     \smallskip
 
@@ -292,7 +291,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} We did not intend any citation in line 129. Possibly you mean the reference to Hairston \& Hairston in line 130? This appears in our compilation of the manuscript but we have taken care to double-check this reference when submitting our revision.%  (Hairston & Hairston, 1993)
 
     \smallskip
 
@@ -300,7 +299,10 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \begin{quotation}
+    To ensure that species did not ‘recover’ from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1×10$^{−5}$.
+
+    \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. [[TO DO]]
 
 \clearpage
 
@@ -329,7 +331,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} % That is an incredibly good point ... And might not be too hard to test.
 
     \smallskip
 
@@ -339,7 +341,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} % Hmm. Also potentially a good point. Do we record these?
 
     \smallskip
 
@@ -347,10 +349,13 @@ Editor-in-Chief, Oikos
   \textbf{Minor comments}
 
     3. L72: I think something messed up in the pdf conversion as there is "(??)" where I think a reference is supposed to go
+    \begin{quotation}
+    (Donohue et al., 2013; Radchuk et al., 2019)
+    \end{quotation}
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} In our compilation of the manuscript both references are shown. When submitting our revision we have taken careful note that this reference is shown.
 
     \smallskip
 
@@ -358,7 +363,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} Corrected.
 
     \smallskip
 
@@ -366,7 +371,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} We have made the change as suggested. The sentence now reads ``Species with higher degrees can therefore likely participate in a wider variety of motifs, as well as participate more frequently in the four common, stable motifs."
 
     \smallskip
 
@@ -374,7 +379,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} We did not intend any citation in line 129. Possibly you mean the reference to Hairston \& Hairston in line 130? This appears in our compilation of the manuscript but we have taken care to double-check this reference when submitting our revision.%  (Hairston & Hairston, 1993)
 
     \smallskip
 
@@ -382,7 +387,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} No, this is the same concept. We have changed the line to read ``correlation of time to extinction" and thank the Reviewer for pointing out the inconsistency.
 
     \smallskip
 
@@ -390,11 +395,14 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} We have added ``motif" and thank the Reviewer for catching this.
 
     \smallskip
 
     9. L405: I think it would be helpful if you could be more specific about what "strongly affected" means. In this case are you suggesting that more strongly affected = more likely to go extinct?
+
+    \begin{quotation}
+    In small (3-5 species) model communities and soil food webs, weak interactions only promote stability if omnivory is present (Neutel et al., 2002; Emmerson \& Yearsley, 2004) and the loss of the omnivorous species dramatically reduces stability (Emmerson \& Yearsley, 2004). In our terms, if the top species in an omnivory motif is lost, the others will be strongly affected.
 
     \smallskip
 
@@ -406,7 +414,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} Corrected.
 
     \smallskip
 
