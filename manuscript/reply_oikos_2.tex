@@ -1,0 +1,423 @@
+\documentclass[12pt]{letter}
+
+% \usepackage[britdate]{SU-letter}
+\usepackage[britdate]{UH-letter}
+\usepackage{times}
+\usepackage{letterbib}
+\usepackage{geometry}
+\usepackage[round]{natbib}
+\usepackage{graphicx}
+\geometry{a4paper}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage[running]{lineno}
+\usepackage{amsmath,amsfonts,amssymb}
+% \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+
+%\usepackage{natbib}
+% \bibpunct[; ]{(}{)}{;}{a}{,}{;}
+
+\newenvironment{refquote}{\bigskip \begin{it}}{\end{it}\smallskip}
+
+\newenvironment{figure}{}
+
+\position{Postdoctoral fellow}
+\department{Department of Agricultural Sciences}
+\location{University of Helsinki}
+\cityzip{Helsinki, Finland}
+\telephone{}
+\fax{}
+\email{alyssa.cirtwill@helsinki.fi}
+\url{http://cirtwill.github.io}
+\name{Dr. Alyssa R. Cirtwill}
+
+\begin{document}
+
+\begin{letter}{\bf Prof. Dries Bonte\\
+Oikos Editorial Office \\
+Lund University \\
+Lund, Sweden}
+
+
+\opening{Dear Prof. Bonte:}
+
+
+    \closing{Best regards,}
+
+    \clearpage
+
+% % R1 preface
+
+    % Thank you for the time and effort you have put into reviewing our manuscript, and for the helpful feedback provided. 
+    % In light of this feedback, we have made a number of major changes to the manuscript. 
+    % Following suggestions from both reviewers, we have changed our statistical methods to rely on simpler linear models and have removed the PLS regression. 
+    % We now also look at \emph{where} in a motif species are (their motif position) as opposed to simply which motifs they appear in, in order to delve more deeply into how this may affect their stability. 
+    % Finally, we focus on one version of motif roles (species-normalised) in the main text and report results for the other versions in the SI.
+    % Because of these changes, which we believe these changes have substantially strengthened the manuscript, the results section is almost completely different from the previous version.
+    % We have also substantially simplified the methods and this section should now be much clearer. 
+
+
+    % We must also apologise for the long delay in returning this manuscript. It has been a particularly busy and difficult time for a number of reasons (largely Covid related), including one author moving continents. We also have to confess to having missed the statement of the deadline, so did not ask for an extension of time. We have submitted the revision as a new submission but include this reply and a tracked-changes document.
+
+    
+    % Below is a point-by-point response to the reviewers comments. Our responses  are preceded by a bold \textbf{R}. Sections quoted from the manuscript are indented.
+
+
+% % Initial coverletter
+
+%   My co-author and I are happy to invite you to consider our manuscript
+%   \emph{Stable motifs delay species loss in simulated food webs} for publication in \textbf{Oikos}.
+
+
+%   Motifs --unique configurations of small numbers of interacting species-- are becoming more common as a tool for describing the meso-scale structure of ecological networks (i.e., a species 'neighborhood' within the network, including direct and close indirect interactions). 
+%   The set of motifs a species participates in has already been linked to species' traits, taxonomy, and location.
+%   More recent research has also suggested that some 'stable' motifs, in isolation, dampen disturbances and facilitate persistence of the species within them while others do not.
+%   This suggests that species which participate in many of these `stable' motifs should be more likely to persist following a disturbance than species which participate in more of the `unstable' motifs.
+%   If this is the case, motifs offer the possibility of estimating extinction risk within all types of ecological communities, without necessarily having to know the structure of the entire network.
+
+
+%   Here we test this possibility using a large set of realistic simulated networks. In brief, we find that participating in more of the stable motifs is generally associated with longer persistence. Participating more often in the omnivory motif, however, is associated with shorter persistence. Motifs can therefore be added to the toolbox of researchers wishing to estimate species' risk of extinction. In particular, motifs offer a more detailed perspective on network structure than simpler measures such as degree (number of interaction partners) or trophic level and may be useful when comparing the risk of apparently similar taxa.
+
+
+%   Our results also offer a potential explanation for the variable effects of omnivory on community stability. In our networks, participating more often in the omnivory motif was associated with greater extinction risk. However, species with high numbers of interaction partners (which tend to have lower extinction risk) appeared more often in the omnivory motif than species with few interaction partners. The apparent effect of omnivory may therefore depend on the balance between the effect of omnivory \emph{per se} and the effect of numbers of interaction partners.
+
+
+%   Predicting which species are most likely to go extinct following a disturbance is one of the pressing ecological tasks of our time. 
+%   Motifs can contribute to solving this problem as they provide a rich description of the ways species fit into their communities which can be applied to any ecological community and, unlike whole-network measures of stability, can be calculated for a focal species or group even if the structure of an entire community is unknown.
+%   Moreover, our results advance the basic science of network ecology by establishing the relationships between motif participation, degree, and trophic level. 
+%   Because of the broad applicability and combination of theoretical and practical relevance of our results, we believe that \textbf{Oikos} is the best place to publish this manuscript. 
+%   We hope that you will agree and eagerly await your reply.
+
+
+%   A non-peer reviewed preprint of this manuscript has been posted to bioRxiv \\\noindent(doi: https://www.biorxiv.org/content/10.1101/2021.04.06.438635).
+
+% \closing{Best regards,}
+
+
+% Please highlight the changes to your manuscript within the document by using the track changes mode in MS Word or by using bold or colored text. Once the revised manuscript is prepared, you can upload it and submit it through your Author Center.
+
+
+% PLEASE: Submit your revised manuscript as MS Word or OpenOffice file(s). Submit your manuscript as one complete file, which includes: the text, legends, illustrations, tables and references.
+
+% Also submit, as separate files, all illustrations in high resolution (see above).
+
+
+% Sincerely,
+
+% Prof. Dries Bonte
+% Editor-in-Chief, Oikos
+
+{\large \textbf{Editor-in-Chief comments}}
+
+Dear Dr. Cirtwill:
+
+Manuscript ID OIK-09436 entitled "Stable motifs delay species loss in simulated food webs" which you submitted to Oikos, has been reviewed.  The comments of the reviewer(s) and recommendation by the SE are included at the bottom of this letter.
+
+Based on the referee(s) comments, the subject editor has  recommended some minor revisions to your manuscript.  Therefore, I invite you to respond to the reviewer(s)' comments and revise your manuscript.
+
+At this stage, we strongly encourage authors to contribute with text (maximum 200 words each) for the sessions Speculations and Alternative Viewpoints (among co-authors) to appear after the Discussion session.  These sessions are not compulsory and aim at increasing the visibility of your published work and encourage debate in ecology. Contributions to these sessions can be after the manuscript undergoes peer review or just in the version before final acceptance for publication.   For detailed information go to: http://www.oikosjournal.org/authors/author-guidelines
+
+Author Contribution Indication
+The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the “Provide CRediT Contribution” link for each author in the ‘Authors & Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
+
+There are two ways to submit your revised manuscript. You may use the link below to submit your revision online with no need to enter log in details:
+
+*** PLEASE NOTE: This is a two-step process. After clicking on the link, you will be directed to a webpage to confirm. ***
+
+https://mc.manuscriptcentral.com/oikos?URL_MASK=d737de3c59d5484e88d3cd07f2cdeb8d
+
+Alternatively log into https://mc.manuscriptcentral.com/oikos and enter your Author Center. You can use the revision link or you will find your manuscript title listed under "Manuscripts with Decisions."  Under "Actions," click on "Create a Revision."  Your manuscript number has been appended to denote a revision.  Please DO NOT upload your revised manuscripts as a new submission.
+
+You will be unable to make your revisions directly on the original uploaded version of the manuscript.  Instead, revise your manuscript using a word processing program and save it on your computer.
+
+Please highlight the changes to your manuscript within the document by using the track changes mode in MS Word or by using bold or colored text. Once the revised manuscript is prepared, you can upload it and submit it through your Author Center.
+
+Please revise the manuscript carefully in line with suggestions made by the reviewer(s) and respond to the criticism in the space provided or as a separate uploaded cover letter.  In order to expedite the processing of the revised manuscript, please be as specific as possible in your response to the reviewer(s).
+
+IMPORTANT: Your original files are available to you when you upload your revised manuscript.  Please delete any redundant files before completing the submission.
+
+TEXT: Please read the instruction for authors thoroughly before resubmitting your manuscript.
+
+FIGURES: Please ensure that your illustrations are of high quality (> 300 dpi), preferably as high resolution jpeg, pdf or gifs. Please avoid pixelated symbols and legends. The normal width of an illustration in Oikos is 7.5 cm which means that all legends and symbols should be easily readable at this size. When scientifically motivated, a larger width, 11 cm, is also available.
+
+REFERENCES: Please revise the reference list so that it complies with our style as seen in current issues of Oikos. Papers with incomplete or malformatted reference lists, will not be officially accepted for publication.
+
+MANUSCRIPT DETAILS: If any changes have been made to the title and/or abstract, please ensure that the relevant parts in the manuscript details within your Author Center are updated accordingly.
+
+Because we are trying to facilitate timely publication of manuscripts submitted to Oikos, your revised manuscript should be uploaded as soon as possible and not later than within 1 month from today.  If it is not possible for you to submit your revision in a reasonable amount of time, we may have to consider your paper as a new submission.  If you feel that you will be unable to submit your revision within the time allowed please contact me to discuss the possibility of extending the revision time.
+
+PLEASE: Submit your revised manuscript as MS Word or OpenOffice file(s). Submit your manuscript as one complete file, which includes: the text, legends, illustrations, tables and references.
+
+Also submit, as separate files, all illustrations in high resolution (see above).
+
+Once again, thank you for submitting your manuscript to Oikos and I look forward to receiving your revision.
+
+Sincerely,
+
+Prof. Dries Bonte
+Editor-in-Chief, Oikos
+
+
+\clearpage
+
+{\large \textbf{Reply to Subject Editor}}
+
+  \begin{quotation}
+    Recommendation by the Subject Editor (Dr. François Munoz):
+
+    We have received three insightful reviews of this manuscript.
+
+    Based on the recommendations of the reviewers and on my own reading, I think the paper could be published after rather moderate revision. Please address carefully all the specific comments of the reviewers.
+
+    Sincerely,
+
+    François
+  \end{quotation}
+
+  
+  \textbf{R:} 
+
+
+\clearpage
+
+{\large\textbf{Reply to Reviewer 1}} 
+
+  \begin{quotation}
+
+    In this manuscript the authors study by numerical simulation one of the numerous notion of “stability” of food webs. More precisely, they build food webs allometrically based on body size. Then they simulated the food webs and when a steady state is reached they removed, in turn, each of the constituting species. They, the authors measure the time of extinction of the other species. Finally, they study these extinctions as function of the role of the species in motifs and the role of the motif. In general it’s a well-written manuscript, easy to follow and that go quite deep into understanding the role of motifs on food-web dynamics. I think the paper deserved to be published, but I have few major comments that need to be addressed:
+
+  \end{quotation}
+
+  \textbf{R:} We appreciate the Reviewer's suggestions for alternative statistical tests and clearer presentation of our results, and have implemented these suggestions.
+  % Kind of a dick, but easy to address. Fine.
+
+  \smallskip
+
+  \textbf{Major comments:}
+
+    1. Confusion over $Z$-score normalisation
+
+    \begin{quotation}
+      Line 171: the concept of “networks normalized” motif roles, defined as a Z-score is not well defined. Frankly speaking, I do not know how this was computed. Please be specific and provide the formula. Also, the notion of Z-score is strongly grounded in statistics, so please another terminology, as I guess here is it not related the Z-score as defined in statistics.
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:} This normalisation is computed as a classic $Z$-score: [[give formula]]. We have added the formula to make this crystal clear.
+
+    \smallskip
+
+    2. Suggestion to use a Mantel test instead of PERMANOVA
+
+    \begin{quotation}
+      PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don’t think that PERMANOVA’s is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species’s motif participation and the dissimilarity (distance) in time to extinction.
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. We have now added the Mantel test to the SI as suggested.
+
+    \smallskip
+
+    3. Objection to presentation of $p$-values
+
+    \begin{quotation}
+      Presentation of the results: on each figure legends the authors have to specify the R^2 (or partial  or marginal R^2) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R^2 (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:} As the Reviewer notes, the R^2 values were always available in SI tables. We have now added the R^2 values to figures where these were previously missing. 
+
+\clearpage
+
+{\large\textbf{Reply to Reviewer 2}}
+
+  \begin{quotation}
+    I have read the manuscript by Wootton \& Cirtwill, and I have only minor comments to make. The problem statement is concise and definitely timely, the analyses are (plus or minus some suggestions I made) correct, and the conclusions are supported and broadly relevant.
+
+    With the exception of these minor points, the paper is well referenced and enjoyable to read.
+  \end{quotation}  
+
+  \smallskip
+
+  \textbf{R:} We thank the Reviewer for their comments and address each below. We hope that the manuscript is now clearer as a result
+
+  \smallskip
+
+  \textbf{Minor comments:}
+
+    1. I would suggest removing the last sentence of the abstract. Nothing in the manuscript supports the idea of a causal relationship, and the sentence as written is too strongly worded.
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    2. Missing ref. on line 72.
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    3. In the introduction, I think a definition of stability (and related concepts) would help guide readers. This is a broad (and messy) literature, so a little disambiguation would go a long way.
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    4. One line 118, I think a more complete list of the (many) parameters of the model would help.
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    5. L. 121 - this is not quite a LV model, as explained in the original publication; instead, this is the Y&I bioenergetic model adapted to multiple trophic levels. I would have also expected to see more discussion of rewiring, since the package now offers several models to do it.
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    6. L. 129 - missing ref
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    7. L. 145 (and last section of the discussion) - this is probably something that should be implemented as a continuous callback. Furthermore, setting this empirical parameter should be accompanied with a small sensitivity analysis, as it can indeed have a strong effect on the results.
+
+    \smallskip
+
+    \textbf{R:}
+
+\clearpage
+
+
+{\large \textbf{Reply to Reviewer 3}}
+
+  \begin{quotation}
+    Comments to the Author
+    I think the authors have done an excellent job revising the manuscript and responding to reviewer suggestions. The methods are easier to follow and the main message is clear. I also definitely appreciate being able to look over the code, thank you for providing it.   
+
+    While reading the revised manuscript I had two remaining questions for the authors that may be worth some mention in the discussion. 
+
+  \end{quotation}
+
+  \smallskip
+
+  \textbf{R:} We thank the Reviewer for their previous and current comments. We respond to the remaining questions below, and in the discussion, and appreciate the prompt to provide further nuance in our manuscript.
+
+  \smallskip
+
+  \textbf{Major comments}
+
+    \begin{quotation}
+      1. Are basal and non-basal species treated the same in this analysis? Because in these models basal species have an intrinsic growth rate, the probablity that they will go extinct during the simulation is likely not the same as a non-basal species. The results in the manuscript show that trophic level gives additional information about species' roles, and explains more variation in persistence than motif participation alone. Perhaps there is an interactive effect of trophic level and motif participation that could explain further variation.
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    \begin{quotation}
+      2. Do you think it would be important to consider initial biomass (at equilibrium prior to perturbation) when measuring time to extinction? The authors mention that persistence of each species depends on population biomass, and as a result assign initial biomass at random, but the equilibrium biomass may also be affecting time to extinction (and this may not be correlated with initial biomass after 1000 time steps). I imagine that species with relatively lower equilibrium biomass may go extinct faster than species with higher biomass given the same motif profile (assuming of course motif profile has no relationship to equilibrium biomass - but that is a question for another paper perhaps).   
+    \end{quotation}
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+
+  \textbf{Minor comments}
+
+    3. L72: I think something messed up in the pdf conversion as there is "(??)" where I think a reference is supposed to go
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    4. L77: I suggest changing "motifs in can" to "motifs it can"
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    5. L78: The phrasing "This is likely to lead species..." is a little awkward, perhaps switching to "Species with higher degrees likely participate..."
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    6. L129: Another "(?)"
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    7. L359: Mentions "correlation of extinction orders" is this different from correlation of time to extinction?
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    8. L397: I suggest changing "the omnivory can" by either removing "the" or adding "motif" (e.g., "the omnivory motif can")
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    9. L405: I think it would be helpful if you could be more specific about what "strongly affected" means. In this case are you suggesting that more strongly affected = more likely to go extinct?
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+    10. L460: I think there may be a missing "or" between "predator prey"
+
+    \smallskip
+
+    \textbf{R:}
+
+    \smallskip
+
+\clearpage
+
+\end{letter}
+
+\clearpage
+    \bibliographystyle{ecollett} 
+    \bibliography{MyCollection} % Abbreviate journal titles.
+
+\end{document}
+
+
