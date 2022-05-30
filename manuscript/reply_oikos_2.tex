@@ -164,7 +164,7 @@ Editor-in-Chief, Oikos
 
 \clearpage
 
-{\large\textbf{Reply to Reviewer 1}} 
+{\large\textbf{Reply to Reviewer 1}} [[2/3 done]]
 
   \begin{quotation}
 
@@ -179,43 +179,58 @@ Editor-in-Chief, Oikos
 
   \textbf{Major comments:}
 
-    1. Confusion over $Z$-score normalisation
+    1. Confusion over $Z$-score normalisation [[Done (dummy)]]
 
-    \begin{quotation}
-      Line 171: the concept of “networks normalized” motif roles, defined as a Z-score is not well defined. Frankly speaking, I do not know how this was computed. Please be specific and provide the formula. Also, the notion of Z-score is strongly grounded in statistics, so please another terminology, as I guess here is it not related the Z-score as defined in statistics.
-    \end{quotation}
+      \begin{quotation}
+        Line 171: the concept of “networks normalized” motif roles, defined as a $Z$-score is not well defined. Frankly speaking, I do not know how this was computed. Please be specific and provide the formula. Also, the notion of $Z$-score is strongly grounded in statistics, so please another terminology, as I guess here is it not related the Z-score as defined in statistics.
+      \end{quotation}
 
-    \smallskip
+      \smallskip
 
-    \textbf{R:} This normalisation is computed as a classic $Z$-score: [[give formula]]. We have added the formula to make this crystal clear.
+      \textbf{R:} We have added the formula for this normalisation as requested, and are confident that the Reviewer will recognise that this is indeed a $Z$-score as strongly grounded in statistics. As such, we have not changed our terminology. We hope that, with the addition of this equation, this normalisation is now clear.
 
-    \smallskip
-
-    2. Suggestion to use a Mantel test instead of PERMANOVA
-
-    \begin{quotation}
-      PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don’t think that PERMANOVA’s is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species’s motif participation and the dissimilarity (distance) in time to extinction.
-    \end{quotation}
-
-    \smallskip
-
-    \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. We have now added the Mantel test to the SI as suggested.
+      \begin{quotation}
+        Finally, we also calculated `network-normalised' motif roles, defined as the $Z$-score ($Z_{imn}$) of a focal species $i$'s participation in motif $m$ compared to full set of species in network $n$:
+        \begin{equation}
+                Z_{imn} = \frac{x_{imn}-\mu_{mn}}{\sigma_{mn}} ,
+        \end{equation}
+        where $x_{imn}$ is the observed count of motif $m$ in the role of species $i$ in network $n$, $\mu_m$ is the mean count of motif $m$ in the roles of all species in network $n$, and $\sigma_{mn}$ is the standard deviation of the count of motif $m$ in network $n$.
+      \end{quotation}
 
     \smallskip
 
-    3. Objection to presentation of $p$-values
+    2. Suggestion to use a Mantel test instead of PERMANOVA [[In progress.]]
 
-    \begin{quotation}
-      Presentation of the results: on each figure legends the authors have to specify the R^2 (or partial  or marginal R^2) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R^2 (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
-    \end{quotation}
+      \begin{quotation}
+        PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don’t think that PERMANOVA’s is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species’s motif participation and the dissimilarity (distance) in time to extinction.
+      \end{quotation}
+
+      \smallskip
+
+      \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. We present these results because we believe it is important to present negative results and data that doesn't conform to all statistical assumptions as well as the tests that come out perfectly, so long as it is clear where assumptions have been violated (and the Reviewer's comments suggest that we have been clear). 
+
+      We have now performed the Mantel test as suggested. As the Mantel test does not allow stratified permutations (meaning that dissimilarities might be permuted between networks), we fit one test per network (6000 tests total). This makes the risk of obtaining significant results purely by chance even more severe than with the PERMANOVAs where we were able to fit one test per S-C combination (60 tests total). Although we again fit the correlated Bonferroni correction, these results still need to be taken with a large dose of salt. We therefore do not give them much space in the main text but present the full results in the SI for any reader who is curious.
 
     \smallskip
 
-    \textbf{R:} As the Reviewer notes, the R^2 values were always available in SI tables. We have now added the R^2 values to figures where these were previously missing. 
+    3. Objection to presentation of $p$-values [[Done? Or does he want us to remove $p$-values from SI tables? Don't want to do that since someone would surely want them back. Add a note in the captions stating that number of simulations can change $p$-values maybe?]]
+
+      \begin{quotation}
+        Presentation of the results: on each figure legends the authors have to specify the R^2 (or partial  or marginal R^2) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R^2 (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
+      \end{quotation}
+
+      \smallskip
+
+      \textbf{R:} As the Reviewer notes, the R$^2$ values were always available in SI tables and were, in the previous revision, also stated in the legends of Figs. 2 and 3. We also note that the R$^2$ value for Figure 4 was displayed in the figure itself. Within the main text, we present only $p$-values for the PERMANOVA tests which do not depend upon the number of simulations. For the linear mixed-effects models we presented only the R$^2$ in the main text and so do not understand the Reviewer's demand to remove $p$-values.
+
+
+      Regarding the figure legends: We have now added the R$^2$ value to the legend of Figure 4 and removed it from the figure panel to avoid confusion. In addition, we have added references to the Appendix tables in the Figure legends. Also note that we have corrected the R$^2$ value in Figure 3 to match the marginal R$^2$ in the SI. We hope that this now provides sufficient documentation of our results.
+
+
 
 \clearpage
 
-{\large\textbf{Reply to Reviewer 2}}
+{\large\textbf{Reply to Reviewer 2}} [[Minor done, need to add a definition(s) of stability(s) in introduction, point to extinction threshold as a caveat in results, earlier in discussion (not just alternative perspectives section), add list of model parameters (SI if bulky),]]
 
   \begin{quotation}
     I have read the manuscript by Wootton \& Cirtwill, and I have only minor comments to make. The problem statement is concise and definitely timely, the analyses are (plus or minus some suggestions I made) correct, and the conclusions are supported and broadly relevant.
@@ -233,13 +248,14 @@ Editor-in-Chief, Oikos
 
     1. I would suggest removing the last sentence of the abstract. Nothing in the manuscript supports the idea of a causal relationship, and the sentence as written is too strongly worded.
 
+    % Offending sentence:
     \begin{quotation}
       Previous research showed that certain motifs appear more frequently in stable webs; we show that this is at least in part because participating in these motifs provides protection from extinction.
     \end{quotation}
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} We have removed this sentence as suggested.
 
     \smallskip
 
@@ -259,7 +275,7 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} % Slightly tricky to squeeze in but worth a shot.
 
     \smallskip
 
@@ -307,7 +323,7 @@ Editor-in-Chief, Oikos
 \clearpage
 
 
-{\large \textbf{Reply to Reviewer 3}}
+{\large \textbf{Reply to Reviewer 3}} [[Minor addressed, Kate have a look at major \#1. Alyssa working on Major \#2.]]
 
   \begin{quotation}
     Comments to the Author
@@ -331,7 +347,20 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:} % That is an incredibly good point ... And might not be too hard to test.
+    \textbf{R:} We agree that interactions between trophic level and motif participation (and degree) likely explain more variation in persistence than motif participation alone. Our goal was mainly to test the inference in many motif-analysis papers that motifs are related to stability, but moving forward combining motifs with other measures is definitely more promising than working with motifs alone.
+
+
+    In this analysis, we did treat basal and non-basal species the same.  
+    As shown in Fig. 4, basal species tended to be less likely to go extinct than non-basal species. However, taking all networks together, basal and non-basal species had similarly variable mean times to extinction (see figure below). 
+
+    \begin{figure}[hb!]
+    \includegraphics[width=.3\textwidth]{figures/extorder_vs_TL.eps}
+    \caption{Mean time to extinction was highly variable for all trophic levels.}
+    \end{figure}
+
+
+     % On re-reading I'm not 100% sure how to test this. Maybe STL + motifs + STL:chain+STL:omni+STL...?
+     % Or is a test even necessary? Perhaps we can just mention something in the discussion as they say in their intro
 
     \smallskip
 
@@ -401,12 +430,18 @@ Editor-in-Chief, Oikos
 
     9. L405: I think it would be helpful if you could be more specific about what "strongly affected" means. In this case are you suggesting that more strongly affected = more likely to go extinct?
 
-    \begin{quotation}
-    In small (3-5 species) model communities and soil food webs, weak interactions only promote stability if omnivory is present (Neutel et al., 2002; Emmerson \& Yearsley, 2004) and the loss of the omnivorous species dramatically reduces stability (Emmerson \& Yearsley, 2004). In our terms, if the top species in an omnivory motif is lost, the others will be strongly affected.
+    % % Original:
+    % \begin{quotation}
+    % In small (3-5 species) model communities and soil food webs, weak interactions only promote stability if omnivory is present (Neutel et al., 2002; Emmerson \& Yearsley, 2004) and the loss of the omnivorous species dramatically reduces stability (Emmerson \& Yearsley, 2004). In our terms, if the top species in an omnivory motif is lost, the others will be strongly affected.
+    % \end{quotation}
 
     \smallskip
 
-    \textbf{R:}
+    \textbf{R:} Yes, that is what we meant. We have revised the sentence to be more specific, as suggested. It now reads:
+  
+      \begin{quotation}
+      In our terms, this suggests that when the top species in an omnivory motif is lost, the other species in the motif will tend to have substantially shorter times to extinction.
+      \end{quotation}
 
     \smallskip
 
@@ -423,7 +458,8 @@ Editor-in-Chief, Oikos
 \end{letter}
 
 \clearpage
-    \bibliographystyle{ecollett} 
+    \bibliographystyle{ecollett}
+ 
     \bibliography{MyCollection} % Abbreviate journal titles.
 
 \end{document}
