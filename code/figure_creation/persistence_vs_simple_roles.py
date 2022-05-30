@@ -105,7 +105,7 @@ def populate_graph(graph,datadict):
 
   # # Add an arrow for S
   # graph.add_drawing_object(DrawLine,end=(14,0),start=(14,-1.45),arrow=1,arrow_type=1,linewidth=2,linestyle=1,loctype='world')
-  graph.add_drawing_object(DrawText,text='R2=0.211',x=90,y=40,loctype='world',just=0,char_size=1)
+  # graph.add_drawing_object(DrawText,text='R2=0.211',x=90,y=40,loctype='world',just=0,char_size=1)
 
   return graph
 
