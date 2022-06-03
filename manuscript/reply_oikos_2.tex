@@ -144,7 +144,7 @@ Editor-in-Chief, Oikos
 
 \clearpage
 
-{\large \textbf{Reply to Subject Editor}}
+{\large \textbf{Reply to Subject Editor}} [[done]
 
   \begin{quotation}
     Recommendation by the Subject Editor (Dr. Fran\c{c}ois Munoz):
@@ -179,7 +179,7 @@ Editor-in-Chief, Oikos
 
   \textbf{Major comments:}
 
-    1. Confusion over $Z$-score normalisation [[Done (dummy)]]
+    1. Confusion over $Z$-score normalisation [[Mantel in progress, others complete]]
 
       \begin{quotation}
         Line 171: the concept of “networks normalized” motif roles, defined as a $Z$-score is not well defined. Frankly speaking, I do not know how this was computed. Please be specific and provide the formula. Also, the notion of $Z$-score is strongly grounded in statistics, so please another terminology, as I guess here is it not related the Z-score as defined in statistics.
@@ -209,11 +209,12 @@ Editor-in-Chief, Oikos
 
       \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. We present these results because we believe it is important to present negative results and data that doesn't conform to all statistical assumptions as well as the tests that come out perfectly, so long as it is clear where assumptions have been violated (and the Reviewer's comments suggest that we have been clear). 
 
-      We have now performed the Mantel test as suggested. As the Mantel test does not allow stratified permutations (meaning that dissimilarities might be permuted between networks), we fit one test per network (6000 tests total). This makes the risk of obtaining significant results purely by chance even more severe than with the PERMANOVAs where we were able to fit one test per S-C combination (60 tests total). Although we again fit the correlated Bonferroni correction, these results still need to be taken with a large dose of salt. We therefore do not give them much space in the main text but present the full results in the SI for any reader who is curious.
+      We have now performed the Mantel test as suggested. As this test is quite slow for the 100-species webs, we could not use many permutations in these tests if we were to complete these supplemental tests within the deadline to return the revision. We therefore use 999 permutations for the 60-90 species webs and 99 permutations for the 100-species webs. When presenting these results (in Appendix Section [[SX]]) we have clearly indicated this change when presenting the results.
+
 
     \smallskip
 
-    3. Objection to presentation of $p$-values [[Done? Or does he want us to remove $p$-values from SI tables? Don't want to do that since someone would surely want them back. Add a note in the captions stating that number of simulations can change $p$-values maybe?]]
+    3. Request for presentation of R$^2$ values [[Done?]]
 
       \begin{quotation}
         Presentation of the results: on each figure legends the authors have to specify the R^2 (or partial  or marginal R^2) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R^2 (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
@@ -221,7 +222,7 @@ Editor-in-Chief, Oikos
 
       \smallskip
 
-      \textbf{R:} As the Reviewer notes, the R$^2$ values were always available in SI tables and were, in the previous revision, also stated in the legends of Figs. 2 and 3. We also note that the R$^2$ value for Figure 4 was displayed in the figure itself. Within the main text, we present only $p$-values for the PERMANOVA tests which do not depend upon the number of simulations. For the linear mixed-effects models we presented only the R$^2$ in the main text and so do not understand the Reviewer's demand to remove $p$-values.
+      \textbf{R:} As the Reviewer notes, the R$^2$ values were always available in SI tables and were, in the previous revision, also stated in the legends of Figs. 2 and 3. We also note that the R$^2$ value for Figure 4 was displayed in the figure itself. Within the main text, we present only $p$-values for the PERMANOVA tests which do not depend upon the number of simulations. For the linear mixed-effects models we presented only the R$^2$ in the main text and so do not understand the Reviewer's demand to remove $p$-values. Where these values are given in the SI tables, we have added a disclaimer to the table captions to remind readers about the effect of sample size on $p$-values.
 
 
       Regarding the figure legends: We have now added the R$^2$ value to the legend of Figure 4 and removed it from the figure panel to avoid confusion. In addition, we have added references to the Appendix tables in the Figure legends. Also note that we have corrected the R$^2$ value in Figure 3 to match the marginal R$^2$ in the SI. We hope that this now provides sufficient documentation of our results.
@@ -299,7 +300,9 @@ Editor-in-Chief, Oikos
 
     \smallskip
 
-    \textbf{R:} Kate?
+    \textbf{R:} Altered the sentence to now, more correctly, read 'This function uses the bio-energetic model of \citet{Yodzis1992} adapted to food webs \citep{Williams2007}, including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).'
+    
+    Regarding rewiring, added to the methods: 'Although the BioEnergeticFoodWebs package does allow for rewiring following extinctions, we chose not to allow rewiring because this would change species' motif profiles. '
 
     \smallskip
 
@@ -317,13 +320,14 @@ Editor-in-Chief, Oikos
 
     \begin{quotation}
     To ensure that species did not ‘recover’ from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1×10$^{−5}$.
+    \end{quotation}
 
     \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. [[TO DO]]
 
 \clearpage
 
 
-{\large \textbf{Reply to Reviewer 3}} [[Minor addressed, Kate have a look at major \#1. Alyssa working on Major \#2.]]
+{\large \textbf{Reply to Reviewer 3}} [[Minor addressed, Kate have a look at response to major \#1. Alyssa working on Major \#2.]]
 
   \begin{quotation}
     Comments to the Author
@@ -342,7 +346,7 @@ Editor-in-Chief, Oikos
   \textbf{Major comments}
 
     \begin{quotation}
-      1. Are basal and non-basal species treated the same in this analysis? Because in these models basal species have an intrinsic growth rate, the probablity that they will go extinct during the simulation is likely not the same as a non-basal species. The results in the manuscript show that trophic level gives additional information about species' roles, and explains more variation in persistence than motif participation alone. Perhaps there is an interactive effect of trophic level and motif participation that could explain further variation.
+      1. Are basal and non-basal species treated the same in this analysis? Because in these models basal species have an intrinsic growth rate, the probability that they will go extinct during the simulation is likely not the same as a non-basal species. The results in the manuscript show that trophic level gives additional information about species' roles, and explains more variation in persistence than motif participation alone. Perhaps there is an interactive effect of trophic level and motif participation that could explain further variation.
     \end{quotation}
 
     \smallskip
