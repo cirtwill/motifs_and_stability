@@ -190,7 +190,7 @@
 
 
 		\begin{table}[hb!]
-			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its raw motif role. We tested this using a series of PERMANOVAs with $p$-values calculated using 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_count}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
@@ -230,7 +230,7 @@
 			\end{table}
 
 		\begin{table}[hb!]
-			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its species-normalised (frequency) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its species-normalised (frequency) motif role. We tested this using a series of PERMANOVAs with $p$-values calculated using 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_freq}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
@@ -270,7 +270,7 @@
 			\end{table}
 
 		\begin{table}[hb!]
-			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its network-normalised ($Z$-score) motif role. We tested this using a series of PERMANOVAs with 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
+			\caption{For each combination of species richness (S) and connectance (C), the mean extinction order of a focal species was related to its network-normalised ($Z$-score) motif role. We tested this using a series of PERMANOVAs with $p$-values calculated using 9999 permutations each. Here we show the mean of correlations of extinction orders for a focal species across all removed species ($R^2$) and all 100 simulated networks for each combination of S and C, as well as the pseudo-$F$ statistic and $p$-value for each PERMANOVA. All tests remained significant after applying the correlated Bonferroni correction~\citep{Drezner2016}.}
 			\label{permtable_Z}
 			\begin{tabular}{c c | c | c c ||c c | c | c c |}
 				S	&	C	&	$R^2$	&	pseudo-$F$	&	$p$-value	&	S	&	C &	$R^2$	&	pseudo-$F$	&	$p$-value\\ 
@@ -551,7 +551,7 @@
 
 
 			\begin{table}[hb!]
-    			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation.}
+    			\caption{A species' degree was strongly correlated with its motif participation. This association was especially strong for un-normalised (count-based) motif participation. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     			\label{tab:motifs_vs_deg}
     			\begin{tabular}{l | c c | c c | c c}
     			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
@@ -592,7 +592,7 @@
 
 
 			\begin{table}[hb!]
-    			\caption{A species' degree was strongly correlated with its participation in different positions within motifs. This association was especially strong for un-normalised (count-based) motif participation.}
+    			\caption{A species' degree was strongly correlated with its participation in different positions within motifs. This association was especially strong for un-normalised (count-based) motif participation. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     			\label{tab:positions_vs_deg}
     			\begin{tabular}{l | c c | c c | c c}
     			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c}{Frequencies} & \multicolumn{2}{|c}{$Z$-scores} \\
@@ -624,7 +624,7 @@
             Adding positions within motifs explained little extra variation in shortest trophic levels (up to 10\%; Table~\ref{tab:positions_vs_STL}).
 
 			\begin{table}[hb!]
-    			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation.}
+    			\caption{A species' shortest trophic level (STL) was weakly correlated with its motif participation. This association was strongest for un-normalised (count-based) motif participation. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     			\label{tab:motifs_vs_STL}
     			\begin{tabular}{l | c c | c c | c c}
     			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
@@ -654,7 +654,7 @@
 
 
 			\begin{table}[hb!]
-    			\caption{A species' shortest trophic level (STL) was weakly correlated with its participation in different positions within motifs. This association was strongest for un-normalised (count-based) motif participation.}
+    			\caption{A species' shortest trophic level (STL) was weakly correlated with its participation in different positions within motifs. This association was strongest for un-normalised (count-based) motif participation. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     			\label{tab:positions_vs_STL}
     			\begin{tabular}{l | c c | c c | c c}
     			& \multicolumn{2}{c|}{Counts} & \multicolumn{2}{c|}{Frequencies} & \multicolumn{2}{c}{$Z$-scores} \\
@@ -698,7 +698,7 @@
 
 
 		\begin{table}[hb!]
-			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$).}
+			\caption{Effect sizes ($\beta$) and $p$-values for fixed effects in a LMM of persistence (mean time to extinction) against degree, shortest trophic level (STL), and their interaction. The LMM also included a random effect of global network structure (the combination of network size and connectance). We also give the amount of variance explained by fixed effects alone ($R^2_m$) and all fixed and random effects ($R^2_c$). Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
 			\label{tab:per_degTL}
 			\begin{tabular}{l | c c }
 			Predictor & $\beta$ & $p$-value \\
@@ -796,7 +796,7 @@
 
 
 		\begin{table}[hb!]
-    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     		\label{tab:count_positions}
     		\begin{tabular}{l | c c}
     		Motif & $\beta$ & $p$-value \\  
@@ -857,7 +857,7 @@
 
 
 		\begin{table}[hb!]
-    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the frequency with which the species appeared in each motif, normalised by the total number of motifs the species appeared in. Because the frequencies for each species must sum to 1, leading to a rank-deficient model, the `other' motifs were not included in the LMM. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     		\label{tab:persistence_freq}
     		\begin{tabular}{l | c c}
     		 Motif & $\beta$ & $p$-value \\  
@@ -896,7 +896,7 @@
         
 
 		\begin{table}[hb!]
-    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     		\label{tab:freq_positions}
     		\begin{tabular}{l | c c}
     		Motif & $\beta$ & $p$-value \\  
@@ -947,7 +947,7 @@
 
 
 		\begin{table}[hb!]
-		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure.  Motif participation was defined as the $Z$-score of participation in each motif, relative to the species' community. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure.  Motif participation was defined as the $Z$-score of participation in each motif, relative to the species' community. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
 		\label{tab:persistence_Z}
 		\begin{tabular}{l | c c}
 		 Motif & $\beta$ & $p$-value \\  
@@ -994,7 +994,7 @@
         
 
 		\begin{table}[hb!]
-    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}.}
+    		\caption{Here we give the estimate ($\beta$) and $p$-value for a LMM of persistence (mean time to extinction) against participation in each motif and a random effect of global network structure. Motif participation was defined as the non-normalised count; the number of times the focal species appeared in each motif. We also give the variance explained by each regression. R$^{2}_{m}$ gives the variance explained by fixed effects only, while R$^{2}_{c}$ gives the variance explained by fixed and random effects. We calculated variance explained using the R~\citep{R} function `r.squaredGLMM' from the package \emph{MuMIn}~\citep{MuMIn}. Note that $p$-values depend upon sample size and that with a large set of simulated networks it is easier to meet a significance threshold.}
     		\label{tab:Z_positions}
     		\begin{tabular}{l | c c}
     		Motif & $\beta$ & $p$-value \\  
