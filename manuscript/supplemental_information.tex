@@ -62,7 +62,7 @@
 \vspace{-1.25in}
 \setlength{\parindent}{15pt} 
 
-\section*{Table of Contents} [[check fig. numbers]]
+\section*{Table of Contents} 
 
     \subsection*{S1: Details of network generation}
 
@@ -84,7 +84,7 @@
 
     \subsection*{S5: Details of Mantel methods and results}
 
-    	Supplemental methods and results for Mantel tests relating dissimilarity in motif participation to differences in mean times to extinction. Includes \textbf{Figures SX-SX, Tables SX-SX}.
+    	Supplemental methods and results for Mantel tests relating dissimilarity in motif participation to differences in mean times to extinction. Includes \textbf{Figure S5, Tables S7}.
 
 
     \subsection*{S6: Pooling loop-containing motifs}
@@ -94,26 +94,25 @@
 
     \subsection*{S7: Relating motif participation to simple roles}
 
-    	Supplemental methods and results relating motif participation to a species' degree and trophic level. Includes \textbf{Tables S7-S8}.
+    	Supplemental methods and results relating motif participation to a species' degree and trophic level. Includes \textbf{Figures S6-S8, Tables S8-S11}.
 
 
     \subsection*{S8: Relating simple roles to persistence}
 
-        Supplemental methods and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S5, Table S9}.
+        Supplemental methods and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S9, Table S12}.
 
 
     \subsection*{S9: Relating motif participation to persistence}
 
-    	Supplemental results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S6, Tables S10-S15}.
+    	Supplemental results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figures S10-S12, Tables S13-S24}.
 
     \subsection*{S10: Motif labels}
         
-        \textbf{Figure S7} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
+        \textbf{Figure S13} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
 
 
 \clearpage
-\begin{spacing}{2.0}
-\linenumbers
+
 \section*{S1: Details of network generation}
 
     For code used to generate networks and simulate extinctions, see doi: 10.5281/zenodo.6377974.
@@ -500,10 +499,22 @@
 
 	\subsection*{Results}
 
-		[[big table of test statistics, p-values]]
+		\begin{table}[hb!]
+			\caption{Spearman's $\rho$ and $p$-values for Mantel tests relating dissimilarity in motif participation to dissimilarity in mean time to extinction. We also give the number of permutations used to calculate each $p$-value; due to computational limits it was not possible to use 999 permutations for the larger networks.}
+			\label{Mantetab}
+			\begin{tabular}{l l | l l | l}
+			S & C & Spearman's $\rho$ & $p$-value & permutations\\
+			\hline
+			\end{tabular}
+			\end{table}
 
-		[[figure showing generally high correlations]]
 
+
+		\begin{figure}[hb!]
+			\includegraphics[height=.75\textheight]{figures/mantel.eps}
+			\caption{}
+			\label{Mantelfig}
+			\end{figure}
 
 
 \clearpage
@@ -1073,7 +1084,6 @@
 		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
 		\end{figure}
 
-\end{spacing}
 \clearpage
 
     \bibliographystyle{ecollett} 
