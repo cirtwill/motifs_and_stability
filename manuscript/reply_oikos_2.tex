@@ -1,5 +1,5 @@
 \documentclass[12pt]{letter}
-
+\usepackage{graphicx}
 % \usepackage[britdate]{SU-letter}
 \usepackage[britdate]{UH-letter}
 \usepackage{times}
@@ -116,7 +116,7 @@ Manuscript ID OIK-09436 entitled "Stable motifs delay species loss in simulated 
 
 
 Author Contribution Indication
-The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the “Provide CRediT Contribution” link for each author in the ‘Authors & Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
+The contributions of each author to this work must now be indicated when you submit your revised manuscript. To add Author Contributions using CRediT taxonomy (http://credit.niso.org/contributor-roles-defined/), simply click the “Provide CRediT Contribution” link for each author in the ‘Authors \& Institutions’ step of the submission process. From there, you will be able to check applicable Author/Contributor Roles and, if available, specify the Degree of Contribution. You MUST provide this information as part of the revision process. Author Contributions will be published with the accepted article and cannot be edited after article acceptance. Therefore you must ensure the Author Contribution information you provide is accurate prior to final acceptance.
 
 
 Please highlight the changes to your manuscript within the document by using the track changes mode in MS Word or by using bold or colored text. Once the revised manuscript is prepared, you can upload it and submit it through your Author Center.
@@ -212,7 +212,7 @@ Editor-in-Chief, Oikos
     3. Objection to presentation of $p$-values [[Done? Or does he want us to remove $p$-values from SI tables? Don't want to do that since someone would surely want them back. Add a note in the captions stating that number of simulations can change $p$-values maybe?]]
 
       \begin{quotation}
-        Presentation of the results: on each figure legends the authors have to specify the R^2 (or partial  or marginal R^2) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R^2 (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
+        Presentation of the results: on each figure legends the authors have to specify the R$^2$ (or partial  or marginal R$^2$) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R$^2$ (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
       \end{quotation}
 
       \smallskip
@@ -290,7 +290,7 @@ Editor-in-Chief, Oikos
     5. L. 121 - this is not quite a LV model, as explained in the original publication; instead, this is the Y\&I bioenergetic model adapted to multiple trophic levels. I would have also expected to see more discussion of rewiring, since the package now offers several models to do it.
 
     \begin{quotation}
-    After generating the network structure, we simulated community dynamics using the function “simulate” from the Julia language package BioEnergeticFoodWebs (Delmas et al., 2019, 2017).
+    After generating the network structure, we simulated community dynamics using the function ``simulate'' from the Julia language package BioEnergeticFoodWebs (Delmas et al., 2019, 2017).
     \end{quotation}
 
     \smallskip
@@ -312,7 +312,8 @@ Editor-in-Chief, Oikos
     \smallskip
 
     \begin{quotation}
-    To ensure that species did not ‘recover’ from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1×10$^{−5}$.
+    To ensure that species did not ‘recover’ from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1×10$^{-5}$.
+    \end{quotation}
 
     \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. [[TO DO]]
 
@@ -360,11 +361,11 @@ Editor-in-Chief, Oikos
     Since the Reviewer's question made us curious, we also had a slightly more detailed look at the extinction risk of basal resources in our study.
     As shown in Fig. 4, basal species tended to be less likely to go extinct than non-basal species. However, taking all networks together, basal and non-basal species had similarly variable mean times to extinction (see figure below), suggesting that other factors than trophic level also strongly influence each species' extinction risk. 
 
-    \begin{figure}[hb!]
-    \includegraphics[width=.3\textwidth]{figures/extorder_vs_TL.eps}
-    \caption{Mean time to extinction was highly variable for all trophic levels.}
-    \end{figure}
-
+    \begin{minipage}{\textwidth}
+        \centering
+            \includegraphics[width=.5\textwidth]{figures/extorder_vs_TL.eps}
+            \caption{Mean time to extinction was highly variable for all trophic levels.}
+    \end{minipage}
 
      % On re-reading I'm not 100% sure how to test this. Maybe STL + motifs + STL:chain+STL:omni+STL...?
      % Or is a test even necessary? Perhaps we can just mention something in the discussion as they say in their intro
