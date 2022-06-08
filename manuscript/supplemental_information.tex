@@ -62,7 +62,7 @@
 \vspace{-1.25in}
 \setlength{\parindent}{15pt} 
 
-\section*{Table of Contents}
+\section*{Table of Contents} 
 
     \subsection*{S1: Details of network generation}
 
@@ -82,33 +82,37 @@
     	Supplemental methods and results testing whether the assumption of equal dispersion of species motif participation across levels of persistence was met. Unequal dispersion can cause PERMANOVAs to return false positives, meaning that the results in Appendix \emph{S3} must be treated as tentative. Includes \textbf{Figures S3-S4, Tables S4-S6}.
 
 
-    \subsection*{S5: Pooling loop-containing motifs}
+    \subsection*{S5: Details of Mantel methods and results}
+
+    	Supplemental methods and results for Mantel tests relating dissimilarity in motif participation to differences in mean times to extinction. Includes \textbf{Figure S5, Tables S7}.
+
+
+    \subsection*{S6: Pooling loop-containing motifs}
 
     	Supplemental methods detailing how the loop-containing motifs were pooled for each version of motif participation (counts of motifs, species normalisation, or network normalisation).
 
 
-    \subsection*{S6: Relating motif participation to simple roles}
+    \subsection*{S7: Relating motif participation to simple roles}
 
-    	Supplemental methods and results relating motif participation to a species' degree and trophic level. Includes \textbf{Tables S7-S8}.
-
-
-    \subsection*{S7: Relating simple roles to persistence}
-
-        Supplemental methods and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S5, Table S9}.
+    	Supplemental methods and results relating motif participation to a species' degree and trophic level. Includes \textbf{Figures S6-S8, Tables S8-S11}.
 
 
-    \subsection*{S8: Relating motif participation to persistence}
+    \subsection*{S8: Relating simple roles to persistence}
 
-    	Supplemental results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S6, Tables S10-S15}.
+        Supplemental methods and results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figure S9, Table S12}.
 
-    \subsection*{S9: Motif labels}
+
+    \subsection*{S9: Relating motif participation to persistence}
+
+    	Supplemental results relating degree and trophic level to persistence after a disturbance. Includes \textbf{Figures S10-S12, Tables S13-S24}.
+
+    \subsection*{S10: Motif labels}
         
-        \textbf{Figure S7} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
+        \textbf{Figure S13} illustrates the 13 unique three-species motifs and labels each one according to the naming scheme in~\citet{Stouffer2007}.
 
 
 \clearpage
-\begin{spacing}{2.0}
-\linenumbers
+
 \section*{S1: Details of network generation}
 
     For code used to generate networks and simulate extinctions, see doi: 10.5281/zenodo.6377974.
@@ -171,8 +175,7 @@
 		Due to computational limits, we were unable to fit a single PERMANOVA for all networks.
 		To avoid effects of network size and connectance on time to extinction, we therefore fit separate PERMANOVAs for each combination of motif definition, network size, and connectance (180 PERMANOVAs in total).
 		We fit all PERMANOVAs using the R~\citep{R} function `adonis' from the package \emph{vegan}~\citep{vegan} and calculated $p$-values using 9999 unstratified permutations.
-		As conducting so many tests risks obtaining significant results by chance, we applied the correlated Bonferroni correction~\citep{Drezner2016} before evaluating significance.
-
+		As conducting so many tests risks obtaining significant results 
 	\subsection*{Results}
 
 
@@ -483,8 +486,40 @@
 
 \clearpage
 
+\section*{S5: Details of Mantel methods and results}
 
-\section*{S5: Pooling loop-containing motifs} 
+	\subsection*{Methods}
+
+		As with the PERMANOVAs, we fit one test per combination of size, connection, and motif version (count, frequency, or $Z$-score), giving 180 tests in total.
+		In all cases, we used Spearman rank correlation as the test statistic.
+		For networks containing 50-90 species, we calculated significance based on 999 permutations.
+		Due to computational constraints, we calculated significance for the 100-species networks based on 99 permutations.
+		Due to the large number of tests, we applied the correlated Bonferroni correction~\citep{Drezner2016} for all tests relating to a given version of motifs.
+
+
+	\subsection*{Results}
+
+		\begin{table}[hb!]
+			\caption{Spearman's $\rho$ and $p$-values for Mantel tests relating dissimilarity in motif participation to dissimilarity in mean time to extinction. We also give the number of permutations used to calculate each $p$-value; due to computational limits it was not possible to use 999 permutations for the larger networks.}
+			\label{Mantetab}
+			\begin{tabular}{l l | l l | l}
+			S & C & Spearman's $\rho$ & $p$-value & permutations\\
+			\hline
+			\end{tabular}
+			\end{table}
+
+
+
+		\begin{figure}[hb!]
+			\includegraphics[height=.75\textheight]{figures/mantel.eps}
+			\caption{}
+			\label{Mantelfig}
+			\end{figure}
+
+
+\clearpage
+
+\section*{S6: Pooling loop-containing motifs} 
 	
 	The motifs containing loops (two-way interactions or three-species loops) are rare in both empirical systems~\citep{Stouffer2007} and our simulated networks (mean frequencies of 8.99$\times10^{-4}$ to 2.06\% of the total count of motifs for a species) and are all unstable when modelled in isolation~\citep{Borrelli2015a}.
 	To more clearly identify any effects of participating in rare but unstable motifs, we pool these loop-containing motifs into an `other' group.
@@ -518,7 +553,7 @@
 \clearpage
 
 
-\section*{S6: Relating motif participation to simple roles}
+\section*{S7: Relating motif participation to simple roles}
 
 	\subsection*{Methods}
 
@@ -682,7 +717,7 @@
 \clearpage
 
 
-\section*{S7: Relating simple roles to persistence}
+\section*{S8: Relating simple roles to persistence}
 
 	\subsection*{Methods}
 
@@ -729,7 +764,7 @@
 \clearpage
 
 
-\section*{S8: Relating motif participation to persistence}
+\section*{S9: Relating motif participation to persistence}
 
 
     \begin{figure}[ht!]
@@ -1041,7 +1076,7 @@
 
 \clearpage
 
-\section*{S9: Motif labels}
+\section*{S10: Motif labels}
 
 	\begin{figure}[hb!]
 		\caption{There are 13 unique three-species motifs which can appear in food webs. Motifs S1, S2, S4, and S5 have been identified as more stable than other motifs when modeled in isolation and as potentially increasing the stability of empirical food webs. Each motif contains one or more unique positions (e.g., the top, middle, and bottom positions in the three-species chain). Each unique position is coloured differently within each motif. Note that two species may occupy the same position within a motif (e.g., the two predators in a direct competition motif). Labels are as in~\citet{Stouffer2007}.}
@@ -1049,7 +1084,6 @@
 		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
 		\end{figure}
 
-\end{spacing}
 \clearpage
 
     \bibliographystyle{ecollett} 
