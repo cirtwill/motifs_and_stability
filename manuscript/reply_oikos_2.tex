@@ -83,7 +83,7 @@
 
   \begin{quotation}
 
-    In this manuscript the authors study by numerical simulation one of the numerous notion of ``stability'' of food webs. More precisely, they build food webs allometrically based on body size. Then they simulated the food webs and when a steady state is reached they removed, in turn, each of the constituting species. They, the authors measure the time of extinction of the other species. Finally, they study these extinctions as function of the role of the species in motifs and the role of the motif. In general it’s a well-written manuscript, easy to follow and that go quite deep into understanding the role of motifs on food-web dynamics. I think the paper deserved to be published, but I have few major comments that need to be addressed:
+    In this manuscript the authors study by numerical simulation one of the numerous notion of ``stability'' of food webs. More precisely, they build food webs allometrically based on body size. Then they simulated the food webs and when a steady state is reached they removed, in turn, each of the constituting species. They, the authors measure the time of extinction of the other species. Finally, they study these extinctions as function of the role of the species in motifs and the role of the motif. In general it's a well-written manuscript, easy to follow and that go quite deep into understanding the role of motifs on food-web dynamics. I think the paper deserved to be published, but I have few major comments that need to be addressed:
 
   \end{quotation}
 
@@ -94,7 +94,7 @@
 
   \subsection*{Major comments:}
 
-    1. Confusion over $Z$-score normalisation [[Done (dummy)]]
+    1. Confusion over $Z$-score normalisation
 
       \begin{quotation}
         Line 171: the concept of ``networks normalized'' motif roles, defined as a $Z$-score is not well defined. Frankly speaking, I do not know how this was computed. Please be specific and provide the formula. Also, the notion of $Z$-score is strongly grounded in statistics, so please another terminology, as I guess here is it not related the Z-score as defined in statistics.
@@ -117,7 +117,7 @@
     2. Suggestion to use a Mantel test instead of PERMANOVA [[In progress.]]
 
       \begin{quotation}
-        PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don’t think that PERMANOVA’s is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species’s motif participation and the dissimilarity (distance) in time to extinction.
+        PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don't think that PERMANOVA's is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species's motif participation and the dissimilarity (distance) in time to extinction.
       \end{quotation}
 
       \smallskip
@@ -128,7 +128,7 @@
 
     \smallskip
 
-    3. Objection to presentation of $p$-values [[Done? Or does he want us to remove $p$-values from SI tables? Don't want to do that since someone would surely want them back. Add a note in the captions stating that number of simulations can change $p$-values maybe?]]
+    3. Objection to presentation of $p$-values
 
       \begin{quotation}
         Presentation of the results: on each figure legends the authors have to specify the R$^2$ (or partial  or marginal R$^2$) of fitted models. This is not done systematically. The authors also present the p-values of their linear mixed effects models. They are nonsense. Those p-values can be made arbitrarily small simply be increasing the number of simulations, i.e. they are simulations number dependent. The authors must present instead the R$^2$ (total, partial, or marginal). These values are simulations number independent, and more importantly, indicates the fraction of variability explained by the factors (tables S7 to S12, S14, S16, S18, S20, S22).
@@ -145,7 +145,7 @@
 
 \clearpage
 
-\section*{Reply to Reviewer 2} [[Minor done, point to extinction threshold as a caveat in results, earlier in discussion (not just alternative perspectives section), add list of model parameters (SI if bulky),]]
+\section*{Reply to Reviewer 2} [[Minor done, add list of model parameters (SI if bulky),]]
 
   \begin{quotation}
     I have read the manuscript by Wootton \& Cirtwill, and I have only minor comments to make. The problem statement is concise and definitely timely, the analyses are (plus or minus some suggestions I made) correct, and the conclusions are supported and broadly relevant.
@@ -239,15 +239,18 @@
     \smallskip
 
     \begin{quotation}
-    To ensure that species did not ‘recover’ from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times$10$^{-5}$.
+    To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times$10$^{-5}$.
     \end{quotation}
 
-    \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. [[TO DO]]
+    \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. 
+    It seems most relevant to mention extinction threshold when we refer to the exact values of time to extinction, as a lower threshold would almost certainly lead to longer persistence times.
+    We have therefore added a reference to extinction threshold and its potential effects in the first paragraph of the Discussion and in the subsection `Times to extinction are highly consistent'.
+    We hope that these references will be sufficient to keep this contingency fresh in readers' minds.
 
 \clearpage
 
 
-\section*{Reply to Reviewer 3} [[Minor addressed, Kate have a look at major \#1. Need to add reference to biomass effects in discussion]]
+\section*{Reply to Reviewer 3} [[Minor addressed, Kate have a look at major \#1.]]
 
   \begin{quotation}
     Comments to the Author
@@ -314,7 +317,7 @@
     \smallskip
 
 
-  \subsection*{Minor comments} [[done]]
+  \subsection*{Minor comments}
 
     3. L72: I think something messed up in the pdf conversion as there is "(??)" where I think a reference is supposed to go
 
