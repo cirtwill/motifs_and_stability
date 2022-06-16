@@ -293,7 +293,7 @@ alyssa.cirtwill@gmail.com\\
 \section*{Discussion}
 
     We found that times to extinction were tightly correlated across removals. 
-    This suggests that the position of a focal species within a network can affect its risk of extinction following a disturbance regardless of where in the network the disturbance is applied. 
+    Although the exact length of time a species persists after disturbance likely depends on the threshold for extinction chosen, the correlation of times to extinction for a given threshold suggests that the position of a focal species within a network can affect its risk of extinction following a disturbance regardless of where in the network the disturbance is applied. 
     This result also justifies our use of mean times to extinction across removals as a measure of a species' overall risk.
     
     
@@ -312,6 +312,11 @@ alyssa.cirtwill@gmail.com\\
 		The stronger correlation of time to extinction in larger, more-connected networks, as well as the somewhat shorter mean times to extinction in these webs (Fig. S1, \emph{Appendix S1}) may be due to the greater number of short pathways by which an extinction somewhere in the web can affect a focal species. 
 		These short pathways are more likely to have strong effects on the population dynamics of species along them than the longer indirect pathways in poorly-connected networks~\citep{Jordan2002,Jordan2006}.
 		These stronger effects in turn likely explain why more secondary extinctions in large or highly-connected webs are due to indirect effects rather than direct loss of a prey or predator~\citep{Wootton2016a}. 
+
+
+        These strong correlations of times to extinction may also be related to the extinction threshold we chose.
+        If we used an arbitrarily lower threshold, species would likely persist longer before being declared extinct and more species would not reach the threshold for extinction.
+        With fewer extinctions detected, we might not observe such consistency across removals or such strong relationships between species roles and extinction risk.
 
 
 	\subsection*{Motif roles relate to extinction risk}
@@ -375,11 +380,8 @@ alyssa.cirtwill@gmail.com\\
         
         
         We also note that our choice of extinction threshold is, in the absence of a best-practice consensus, arbitrary.
-        The choice of a lower threshold would permit species to remain extant at lower biomasses and lengthen times to extinction for the species most prone to reach low biomasses.
-        This could make it more difficult to detect relationships between motif roles and persistence if persistence times became more similar across species (i.e., if more species persist for the entire simulation run). 
-        A lower threshold would therefore likely require longer simulations to detect differences in extinction risk between species.
-        A lower extinction threshold might also reduce the impact of degree on persistence time as species would be more likely to retain all of their interaction partners.
-        However, as interaction strengths depended upon the abundance of a partner, the effect of retaining a very rare predator or prey would be minimal.
+        The choice of a lower threshold would permit species to remain extant at lower biomasses and lengthen times to extinction for the species most prone to reach low biomasses, therefore requiring longer and more computationally-expensive simulations  to detect differences in extinction risk between species.
+        A lower extinction threshold might also reduce the impact of degree on persistence time as species would be more likely to retain all of their interaction partners, although the influence of very rare prey is minimal when interaction strengths are weighted by abundance as we have done here.
         Despite this overall decrease in extinction if we used a longer threshold,  we do not expect that \emph{which} motifs are associated with persistence would change.
         The species which most rapidly go extinct under our current threshold should also be the first to reach a lower threshold (excepting spurious recoveries of rare species between threshold values), leading to similar associations between motifs and extinction risk.
 
