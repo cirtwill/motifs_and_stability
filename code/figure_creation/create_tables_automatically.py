@@ -2,6 +2,18 @@ import os
 import sys
 import numpy as np
 
+def read_manfile(infile):
+  f=open(infile,'r')
+  for line in f:
+    if line.split()[0]=='"1"':
+      rho=np.round(float(line.split()[1]),5)
+    elif line.split()[0]=='"2"':
+      p=np.round(float(line.split()[1]),3)
+  f.close()
+
+  return ((rho,p))
+
+
 def read_permfile(infile):
   subdict={}
   f=open(infile,'r')
@@ -110,6 +122,16 @@ def write_perm_table(datadict,outfile):
         print len(str(dat[2]))
   f.close()
 
+def write_man_table(datadict,outfile):
+  f=open(outfile,'w')
+  f.write('S\t&\tC\t&\tCorrelation\t&\tp$-value\\\\ \n')
+  for s in sorted(datadict):
+    for c in sorted(datadict[s]):
+      (rho,p)=datadict[s][c]
+      f.write(s+'\t&\t'+c+'\t&\t')
+      f.write(str(rho)+'\t&\t'+str(p)+'\t\\\\ \n')
+  f.close()
+
 def write_disp_table(datadict):
   f=open('../../manuscript/betadisper_summary_table.txt','w')
   f.write('S&C& ANOVA & & Regression & \\\\ \n')
@@ -141,6 +163,20 @@ def write_lm_table(datadict):
 #
 ###############################################################################################
 ###############################################################################################
+mandir='../../data/mantel/'
+for flavour in ['count','freq','Z']:
+  outfile='../../manuscript/tables/mantel_summary_table_'+flavour+'.txt'
+  datadict={}
+  for S in os.listdir(mandir+flavour):
+    datadict[S]={}
+    for sfil in sorted(os.listdir(mandir+flavour+'/'+S)):
+      c=sfil.split('_')[-1].split('.tsv')[0]
+      datadict[S][c]=read_manfile(mandir+flavour+'/'+S+'/'+sfil)
+
+  write_man_table(datadict,outfile)
+
+
+sys.exit()
 
 datadir='../../data/summaries/permanova/'
 for flavour in ['count','freq','Z']:
@@ -153,7 +189,6 @@ for flavour in ['count','freq','Z']:
 
   write_perm_table(datadict,outfile)
 
-sys.exit()
 
 dispdir='../../data/summaries/extorder_disps/'
 dispdict={}
