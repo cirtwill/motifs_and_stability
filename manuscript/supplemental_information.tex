@@ -120,14 +120,42 @@
 	We simulated a suite of food webs based on the probabilistic niche model, which assigns predator-prey links based on the body-mass ratios between individuals of different species~\citep{Williams2000,Delmas2017}. The meso-scale structure of niche-model networks closely mimics that of empirical food webs~\citep{Stouffer2007}. To ensure that we captured a variety of realistic community sizes and structures, we generated networks ranging between 50 and 100 species (in steps of 10) with connectance values between 0.02 and 0.2 (in steps of 0.02). The range of network sizes was chosen to reflect moderately well-sampled empirical webs while working within our computational limits, while the range of connectance values was chosen to cover that observed in most empirical food webs~\citep{Dunne2002e}. We generated a total of 100 networks with each combination of parameters, for a total of 6000 networks. All networks were generated using the function ``nichemodel'' within the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. If a simulated network contained any disconnected species (species without predators or prey) or disconnected components (a group of species connected among themselves but not to the rest of the network), the network was rejected and a new network simulated. Finally, networks where the path lengths between each species and a basal resource could not be resolved (i.e., trophic levels were undefined) were rejected and new networks simulated.
 
 
-	After generating the network structure, we simulated community dynamics using the function ``simulate'' from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses Lotka-Volterra predator-prey models including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
-	All non-basal species were designated as vertebrates to ensure a good match between metabolic and predator-prey body-mass ratio values. Metabolic and consumptive rates in the Lotka-Volterra model follow a negative quarter power-law relationship with each species' body mass (i.e. proportional to $M^{-0.25}$, where $M$ is the mass of a single, typical adult individual). We assigned relative body masses based on each species' trophic level, which was, in turn, calculated based on the food-web structure provided by the niche model. After basal species were assigned a body mass of 1, we used a predator-prey body-mass ratio of 3.065 to calculate the relative body masses of higher trophic levels. We selected this ratio based on the estimate for vertebrates (averaged across ecosystem and metabolic types) in~\citet{Brose2006}. We excluded reported body-mass ratios for invertebrates as these could include parasites and parasitoids, which are generally smaller than their prey, and because interactions among vertebrates are better represented in the food-web literature than interactions involving invertebrates.
+	After generating the network structure, we simulated community dynamics using the function ``simulate'' from the Julia language package \emph{BioEnergeticFoodWebs}~\citep{bioenergeticfw,Delmas2017}. This function uses bio-energetic model of \citet{Yodzis1992} adapted to food webs \citep{Williams2007} including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).
+	All non-basal species were designated as vertebrates to ensure a good match between metabolic and predator-prey body-mass ratio values. Metabolic and consumptive rates in the bio-energetic model follow a negative quarter power-law relationship with each species' body mass (i.e. proportional to $M^{-0.25}$, where $M$ is the mass of a single, typical adult individual). We assigned relative body masses based on each species' trophic level, which was, in turn, calculated based on the food-web structure provided by the niche model. After basal species were assigned a body mass of 1, we used a predator-prey body-mass ratio of 3.065 to calculate the relative body masses of higher trophic levels. We selected this ratio based on the estimate for vertebrates (averaged across ecosystem and metabolic types) in~\citet{Brose2006}. We excluded reported body-mass ratios for invertebrates as these could include parasites and parasitoids, which are generally smaller than their prey, and because interactions among vertebrates are better represented in the food-web literature than interactions involving invertebrates.
 	
 	
 	The persistence of each species in our simulated networks also depends on its population biomass. 
 	We randomly assigned initial population biomasses (i.e. cumulative biomass across all individuals of a species) for each species from a uniform distribution [0,1]. Note that population biomasses and individual body masses are not calculated on the same scale. We then simulated community dynamics for 1000 time steps to obtain an `equilibrium' community. To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times10^{-5}$. When simulating initial (i.e. pre-disturbance or equilibrium) dynamics, we rejected any network where one or more species dropped below this biomass threshold. Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of predator $i$ eating prey $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not retain all species for 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated.
 	If a set of biomasses where all species persist still had not been reached after 100 sets of randomly-assigned initial biomasses, we discarded the network and simulated another to replace it.
 
+
+\begin{table}[h]
+\caption{Parameter values used in simulations. Symbols follow equations 1-10 in \citet{Delmas2017}}
+\begin{tabular}{lll}
+\textbf{Parameter} & \textbf{Default Value} & \textbf{Meaning} \\ \hline
+$r_i$ & 1.0 & mass-specific maximum growth rate of producers\\
+$x_i$ & $a_i*M^{-0.25}$ & mass-specific metabolic rate\\
+$a_i$ & 0.88 & allometric constant (vertebrates)\\
+$a_i$ & 0.138 & allometric constant (producers)\\
+$y_i$ & 4 & maximum consumption rate relative to metabolic rate \\&&(vertebrate predators)\\
+$e_{ij}$ & 0.85 & assimilation efficiency (carnivores) \\
+$e_{ij}$ & 0.45 & assimilation efficiency (herbivores) \\
+
+$c$ & 0 & quantifies the predator interference\\
+
+$K$  & 1.0 & carrying capacity of producers\\
+
+$h$ & 1 & Hill coefficient \\
+$B_0$ & 0 & $i$'s relative consumption rate when consuming $j$\\
+
+$\Gamma$ & 0.5 & half-saturation density\\
+$\alpha$ & 1.0 & interspecific competition relatively to intraspecific competition \\
+$M_p$ & 1 & Mass of producers (scaled) \\
+$M_c$ & $Z^{T-1}$ & body mass of consumers, normalized by $M_p$ \\&& where T = trophic level\\
+$Z$ & 3.065   & consumer-resource body mass ratio \\
+
+\end{tabular}
+\end{table}
 \clearpage
 
 
@@ -512,7 +540,7 @@
 
 		\begin{figure}[hb!]
 			\includegraphics[height=.75\textheight]{figures/mantel.eps}
-			\caption{}
+			\caption{For count-based and species-normalised (frequency) versions of motif participation, the strength of correlation between  dissimilarity in species motif participation and dissimilarity in species' mean time to extinction across removals depended on connectance and, to a lesser extent, network size. Correlations tended to be significant and positive in more-connected networks but non-significant ($p$\textgreater0.05) in less-connected networks. Dissimilarity in network-normalised ($Z$-score) motif participation was generally not corrated with dissimilarity in mean time to extinction.}
 			\label{Mantelfig}
 			\end{figure}
 
