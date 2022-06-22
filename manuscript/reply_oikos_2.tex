@@ -114,7 +114,7 @@
 
     \smallskip
 
-    2. Suggestion to use a Mantel test instead of PERMANOVA [[In progress.]]
+    2. Suggestion to use a Mantel test instead of PERMANOVA
 
       \begin{quotation}
         PERMANOVAs: why to introduce this test if the assumptions are violated (line 208) ? In general I don't think that PERMANOVA's is the appropriated test here. The authors should use Mantel (with Spearman rank correlation) between the dissimilarly in species's motif participation and the dissimilarity (distance) in time to extinction.
@@ -122,9 +122,12 @@
 
       \smallskip
 
-      \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. We present these results because we believe it is important to present negative results and data that doesn't conform to all statistical assumptions as well as the tests that come out perfectly, so long as it is clear where assumptions have been violated (and the Reviewer's comments suggest that we have been clear). 
+      \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. 
+      We present these results because we believe it is important to present negative results and data that doesn't conform to all statistical assumptions as well as the tests that come out perfectly, so long as it is clear where assumptions have been violated (and the Reviewer's comments suggest that we have indeed been clear that this is the case). 
 
-      We have now performed the Mantel test as suggested. As the Mantel test does not allow stratified permutations (meaning that dissimilarities might be permuted between networks), we fit one test per network (6000 tests total). This makes the risk of obtaining significant results purely by chance even more severe than with the PERMANOVAs where we were able to fit one test per S-C combination (60 tests total). Although we again fit the correlated Bonferroni correction, these results still need to be taken with a large dose of salt. We therefore do not give them much space in the main text but present the full results in the SI for any reader who is curious.
+      We have now performed the Mantel test as suggested, but note that it cannot be used to test whether species with particularly high or low mean times to extinction have more or less similar motif participation. 
+      This lack of detail and the inconclusive results mean that these tests do not seem to add much to our manuscript. 
+      We therefore present these results in the SI for any who are interested but have not addressed them in the main text.
 
     \smallskip
 

@@ -151,7 +151,7 @@ alyssa.cirtwill@gmail.com\\
     		
     		
     		The persistence of each species in our simulated networks also depends on its population biomass. 
-    		We randomly assigned initial population biomasses (i.e. cumulative biomass across all individuals of a species) for each species from a uniform distribution [0,1]. Note that population biomasses and individual body masses are not calculated on the same scale. We then simulated community dynamics for 1000 time steps to obtain an equilibrium community. We use an equilibrium community to ensure that secondary extinctions are caused by the initial disturbance (i.e. removal of a species) and not due to existing disequilibrium. To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times10^{-5}$. When simulating initial (ie. pre-perturbation or equilibrium) dynamics, we rejected any network where one or more species dropped below this biomass threshold. Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of predator $i$ eating prey $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not reach an equilibrium with all species persisting for 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated until an equilibrium with all species persisting was obtained.
+    		We randomly assigned initial population biomasses (i.e. cumulative biomass across all individuals of a species) for each species from a uniform distribution [0,1]. Note that population biomasses and individual body masses are not calculated on the same scale. We then simulated community dynamics for 1000 time steps to obtain an equilibrium community. We use an equilibrium community to ensure that secondary extinctions are caused by the initial disturbance (i.e. removal of a species) and not due to existing disequilibrium. To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times10^{-5}$. When simulating initial (i.e., pre-perturbation or equilibrium) dynamics, we rejected any network where one or more species dropped below this biomass threshold. Consumers were assumed to have no preferences such that the consumption rate $w_{ij}$ of predator $i$ eating prey $j$ is equal to $\frac{1}{n}$, where $n$ is the number of prey for predator $i$. If the network did not reach an equilibrium with all species persisting for 1000 time steps, a new set of initial population biomasses was applied and the simulation repeated until an equilibrium with all species persisting was obtained.
     		If a stable equilibrium still had not been reached after 100 sets of randomly-assigned initial biomasses, we discarded the network and simulated another to replace it.
     
     
@@ -191,7 +191,7 @@ alyssa.cirtwill@gmail.com\\
                 Because the assumption of equal varibility that underlies a PERMANOVA test was not met (see \emph{Appendix S4}), the results of these tests are indicative but not conclusive.
                 Further, because of this violation of assumptions, we did not use PERMANOVAs to test whether motif roles including positions were related to time to extinction.
                 The Mantel tests did not suffer from the same violation of assumptions but also mask which motif participation vectors are associated with high or low extinction risk; we therefore consider these tests likewise indicative but not conclusive (see \emph{Appendix S5}).
-
+                We therefore present the results of these tests in the supplemental information only.
 
             \textbf{Participation in particular motifs}
 
@@ -239,15 +239,7 @@ alyssa.cirtwill@gmail.com\\
 
 
 \section*{Results}
-	
-    \subsection*{Motif participation was related to persistence}
-    
-		Our series of PERMANOVA tests demonstrated that species' overall motif roles (raw, species-normalised, and network-normalised) were correlated with their mean time to extinction across all combinations of species richness and connectance (Fig. \emph{S2}, Tables \emph{TS1-S3, Appendix S3}). 
-        Taken individually, each PERMANOVA was significant (all $p$\textless0.025). Moreover, after applying the correlated Bonferroni correction~\citep{Drezner2016}, all PERMANOVAs remained significant.
-		However, some of these significant results are likely false positives since the variability of raw motif roles was not consistent across mean times to extinction for most combinations of species richness and connectance (Tables \emph{S4-S6, Appendix S4}). 
-        In most cases, motif roles were more variable among species with longer times to extinction (Fig. \emph{S3, Appendix S4}).
-        This unequal variability means that the PERMANOVA results, while indicative, cannot be taken as conclusive proof that motif roles are related to species' time to extinction.
-    
+
 
     \subsection*{Participation in stable motifs was related to persistence}
     
@@ -419,7 +411,7 @@ alyssa.cirtwill@gmail.com\\
 
 % \end{spacing}
 
-\clearpage
+% \clearpage
 
 \section*{Figures}
 
@@ -429,7 +421,7 @@ alyssa.cirtwill@gmail.com\\
         \label{motifs}
     \end{figure}
 
-    \clearpage
+    % \clearpage
 
 
     \begin{figure}[ht!]
@@ -439,7 +431,7 @@ alyssa.cirtwill@gmail.com\\
         \label{fig:persistence_positions}
     \end{figure}
 
-    \clearpage
+    % \clearpage
 
 
     \begin{figure}[ht!]
@@ -449,7 +441,7 @@ alyssa.cirtwill@gmail.com\\
         \label{fig:positions_deg}
     \end{figure}
 
-\clearpage
+% \clearpage
 
     \begin{figure}[ht!]
         \centering
