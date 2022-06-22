@@ -100,7 +100,7 @@ for flavour in ['count','freq','Z']:
       datadict[flavour][s][c]=read_file(datadir+flavour+'/'+s+'/mantel_'+s+'_'+c+'.tsv')
 
 grace=MultiPanelGrace(colors=colors)
-grace.add_label_scheme('smarty',['','A: count','B: frequency','C: Z-score'])
+grace.add_label_scheme('smarty',['','A: Count','B: Frequency','C: Z-score'])
 grace.set_label_scheme('smarty')
 colorbar = grace.add_graph(ElLogColorBar,domain=(50,100),
                            scale=LINEAR_SCALE,autoscale=False)
@@ -113,13 +113,15 @@ for flavour in datadict:
   graph=format_graph(graph,'F',flavour)
   graph=populate_graph(graph,datadict[flavour])
 
-  graph.panel_label.configure(char_size=.75,placement='oul',dy=0.01,dx=-0.1)
 
 grace.graphs[1].set_view(0.3,0.65,0.8,0.85)
+grace.graphs[1].panel_label.configure(char_size=.5,placement='iul',dy=0.01,dx=0.01)
 grace.graphs[2].set_view(0.3,0.4,0.8,0.6)
+grace.graphs[2].panel_label.configure(char_size=.5,placement='iul',dy=0.01,dx=0.01)
 grace.graphs[3].set_view(0.3,0.15,0.8,0.35)
+grace.graphs[3].panel_label.configure(char_size=.5,placement='iul',dy=0.01,dx=0.01)
 # graph.xaxis.label.text=''
 colorbar.set_view(0.85,0.15,0.9,0.85)
 
-grace.write_file('../../manuscript/figures/mantel.jpg')
-# grace.write_file('../../manuscript/figures/mantel.eps')
+# grace.write_file('../../manuscript/figures/mantel.jpg')
+grace.write_file('../../manuscript/figures/mantel.eps')
