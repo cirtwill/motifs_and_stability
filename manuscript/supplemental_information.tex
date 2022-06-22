@@ -520,8 +520,10 @@ $Z$ & 3.065   & consumer-resource body mass ratio \\
 
 		As with the PERMANOVAs, we fit one test per combination of size, connection, and motif version (count, frequency, or $Z$-score), giving 180 tests in total.
 		In all cases, we used Spearman rank correlation as the test statistic.
-		For networks containing 50-90 species, we calculated significance based on 999 permutations.
-		Due to computational constraints, we calculated significance for the 100-species networks based on 99 permutations.
+		Due to computational constraints, we used fewer permutations to calculate $p$-values in the larger networks,
+		For networks containing 50-60 species, we calculated significance based on 999 permutations.
+		For networks containing 70-80 species, we calculated significance based on 499 permutations.
+		For networks containing 90-100 species, we calculated significance based on 99 permutations.
 		Due to the large number of tests, we applied the correlated Bonferroni correction~\citep{Drezner2016} for all tests relating to a given version of motifs.
 
 
