@@ -87,8 +87,8 @@
 
   \end{quotation}
 
-  \textbf{R:} We appreciate the Reviewer's suggestions for alternative statistical tests and clearer presentation of our results, and have implemented these suggestions.
-  % Kind of a dick, but easy to address. Fine.
+  \textbf{R:} We appreciate the Reviewer's suggestions for alternative statistical tests and clearer presentation of our results and have implemented these suggestions. We respond to each comment in detail (preceded by \textbf{R:}) below.
+
 
   \smallskip
 
@@ -102,7 +102,7 @@
 
       \smallskip
 
-      \textbf{R:} We have added the formula for this normalisation as requested, and are confident that the Reviewer will recognise that this is indeed a $Z$-score as strongly grounded in statistics. As such, we have not changed our terminology. We hope that, with the addition of this equation, this normalisation is now clear.
+      \textbf{R:} We have added the formula for this normalisation as requested and are confident that the Reviewer will recognise that this is indeed a $Z$-score as strongly grounded in statistics. As such, we have not changed our terminology. We hope that, with the addition of this equation, this normalisation is now clear.
 
       \begin{quotation}
         Finally, we also calculated `network-normalised' motif roles, defined as the $Z$-score ($Z_{imn}$) of a focal species $i$'s participation in motif $m$ compared to full set of species in network $n$:
@@ -124,10 +124,11 @@
 
       \textbf{R:} We used the PERMANOVA test because it is well-established in the literature for relating motifs to other species or network properties. 
       We present these results because we believe it is important to present negative results and data that doesn't conform to all statistical assumptions as well as the tests that come out perfectly, so long as it is clear where assumptions have been violated (and the Reviewer's comments suggest that we have indeed been clear that this is the case). 
+      However, we accept that these results are not particularly interesting and have moved them to the SI.
 
-      We have now performed the Mantel test as suggested, but note that it cannot be used to test whether species with particularly high or low mean times to extinction have more or less similar motif participation. 
-      This lack of detail and the inconclusive results mean that these tests do not seem to add much to our manuscript. 
-      We therefore present these results in the SI for any who are interested but have not addressed them in the main text, and have also moved the PERMANOVA results to the SI at the same time.
+      We have now performed the Mantel test as suggested but note that it cannot be used to test whether species with particularly high or low mean times to extinction have more or less similar motif participation. 
+      This lack of detail and the inconclusive results mean that these tests, like the PERMANOVAs, do not greatly enrich our manuscript. 
+      We therefore present these results in the SI for any who are interested but have not addressed them in the main text.
 
     \smallskip
 
@@ -142,7 +143,7 @@
       \textbf{R:} As the Reviewer notes, the R$^2$ values were always available in SI tables and were, in the previous revision, also stated in the legends of Figs. 2 and 3. We also note that the R$^2$ value for Figure 4 was displayed in the figure itself. For the linear mixed-effects models we presented only the R$^2$ in the main text and so do not understand the Reviewer's demand to remove $p$-values.
 
 
-      Regarding the figure legends: We have now added the R$^2$ value to the legend of Figure 4 and removed it from the figure panel to avoid confusion. In addition, we have added references to the Appendix tables in the Figure legends. Also note that we have corrected the R$^2$ value in Figure 3 to match the marginal R$^2$ in the SI. We hope that this now provides sufficient documentation of our results.
+      Regarding the figure legends: We have now added the R$^2$ value to the legend of Figure 4 and removed it from the figure panel to avoid confusion. All figures now present R$^2$ values in the same way. In addition, we have added references to the Appendix tables in the Figure legends. Also note that we have corrected the R$^2$ value in Figure 3 to match the marginal R$^2$ in the SI. We hope that this now provides sufficient documentation of our results.
 
 
 
@@ -222,9 +223,9 @@
 
     \smallskip
 
-    \textbf{R:} This sentence now, more correctly, reads 'This function uses the bio-energetic model of \citet{Yodzis1992} adapted to food webs \citep{Williams2007}, including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).'
+    \textbf{R:} This sentence now, more correctly, reads `This function uses the bio-energetic model of \citet{Yodzis1992} adapted to food webs \citep{Williams2007}, including density dependence and type 2 functional responses for all species (please see~\citet{Delmas2017} for full details).'
     
-    With regards to rewiring, we added a brief explanation to the methods: 'Although the BioEnergeticFoodWebs package does allow for rewiring following extinctions, we chose not to allow rewiring because this would change species' motif profiles. '
+    With regards to rewiring, we added a brief explanation to the methods: `Although the BioEnergeticFoodWebs package does allow for rewiring following extinctions, we chose not to allow rewiring because this would change species' motif profiles.'
     A full investigation of how rewiring affects both motif profiles and extinction risk together would undoubtedly be interesting but is beyond the scope of the present manuscript.
 
     \smallskip
@@ -241,9 +242,7 @@
 
     \smallskip
 
-    \begin{quotation}
-    To ensure that species did not `recover' from unrealistically low biomasses during the simulation, we considered a species extinct if it dropped below an arbitrary threshold biomass of 1$\times$10$^{-5}$.
-    \end{quotation}
+
 
     \textbf{R:} We regret that we are unable to implement a sensitivity analysis within the deadline for returning our revision. The computational time required for these dynamical models is a major drawback to the approach (and likely the reason why no-one has, to our knowledge, compared extinction thresholds to find a best-practice value). However, we are happy to make more frequent mention of this limitation and the possibility that it may have impacted our results. 
     It seems most relevant to mention extinction threshold when we refer to the exact values of time to extinction, as a lower threshold would almost certainly lead to longer persistence times.
@@ -257,9 +256,7 @@
 
   \begin{quotation}
     Comments to the Author
-    I think the authors have done an excellent job revising the manuscript and responding to reviewer suggestions. The methods are easier to follow and the main message is clear. I also definitely appreciate being able to look over the code, thank you for providing it.   
-
-    While reading the revised manuscript I had two remaining questions for the authors that may be worth some mention in the discussion. 
+    I think the authors have done an excellent job revising the manuscript and responding to reviewer suggestions. The methods are easier to follow and the main message is clear. I also definitely appreciate being able to look over the code, thank you for providing it. While reading the revised manuscript I had two remaining questions for the authors that may be worth some mention in the discussion. 
 
   \end{quotation}
 
@@ -271,8 +268,10 @@
 
   \subsection*{Major comments} 
 
+    1. Are basal and non-basal species treated the same?
+
     \begin{quotation}
-      1. Are basal and non-basal species treated the same in this analysis? Because in these models basal species have an intrinsic growth rate, the probability that they will go extinct during the simulation is likely not the same as a non-basal species. The results in the manuscript show that trophic level gives additional information about species' roles, and explains more variation in persistence than motif participation alone. Perhaps there is an interactive effect of trophic level and motif participation that could explain further variation.
+      Are basal and non-basal species treated the same in this analysis? Because in these models basal species have an intrinsic growth rate, the probability that they will go extinct during the simulation is likely not the same as a non-basal species. The results in the manuscript show that trophic level gives additional information about species' roles, and explains more variation in persistence than motif participation alone. Perhaps there is an interactive effect of trophic level and motif participation that could explain further variation.
     \end{quotation}
 
     \smallskip
@@ -303,10 +302,13 @@
      % On re-reading I'm not 100% sure how to test this. Maybe STL + motifs + STL:chain+STL:omni+STL...?
      % Or is a test even necessary? Perhaps we can just mention something in the discussion as they say in their intro
 
-    \smallskip
+    \medskip
 
+
+    \noindent 2. Might initial biomass be important?
+    
     \begin{quotation}
-      2. Do you think it would be important to consider initial biomass (at equilibrium prior to perturbation) when measuring time to extinction? The authors mention that persistence of each species depends on population biomass, and as a result assign initial biomass at random, but the equilibrium biomass may also be affecting time to extinction (and this may not be correlated with initial biomass after 1000 time steps). I imagine that species with relatively lower equilibrium biomass may go extinct faster than species with higher biomass given the same motif profile (assuming of course motif profile has no relationship to equilibrium biomass - but that is a question for another paper perhaps).   
+     Do you think it would be important to consider initial biomass (at equilibrium prior to perturbation) when measuring time to extinction? The authors mention that persistence of each species depends on population biomass, and as a result assign initial biomass at random, but the equilibrium biomass may also be affecting time to extinction (and this may not be correlated with initial biomass after 1000 time steps). I imagine that species with relatively lower equilibrium biomass may go extinct faster than species with higher biomass given the same motif profile (assuming of course motif profile has no relationship to equilibrium biomass - but that is a question for another paper perhaps).   
     \end{quotation}
 
     \smallskip
@@ -317,12 +319,12 @@
     Unfortunately we are not able to test whether equilibrium biomasses were related to time to extinction or to motif participation as we did not save the biomass data from our previous simulations and do not have time to repeat them before the revision is due. However, we share the Reviewer's intuition that species with lower biomasses are more likely to quickly go extinct. We have added a reference to possible biomass effects in the discussion and hope that this question will be resolved in future work.
 
 
-    \smallskip
+    \medskip
 
 
   \subsection*{Minor comments}
 
-    3. L72: I think something messed up in the pdf conversion as there is "(??)" where I think a reference is supposed to go
+    3. L72: I think something messed up in the pdf conversion as there is ``(??)'' where I think a reference is supposed to go
 
     % \begin{quotation}
     % (Donohue et al., 2013; Radchuk et al., 2019)
@@ -334,7 +336,7 @@
 
     \smallskip
 
-    4. L77: I suggest changing "motifs in can" to "motifs it can"
+    \noindent 4. L77: I suggest changing ``motifs in can'' to ``motifs it can''
 
     \smallskip
 
@@ -342,31 +344,31 @@
 
     \smallskip
 
-    5. L78: The phrasing "This is likely to lead species..." is a little awkward, perhaps switching to "Species with higher degrees likely participate..."
+    \noindent 5. L78: The phrasing ``This is likely to lead species...'' is a little awkward, perhaps switching to ``Species with higher degrees likely participate...''
 
     \smallskip
 
-    \textbf{R:} We have made the change as suggested. The sentence now reads ``Species with higher degrees can therefore likely participate in a wider variety of motifs, as well as participate more frequently in the four common, stable motifs."
+    \textbf{R:} We have made the change as suggested. The sentence now reads ``Species with higher degrees can therefore likely participate in a wider variety of motifs, as well as participate more frequently in the four common, stable motifs.''
 
     \smallskip
 
-    6. L129: Another "(?)"
+    \noindent 6. L129: Another ``(?)''
 
     \smallskip
 
-    \textbf{R:} We did not intend any citation in line 129. Possibly you mean the reference to Hairston \& Hairston in line 130? This appears in our compilation of the manuscript but we have taken care to double-check this reference when submitting our revision.%  (Hairston & Hairston, 1993)
+    \textbf{R:} We did not intend any citation in line 129. Possibly you mean the reference to Hairston \& Hairston in line 130? This appears in our compilation of the manuscript but we have taken care to double-check this reference when submitting our revision.
 
     \smallskip
 
-    7. L359: Mentions "correlation of extinction orders" is this different from correlation of time to extinction?
+    \noindent 7. L359: Mentions ``correlation of extinction orders'' is this different from correlation of time to extinction?
 
     \smallskip
 
-    \textbf{R:} No, this is the same concept. We have changed the line to read ``correlation of time to extinction" and thank the Reviewer for pointing out the inconsistency.
+    \textbf{R:} No, this is the same concept. We have changed the line to read ``correlation of time to extinction'' and thank the Reviewer for pointing out the inconsistency.
 
     \smallskip
 
-    8. L397: I suggest changing "the omnivory can" by either removing "the" or adding "motif" (e.g., "the omnivory motif can")
+    \noindent 8. L397: I suggest changing ``the omnivory can'' by either removing ``the'' or adding ``motif'' (e.g., "the omnivory motif can")
 
     \smallskip
 
@@ -374,7 +376,7 @@
 
     \smallskip
 
-    9. L405: I think it would be helpful if you could be more specific about what "strongly affected" means. In this case are you suggesting that more strongly affected = more likely to go extinct?
+    \noindent 9. L405: I think it would be helpful if you could be more specific about what "strongly affected" means. In this case are you suggesting that more strongly affected = more likely to go extinct?
 
     % % Original:
     % \begin{quotation}
@@ -391,7 +393,7 @@
 
     \smallskip
 
-    10. L460: I think there may be a missing "or" between "predator prey"
+    \noindent 10. L460: I think there may be a missing "or" between "predator prey"
 
     \smallskip
 
