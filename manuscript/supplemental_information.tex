@@ -113,6 +113,9 @@
 
 \clearpage
 
+\linenumbers
+\begin{spacing}{2.0}
+
 \section*{S1: Details of network generation}
 
     For code used to generate networks and simulate extinctions, see doi: 10.5281/zenodo.6377974.
@@ -524,23 +527,149 @@ $Z$ & 3.065   & consumer-resource body mass ratio \\
 		Due to computational constraints, we calculated significance for the 100-species networks based on 99 permutations.
 		Due to the large number of tests, we applied the correlated Bonferroni correction~\citep{Drezner2016} for all tests relating to a given version of motifs.
 
+		\begin{table}[hb!]
+			\caption{Spearman's $\rho$ and $p$-values for Mantel tests relating dissimilarity in motif participation to dissimilarity in mean time to extinction. We also give the number of permutations used to calculate each $p$-value; due to computational limits it was not possible to use 999 permutations for the larger networks.}
+			\footnotesize
+			\label{Manteltab}
+			\begin{tabular}{l l | l l | l || ll | ll | l}
+			\multicolumn{10}{c}{Count-based motif participation} \\
+			S & C & Spearman's $\rho$ & $p$-value & perms & S & C & Spearman's $\rho$ & $p$-value & perms\\
+			\hline
+            50	&	0.02	&	-0.08843	&	1	&	999	&	80	&	0.02	&	-0.08856	&	1	&	499	\\
+            50	&	0.04	&	-0.07766	&	1	&	999	&	80	&	0.04	&	-0.04627	&	1	&	499	\\
+            50	&	0.06	&	-0.05752	&	1	&	999	&	80	&	0.06	&	-0.01582	&	1	&	499	\\
+            50	&	0.08	&	-0.0329	&	1	&	999	&	80	&	0.08	&	-0.00944	&	0.98	&	499	\\
+            50	&	0.1	&	-0.02078	&	1	&	999	&	80	&	0.1	&	0.01083	&	0.002	&	499	\\
+            50	&	0.12	&	-0.013	&	1	&	999	&	80	&	0.12	&	0.0171	&	0.002	&	499	\\
+            50	&	0.14	&	-0.00874	&	0.986	&	999	&	80	&	0.14	&	0.00646	&	0.004	&	499	\\
+            50	&	0.16	&	0.00382	&	0.208	&	999	&	80	&	0.16	&	0.01277	&	0.002	&	499	\\
+            50	&	0.18	&	0.00542	&	0.064	&	999	&	80	&	0.18	&	0.02172	&	0.002	&	499	\\
+            50	&	0.2	&	0.00814	&	0.002	&	999	&	80	&	0.2	&	0.01285	&	0.002	&	499	\\
+            60	&	0.02	&	-0.10193	&	1	&	999	&	90	&	0.02	&	-0.08446	&	1	&	99	\\
+            60	&	0.04	&	-0.06322	&	1	&	999	&	90	&	0.04	&	-0.04626	&	1	&	99	\\
+            60	&	0.06	&	-0.04619	&	1	&	999	&	90	&	0.06	&	-0.01432	&	1	&	99	\\
+            60	&	0.08	&	-0.02703	&	1	&	999	&	90	&	0.08	&	0.00491	&	0.13	&	99	\\
+            60	&	0.1	&	-0.00696	&	0.997	&	999	&	90	&	0.1	&	0.01004	&	0.01	&	99	\\
+            60	&	0.12	&	-0.00796	&	0.989	&	999	&	90	&	0.12	&	0.02177	&	0.01	&	99	\\
+            60	&	0.14	&	0.0011	&	0.43	&	999	&	90	&	0.14	&	0.02172	&	0.01	&	99	\\
+            60	&	0.16	&	0.01055	&	0.002	&	999	&	90	&	0.16	&	0.01584	&	0.01	&	99	\\
+            60	&	0.18	&	0.00852	&	0.004	&	999	&	90	&	0.18	&	0.0174	&	0.01	&	99	\\
+            60	&	0.2	&	0.01683	&	0.001	&	999	&	90	&	0.2	&	0.01721	&	0.01	&	99	\\
+            70	&	0.02	&	-0.09013	&	1	&	499	&	100	&	0.02	&	-0.08392	&	1	&	99	\\
+            70	&	0.04	&	-0.0595	&	1	&	499	&	100	&	0.04	&	-0.02856	&	1	&	99	\\
+            70	&	0.06	&	-0.03723	&	1	&	499	&	100	&	0.06	&	-0.00636	&	0.93	&	99	\\
+            70	&	0.08	&	-0.0121	&	1	&	499	&	100	&	0.08	&	0.01622	&	0.01	&	99	\\
+            70	&	0.1	&	0.00483	&	0.074	&	499	&	100	&	0.1	&	0.0187	&	0.01	&	99	\\
+            70	&	0.12	&	0.00266	&	0.114	&	499	&	100	&	0.12	&	0.02411	&	0.01	&	99	\\
+            70	&	0.14	&	0.01318	&	0.004	&	499	&	100	&	0.14	&	0.01911	&	0.01	&	99	\\
+            70	&	0.16	&	0.0144	&	0.002	&	499	&	100	&	0.16	&	0.02614	&	0.01	&	99	\\
+            70	&	0.18	&	0.01458	&	0.002	&	499	&	100	&	0.18	&	0.01299	&	0.01	&	99	\\
+            70	&	0.2	&	0.02211	&	0.002	&	499	&	100	&	0.2	&	0.0159	&	0.01	&	99	\\
+			\end{tabular}
+			\end{table}
+			
+
+		\begin{table}[hb!]
+			\caption*{\hspace{-13.5cm}\textbf{Table S8 cont.}}
+			\footnotesize
+% 			\label{Manteltab}
+			\begin{tabular}{l l | l l | l || ll | ll | l}
+			\multicolumn{10}{c}{Frequency-based motif participation} \\
+			S & C & Spearman's $\rho$ & $p$-value & perms & S & C & Spearman's $\rho$ & $p$-value & perms\\
+			\hline
+            50	&	0.02	&	-0.03785	&	1	&	999	&	80	&	0.02	&	-0.0657	&	1	&	499	\\
+            50	&	0.04	&	-0.05447	&	1	&	999	&	80	&	0.04	&	-0.04118	&	1	&	499	\\
+            50	&	0.06	&	-0.04315	&	1	&	999	&	80	&	0.06	&	-0.01177	&	1	&	499	\\
+            50	&	0.08	&	-0.03181	&	1	&	999	&	80	&	0.08	&	-0.00928	&	0.996	&	499	\\
+            50	&	0.1	&	-0.01896	&	1	&	999	&	80	&	0.1	&	0.00323	&	0.068	&	499	\\
+            50	&	0.12	&	-0.01433	&	1	&	999	&	80	&	0.12	&	0.01121	&	0.002	&	499	\\
+            50	&	0.14	&	-0.0084	&	0.988	&	999	&	80	&	0.14	&	0.00198	&	0.112	&	499	\\
+            50	&	0.16	&	-0.00025	&	0.608	&	999	&	80	&	0.16	&	0.01172	&	0.002	&	499	\\
+            50	&	0.18	&	0.0082	&	0.005	&	999	&	80	&	0.18	&	0.01975	&	0.002	&	499	\\
+            50	&	0.2	&	0.00949	&	0.001	&	999	&	80	&	0.2	&	0.01839	&	0.002	&	499	\\
+            60	&	0.02	&	-0.05089	&	1	&	999	&	90	&	0.02	&	-0.06793	&	1	&	99	\\
+            60	&	0.04	&	-0.04678	&	1	&	999	&	90	&	0.04	&	-0.04172	&	1	&	99	\\
+            60	&	0.06	&	-0.03964	&	1	&	999	&	90	&	0.06	&	-0.01438	&	1	&	99	\\
+            60	&	0.08	&	-0.01645	&	1	&	999	&	90	&	0.08	&	0.0049	&	0.13	&	99	\\
+            60	&	0.1	&	-0.00511	&	0.985	&	999	&	90	&	0.1	&	0.00832	&	0.04	&	99	\\
+            60	&	0.12	&	-0.01084	&	0.999	&	999	&	90	&	0.12	&	0.01553	&	0.01	&	99	\\
+            60	&	0.14	&	0.00131	&	0.357	&	999	&	90	&	0.14	&	0.02264	&	0.01	&	99	\\
+            60	&	0.16	&	0.00761	&	0.01	&	999	&	90	&	0.16	&	0.01638	&	0.01	&	99	\\
+            60	&	0.18	&	0.00867	&	0.002	&	999	&	90	&	0.18	&	0.01866	&	0.01	&	99	\\
+            60	&	0.2	&	0.01668	&	0.001	&	999	&	90	&	0.2	&	0.02217	&	0.01	&	99	\\
+            70	&	0.02	&	-0.05733	&	1	&	499	&	100	&	0.02	&	-0.06334	&	1	&	99	\\
+            70	&	0.04	&	-0.04151	&	1	&	499	&	100	&	0.04	&	-0.0303	&	1	&	99	\\
+            70	&	0.06	&	-0.02427	&	1	&	499	&	100	&	0.06	&	-0.00708	&	0.89	&	99	\\
+            70	&	0.08	&	-0.01045	&	1	&	499	&	100	&	0.08	&	0.00873	&	0.01	&	99	\\
+            70	&	0.1	&	-0.00221	&	0.658	&	499	&	100	&	0.1	&	0.01387	&	0.01	&	99	\\
+            70	&	0.12	&	-0.00168	&	0.696	&	499	&	100	&	0.12	&	0.022	&	0.01	&	99	\\
+            70	&	0.14	&	0.00763	&	0.014	&	499	&	100	&	0.14	&	0.01547	&	0.01	&	99	\\
+            70	&	0.16	&	0.01282	&	0.002	&	499	&	100	&	0.16	&	0.02485	&	0.01	&	99	\\
+            70	&	0.18	&	0.01282	&	0.002	&	499	&	100	&	0.18	&	0.01626	&	0.01	&	99	\\
+            70	&	0.2	&	0.0223	&	0.002	&	499	&	100	&	0.2	&	0.01982	&	0.01	&	99	\\
+			\end{tabular}			
+			\end{table}
+			
 
 	\subsection*{Results}
 
+        Correlations between differences in motif profiles and differences in mean time to significance were only significant in some cases (Fig.~\ref{Mantelfig}).
+        All significant correlations were positive.
+        For count and frequency-based motif participation, correlations were significant for most high-connectance webs but not for less-connected webs (Table~\ref{Manteltab} parts 1 and 2).
+        After applying the correlated Bonferroni correction to the Mantel tests for count-based motif participation, all of the 27 correlations which were originally significant remained significant. 
+        For the frequency-based motif participation, 25 of the 26 originally significant correlations remained significant after applying the correlated Bonferroni correction.
+        For $Z$-score motif participation, there was only one case where differences in motif profiles and differences in mean time to significance were significantly correlated (Table~\ref{Manteltab} part 3).
+        For the $Z$-score motif participation, the single originally significant correlation remained significant after applying the correlated Bonferroni correction.
+        
+
+
 		\begin{table}[hb!]
-			\caption{Spearman's $\rho$ and $p$-values for Mantel tests relating dissimilarity in motif participation to dissimilarity in mean time to extinction. We also give the number of permutations used to calculate each $p$-value; due to computational limits it was not possible to use 999 permutations for the larger networks.}
-			\label{Mantetab}
-			\begin{tabular}{l l | l l | l}
-			S & C & Spearman's $\rho$ & $p$-value & permutations\\
-			\hline
+			\caption*{\hspace{-13.5cm}\textbf{Table S8 cont.}}
+			\footnotesize
+% 			\label{Manteltab}
+            \begin{tabular}{l l | l l | l || ll | ll | l}
+			\multicolumn{10}{c}{Frequency-based motif participation} \\
+			S & C & Spearman's $\rho$ & $p$-value & perms & S & C & Spearman's $\rho$ & $p$-value & perms\\
+			\hline			
+            50	&	0.02	&	0.023	&	0.003	&	999	&	80	&	0.02	&	-0.01462	&	0.996	&	499	\\
+            50	&	0.04	&	-0.03947	&	1	&	999	&	80	&	0.04	&	-0.04908	&	1	&	499	\\
+            50	&	0.06	&	-0.04338	&	1	&	999	&	80	&	0.06	&	-0.04613	&	1	&	499	\\
+            50	&	0.08	&	-0.0381	&	1	&	999	&	80	&	0.08	&	-0.03875	&	1	&	499	\\
+            50	&	0.1	&	-0.04013	&	1	&	999	&	80	&	0.1	&	-0.02668	&	1	&	499	\\
+            50	&	0.12	&	-0.03752	&	1	&	999	&	80	&	0.12	&	-0.02475	&	1	&	499	\\
+            50	&	0.14	&	-0.0287	&	1	&	999	&	80	&	0.14	&	-0.02806	&	1	&	499	\\
+            50	&	0.16	&	-0.01833	&	1	&	999	&	80	&	0.16	&	-0.02134	&	1	&	499	\\
+            50	&	0.18	&	-0.02237	&	1	&	999	&	80	&	0.18	&	-0.02059	&	1	&	499	\\
+            50	&	0.2	&	-0.02203	&	1	&	999	&	80	&	0.2	&	-0.01949	&	1	&	499	\\
+            60	&	0.02	&	5.00E-05	&	0.596	&	999	&	90	&	0.02	&	-0.04798	&	1	&	99	\\
+            60	&	0.04	&	-0.043	&	1	&	999	&	90	&	0.04	&	-0.06455	&	1	&	99	\\
+            60	&	0.06	&	-0.04802	&	1	&	999	&	90	&	0.06	&	-0.04683	&	1	&	99	\\
+            60	&	0.08	&	-0.0408	&	1	&	999	&	90	&	0.08	&	-0.02821	&	1	&	99	\\
+            60	&	0.1	&	-0.03255	&	1	&	999	&	90	&	0.1	&	-0.0283	&	1	&	99	\\
+            60	&	0.12	&	-0.03482	&	1	&	999	&	90	&	0.12	&	-0.02049	&	1	&	99	\\
+            60	&	0.14	&	-0.0278	&	1	&	999	&	90	&	0.14	&	-0.0194	&	1	&	99	\\
+            60	&	0.16	&	-0.0249	&	1	&	999	&	90	&	0.16	&	-0.0201	&	1	&	99	\\
+            60	&	0.18	&	-0.02458	&	1	&	999	&	90	&	0.18	&	-0.01712	&	1	&	99	\\
+            60	&	0.2	&	-0.0194	&	1	&	999	&	90	&	0.2	&	-0.0196	&	1	&	99	\\
+            70	&	0.02	&	-0.01355	&	0.986	&	499	&	100	&	0.02	&	-0.03672	&	1	&	99	\\
+            70	&	0.04	&	-0.05092	&	1	&	499	&	100	&	0.04	&	-0.06413	&	1	&	99	\\
+            70	&	0.06	&	-0.05622	&	1	&	499	&	100	&	0.06	&	-0.04156	&	1	&	99	\\
+            70	&	0.08	&	-0.03548	&	1	&	499	&	100	&	0.08	&	-0.02784	&	1	&	99	\\
+            70	&	0.1	&	-0.02794	&	1	&	499	&	100	&	0.1	&	-0.02288	&	1	&	99	\\
+            70	&	0.12	&	-0.03363	&	1	&	499	&	100	&	0.12	&	-0.01889	&	1	&	99	\\
+            70	&	0.14	&	-0.02109	&	1	&	499	&	100	&	0.14	&	-0.02046	&	1	&	99	\\
+            70	&	0.16	&	-0.02213	&	1	&	499	&	100	&	0.16	&	-0.01724	&	1	&	99	\\
+            70	&	0.18	&	-0.01826	&	1	&	499	&	100	&	0.18	&	-0.02007	&	1	&	99	\\
+            70	&	0.2	&	-0.01324	&	1	&	499	&	100	&	0.2	&	-0.0224	&	1	&	99	\\			
 			\end{tabular}
 			\end{table}
 
 
 
 		\begin{figure}[hb!]
-			\includegraphics[height=.75\textheight]{figures/mantel.eps}
-			\caption{For count-based and species-normalised (frequency) versions of motif participation, the strength of correlation between  dissimilarity in species motif participation and dissimilarity in species' mean time to extinction across removals depended on connectance and, to a lesser extent, network size. Correlations tended to be significant and positive in more-connected networks but non-significant ($p$\textgreater0.05) in less-connected networks. Dissimilarity in network-normalised ($Z$-score) motif participation was generally not corrated with dissimilarity in mean time to extinction.}
+		    \centering
+			\includegraphics[height=.66\textheight]{figures/mantel.eps}
+			\caption{For count-based and species-normalised (frequency) versions of motif participation, the strength of correlation between  dissimilarity in species motif participation and dissimilarity in species' mean time to extinction across removals depended on connectance and, to a lesser extent, network size. Correlations tended to be significant and positive in more-connected networks but non-significant ($p$\textgreater0.05) in less-connected networks. Dissimilarity in network-normalised ($Z$-score) motif participation was generally not correlated with dissimilarity in mean time to extinction.}
 			\label{Mantelfig}
 			\end{figure}
 
@@ -1112,6 +1241,7 @@ $Z$ & 3.065   & consumer-resource body mass ratio \\
 		\includegraphics[width=.8\textwidth]{figures/motifs.eps}
 		\end{figure}
 
+\end{spacing}
 \clearpage
 
     \bibliographystyle{ecollett} 
