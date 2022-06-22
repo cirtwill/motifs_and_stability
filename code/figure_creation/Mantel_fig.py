@@ -92,8 +92,8 @@ datadir='../../data/mantel/'
 datadict={}
 for flavour in ['count','freq','Z']:
   datadict[flavour]={}
-  # for s in ['50','60','70','80','90','100']:
-  for s in ['50','60','70','90','100']:
+  for s in ['50','60','70','80','90','100']:
+  # for s in ['50','60','70','90','100']:
     datadict[flavour][s]={}
     for c in ['0.02','0.04','0.06','0.08','0.1','0.12','0.14','0.16','0.18','0.2']:
     # for c in ['0.02','0.04','0.06','0.08','0.1','0.12','0.14']:
@@ -121,4 +121,5 @@ grace.graphs[3].set_view(0.3,0.15,0.8,0.35)
 # graph.xaxis.label.text=''
 colorbar.set_view(0.85,0.15,0.9,0.85)
 
-grace.write_file('../../manuscript/figures/mantel.eps')
+grace.write_file('../../manuscript/figures/mantel.jpg')
+# grace.write_file('../../manuscript/figures/mantel.eps')
